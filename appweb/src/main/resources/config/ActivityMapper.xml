@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.emiservice.mapper.ActivityMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.emiservice.entity.Activity" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="orgid" property="serviceorgid" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="activityimg" property="activityimg" jdbcType="VARCHAR" />
+    <result column="begintime" property="begintime" jdbcType="TIMESTAMP" />
+    <result column="endtime" property="endtime" jdbcType="TIMESTAMP" />
+    <result column="closingtime" property="closingtime" jdbcType="TIMESTAMP" />
+
+    <result column="place" property="place" jdbcType="VARCHAR" />
+    <result column="activitynum" property="activitynum" jdbcType="INTEGER" />
+    <result column="fee" property="fee" jdbcType="DECIMAL" />
+
+    <result column="privatefee" property="privatefee" jdbcType="DECIMAL" />
+    <result column="tutorfee" property="tutorfee" jdbcType="DECIMAL" />
+
+    <result column="publisher" property="publisher" jdbcType="VARCHAR" />
+    <result column="signupnum" property="signupnum" jdbcType="INTEGER" />
+    <result column="commentnum" property="commentnum" jdbcType="INTEGER" />
+    <result column="follownum" property="follownum" jdbcType="INTEGER" />
+    <result column="isdelete" property="isdelete" jdbcType="INTEGER" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="citycode" property="citycode" jdbcType="VARCHAR" />
+    <result column="forwhoid" property="forwhoid" jdbcType="INTEGER" />
+
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.emi.emiservice.entity.Activity" extends="BaseResultMap" >
+    <result column="introduce" property="introduce" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, serviceorgid, title, activityimg, begintime, endtime,closingtime, place, activitynum, fee,privatefee,tutorfee,  publisher,
+    signupnum, follownum, isdelete, state,city,citycode,forwhoid,commentnum
+  </sql>
+  <sql id="Blob_Column_List" >
+    introduce
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select
+    id,serviceorgid,title,activityimg,begintime,endtime,closingtime,place,activitynum,fee,privatefee,tutorfee,publisher,signupnum,follownum,state,city,citycode,forwhoid,commentnum,fortypeids,
+    CAST(introduce AS CHAR CHARACTER SET utf8) AS introduce
+    from activity
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from activity
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.emi.emiservice.entity.Activity" >
+    insert into activity (id, serviceorgid, title,
+      activityimg, begintime, endtime, 
+      place, activitynum, fee, 
+      publisher, signupnum, follownum, 
+      isdelete, state, introduce
+      )
+    values (#{id,jdbcType=INTEGER}, #{serviceorgid,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR},
+      #{activityimg,jdbcType=VARCHAR}, #{begintime,jdbcType=TIMESTAMP}, #{endtime,jdbcType=TIMESTAMP}, 
+      #{place,jdbcType=VARCHAR}, #{activitynum,jdbcType=INTEGER}, #{fee,jdbcType=INTEGER}, 
+      #{publisher,jdbcType=VARCHAR}, #{signupnum,jdbcType=INTEGER}, #{follownum,jdbcType=INTEGER}, 
+      #{isdelete,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}, #{introduce,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.emi.emiservice.entity.Activity" useGeneratedKeys="true" keyProperty="id">
+    insert into activity
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="serviceorgid != null" >
+        serviceorgid,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="activityimg != null" >
+        activityimg,
+      </if>
+      <if test="begintime != null" >
+        begintime,
+      </if>
+      <if test="endtime != null" >
+        endtime,
+      </if>
+      <if test="closingtime != null" >
+        closingtime,
+      </if>
+      <if test="place != null" >
+        place,
+      </if>
+      <if test="activitynum != null" >
+        activitynum,
+      </if>
+
+      <if test="fee != null" >
+        fee,
+      </if>
+      <if test="privatefee != null" >
+        privatefee,
+      </if>
+      <if test="tutorfee != null" >
+        tutorfee,
+      </if>
+
+      <if test="publisher != null" >
+        publisher,
+      </if>
+      <if test="signupnum != null" >
+        signupnum,
+      </if>
+      <if test="follownum != null" >
+        follownum,
+      </if>
+      <if test="isdelete != null" >
+        isdelete,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="introduce != null" >
+        introduce,
+      </if>
+
+      <if test="city != null" >
+        city,
+      </if>
+
+      <if test="citycode != null" >
+        citycode,
+      </if>
+      <if test="forwhoid != null" >
+        forwhoid,
+      </if>
+
+      <if test="addednum != null" >
+        addednum,
+      </if>
+
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="fortypeids != null" >
+        fortypeids,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="serviceorgid != null" >
+        #{serviceorgid,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="activityimg != null" >
+        #{activityimg,jdbcType=VARCHAR},
+      </if>
+      <if test="begintime != null" >
+        #{begintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null" >
+        #{endtime,jdbcType=TIMESTAMP},
+      </if>
+
+      <if test="closingtime != null" >
+        #{closingtime,jdbcType=TIMESTAMP},
+      </if>
+
+      <if test="place != null" >
+        #{place,jdbcType=VARCHAR},
+      </if>
+      <if test="activitynum != null" >
+        #{activitynum,jdbcType=INTEGER},
+      </if>
+
+      <if test="fee != null" >
+        #{fee,jdbcType=DECIMAL},
+      </if>
+
+      <if test="privatefee != null" >
+        #{privatefee,jdbcType=DECIMAL},
+      </if>
+
+      <if test="tutorfee != null" >
+        #{tutorfee,jdbcType=DECIMAL},
+      </if>
+
+
+      <if test="publisher != null" >
+        #{publisher,jdbcType=VARCHAR},
+      </if>
+      <if test="signupnum != null" >
+        #{signupnum,jdbcType=INTEGER},
+      </if>
+      <if test="follownum != null" >
+        #{follownum,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null" >
+        #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="introduce != null" >
+        #{introduce,jdbcType=LONGVARCHAR},
+      </if>
+
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+
+      <if test="citycode != null" >
+        #{citycode,jdbcType=VARCHAR},
+      </if>
+
+      <if test="forwhoid != null" >
+        #{forwhoid,jdbcType=INTEGER},
+      </if>
+
+      <if test="addednum != null" >
+        #{addednum,jdbcType=INTEGER},
+      </if>
+
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="fortypeids != null" >
+        #{fortypeids,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.emiservice.entity.Activity" >
+    update activity
+    <set >
+      <if test="serviceorgid != null" >
+        serviceorgid = #{serviceorgid,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="activityimg != null" >
+        activityimg = #{activityimg,jdbcType=VARCHAR},
+      </if>
+      <if test="begintime != null" >
+        begintime = #{begintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null" >
+        endtime = #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="closingtime != null" >
+        closingtime = #{closingtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="place != null" >
+        place = #{place,jdbcType=VARCHAR},
+      </if>
+      <if test="activitynum != null" >
+        activitynum = #{activitynum,jdbcType=INTEGER},
+      </if>
+
+      <if test="fee != null" >
+        fee = #{fee,jdbcType=DECIMAL},
+      </if>
+
+      <if test="privatefee != null" >
+        privatefee = #{privatefee,jdbcType=DECIMAL},
+      </if>
+
+      <if test="tutorfee != null" >
+        tutorfee = #{tutorfee,jdbcType=DECIMAL},
+      </if>
+
+
+      <if test="publisher != null" >
+        publisher = #{publisher,jdbcType=VARCHAR},
+      </if>
+      <if test="signupnum != null" >
+        signupnum = #{signupnum,jdbcType=INTEGER},
+      </if>
+      <if test="follownum != null" >
+        follownum = #{follownum,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null" >
+        isdelete = #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="introduce != null" >
+        introduce = #{introduce,jdbcType=LONGVARCHAR},
+      </if>
+
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+
+      <if test="citycode != null" >
+        citycode = #{citycode,jdbcType=VARCHAR},
+      </if>
+
+      <if test="forwhoid != null" >
+        forwhoid = #{forwhoid,jdbcType=INTEGER},
+      </if>
+
+      <if test="addednum != null" >
+        addednum = #{addednum,jdbcType=INTEGER},
+      </if>
+
+      <if test="fortypeids != null" >
+        fortypeids = #{fortypeids,jdbcType=VARCHAR},
+      </if>
+
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.emi.emiservice.entity.Activity" >
+    update activity
+    set serviceorgid = #{serviceorgid,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      activityimg = #{activityimg,jdbcType=VARCHAR},
+      begintime = #{begintime,jdbcType=TIMESTAMP},
+      endtime = #{endtime,jdbcType=TIMESTAMP},
+      place = #{place,jdbcType=VARCHAR},
+      activitynum = #{activitynum,jdbcType=INTEGER},
+      fee = #{fee,jdbcType=INTEGER},
+      publisher = #{publisher,jdbcType=VARCHAR},
+      signupnum = #{signupnum,jdbcType=INTEGER},
+      follownum = #{follownum,jdbcType=INTEGER},
+      isdelete = #{isdelete,jdbcType=INTEGER},
+      state = #{state,jdbcType=INTEGER},
+      introduce = #{introduce,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.emi.emiservice.entity.Activity" >
+    update activity
+    set serviceorgid = #{serviceorgid,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      activityimg = #{activityimg,jdbcType=VARCHAR},
+      begintime = #{begintime,jdbcType=TIMESTAMP},
+      endtime = #{endtime,jdbcType=TIMESTAMP},
+      place = #{place,jdbcType=VARCHAR},
+      activitynum = #{activitynum,jdbcType=INTEGER},
+      fee = #{fee,jdbcType=INTEGER},
+      publisher = #{publisher,jdbcType=VARCHAR},
+      signupnum = #{signupnum,jdbcType=INTEGER},
+      follownum = #{follownum,jdbcType=INTEGER},
+      isdelete = #{isdelete,jdbcType=INTEGER},
+      state = #{state,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="getFenPageActivity" resultType="com.emi.emiservice.entity.Activity">
+      <![CDATA[
+        SELECT aty.*,o.name forwhoname  from activity aty LEFT JOIN org o on aty.forwhoid=o.id where aty.isdelete=0 and aty.type=#{type}
+    ]]>
+    <if test="param!=null">
+      <![CDATA[ and title like '%${param}%' ]]>
+    </if>
+    and serviceorgid=#{serviceorgid}
+  </select>
+
+
+  <select id="getFenPageActivityInterface" resultType="com.emi.emiservice.entity.Activity">
+    <![CDATA[
+        SELECT aty.*,(
+    CASE when  DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s') < DATE_FORMAT(aty.begintime,'%Y-%m-%d %H:%i:%s') then '0' -- 未开始
+    when DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s') > DATE_FORMAT(aty.begintime,'%Y-%m-%d %H:%i:%s') and DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s') < DATE_FORMAT(aty.endtime,'%Y-%m-%d %H:%i:%s') then '1'
+    when DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s') > DATE_FORMAT(aty.closingtime,'%Y-%m-%d %H:%i:%s') and DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s') < DATE_FORMAT(aty.endtime,'%Y-%m-%d %H:%i:%s') then '2'
+    when DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s') > DATE_FORMAT(aty.endtime,'%Y-%m-%d %H:%i:%s') then '3'
+
+    END
+
+    ) as status from activity aty  where aty.isdelete=0 and aty.type=0
+
+    ]]>
+
+    <if test="isdefaultdisplay ==null ">
+      <choose>
+        <when test="citycode==''"></when>
+        <when test="citycode==0">and citycode = '0'</when>
+        <when test="citycode !=null and citycode!='' and citycode!=0 ">and (citycode = '${citycode}' or citycode = '0')</when>
+      </choose>
+    </if>
+
+    <if test="isdefaultdisplay ==1">
+      <choose>
+        <when test="memberid==0">and  citycode = '0'</when>
+        <when test="citycode==''"></when>
+        <when test="citycode==0"></when>
+        <when test="citycode !=null and citycode!='' and citycode!=0 ">and (citycode = '${citycode}' or citycode = '0')</when>
+      </choose>
+    </if>
+
+    <if test="isdefaultdisplay == 0">
+      <choose>
+        <when test="citycode==''"></when>
+        <when test="citycode==0">and  citycode = '0'</when>
+        <when test="citycode !=null and citycode!='' and citycode!=0">and citycode = '${citycode}'</when>
+      </choose>
+    </if>
+
+    order by status,begintime
+
+  </select>
+
+
+  <select id="getFenPageMyActivityInterface" resultType="com.emi.emiservice.entity.Activity">
+    <![CDATA[   SELECT aty.*,
+    (
+    CASE when  DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s') < DATE_FORMAT(aty.begintime,'%Y-%m-%d %H:%i:%s') then '0' -- 未开始
+    when DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s') > DATE_FORMAT(aty.begintime,'%Y-%m-%d %H:%i:%s') and DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s') < DATE_FORMAT(aty.endtime,'%Y-%m-%d %H:%i:%s') then '1'
+    when DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s') > DATE_FORMAT(aty.closingtime,'%Y-%m-%d %H:%i:%s') and DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s') < DATE_FORMAT(aty.endtime,'%Y-%m-%d %H:%i:%s') then '2'
+    when DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s') > DATE_FORMAT(aty.endtime,'%Y-%m-%d %H:%i:%s') then '3'
+
+    END
+
+    ) as status
+
+    from activity aty where aty.isdelete=0
+
+and aty.id in (
+	select ac.activityid from activitysignup ac where ac.memberid = '${memberid}'
+)
+ ]]>
+  </select>
+
+
+  <update id="updateFollownum">
+
+    <if test="udtype==0">
+      update activity set follownum=ifnull(follownum,0)+1 where id=#{activityid}
+    </if>
+
+    <if test="udtype==1">
+      update activity set follownum=ifnull(follownum,0)-1 where id=#{activityid}
+    </if>
+
+  </update>
+
+
+  <update id="updateSignupnum">
+
+    <if test="udtype==0">
+      update activity set signupnum=ifnull(signupnum,0)+1 where id=#{activityid}
+    </if>
+
+    <if test="udtype==1">
+      update activity set signupnum=ifnull(signupnum,0)-1 where id=#{activityid}
+    </if>
+
+  </update>
+
+  <select id="getByPrimaryKey" resultType="com.emi.emiservice.entity.Activity" >
+<![CDATA[
+        SELECT aty.id,aty.serviceorgid,aty.title,aty.activityimg,aty.begintime,aty.endtime,aty.closingtime,aty.place,aty.activitynum,aty.addednum,aty.fee,aty.privatefee,aty.tutorfee,aty.publisher,aty.signupnum,aty.follownum,aty.state,aty.city,aty.citycode,aty.forwhoid,aty.commentnum,
+        CAST(introduce AS CHAR CHARACTER SET utf8) AS introduce,
+           o.name forwhoname,aty.fortypeids  from activity aty LEFT JOIN org o on aty.forwhoid=o.id where aty.id=#{id}
+    ]]>
+  </select>
+
+
+  <select id="getFenPageMyFollowedActivityList" resultType="com.emi.emiservice.entity.Activity">
+    <![CDATA[ select ac.*,(
+    CASE when  DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s') < DATE_FORMAT(ac.begintime,'%Y-%m-%d %H:%i:%s') then '0' -- 未开始
+    when DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s') > DATE_FORMAT(ac.begintime,'%Y-%m-%d %H:%i:%s') and DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s') < DATE_FORMAT(ac.endtime,'%Y-%m-%d %H:%i:%s') then '1'
+    when DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s') > DATE_FORMAT(ac.closingtime,'%Y-%m-%d %H:%i:%s') and DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s') < DATE_FORMAT(ac.endtime,'%Y-%m-%d %H:%i:%s') then '2'
+    when DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s') > DATE_FORMAT(ac.endtime,'%Y-%m-%d %H:%i:%s') then '3'
+
+    END
+
+    ) as status
+    from activity ac
+where ac.id in (
+	select af.activityid from activityfollow af where af.memberid = '${memberid}'
+)
+]]>
+  </select>
+
+  <update id="updatecommentnum">
+
+
+
+    <if test="udtype==0">
+      update activity set commentnum=ifnull(commentnum,0)+1 where id=#{activityid}
+    </if>
+
+    <if test="udtype==1">
+      update activity set commentnum=ifnull(commentnum,0)-1 where id=#{activityid}
+    </if>
+
+  </update>
+
+    <select id="getFenPageActivityProgram" resultType="com.emi.emiservice.entity.Activityprogram">
+        <![CDATA[
+        SELECT ap.*  from activityprogram ap  where ap.activityid = '${id}' and ap.isdel = 0
+    ]]>
+        <if test="param!=null">
+            <![CDATA[ ${param} ]]>
+        </if>
+        ORDER BY ap.sort asc
+    </select>
+
+  <select id="getFenPageActivityPrize" resultType="com.emi.emiservice.entity.Activityprize">
+    <![CDATA[
+       select ap.* from activityprize ap where ap.activityid = '${id}' and ap.isdel = 0
+    ]]>
+    <if test="param!=null">
+      <![CDATA[ ${param} ]]>
+    </if>
+    ORDER BY ap.rounds asc,ap.ranking DESC
+
+  </select>
+
+  <select id="getFenPageActivitys" resultType="com.emi.emiservice.entity.Activity">
+      <![CDATA[
+   SELECT
+    (SELECT count(*) FROM activity WHERE type=1) count,
+    aty.*,(
+    CASE when  DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s') < DATE_FORMAT(aty.begintime,'%Y-%m-%d %H:%i:%s') then '0' -- 未开始
+    when DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s') > DATE_FORMAT(aty.begintime,'%Y-%m-%d %H:%i:%s') and DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s') < DATE_FORMAT(aty.endtime,'%Y-%m-%d %H:%i:%s') then '1'
+    when DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s') > DATE_FORMAT(aty.closingtime,'%Y-%m-%d %H:%i:%s') and DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s') < DATE_FORMAT(aty.endtime,'%Y-%m-%d %H:%i:%s') then '2'
+    when DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s') > DATE_FORMAT(aty.endtime,'%Y-%m-%d %H:%i:%s') then '3'
+
+    END
+
+    ) as status from activity aty  where aty.isdelete=0 and aty.type=1 order by status,begintime ]]>
+  </select>
+
+  <select id="getFenPagegetsignsList" resultType="com.emi.emiservice.entity.Activity">
+    <![CDATA[  SELECT
+            a.*,m.name,v.title
+        FROM
+            activitysignuprecord a
+        LEFT JOIN activity v ON a.activityid = v.id
+        LEFT JOIN member m ON a.memberid = m.id
+        WHERE
+            activityid = #{activityid}   ]]>
+    <if test="param!=null">
+      <![CDATA[ and m.name like '%${param}%' ]]>
+    </if>
+    <![CDATA[ ORDER BY a.id desc ]]>
+  </select>
+</mapper>

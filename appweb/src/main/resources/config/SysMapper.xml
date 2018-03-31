@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.emi.emiservice.mapper.SysMapper">
+<select id="getAreaDataList" resultType="map">
+	<![CDATA[SELECT * FROM area  ORDER BY LEVEL ASC,parentcode ASC,CODE ASC]]>
+</select>
+<!--<select id="getAttributeBeanDetailList"  resultType="com.emi.ec.entity.AttributeBeanDetail"> -->
+<!--<![CDATA[SELECT * FROM attr_list_detail WHERE isdel=0 OR(id IN (SELECT g.`attrdetailid` FROM `goodssizeattrdetail` g WHERE EXISTS (SELECT 1 FROM goodssize gs WHERE gs.id=g.`goodssizeid` AND gs.`isdel`=0) ) ) ORDER BY id ASC]]>-->
+<!--</select> -->
+ <!--<select id="getAttributeBeanList"  resultType="com.emi.ec.entity.AttributeBean"> -->
+<!--<![CDATA[SELECT * FROM attr_list WHERE isdel=0 OR (id IN(SELECT g.`attrid` FROM goodssizeattr g WHERE EXISTS (SELECT 1 FROM goodssize gs WHERE gs.id=g.`goodssizeid` AND gs.`isdel`=0) ))  order by id asc]]>-->
+<!--</select>-->
+    <select id="getWeChatConfByOrgId"  resultType="com.emi.emiservice.wechat.bean.WeChatConf">
+        <![CDATA[select * from wx_base_conf  where orgid=${orgid} ]]>
+    </select>
+    <select id="updateJSDKTicket" >
+        <![CDATA[update wx_base_conf set jsdkticket='${jsdkticket}' where orgid=${orgid} ]]>
+    </select>
+    <select id="updateAccesstoken" >
+        <![CDATA[update wx_base_conf set accesstoken='${accesstoken}' where orgid=${orgid} ]]>
+    </select>
+    <insert id="addSysLog">
+        insert into syslog (username,ip,type,msg,ctime)
+        values (#{username}, #{ip}, #{type},#{msg},now())
+    </insert>
+   <!-- <select id="getEnumerateList" resultType="com.emi.ec.entity.Enumerate">
+        <![CDATA[ select * from enumerate order by id asc ]]>
+    </select>-->
+    <!--<select id="getTemplateMsg" resultType="com.emi.ec.entity.Templatemsg">-->
+        <!--<![CDATA[ select * from templatemsg WHERE  issend=0 order by id asc ]]>-->
+    <!--</select>-->
+    <update id="updateTemplateMsg">
+       <![CDATA[ update templatemsg set issend=#{state}  where  id=#{id} ]]>
+    </update>
+    <!--<insert id="addTemplateMsg"  parameterType="com.emi.ec.entity.Templatemsg">-->
+        <!--<![CDATA[insert into templatemsg(templateid,`first`,keyword1,keyword2,remark,openid,`type`,orderid)-->
+        <!--values(#{templateid},#{first},#{keyword1},#{keyword2},#{remark},#{openid},#{type},#{orderid})]]>-->
+    <!--</insert>-->
+    <insert id="addTemplateMsgList"  parameterType="List">
+        <foreach collection="list" item="item" index="index" separator=";">
+        <![CDATA[insert into templatemsg(templateid,`first`,keyword1,keyword2,keyword3,keyword4,remark,openid,`type`,orderid) values ]]>
+             <![CDATA[   (#{item.templateid},#{item.first},#{item.keyword1},#{item.keyword2},#{item.keyword3},#{item.keyword4},#{item.remark},#{item.openid},#{item.type},#{item.orderid}) on duplicate key update templateid=templateid ]]>
+        </foreach>
+    </insert>
+
+    <!--<select id="getMemberrechargeSerList" resultType="com.emi.ec.entity.Memberrechargeservice">
+
+select ms.*,m.unionid  from memberrechargeservice ms
+left join member m on m.id = ms.memberid
+where ms.state = 0 and ms.flag = 0
+    </select>-->
+
+
+    <update id="updateMemberrechargeserviceState">
+        <foreach collection="list" item="item" index="index" separator=";">
+            <![CDATA[ update memberrechargeservice set state= 1 where id=#{item.id} ]]>
+        </foreach>
+
+    </update>
+
+
+    <select id="getMemberList" resultType="com.emi.emiservice.entity.Member">
+        <![CDATA[  select * from member m where m.openid <> '' and m.unionid is NULL ]]>
+
+    </select>
+
+
+    <update id="updateMemberListUnionidByMemberid" >
+
+        update member m set m.unionid = '${unionid}' where m.id = '${id}'
+    </update>
+
+</mapper>

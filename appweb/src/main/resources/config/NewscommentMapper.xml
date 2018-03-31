@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.emiservice.mapper.NewscommentMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.emiservice.entity.Newscomment" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="memberid" property="memberid" jdbcType="INTEGER" />
+    <result column="tomemberid" property="tomemberid" jdbcType="INTEGER" />
+    <result column="agreednum" property="agreednum" jdbcType="INTEGER" />
+    <result column="ctime" property="ctime" jdbcType="TIMESTAMP" />
+    <result column="isdelete" property="isdelete" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, content, memberid, tomemberid, agreednum, ctime, isdelete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from newscomment
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from newscomment
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.emi.emiservice.entity.Newscomment" >
+    insert into newscomment (id, content, memberid, 
+      tomemberid, agreednum, ctime, 
+      isdelete)
+    values (#{id,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{memberid,jdbcType=INTEGER}, 
+      #{tomemberid,jdbcType=INTEGER}, #{agreednum,jdbcType=INTEGER}, #{ctime,jdbcType=TIMESTAMP}, 
+      #{isdelete,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.emi.emiservice.entity.Newscomment" >
+    insert into newscomment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="memberid != null" >
+        memberid,
+      </if>
+      <if test="tomemberid != null" >
+        tomemberid,
+      </if>
+      <if test="agreednum != null" >
+        agreednum,
+      </if>
+      <if test="ctime != null" >
+        ctime,
+      </if>
+      <if test="isdelete != null" >
+        isdelete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="memberid != null" >
+        #{memberid,jdbcType=INTEGER},
+      </if>
+      <if test="tomemberid != null" >
+        #{tomemberid,jdbcType=INTEGER},
+      </if>
+      <if test="agreednum != null" >
+        #{agreednum,jdbcType=INTEGER},
+      </if>
+      <if test="ctime != null" >
+        #{ctime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isdelete != null" >
+        #{isdelete,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.emiservice.entity.Newscomment" >
+    update newscomment
+    <set >
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="memberid != null" >
+        memberid = #{memberid,jdbcType=INTEGER},
+      </if>
+      <if test="tomemberid != null" >
+        tomemberid = #{tomemberid,jdbcType=INTEGER},
+      </if>
+      <if test="agreednum != null" >
+        agreednum = #{agreednum,jdbcType=INTEGER},
+      </if>
+      <if test="ctime != null" >
+        ctime = #{ctime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isdelete != null" >
+        isdelete = #{isdelete,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.emi.emiservice.entity.Newscomment" >
+    update newscomment
+    set content = #{content,jdbcType=VARCHAR},
+      memberid = #{memberid,jdbcType=INTEGER},
+      tomemberid = #{tomemberid,jdbcType=INTEGER},
+      agreednum = #{agreednum,jdbcType=INTEGER},
+      ctime = #{ctime,jdbcType=TIMESTAMP},
+      isdelete = #{isdelete,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="getFenPageComments" resultType="com.emi.emiservice.entity.Newscomment">
+    SELECT nc.id,nc.newsid,nc.commentid,CAST(nc.content AS CHAR CHARACTER SET utf8) AS content,nc.memberid,nc.tomemberid,nc.agreednum,nc.ctime,
+      m.headimg memberimg,m.name membername,if(n.id IS null,'0','1') AS agree  from newscomment nc LEFT JOIN member m on nc.memberid=m.id
+     LEFT JOIN newscommentagree n ON n.newscommentid=nc.id and n.memberid=#{memberid}
+     where nc.newsid=#{newsid} ORDER BY nc.id desc
+  </select>
+
+  <insert id="addNewscomments" parameterType="com.emi.emiservice.entity.Newscomment"  useGeneratedKeys="true" keyProperty="id">
+    <![CDATA[
+		insert into newscomment(newsid,content,memberid,ctime) VALUES (#{newsid},#{content},#{memberid},now())
+	]]>
+  </insert>
+
+  <select id="getNewscomment" resultType="com.emi.emiservice.entity.Newscomment">
+      SELECT n.id,n.newsid,n.commentid,CAST(n.content AS CHAR CHARACTER SET utf8) AS content,n.memberid,n.tomemberid,n.agreednum,n.ctime,m.`name`,m.headimg,
+     if(nc.id IS null,'0','1') AS agree
+      FROM member m,newscomment n
+      LEFT JOIN   newscommentagree nc ON nc.newscommentid=n.id
+     WHERE n.memberid=m.id AND n.id=#{id}
+  </select>
+
+
+  <update id="updatenewscomments">
+    <if test="type==0">
+      update newscomment set agreednum=agreednum-1 where id=#{id}
+    </if>
+
+    <if test="type==1">
+      update newscomment set agreednum=agreednum+1 where id=#{id}
+    </if>
+  </update>
+
+</mapper>

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.emiservice.mapper.UserMapper" >
+
+  <resultMap id="BaseResultMap" type="com.emi.emiservice.entity.User" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="isstop" property="isstop" jdbcType="INTEGER" />
+    <result column="orgid" property="orgid" jdbcType="INTEGER" />
+  </resultMap>
+  
+	
+	<update id="updateApiTicket">
+		update wx_base_conf wb set wb.apiticket  = '${apiticket}' where wb.id = '${id}'
+	</update> 
+	<update id="updateFansId">
+		UPDATE member m set m.fansid = '${fansid}' where m.id = '${id}'
+	</update>
+	
+	<update id="updateFansIdMotherType">
+		UPDATE member m set m.fansid = '${fansid}',motherType='${motherType}' where m.id = '${id}'
+	</update>
+	
+	<select id="getWxidByFansid" resultType="java.util.Map">
+		select f.wxid from fanstag f where f.id = '${fansid}'
+	</select>
+	
+
+  
+  <select id="login" resultType="com.emi.emiservice.entity.User">
+  	select * from `user` u where u.isstop = '0' and u.username = #{username}
+  </select>
+  
+  <select id="getUserOfUserType" resultType="com.emi.emiservice.entity.UserUsertype">
+		<![CDATA[select * from userusertype where userid =${id} ]]>
+ </select> 
+  
+   <select id="findFunctionOfUserType" resultType="com.emi.emiservice.entity.Function">
+		<![CDATA[select DISTINCT f1.* from functionlist f1,usertype_functionlist f2 where f1.isdel=0
+		and f1.id=f2.auth_function_id and f2.user_type_id in (${usertype})     ]]>
+		<if test="orgid!=null">
+			and f2.orgid=#{orgid}
+		</if>
+
+		<![CDATA[order by f1.fid ASC, f1.sort asc ]]>
+		
+		
+</select>
+
+
+
+  <insert id="insert" parameterType="com.emi.emiservice.entity.User" >
+    insert into user (id, username, password, 
+      isstop, orgid)
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{isstop,jdbcType=INTEGER}, #{orgid,jdbcType=INTEGER})
+  </insert>
+  
+  
+  <select id="getUserTypeById"  resultType="com.emi.emiservice.entity.UserType">
+	<![CDATA[
+		select * from userusertype where id=${id} and orgid=${orgid}
+	]]>	
+	</select>
+	
+	<select id="getUserTypeById2"  resultType="com.emi.emiservice.entity.UserType">
+	<![CDATA[
+		select * from usertype where id=${id}
+	]]>	
+</select>
+
+  <update id="updatePassword">
+  <![CDATA[update user set password='${password}' where id=${userid}]]>	
+  </update>
+
+<update id="updateUserPassword">
+	UPDATE `user` u set u.`password` = '${md5pass}' where u.id = '${id}'
+</update>
+
+ <select id="getMainFenPageFunctionList" resultType="com.emi.emiservice.entity.Function">
+    <![CDATA[ select  * from functionlist where fid=0  and isdel=0   ]]>
+    <if test="param!=null">
+		<![CDATA[  and name like '%${param}%' or url like '%${param}%' ]]>
+	</if>
+     <![CDATA[ order by sort asc  ]]>
+    </select>
+    
+    
+    
+    <select id="getNodeFunctionList" resultType="com.emi.emiservice.entity.Function">
+    <![CDATA[ select  * from functionlist where fid=${fid}  and isdel=0  ]]>
+     <![CDATA[ order by sort asc  ]]>
+    </select>
+
+
+
+ <select id="getFunctionById" resultType="com.emi.emiservice.entity.Function">
+    <![CDATA[ select  * from functionlist where id=${id}  and isdel=0  ]]>
+    </select>
+    
+    
+     <insert id="addFunction" parameterType="com.emi.emiservice.entity.Function">
+	<![CDATA[insert into functionlist(name,url,notes,fid,sort) 
+		values('${function.name}','${function.url}','${function.notes}','${function.fid}','${function.sort}') ]]>
+	</insert>
+	
+	
+	
+	<update id="updateFunctionById" parameterType="com.emi.emiservice.entity.Function">
+    <![CDATA[ update functionlist set name='${function.name}',url='${function.url}',sort=${function.sort},notes='${function.notes}' where id=${function.id}  ]]>
+    </update>
+    
+    
+    
+    <delete id="deleteUsertypFunction">
+    <![CDATA[ delete from  usertype_functionlist where (auth_function_id in (select f.id from functionlist f where f.id =${funid} union all select f.id from functionlist f where f.fid =${funid} )   )   ]]>
+    </delete>
+    
+     <update id="deleteFunctionMenu">
+    <![CDATA[ update functionlist set isdel=1 where id in (SELECT id FROM (select f.id from functionlist f where f.id =${funid} union all select f.id from functionlist f where f.fid =${funid})A) ]]>
+    </update>
+    
+    <update id="deleteFunctionOpertaionByMenu">
+    <![CDATA[ update functionlist_operation set isdel=1 where functionlist_id in (select f.id from functionlist f where f.id =${funid} union all select f.id from functionlist f where f.fid =${funid})  ]]>
+    </update>
+    
+     <delete id="deleteUsertypFunctionBase">
+    <![CDATA[ delete from user_type_base_functionlist where  
+(auth_function_id in (
+select f.id from functionlist f where f.id =${funid} 
+union all select f.id from functionlist f where f.fid =${funid} )    )]]>
+    </delete>
+    
+    
+    
+    <select id="findFenPageBasesUserTypeList" resultType="com.emi.emiservice.entity.UserType">
+	<![CDATA[ select u.* from usertype u  where  1=1 and isdel=0 ]]>
+		<if test="param!=null">
+		<![CDATA[and u.name like '%${param}%' ]]>
+		</if>
+	<![CDATA[	
+		order by u.id asc
+	 ]]>
+	</select>
+	
+	
+	<select id="findAllFunction" resultType="com.emi.emiservice.entity.Function">
+		select f.* from functionlist f where f.isdel = '0' ORDER BY f.fid asc,f.sort asc
+	</select>
+	
+	
+	<select id="findFunctionOfUserTypeTemp" resultType="com.emi.emiservice.entity.Function">
+		select  f.* from functionlist f
+		inner join user_type_base_functionlist ut on ut.auth_function_id = f.id
+		where f.isdel = '0' and ut.user_type_id = '${usertypeid}' 
+		ORDER BY f.fid asc,f.sort asc
+	</select>
+	
+	<select id="selectUsertypeByPrimaryKey" resultType="com.emi.emiservice.entity.UserType">
+		 select * from usertype where isdel = '0' and id = '${usertype}'
+	</select>
+	
+	
+	<delete id="deleteBaseFunctions">
+		delete from user_type_base_functionlist where auth_function_id not in(
+			select id from functionlist where id in (${functionids}) and isdel=0) and user_type_id=${usertype}
+	</delete>
+	
+	
+	<insert id="insertBaseUserTypeFunction">
+		insert into user_type_base_functionlist (
+auth_function_id,user_type_id
+) 
+select id,${usertype} from functionlist
+ where id in (${functionids}) and isdel=0 ON DUPLICATE KEY UPDATE auth_function_id = auth_function_id
+	</insert>
+	
+<insert id="insertUsertypeFunctionList">
+	insert into usertype_functionlist(auth_function_id,user_type_id)
+	select auth_function_id,${idstr} from user_type_base_functionlist f where  f.user_type_id=${idstr}
+
+</insert>
+
+
+<select id="getTodelIds" resultType="java.util.Map">
+	select GROUP_CONCAT(B.id) ids from usertype_functionlist B,org 
+where B.user_type_id = ${idstr} and org.id = B.orgid and  not exists(
+	select * from  user_type_base_functionlist A where A.auth_function_id = B.auth_function_id 
+and A.user_type_id = B.user_type_id 
+)
+</select>
+
+
+
+<delete id="delUsertypeFunctionList">
+	delete from usertype_functionlist where id in (${idstr})
+</delete>
+
+<delete id="delUsertypeFunctionListByUsertypeId">
+	delete from usertype_functionlist where user_type_id =#{usertypeId}
+</delete>
+
+
+	<select id="getWeChatConfByOrgId" resultType="com.emi.emiservice.wechat.bean.WeChatConf">
+select * from wx_base_conf wx where wx.orgid = '${wechatconfOrgid}'
+
+	</select>
+
+
+
+</mapper>

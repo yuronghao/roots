@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.emiservice.mapper.PaytradenoMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.emiservice.entity.Paytradeno" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="orderid" property="orderid" jdbcType="INTEGER" />
+    <result column="ordersource" property="ordersource" jdbcType="VARCHAR" />
+    <result column="paytime" property="paytime" jdbcType="TIMESTAMP" />
+    <result column="payuser" property="payuser" jdbcType="VARCHAR" />
+    <result column="payMoney" property="paymoney" jdbcType="DECIMAL" />
+    <result column="tradeno" property="tradeno" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, orderid, ordersource, paytime, payuser, payMoney, tradeno
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from paytradeno
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from paytradeno
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.emi.emiservice.entity.Paytradeno" >
+    insert into paytradeno (id, orderid, ordersource, 
+      paytime, payuser, payMoney, 
+      tradeno)
+    values (#{id,jdbcType=INTEGER}, #{orderid,jdbcType=INTEGER}, #{ordersource,jdbcType=VARCHAR}, 
+      #{paytime,jdbcType=TIMESTAMP}, #{payuser,jdbcType=VARCHAR}, #{paymoney,jdbcType=DECIMAL}, 
+      #{tradeno,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.emi.emiservice.entity.Paytradeno" >
+    insert into paytradeno
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderid != null" >
+        orderid,
+      </if>
+      <if test="ordersource != null" >
+        ordersource,
+      </if>
+        paytime,
+      <if test="payuser != null" >
+        payuser,
+      </if>
+      <if test="paymoney != null" >
+        payMoney,
+      </if>
+      <if test="tradeno != null" >
+        tradeno,
+      </if>
+
+      <if test="paystate != null" >
+        paystate,
+      </if>
+      <if test="paytype != null" >
+        paytype,
+      </if>
+      <if test="memberid != null" >
+        memberid,
+      </if>
+
+
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderid != null" >
+        #{orderid,jdbcType=INTEGER},
+      </if>
+      <if test="ordersource != null" >
+        #{ordersource,jdbcType=VARCHAR},
+      </if>
+      now(),
+      <if test="payuser != null" >
+        #{payuser,jdbcType=VARCHAR},
+      </if>
+      <if test="paymoney != null" >
+        #{paymoney,jdbcType=DECIMAL},
+      </if>
+      <if test="tradeno != null" >
+        #{tradeno,jdbcType=VARCHAR},
+      </if>
+
+      <if test="paystate != null" >
+        #{paystate,jdbcType=INTEGER},
+      </if>
+      <if test="paytype != null" >
+        #{paytype,jdbcType=INTEGER},
+      </if>
+      <if test="memberid != null" >
+        #{memberid,jdbcType=INTEGER},
+      </if>
+
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.emiservice.entity.Paytradeno" >
+    update paytradeno
+    <set >
+      <if test="orderid != null" >
+        orderid = #{orderid,jdbcType=INTEGER},
+      </if>
+      <if test="ordersource != null" >
+        ordersource = #{ordersource,jdbcType=VARCHAR},
+      </if>
+      <if test="paytime != null" >
+        paytime = #{paytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="payuser != null" >
+        payuser = #{payuser,jdbcType=VARCHAR},
+      </if>
+      <if test="paymoney != null" >
+        payMoney = #{paymoney,jdbcType=DECIMAL},
+      </if>
+      <if test="tradeno != null" >
+        tradeno = #{tradeno,jdbcType=VARCHAR},
+      </if>
+
+      <if test="paystate != null" >
+        paystate = #{paystate,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.emi.emiservice.entity.Paytradeno" >
+    update paytradeno
+    set orderid = #{orderid,jdbcType=INTEGER},
+      ordersource = #{ordersource,jdbcType=VARCHAR},
+      paytime = #{paytime,jdbcType=TIMESTAMP},
+      payuser = #{payuser,jdbcType=VARCHAR},
+      payMoney = #{paymoney,jdbcType=DECIMAL},
+      tradeno = #{tradeno,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="getByTradeno" resultType="com.emi.emiservice.entity.Paytradeno">
+    SELECT * from paytradeno where tradeno=#{tradeno}
+  </select>
+
+</mapper>

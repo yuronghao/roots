@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.roots.mapper.AzForumPostMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzForumPost" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="forum_id" property="forumId" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="INTEGER" />
+    <result column="thumb" property="thumb" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="praise_num" property="praiseNum" jdbcType="INTEGER" />
+    <result column="click_num" property="clickNum" jdbcType="INTEGER" />
+    <result column="reply_num" property="replyNum" jdbcType="INTEGER" />
+    <result column="state" property="state" jdbcType="TINYINT" />
+    <result column="isdel" property="isdel" jdbcType="TINYINT" />
+    <result column="istop" property="istop" jdbcType="TINYINT" />
+    <result column="ishot" property="ishot" jdbcType="TINYINT" />
+    <result column="listorder" property="listorder" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.emi.roots.entity.AzForumPost" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, forum_id, uid, create_time, thumb, title, praise_num, click_num, reply_num, state, 
+    isdel, istop, ishot, listorder
+  </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from az_forum_post
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from az_forum_post
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.emi.roots.entity.AzForumPost" >
+    insert into az_forum_post (id, forum_id, uid, 
+      create_time, thumb, title, 
+      praise_num, click_num, reply_num, 
+      state, isdel, istop, 
+      ishot, listorder, content
+      )
+    values (#{id,jdbcType=INTEGER}, #{forumId,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=INTEGER}, #{thumb,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{praiseNum,jdbcType=INTEGER}, #{clickNum,jdbcType=INTEGER}, #{replyNum,jdbcType=INTEGER}, 
+      #{state,jdbcType=TINYINT}, #{isdel,jdbcType=TINYINT}, #{istop,jdbcType=TINYINT}, 
+      #{ishot,jdbcType=TINYINT}, #{listorder,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.emi.roots.entity.AzForumPost" >
+    insert into az_forum_post
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="forumId != null" >
+        forum_id,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="thumb != null" >
+        thumb,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="praiseNum != null" >
+        praise_num,
+      </if>
+      <if test="clickNum != null" >
+        click_num,
+      </if>
+      <if test="replyNum != null" >
+        reply_num,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="isdel != null" >
+        isdel,
+      </if>
+      <if test="istop != null" >
+        istop,
+      </if>
+      <if test="ishot != null" >
+        ishot,
+      </if>
+      <if test="listorder != null" >
+        listorder,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="forumId != null" >
+        #{forumId,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=INTEGER},
+      </if>
+      <if test="thumb != null" >
+        #{thumb,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="praiseNum != null" >
+        #{praiseNum,jdbcType=INTEGER},
+      </if>
+      <if test="clickNum != null" >
+        #{clickNum,jdbcType=INTEGER},
+      </if>
+      <if test="replyNum != null" >
+        #{replyNum,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=TINYINT},
+      </if>
+      <if test="isdel != null" >
+        #{isdel,jdbcType=TINYINT},
+      </if>
+      <if test="istop != null" >
+        #{istop,jdbcType=TINYINT},
+      </if>
+      <if test="ishot != null" >
+        #{ishot,jdbcType=TINYINT},
+      </if>
+      <if test="listorder != null" >
+        #{listorder,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.roots.entity.AzForumPost" >
+    update az_forum_post
+    <set >
+      <if test="forumId != null" >
+        forum_id = #{forumId,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=INTEGER},
+      </if>
+      <if test="thumb != null" >
+        thumb = #{thumb,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="praiseNum != null" >
+        praise_num = #{praiseNum,jdbcType=INTEGER},
+      </if>
+      <if test="clickNum != null" >
+        click_num = #{clickNum,jdbcType=INTEGER},
+      </if>
+      <if test="replyNum != null" >
+        reply_num = #{replyNum,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=TINYINT},
+      </if>
+      <if test="isdel != null" >
+        isdel = #{isdel,jdbcType=TINYINT},
+      </if>
+      <if test="istop != null" >
+        istop = #{istop,jdbcType=TINYINT},
+      </if>
+      <if test="ishot != null" >
+        ishot = #{ishot,jdbcType=TINYINT},
+      </if>
+      <if test="listorder != null" >
+        listorder = #{listorder,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.emi.roots.entity.AzForumPost" >
+    update az_forum_post
+    set forum_id = #{forumId,jdbcType=INTEGER},
+      uid = #{uid,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=INTEGER},
+      thumb = #{thumb,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      praise_num = #{praiseNum,jdbcType=INTEGER},
+      click_num = #{clickNum,jdbcType=INTEGER},
+      reply_num = #{replyNum,jdbcType=INTEGER},
+      state = #{state,jdbcType=TINYINT},
+      isdel = #{isdel,jdbcType=TINYINT},
+      istop = #{istop,jdbcType=TINYINT},
+      ishot = #{ishot,jdbcType=TINYINT},
+      listorder = #{listorder,jdbcType=INTEGER},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzForumPost" >
+    update az_forum_post
+    set forum_id = #{forumId,jdbcType=INTEGER},
+      uid = #{uid,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=INTEGER},
+      thumb = #{thumb,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      praise_num = #{praiseNum,jdbcType=INTEGER},
+      click_num = #{clickNum,jdbcType=INTEGER},
+      reply_num = #{replyNum,jdbcType=INTEGER},
+      state = #{state,jdbcType=TINYINT},
+      isdel = #{isdel,jdbcType=TINYINT},
+      istop = #{istop,jdbcType=TINYINT},
+      ishot = #{ishot,jdbcType=TINYINT},
+      listorder = #{listorder,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

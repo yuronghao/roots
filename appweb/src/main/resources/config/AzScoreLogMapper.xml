@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.roots.mapper.AzScoreLogMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzScoreLog" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="ip" property="ip" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="TINYINT" />
+    <result column="action" property="action" jdbcType="TINYINT" />
+    <result column="value" property="value" jdbcType="INTEGER" />
+    <result column="finally_value" property="finallyValue" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="tablename" property="tablename" jdbcType="VARCHAR" />
+    <result column="object_id" property="objectId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, uid, ip, type, action, value, finally_value, create_time, remark, tablename, 
+    object_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from az_score_log
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from az_score_log
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.emi.roots.entity.AzScoreLog" >
+    insert into az_score_log (id, uid, ip, 
+      type, action, value, 
+      finally_value, create_time, remark, 
+      tablename, object_id)
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{ip,jdbcType=VARCHAR}, 
+      #{type,jdbcType=TINYINT}, #{action,jdbcType=TINYINT}, #{value,jdbcType=INTEGER}, 
+      #{finallyValue,jdbcType=INTEGER}, #{createTime,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
+      #{tablename,jdbcType=VARCHAR}, #{objectId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.emi.roots.entity.AzScoreLog" >
+    insert into az_score_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="ip != null" >
+        ip,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="action != null" >
+        action,
+      </if>
+      <if test="value != null" >
+        value,
+      </if>
+      <if test="finallyValue != null" >
+        finally_value,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="tablename != null" >
+        tablename,
+      </if>
+      <if test="objectId != null" >
+        object_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="ip != null" >
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="action != null" >
+        #{action,jdbcType=TINYINT},
+      </if>
+      <if test="value != null" >
+        #{value,jdbcType=INTEGER},
+      </if>
+      <if test="finallyValue != null" >
+        #{finallyValue,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="tablename != null" >
+        #{tablename,jdbcType=VARCHAR},
+      </if>
+      <if test="objectId != null" >
+        #{objectId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.roots.entity.AzScoreLog" >
+    update az_score_log
+    <set >
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="ip != null" >
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=TINYINT},
+      </if>
+      <if test="action != null" >
+        action = #{action,jdbcType=TINYINT},
+      </if>
+      <if test="value != null" >
+        value = #{value,jdbcType=INTEGER},
+      </if>
+      <if test="finallyValue != null" >
+        finally_value = #{finallyValue,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="tablename != null" >
+        tablename = #{tablename,jdbcType=VARCHAR},
+      </if>
+      <if test="objectId != null" >
+        object_id = #{objectId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzScoreLog" >
+    update az_score_log
+    set uid = #{uid,jdbcType=INTEGER},
+      ip = #{ip,jdbcType=VARCHAR},
+      type = #{type,jdbcType=TINYINT},
+      action = #{action,jdbcType=TINYINT},
+      value = #{value,jdbcType=INTEGER},
+      finally_value = #{finallyValue,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      tablename = #{tablename,jdbcType=VARCHAR},
+      object_id = #{objectId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

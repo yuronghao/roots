@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.roots.mapper.AzSlideMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzSlide" >
+    <id column="slide_id" property="slideId" jdbcType="BIGINT" />
+    <result column="slide_cid" property="slideCid" jdbcType="INTEGER" />
+    <result column="slide_name" property="slideName" jdbcType="VARCHAR" />
+    <result column="slide_pic" property="slidePic" jdbcType="VARCHAR" />
+    <result column="slide_url" property="slideUrl" jdbcType="VARCHAR" />
+    <result column="slide_des" property="slideDes" jdbcType="VARCHAR" />
+    <result column="slide_status" property="slideStatus" jdbcType="INTEGER" />
+    <result column="listorder" property="listorder" jdbcType="INTEGER" />
+    <result column="creator" property="creator" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.emi.roots.entity.AzSlide" extends="BaseResultMap" >
+    <result column="slide_content" property="slideContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    slide_id, slide_cid, slide_name, slide_pic, slide_url, slide_des, slide_status, listorder, 
+    creator
+  </sql>
+  <sql id="Blob_Column_List" >
+    slide_content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from az_slide
+    where slide_id = #{slideId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from az_slide
+    where slide_id = #{slideId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.emi.roots.entity.AzSlide" >
+    insert into az_slide (slide_id, slide_cid, slide_name, 
+      slide_pic, slide_url, slide_des, 
+      slide_status, listorder, creator, 
+      slide_content)
+    values (#{slideId,jdbcType=BIGINT}, #{slideCid,jdbcType=INTEGER}, #{slideName,jdbcType=VARCHAR}, 
+      #{slidePic,jdbcType=VARCHAR}, #{slideUrl,jdbcType=VARCHAR}, #{slideDes,jdbcType=VARCHAR}, 
+      #{slideStatus,jdbcType=INTEGER}, #{listorder,jdbcType=INTEGER}, #{creator,jdbcType=INTEGER}, 
+      #{slideContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.emi.roots.entity.AzSlide" >
+    insert into az_slide
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="slideId != null" >
+        slide_id,
+      </if>
+      <if test="slideCid != null" >
+        slide_cid,
+      </if>
+      <if test="slideName != null" >
+        slide_name,
+      </if>
+      <if test="slidePic != null" >
+        slide_pic,
+      </if>
+      <if test="slideUrl != null" >
+        slide_url,
+      </if>
+      <if test="slideDes != null" >
+        slide_des,
+      </if>
+      <if test="slideStatus != null" >
+        slide_status,
+      </if>
+      <if test="listorder != null" >
+        listorder,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="slideContent != null" >
+        slide_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="slideId != null" >
+        #{slideId,jdbcType=BIGINT},
+      </if>
+      <if test="slideCid != null" >
+        #{slideCid,jdbcType=INTEGER},
+      </if>
+      <if test="slideName != null" >
+        #{slideName,jdbcType=VARCHAR},
+      </if>
+      <if test="slidePic != null" >
+        #{slidePic,jdbcType=VARCHAR},
+      </if>
+      <if test="slideUrl != null" >
+        #{slideUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="slideDes != null" >
+        #{slideDes,jdbcType=VARCHAR},
+      </if>
+      <if test="slideStatus != null" >
+        #{slideStatus,jdbcType=INTEGER},
+      </if>
+      <if test="listorder != null" >
+        #{listorder,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="slideContent != null" >
+        #{slideContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.roots.entity.AzSlide" >
+    update az_slide
+    <set >
+      <if test="slideCid != null" >
+        slide_cid = #{slideCid,jdbcType=INTEGER},
+      </if>
+      <if test="slideName != null" >
+        slide_name = #{slideName,jdbcType=VARCHAR},
+      </if>
+      <if test="slidePic != null" >
+        slide_pic = #{slidePic,jdbcType=VARCHAR},
+      </if>
+      <if test="slideUrl != null" >
+        slide_url = #{slideUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="slideDes != null" >
+        slide_des = #{slideDes,jdbcType=VARCHAR},
+      </if>
+      <if test="slideStatus != null" >
+        slide_status = #{slideStatus,jdbcType=INTEGER},
+      </if>
+      <if test="listorder != null" >
+        listorder = #{listorder,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="slideContent != null" >
+        slide_content = #{slideContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where slide_id = #{slideId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.emi.roots.entity.AzSlide" >
+    update az_slide
+    set slide_cid = #{slideCid,jdbcType=INTEGER},
+      slide_name = #{slideName,jdbcType=VARCHAR},
+      slide_pic = #{slidePic,jdbcType=VARCHAR},
+      slide_url = #{slideUrl,jdbcType=VARCHAR},
+      slide_des = #{slideDes,jdbcType=VARCHAR},
+      slide_status = #{slideStatus,jdbcType=INTEGER},
+      listorder = #{listorder,jdbcType=INTEGER},
+      creator = #{creator,jdbcType=INTEGER},
+      slide_content = #{slideContent,jdbcType=LONGVARCHAR}
+    where slide_id = #{slideId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzSlide" >
+    update az_slide
+    set slide_cid = #{slideCid,jdbcType=INTEGER},
+      slide_name = #{slideName,jdbcType=VARCHAR},
+      slide_pic = #{slidePic,jdbcType=VARCHAR},
+      slide_url = #{slideUrl,jdbcType=VARCHAR},
+      slide_des = #{slideDes,jdbcType=VARCHAR},
+      slide_status = #{slideStatus,jdbcType=INTEGER},
+      listorder = #{listorder,jdbcType=INTEGER},
+      creator = #{creator,jdbcType=INTEGER}
+    where slide_id = #{slideId,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.roots.mapper.AzMessageMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzMessage" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="content_id" property="contentId" jdbcType="INTEGER" />
+    <result column="from_uid" property="fromUid" jdbcType="INTEGER" />
+    <result column="to_uid" property="toUid" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="INTEGER" />
+    <result column="isread" property="isread" jdbcType="TINYINT" />
+    <result column="read_time" property="readTime" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="isdel" property="isdel" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, content_id, from_uid, to_uid, create_time, isread, read_time, status, isdel
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from az_message
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from az_message
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.emi.roots.entity.AzMessage" >
+    insert into az_message (id, content_id, from_uid, 
+      to_uid, create_time, isread, 
+      read_time, status, isdel
+      )
+    values (#{id,jdbcType=INTEGER}, #{contentId,jdbcType=INTEGER}, #{fromUid,jdbcType=INTEGER}, 
+      #{toUid,jdbcType=INTEGER}, #{createTime,jdbcType=INTEGER}, #{isread,jdbcType=TINYINT}, 
+      #{readTime,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, #{isdel,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.emi.roots.entity.AzMessage" >
+    insert into az_message
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="contentId != null" >
+        content_id,
+      </if>
+      <if test="fromUid != null" >
+        from_uid,
+      </if>
+      <if test="toUid != null" >
+        to_uid,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="isread != null" >
+        isread,
+      </if>
+      <if test="readTime != null" >
+        read_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="isdel != null" >
+        isdel,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="contentId != null" >
+        #{contentId,jdbcType=INTEGER},
+      </if>
+      <if test="fromUid != null" >
+        #{fromUid,jdbcType=INTEGER},
+      </if>
+      <if test="toUid != null" >
+        #{toUid,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=INTEGER},
+      </if>
+      <if test="isread != null" >
+        #{isread,jdbcType=TINYINT},
+      </if>
+      <if test="readTime != null" >
+        #{readTime,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="isdel != null" >
+        #{isdel,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.roots.entity.AzMessage" >
+    update az_message
+    <set >
+      <if test="contentId != null" >
+        content_id = #{contentId,jdbcType=INTEGER},
+      </if>
+      <if test="fromUid != null" >
+        from_uid = #{fromUid,jdbcType=INTEGER},
+      </if>
+      <if test="toUid != null" >
+        to_uid = #{toUid,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=INTEGER},
+      </if>
+      <if test="isread != null" >
+        isread = #{isread,jdbcType=TINYINT},
+      </if>
+      <if test="readTime != null" >
+        read_time = #{readTime,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="isdel != null" >
+        isdel = #{isdel,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzMessage" >
+    update az_message
+    set content_id = #{contentId,jdbcType=INTEGER},
+      from_uid = #{fromUid,jdbcType=INTEGER},
+      to_uid = #{toUid,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=INTEGER},
+      isread = #{isread,jdbcType=TINYINT},
+      read_time = #{readTime,jdbcType=INTEGER},
+      status = #{status,jdbcType=TINYINT},
+      isdel = #{isdel,jdbcType=TINYINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

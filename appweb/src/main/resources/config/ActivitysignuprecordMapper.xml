@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.emiservice.mapper.ActivitysignuprecordMapper" >
+
+    <select id="getActivitysignuprecord"  resultType="com.emi.emiservice.entity.Activitysignuprecord">
+        <![CDATA[ SELECT * FROM activitysignuprecord WHERE activityid=#{activityid} AND memberid=#{memberid} ]]>
+    </select>
+
+    <insert id="addsign">
+        <![CDATA[  insert into activitysignuprecord(activityid,memberid,ctime) VALUES (#{activityid},#{memberid},now())   ]]>
+    </insert>
+</mapper>

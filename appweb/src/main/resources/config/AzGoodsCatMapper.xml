@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.roots.mapper.AzGoodsCatMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzGoodsCat" >
+    <id column="term_id" property="termId" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="slug" property="slug" jdbcType="VARCHAR" />
+    <result column="taxonomy" property="taxonomy" jdbcType="VARCHAR" />
+    <result column="parent" property="parent" jdbcType="BIGINT" />
+    <result column="count" property="count" jdbcType="BIGINT" />
+    <result column="path" property="path" jdbcType="VARCHAR" />
+    <result column="seo_title" property="seoTitle" jdbcType="VARCHAR" />
+    <result column="seo_keywords" property="seoKeywords" jdbcType="VARCHAR" />
+    <result column="seo_description" property="seoDescription" jdbcType="VARCHAR" />
+    <result column="list_tpl" property="listTpl" jdbcType="VARCHAR" />
+    <result column="one_tpl" property="oneTpl" jdbcType="VARCHAR" />
+    <result column="listorder" property="listorder" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.emi.roots.entity.AzGoodsCat" extends="BaseResultMap" >
+    <result column="description" property="description" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    term_id, name, slug, taxonomy, parent, count, path, seo_title, seo_keywords, seo_description, 
+    list_tpl, one_tpl, listorder, status
+  </sql>
+  <sql id="Blob_Column_List" >
+    description
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from az_goods_cat
+    where term_id = #{termId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from az_goods_cat
+    where term_id = #{termId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.emi.roots.entity.AzGoodsCat" >
+    insert into az_goods_cat (term_id, name, slug, 
+      taxonomy, parent, count, 
+      path, seo_title, seo_keywords, 
+      seo_description, list_tpl, one_tpl, 
+      listorder, status, description
+      )
+    values (#{termId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{slug,jdbcType=VARCHAR}, 
+      #{taxonomy,jdbcType=VARCHAR}, #{parent,jdbcType=BIGINT}, #{count,jdbcType=BIGINT}, 
+      #{path,jdbcType=VARCHAR}, #{seoTitle,jdbcType=VARCHAR}, #{seoKeywords,jdbcType=VARCHAR}, 
+      #{seoDescription,jdbcType=VARCHAR}, #{listTpl,jdbcType=VARCHAR}, #{oneTpl,jdbcType=VARCHAR}, 
+      #{listorder,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{description,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.emi.roots.entity.AzGoodsCat" >
+    insert into az_goods_cat
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="termId != null" >
+        term_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="slug != null" >
+        slug,
+      </if>
+      <if test="taxonomy != null" >
+        taxonomy,
+      </if>
+      <if test="parent != null" >
+        parent,
+      </if>
+      <if test="count != null" >
+        count,
+      </if>
+      <if test="path != null" >
+        path,
+      </if>
+      <if test="seoTitle != null" >
+        seo_title,
+      </if>
+      <if test="seoKeywords != null" >
+        seo_keywords,
+      </if>
+      <if test="seoDescription != null" >
+        seo_description,
+      </if>
+      <if test="listTpl != null" >
+        list_tpl,
+      </if>
+      <if test="oneTpl != null" >
+        one_tpl,
+      </if>
+      <if test="listorder != null" >
+        listorder,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="termId != null" >
+        #{termId,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="slug != null" >
+        #{slug,jdbcType=VARCHAR},
+      </if>
+      <if test="taxonomy != null" >
+        #{taxonomy,jdbcType=VARCHAR},
+      </if>
+      <if test="parent != null" >
+        #{parent,jdbcType=BIGINT},
+      </if>
+      <if test="count != null" >
+        #{count,jdbcType=BIGINT},
+      </if>
+      <if test="path != null" >
+        #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="seoTitle != null" >
+        #{seoTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="seoKeywords != null" >
+        #{seoKeywords,jdbcType=VARCHAR},
+      </if>
+      <if test="seoDescription != null" >
+        #{seoDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="listTpl != null" >
+        #{listTpl,jdbcType=VARCHAR},
+      </if>
+      <if test="oneTpl != null" >
+        #{oneTpl,jdbcType=VARCHAR},
+      </if>
+      <if test="listorder != null" >
+        #{listorder,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.roots.entity.AzGoodsCat" >
+    update az_goods_cat
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="slug != null" >
+        slug = #{slug,jdbcType=VARCHAR},
+      </if>
+      <if test="taxonomy != null" >
+        taxonomy = #{taxonomy,jdbcType=VARCHAR},
+      </if>
+      <if test="parent != null" >
+        parent = #{parent,jdbcType=BIGINT},
+      </if>
+      <if test="count != null" >
+        count = #{count,jdbcType=BIGINT},
+      </if>
+      <if test="path != null" >
+        path = #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="seoTitle != null" >
+        seo_title = #{seoTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="seoKeywords != null" >
+        seo_keywords = #{seoKeywords,jdbcType=VARCHAR},
+      </if>
+      <if test="seoDescription != null" >
+        seo_description = #{seoDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="listTpl != null" >
+        list_tpl = #{listTpl,jdbcType=VARCHAR},
+      </if>
+      <if test="oneTpl != null" >
+        one_tpl = #{oneTpl,jdbcType=VARCHAR},
+      </if>
+      <if test="listorder != null" >
+        listorder = #{listorder,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where term_id = #{termId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.emi.roots.entity.AzGoodsCat" >
+    update az_goods_cat
+    set name = #{name,jdbcType=VARCHAR},
+      slug = #{slug,jdbcType=VARCHAR},
+      taxonomy = #{taxonomy,jdbcType=VARCHAR},
+      parent = #{parent,jdbcType=BIGINT},
+      count = #{count,jdbcType=BIGINT},
+      path = #{path,jdbcType=VARCHAR},
+      seo_title = #{seoTitle,jdbcType=VARCHAR},
+      seo_keywords = #{seoKeywords,jdbcType=VARCHAR},
+      seo_description = #{seoDescription,jdbcType=VARCHAR},
+      list_tpl = #{listTpl,jdbcType=VARCHAR},
+      one_tpl = #{oneTpl,jdbcType=VARCHAR},
+      listorder = #{listorder,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where term_id = #{termId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzGoodsCat" >
+    update az_goods_cat
+    set name = #{name,jdbcType=VARCHAR},
+      slug = #{slug,jdbcType=VARCHAR},
+      taxonomy = #{taxonomy,jdbcType=VARCHAR},
+      parent = #{parent,jdbcType=BIGINT},
+      count = #{count,jdbcType=BIGINT},
+      path = #{path,jdbcType=VARCHAR},
+      seo_title = #{seoTitle,jdbcType=VARCHAR},
+      seo_keywords = #{seoKeywords,jdbcType=VARCHAR},
+      seo_description = #{seoDescription,jdbcType=VARCHAR},
+      list_tpl = #{listTpl,jdbcType=VARCHAR},
+      one_tpl = #{oneTpl,jdbcType=VARCHAR},
+      listorder = #{listorder,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER}
+    where term_id = #{termId,jdbcType=BIGINT}
+  </update>
+</mapper>

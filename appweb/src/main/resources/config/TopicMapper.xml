@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.emiservice.mapper.TopicMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.emiservice.entity.Topic" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="memberid" property="memberid" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="ctime" property="ctime" jdbcType="TIMESTAMP" />
+    <result column="follownum" property="follownum" jdbcType="INTEGER" />
+    <result column="viewnum" property="viewnum" jdbcType="INTEGER" />
+    <result column="commentnum" property="commentnum" jdbcType="INTEGER" />
+    <result column="clicknum" property="clicknum" jdbcType="INTEGER" />
+    <result column="isdelete" property="isdelete" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, memberid, title, content, ctime, follownum, viewnum, commentnum, clicknum, isdelete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from topic
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from topic
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.emi.emiservice.entity.Topic" >
+    insert into topic (id, memberid, title, 
+      content, ctime, follownum, 
+      viewnum, commentnum, clicknum, 
+      isdelete)
+    values (#{id,jdbcType=INTEGER}, #{memberid,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{ctime,jdbcType=TIMESTAMP}, #{follownum,jdbcType=INTEGER}, 
+      #{viewnum,jdbcType=INTEGER}, #{commentnum,jdbcType=INTEGER}, #{clicknum,jdbcType=INTEGER}, 
+      #{isdelete,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.emi.emiservice.entity.Topic" useGeneratedKeys="true" keyProperty="id">
+    insert into topic
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="memberid != null" >
+        memberid,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="contenturl != null" >
+        contenturl,
+      </if>
+
+        ctime,
+      <if test="topictypeid != null" >
+        topictypeid,
+      </if>
+      <if test="publishmode != null" >
+        publishmode,
+      </if>
+
+
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="memberid != null" >
+        #{memberid,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="contenturl != null" >
+        #{contenturl,jdbcType=VARCHAR},
+      </if>
+      now(),
+      <if test="topictypeid != null" >
+        #{topictypeid,jdbcType=INTEGER},
+      </if>
+      <if test="publishmode != null" >
+        #{publishmode,jdbcType=INTEGER},
+      </if>
+
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.emiservice.entity.Topic" >
+    update topic
+    <set >
+      <if test="memberid != null" >
+        memberid = #{memberid,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="ctime != null" >
+        ctime = #{ctime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="follownum != null" >
+        follownum = #{follownum,jdbcType=INTEGER},
+      </if>
+      <if test="viewnum != null" >
+        viewnum = #{viewnum,jdbcType=INTEGER},
+      </if>
+      <if test="commentnum != null" >
+        commentnum = #{commentnum,jdbcType=INTEGER},
+      </if>
+      <if test="clicknum != null" >
+        clicknum = #{clicknum,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null" >
+        isdelete = #{isdelete,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.emi.emiservice.entity.Topic" >
+    update topic
+    set memberid = #{memberid,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      ctime = #{ctime,jdbcType=TIMESTAMP},
+      follownum = #{follownum,jdbcType=INTEGER},
+      viewnum = #{viewnum,jdbcType=INTEGER},
+      commentnum = #{commentnum,jdbcType=INTEGER},
+      clicknum = #{clicknum,jdbcType=INTEGER},
+      isdelete = #{isdelete,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+  <select id="getFenPageTopicList" resultType="com.emi.emiservice.entity.Topic">
+    <![CDATA[  select t.*,m.`name`  membername,x.imgurl,(case when xx.id is not null and xx.id <> '' then '1' else '0' end) isfollow  from topic t
+left join member m on m.id = t.memberid
+left join (
+	select ti.topicid,ti.imgurl from topicimgs ti  where 1=1
+	GROUP BY ti.topicid ORDER BY ti.ctime desc
+)x on x.topicid = t.id
+
+left join (
+	select tf.topicid,tf.id from topicfollow tf where tf.memberid = '${memberid}'
+)xx on xx.topicid = t.id
+
+where t.isdelete = 0 ]]>
+<if test="param != null">
+  <![CDATA[  ${param} ]]>
+
+</if>
+
+ ORDER BY t.ctime desc
+
+  </select>
+
+
+  <select id="getTopicDetail" resultType="com.emi.emiservice.entity.Topic">
+    <![CDATA[ select t.*,m.`name` membername,(case when x.id is not null and x.id <> '' then '1' else '0' END) isfollow from topic t
+    left join member m on m.id  = t.memberid
+    left join (
+    select tf.id,tf.topicid from topicfollow tf where tf.memberid = '${memberid}'
+    )x on x.topicid = t.id
+    where t.id = '${topicid}'
+]]>
+  </select>
+
+
+  <update id="updatefollownumById">
+    UPDATE topic t set t.follownum = t.follownum -1 where t.id = '${id}'
+
+  </update>
+
+
+  <update id="updateaddfollownumById" >
+    UPDATE topic t set t.follownum = t.follownum + 1 where t.id = '${id}'
+
+  </update>
+
+
+  <select id="getFenPageMyFollowedTopic" resultType="com.emi.emiservice.entity.Topic">
+    select t.*,m.`name` membername,x.imgurl,'1' as isfollow from topic t
+left join member m on m.id = t.memberid
+left join (
+	select ti.topicid,ti.imgurl from topicimgs ti GROUP BY ti.topicid ORDER BY ti.ctime DESC
+)x on x.topicid = t.id
+where t.id in (
+	select tf.topicid from topicfollow tf where tf.memberid = '${memberid}'
+)
+
+  </select>
+
+
+  <select id="getFenPageMyPublishedTopic" resultType="com.emi.emiservice.entity.Topic">
+select t.*,m.`name` membername from topic t
+left join member m on m.id = t.memberid
+where t.memberid = '${memberid}'
+
+  </select>
+
+
+  <update id="updateaddCommentnum">
+  update topic t set t.commentnum = t.commentnum + 1 where t.id = ${topicid}
+
+  </update>
+
+
+  <update id="updateaddviewnum">
+    update topic t set t.viewnum = t.viewnum +1 where t.id = ${topicid}
+
+  </update>
+</mapper>

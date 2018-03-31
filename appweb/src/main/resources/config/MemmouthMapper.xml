@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.emiservice.mapper.MemmouthMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.emiservice.entity.Memmouth" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="memberid" property="memberid" jdbcType="INTEGER" />
+    <result column="tomemberid" property="tomemberid" jdbcType="INTEGER" />
+    <result column="ctime" property="ctime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, content, memberid, tomemberid, ctime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from memmouth
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from memmouth
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.emi.emiservice.entity.Memmouth" >
+    insert into memmouth (id, content, memberid, 
+      tomemberid, ctime)
+    values (#{id,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{memberid,jdbcType=INTEGER}, 
+      #{tomemberid,jdbcType=INTEGER}, #{ctime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.emi.emiservice.entity.Memmouth" >
+    insert into memmouth
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="memberid != null" >
+        memberid,
+      </if>
+      <if test="tomemberid != null" >
+        tomemberid,
+      </if>
+
+        ctime
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="memberid != null" >
+        #{memberid,jdbcType=INTEGER},
+      </if>
+      <if test="tomemberid != null" >
+        #{tomemberid,jdbcType=INTEGER},
+      </if>
+      now()
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.emiservice.entity.Memmouth" >
+    update memmouth
+    <set >
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="memberid != null" >
+        memberid = #{memberid,jdbcType=INTEGER},
+      </if>
+      <if test="tomemberid != null" >
+        tomemberid = #{tomemberid,jdbcType=INTEGER},
+      </if>
+      <if test="ctime != null" >
+        ctime = #{ctime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.emi.emiservice.entity.Memmouth" >
+    update memmouth
+    set content = #{content,jdbcType=VARCHAR},
+      memberid = #{memberid,jdbcType=INTEGER},
+      tomemberid = #{tomemberid,jdbcType=INTEGER},
+      ctime = #{ctime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+
+  <select id="getFenPageAllMemmouth" resultType="com.emi.emiservice.entity.Memmouth">
+    select m.*,mb.`name`,mb.headimg from memmouth m LEFT JOIN member mb on m.memberid=mb.id where m.tomemberid = ${memberid}
+
+  </select>
+
+
+  <select id="getTwoMemmouthBymemberid" resultType="com.emi.emiservice.entity.Memmouth">
+    select me.memberid,m.`name` name,m.headimg,me.content from memmouth me
+left join member m on m.id = me.memberid
+where me.tomemberid = '${id}' ORDER BY me.ctime DESC LIMIT 0,2
+
+  </select>
+
+
+</mapper>

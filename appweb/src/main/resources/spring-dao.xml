@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   
+       http://www.springframework.org/schema/beans/spring-beans.xsd  
+       http://www.springframework.org/schema/tx   
+       http://www.springframework.org/schema/tx/spring-tx.xsd  
+       http://www.springframework.org/schema/context   
+       http://www.springframework.org/schema/context/spring-context.xsd  
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+       http://www.springframework.org/schema/aop  
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+     
+     
+     <!--配置整合mybatis过程 1.配置数据库相关参数-->
+     <context:property-placeholder location="classpath:jdbc.properties" />  
+    
+     <!--2.数据库连接池-->
+     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="maxActive" value="${jdbc.maxActive}"></property>
+		<property name="maxIdle" value="${jdbc.maxIdle}"></property>
+		<property name="maxWait" value="${jdbc.maxWait}"></property>
+		<property name="initialSize" value="${jdbc.initialSize}"></property>
+		<property name="minIdle" value="${jdbc.minIdle}"></property>
+		<property name="testOnBorrow" value="false"></property>
+		<property name="testOnReturn" value="false"></property>
+		<property name="testWhileIdle" value="true"></property>
+		<property name="validationQuery" value="select 1"></property>
+		<property name="timeBetweenEvictionRunsMillis" value="10000"></property>  
+		<property name="numTestsPerEvictionRun" value="${jdbc.maxActive}"></property>
+		<property name="minEvictableIdleTimeMillis" value="10000" /> 
+		<property name="removeAbandoned" value="true"/>
+	</bean>
+	
+	<!--３.配置SqlSessionFactory对象-->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!--往下才是mybatis和spring真正整合的配置-->
+        <!--注入数据库连接池-->
+		<property name="dataSource" ref="dataSource" />
+		<!--配置mybatis全局配置文件:mybatis-config.xml-->
+		<property name="configLocation" value="classpath:mybatis_config.xml" />
+		<!-- mapper和resultmap配置路径 -->
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:config/*Mapper.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!--４:配置扫描Dao接口包,动态实现DAO接口,注入到spring容器-->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.emi.emiservice.mapper" />
+		<property name="markerInterface" value="com.emi.emiservice.mapper.SqlMapper" />
+	</bean>
+	
+	
+</beans>

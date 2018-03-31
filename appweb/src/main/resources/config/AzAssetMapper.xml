@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.roots.mapper.AzAssetMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzAsset" >
+    <id column="aid" property="aid" jdbcType="BIGINT" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="key" property="key" jdbcType="VARCHAR" />
+    <result column="filename" property="filename" jdbcType="VARCHAR" />
+    <result column="filesize" property="filesize" jdbcType="INTEGER" />
+    <result column="filepath" property="filepath" jdbcType="VARCHAR" />
+    <result column="uploadtime" property="uploadtime" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="suffix" property="suffix" jdbcType="VARCHAR" />
+    <result column="download_times" property="downloadTimes" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.emi.roots.entity.AzAsset" extends="BaseResultMap" >
+    <result column="meta" property="meta" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    aid, uid, key, filename, filesize, filepath, uploadtime, status, suffix, download_times
+  </sql>
+  <sql id="Blob_Column_List" >
+    meta
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from az_asset
+    where aid = #{aid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from az_asset
+    where aid = #{aid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.emi.roots.entity.AzAsset" >
+    insert into az_asset (aid, uid, key, 
+      filename, filesize, filepath, 
+      uploadtime, status, suffix, 
+      download_times, meta)
+    values (#{aid,jdbcType=BIGINT}, #{uid,jdbcType=INTEGER}, #{key,jdbcType=VARCHAR}, 
+      #{filename,jdbcType=VARCHAR}, #{filesize,jdbcType=INTEGER}, #{filepath,jdbcType=VARCHAR}, 
+      #{uploadtime,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{suffix,jdbcType=VARCHAR}, 
+      #{downloadTimes,jdbcType=INTEGER}, #{meta,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.emi.roots.entity.AzAsset" >
+    insert into az_asset
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="aid != null" >
+        aid,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="key != null" >
+        key,
+      </if>
+      <if test="filename != null" >
+        filename,
+      </if>
+      <if test="filesize != null" >
+        filesize,
+      </if>
+      <if test="filepath != null" >
+        filepath,
+      </if>
+      <if test="uploadtime != null" >
+        uploadtime,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="suffix != null" >
+        suffix,
+      </if>
+      <if test="downloadTimes != null" >
+        download_times,
+      </if>
+      <if test="meta != null" >
+        meta,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="aid != null" >
+        #{aid,jdbcType=BIGINT},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="key != null" >
+        #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="filename != null" >
+        #{filename,jdbcType=VARCHAR},
+      </if>
+      <if test="filesize != null" >
+        #{filesize,jdbcType=INTEGER},
+      </if>
+      <if test="filepath != null" >
+        #{filepath,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadtime != null" >
+        #{uploadtime,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="suffix != null" >
+        #{suffix,jdbcType=VARCHAR},
+      </if>
+      <if test="downloadTimes != null" >
+        #{downloadTimes,jdbcType=INTEGER},
+      </if>
+      <if test="meta != null" >
+        #{meta,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.roots.entity.AzAsset" >
+    update az_asset
+    <set >
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="key != null" >
+        key = #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="filename != null" >
+        filename = #{filename,jdbcType=VARCHAR},
+      </if>
+      <if test="filesize != null" >
+        filesize = #{filesize,jdbcType=INTEGER},
+      </if>
+      <if test="filepath != null" >
+        filepath = #{filepath,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadtime != null" >
+        uploadtime = #{uploadtime,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="suffix != null" >
+        suffix = #{suffix,jdbcType=VARCHAR},
+      </if>
+      <if test="downloadTimes != null" >
+        download_times = #{downloadTimes,jdbcType=INTEGER},
+      </if>
+      <if test="meta != null" >
+        meta = #{meta,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where aid = #{aid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.emi.roots.entity.AzAsset" >
+    update az_asset
+    set uid = #{uid,jdbcType=INTEGER},
+      key = #{key,jdbcType=VARCHAR},
+      filename = #{filename,jdbcType=VARCHAR},
+      filesize = #{filesize,jdbcType=INTEGER},
+      filepath = #{filepath,jdbcType=VARCHAR},
+      uploadtime = #{uploadtime,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      suffix = #{suffix,jdbcType=VARCHAR},
+      download_times = #{downloadTimes,jdbcType=INTEGER},
+      meta = #{meta,jdbcType=LONGVARCHAR}
+    where aid = #{aid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzAsset" >
+    update az_asset
+    set uid = #{uid,jdbcType=INTEGER},
+      key = #{key,jdbcType=VARCHAR},
+      filename = #{filename,jdbcType=VARCHAR},
+      filesize = #{filesize,jdbcType=INTEGER},
+      filepath = #{filepath,jdbcType=VARCHAR},
+      uploadtime = #{uploadtime,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      suffix = #{suffix,jdbcType=VARCHAR},
+      download_times = #{downloadTimes,jdbcType=INTEGER}
+    where aid = #{aid,jdbcType=BIGINT}
+  </update>
+</mapper>

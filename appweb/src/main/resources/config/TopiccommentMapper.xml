@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.emiservice.mapper.TopiccommentMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.emiservice.entity.Topiccomment" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="topicid" property="topicid" jdbcType="INTEGER" />
+    <result column="memberid" property="memberid" jdbcType="INTEGER" />
+    <result column="tomemberid" property="tomemberid" jdbcType="INTEGER" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="ctime" property="ctime" jdbcType="TIMESTAMP" />
+    <result column="agreenum" property="agreenum" jdbcType="INTEGER" />
+    <result column="commentnum" property="commentnum" jdbcType="INTEGER" />
+    <result column="commentid" property="commentid" jdbcType="INTEGER" />
+    <result column="isdelete" property="isdelete" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, topicid, memberid, tomemberid, content, ctime, agreenum, commentnum, commentid, 
+    isdelete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from topiccomment
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from topiccomment
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.emi.emiservice.entity.Topiccomment" >
+    insert into topiccomment (id, topicid, memberid, 
+      tomemberid, content, ctime, 
+      agreenum, commentnum, commentid, 
+      isdelete)
+    values (#{id,jdbcType=INTEGER}, #{topicid,jdbcType=INTEGER}, #{memberid,jdbcType=INTEGER}, 
+      #{tomemberid,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{ctime,jdbcType=TIMESTAMP}, 
+      #{agreenum,jdbcType=INTEGER}, #{commentnum,jdbcType=INTEGER}, #{commentid,jdbcType=INTEGER}, 
+      #{isdelete,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.emi.emiservice.entity.Topiccomment" useGeneratedKeys="true" keyProperty="id"  >
+    insert into topiccomment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="topicid != null" >
+        topicid,
+      </if>
+      <if test="memberid != null" >
+        memberid,
+      </if>
+      <if test="tomemberid != null" >
+        tomemberid,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+        ctime,
+      <if test="commentid != null" >
+        commentid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="topicid != null" >
+        #{topicid,jdbcType=INTEGER},
+      </if>
+      <if test="memberid != null" >
+        #{memberid,jdbcType=INTEGER},
+      </if>
+      <if test="tomemberid != null" >
+        #{tomemberid,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      now(),
+
+      <if test="commentid != null" >
+        #{commentid,jdbcType=INTEGER},
+      </if>
+
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.emiservice.entity.Topiccomment" >
+    update topiccomment
+    <set >
+      <if test="topicid != null" >
+        topicid = #{topicid,jdbcType=INTEGER},
+      </if>
+      <if test="memberid != null" >
+        memberid = #{memberid,jdbcType=INTEGER},
+      </if>
+      <if test="tomemberid != null" >
+        tomemberid = #{tomemberid,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="ctime != null" >
+        ctime = #{ctime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="agreenum != null" >
+        agreenum = #{agreenum,jdbcType=INTEGER},
+      </if>
+      <if test="commentnum != null" >
+        commentnum = #{commentnum,jdbcType=INTEGER},
+      </if>
+      <if test="commentid != null" >
+        commentid = #{commentid,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null" >
+        isdelete = #{isdelete,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.emi.emiservice.entity.Topiccomment" >
+    update topiccomment
+    set topicid = #{topicid,jdbcType=INTEGER},
+      memberid = #{memberid,jdbcType=INTEGER},
+      tomemberid = #{tomemberid,jdbcType=INTEGER},
+      content = #{content,jdbcType=VARCHAR},
+      ctime = #{ctime,jdbcType=TIMESTAMP},
+      agreenum = #{agreenum,jdbcType=INTEGER},
+      commentnum = #{commentnum,jdbcType=INTEGER},
+      commentid = #{commentid,jdbcType=INTEGER},
+      isdelete = #{isdelete,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+  <select id="getFenPagereplyCommentList" resultType="com.emi.emiservice.entity.Topiccomment">
+
+select tcp.id,tcp.topicid,tcp.memberid,tcp.tomemberid,tcp.ctime,tcp.agreenum,tcp.commentnum,tcp.commentid,CAST(tcp.content AS CHAR CHARACTER SET utf8) AS content,m.`name` membername,m.headimg memberimg
+ from topiccomment tcp
+left join member m on m.id = tcp.memberid
+where tcp.topicid = '${topicid}' and tcp.commentid = '${topiccommentid}' and 1=1
+order by tcp.ctime DESC
+  </select>
+
+
+  <select id="getFenPageTopicCommentList" resultType="com.emi.emiservice.entity.Topiccomment">
+
+select tc.id,tc.topicid,tc.memberid,tc.tomemberid,tc.ctime,tc.agreenum,tc.commentnum,tc.commentid,CAST(tc.content AS CHAR CHARACTER SET utf8) AS content, m.`name` membername,m.headimg memberimg from topiccomment tc
+left join member m on m.id = tc.memberid
+where 1=1 and tc.topicid = '${id}' and (tc.commentid is NULL or tc.commentid = 0)
+ORDER BY tc.ctime desc
+
+  </select>
+
+
+  <update id="updateagreenumById" >
+    UPDATE topiccomment t set t.agreenum = t.agreenum + 1 where t.id = '${id}'
+
+  </update>
+
+  <update id="updatecommentnum" >
+UPDATE topiccomment t set t.commentnum = t.commentnum + 1 where t.id = '${id}'
+
+  </update>
+
+
+
+
+
+
+
+</mapper>

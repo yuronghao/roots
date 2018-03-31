@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.roots.mapper.AzOrderProductMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzOrderProduct" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="order_id" property="orderId" jdbcType="CHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
+    <result column="sku_id" property="skuId" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="num" property="num" jdbcType="INTEGER" />
+    <result column="amount" property="amount" jdbcType="DECIMAL" />
+    <result column="pic" property="pic" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.emi.roots.entity.AzOrderProduct" extends="BaseResultMap" >
+    <result column="props_name" property="propsName" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, order_id, title, goods_id, sku_id, price, num, amount, pic
+  </sql>
+  <sql id="Blob_Column_List" >
+    props_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from az_order_product
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from az_order_product
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.emi.roots.entity.AzOrderProduct" >
+    insert into az_order_product (id, order_id, title, 
+      goods_id, sku_id, price, 
+      num, amount, pic, props_name
+      )
+    values (#{id,jdbcType=INTEGER}, #{orderId,jdbcType=CHAR}, #{title,jdbcType=VARCHAR}, 
+      #{goodsId,jdbcType=INTEGER}, #{skuId,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}, 
+      #{num,jdbcType=INTEGER}, #{amount,jdbcType=DECIMAL}, #{pic,jdbcType=VARCHAR}, #{propsName,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.emi.roots.entity.AzOrderProduct" >
+    insert into az_order_product
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="goodsId != null" >
+        goods_id,
+      </if>
+      <if test="skuId != null" >
+        sku_id,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="num != null" >
+        num,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="pic != null" >
+        pic,
+      </if>
+      <if test="propsName != null" >
+        props_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=CHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="skuId != null" >
+        #{skuId,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="num != null" >
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="pic != null" >
+        #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="propsName != null" >
+        #{propsName,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.roots.entity.AzOrderProduct" >
+    update az_order_product
+    <set >
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=CHAR},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsId != null" >
+        goods_id = #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="skuId != null" >
+        sku_id = #{skuId,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="num != null" >
+        num = #{num,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="pic != null" >
+        pic = #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="propsName != null" >
+        props_name = #{propsName,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.emi.roots.entity.AzOrderProduct" >
+    update az_order_product
+    set order_id = #{orderId,jdbcType=CHAR},
+      title = #{title,jdbcType=VARCHAR},
+      goods_id = #{goodsId,jdbcType=INTEGER},
+      sku_id = #{skuId,jdbcType=INTEGER},
+      price = #{price,jdbcType=DECIMAL},
+      num = #{num,jdbcType=INTEGER},
+      amount = #{amount,jdbcType=DECIMAL},
+      pic = #{pic,jdbcType=VARCHAR},
+      props_name = #{propsName,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzOrderProduct" >
+    update az_order_product
+    set order_id = #{orderId,jdbcType=CHAR},
+      title = #{title,jdbcType=VARCHAR},
+      goods_id = #{goodsId,jdbcType=INTEGER},
+      sku_id = #{skuId,jdbcType=INTEGER},
+      price = #{price,jdbcType=DECIMAL},
+      num = #{num,jdbcType=INTEGER},
+      amount = #{amount,jdbcType=DECIMAL},
+      pic = #{pic,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

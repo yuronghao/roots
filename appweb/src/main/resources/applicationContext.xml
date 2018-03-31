@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   
+       http://www.springframework.org/schema/beans/spring-beans.xsd  
+       http://www.springframework.org/schema/tx   
+       http://www.springframework.org/schema/tx/spring-tx.xsd  
+       http://www.springframework.org/schema/context   
+       http://www.springframework.org/schema/context/spring-context.xsd  
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+       http://www.springframework.org/schema/aop  
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+	<!--图形验证码-->
+	<bean id="captchaProducer" class="com.google.code.kaptcha.impl.DefaultKaptcha">
+		<property name="config">
+			<bean class="com.google.code.kaptcha.util.Config">
+				<constructor-arg>
+					<props>
+						<prop key="kaptcha.border"> no </prop>
+						<prop key="kaptcha.textproducer.font.color"> blue </prop>
+						<prop key="kaptcha.image.width"> 57 </prop>
+						<prop key="kaptcha.textproducer.font.size"> 21 </prop>
+						<prop key="kaptcha.image.height"> 26 </prop>
+						<prop key="kaptcha.session.key"> code </prop>
+						<prop key="kaptcha.textproducer.char.length"> 4 </prop>
+						<prop key="kaptcha.textproducer.char.space"> 1 </prop>
+						<prop key="kaptcha.textproducer.char.string"> 23456789 </prop>
+						<prop key="kaptcha.textproducer.font.names"> 宋体,Arial,Courier
+						</prop>
+						<prop key="kaptcha.obscurificator.impl">
+							com.google.code.kaptcha.impl.ShadowGimpy
+						</prop>
+						<prop key="kaptcha.noise.impl">
+							com.google.code.kaptcha.impl.NoNoise
+						</prop>
+					</props>
+				</constructor-arg>
+			</bean>
+		</property>
+	</bean>
+	<!--   <bean id="push" class="com.emi.androidpush.Push" >
+		<constructor-arg index="0" value="6283" />
+	</bean>    -->
+</beans>

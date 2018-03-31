@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.roots.mapper.AzSlideCatMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzSlideCat" >
+    <id column="cid" property="cid" jdbcType="INTEGER" />
+    <result column="cat_name" property="catName" jdbcType="VARCHAR" />
+    <result column="cat_idname" property="catIdname" jdbcType="VARCHAR" />
+    <result column="cat_status" property="catStatus" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.emi.roots.entity.AzSlideCat" extends="BaseResultMap" >
+    <result column="cat_remark" property="catRemark" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    cid, cat_name, cat_idname, cat_status
+  </sql>
+  <sql id="Blob_Column_List" >
+    cat_remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from az_slide_cat
+    where cid = #{cid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from az_slide_cat
+    where cid = #{cid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.emi.roots.entity.AzSlideCat" >
+    insert into az_slide_cat (cid, cat_name, cat_idname, 
+      cat_status, cat_remark)
+    values (#{cid,jdbcType=INTEGER}, #{catName,jdbcType=VARCHAR}, #{catIdname,jdbcType=VARCHAR}, 
+      #{catStatus,jdbcType=INTEGER}, #{catRemark,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.emi.roots.entity.AzSlideCat" >
+    insert into az_slide_cat
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cid != null" >
+        cid,
+      </if>
+      <if test="catName != null" >
+        cat_name,
+      </if>
+      <if test="catIdname != null" >
+        cat_idname,
+      </if>
+      <if test="catStatus != null" >
+        cat_status,
+      </if>
+      <if test="catRemark != null" >
+        cat_remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cid != null" >
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="catName != null" >
+        #{catName,jdbcType=VARCHAR},
+      </if>
+      <if test="catIdname != null" >
+        #{catIdname,jdbcType=VARCHAR},
+      </if>
+      <if test="catStatus != null" >
+        #{catStatus,jdbcType=INTEGER},
+      </if>
+      <if test="catRemark != null" >
+        #{catRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.roots.entity.AzSlideCat" >
+    update az_slide_cat
+    <set >
+      <if test="catName != null" >
+        cat_name = #{catName,jdbcType=VARCHAR},
+      </if>
+      <if test="catIdname != null" >
+        cat_idname = #{catIdname,jdbcType=VARCHAR},
+      </if>
+      <if test="catStatus != null" >
+        cat_status = #{catStatus,jdbcType=INTEGER},
+      </if>
+      <if test="catRemark != null" >
+        cat_remark = #{catRemark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where cid = #{cid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.emi.roots.entity.AzSlideCat" >
+    update az_slide_cat
+    set cat_name = #{catName,jdbcType=VARCHAR},
+      cat_idname = #{catIdname,jdbcType=VARCHAR},
+      cat_status = #{catStatus,jdbcType=INTEGER},
+      cat_remark = #{catRemark,jdbcType=LONGVARCHAR}
+    where cid = #{cid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzSlideCat" >
+    update az_slide_cat
+    set cat_name = #{catName,jdbcType=VARCHAR},
+      cat_idname = #{catIdname,jdbcType=VARCHAR},
+      cat_status = #{catStatus,jdbcType=INTEGER}
+    where cid = #{cid,jdbcType=INTEGER}
+  </update>
+</mapper>

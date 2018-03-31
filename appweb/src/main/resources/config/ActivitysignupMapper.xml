@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.emiservice.mapper.ActivitysignupMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.emiservice.entity.Activitysignup" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="activityid" property="activityid" jdbcType="INTEGER" />
+    <result column="memberid" property="memberid" jdbcType="INTEGER" />
+    <result column="ctime" property="ctime" jdbcType="TIMESTAMP" />
+    <result column="ispay" property="ispay" jdbcType="INTEGER" />
+    <result column="isneedinvoice" property="isneedinvoice" jdbcType="INTEGER" />
+    <result column="phonenum" property="phonenum" jdbcType="VARCHAR" />
+    <result column="invoicephonemun" property="invoicephonemun" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, activityid, memberid, ctime, ispay, isneedinvoice, phonenum, invoicephonemun, 
+    price
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from activitysignup
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from activitysignup
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.emi.emiservice.entity.Activitysignup" >
+    insert into activitysignup (id, activityid, memberid, 
+      ctime, ispay, isneedinvoice, 
+      phonenum, invoicephonemun, price
+      )
+    values (#{id,jdbcType=INTEGER}, #{activityid,jdbcType=INTEGER}, #{memberid,jdbcType=INTEGER}, 
+      #{ctime,jdbcType=TIMESTAMP}, #{ispay,jdbcType=INTEGER}, #{isneedinvoice,jdbcType=INTEGER}, 
+      #{phonenum,jdbcType=VARCHAR}, #{invoicephonemun,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.emi.emiservice.entity.Activitysignup" >
+    insert into activitysignup
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="activityid != null" >
+        activityid,
+      </if>
+      <if test="memberid != null" >
+        memberid,
+      </if>
+        ctime,
+      <if test="ispay != null" >
+        ispay,
+      </if>
+      <if test="isneedinvoice != null" >
+        isneedinvoice,
+      </if>
+      <if test="phonenum != null" >
+        phonenum,
+      </if>
+      <if test="invoicephonemun != null" >
+        invoicephonemun,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="isneedpay != null" >
+        isneedpay,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="activityid != null" >
+        #{activityid,jdbcType=INTEGER},
+      </if>
+      <if test="memberid != null" >
+        #{memberid,jdbcType=INTEGER},
+      </if>
+      now(),
+      <if test="ispay != null" >
+        #{ispay,jdbcType=INTEGER},
+      </if>
+      <if test="isneedinvoice != null" >
+        #{isneedinvoice,jdbcType=INTEGER},
+      </if>
+      <if test="phonenum != null" >
+        #{phonenum,jdbcType=VARCHAR},
+      </if>
+      <if test="invoicephonemun != null" >
+        #{invoicephonemun,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="isneedpay != null" >
+        #{isneedpay,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.emiservice.entity.Activitysignup" >
+    update activitysignup
+    <set >
+      <if test="activityid != null" >
+        activityid = #{activityid,jdbcType=INTEGER},
+      </if>
+      <if test="memberid != null" >
+        memberid = #{memberid,jdbcType=INTEGER},
+      </if>
+      <if test="ctime != null" >
+        ctime = #{ctime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ispay != null" >
+        ispay = #{ispay,jdbcType=INTEGER},
+      </if>
+      <if test="isneedinvoice != null" >
+        isneedinvoice = #{isneedinvoice,jdbcType=INTEGER},
+      </if>
+      <if test="phonenum != null" >
+        phonenum = #{phonenum,jdbcType=VARCHAR},
+      </if>
+      <if test="invoicephonemun != null" >
+        invoicephonemun = #{invoicephonemun,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.emi.emiservice.entity.Activitysignup" >
+    update activitysignup
+    set activityid = #{activityid,jdbcType=INTEGER},
+      memberid = #{memberid,jdbcType=INTEGER},
+      ctime = #{ctime,jdbcType=TIMESTAMP},
+      ispay = #{ispay,jdbcType=INTEGER},
+      isneedinvoice = #{isneedinvoice,jdbcType=INTEGER},
+      phonenum = #{phonenum,jdbcType=VARCHAR},
+      invoicephonemun = #{invoicephonemun,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="getActivitysignupByMember" resultType="com.emi.emiservice.entity.Activitysignup">
+
+    SELECT * from activitysignup where activityid=#{activityid} and memberid=#{memberid}
+  </select>
+
+
+  <select id="getFenPageSignuped" resultType="com.emi.emiservice.entity.Activitysignup">
+    SELECT asp.*,m.headimg,m.name memname,m.companyname,p.name positionname from activitysignup asp
+    LEFT join member m on asp.memberid=m.id
+    LEFT join position p on m.positionid=p.id
+    where asp.activityid=#{activityid}
+  </select>
+
+
+  <update id="uptTradeno">
+    update activitysignup set tradeno=#{tradeno} where id=#{orderid}
+
+  </update>
+
+
+
+</mapper>

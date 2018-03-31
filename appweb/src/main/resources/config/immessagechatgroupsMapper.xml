@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.emiservice.mapper.ImmessagechatgroupsMapper" >
+
+    <insert id="addimmessagechatgroups">
+        <![CDATA[  insert into immessagechatgroups(chatgroupsid,`name`,description,`public`,owner,grouptype,groupsource,groupsourceid)
+       VALUES (#{chatgroupsid},#{name},#{description},#{publics},#{owner},#{grouptype},#{groupsource},#{groupsourceid})   ]]>
+    </insert>
+
+    <select id="getgroups" resultType="com.emi.emiservice.entity.Immessagechatgroups">
+        select * FROM  immessagechatgroups
+    </select>
+
+</mapper>

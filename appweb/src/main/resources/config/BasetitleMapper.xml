@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.emiservice.mapper.BasetitleMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.emiservice.entity.Basetitle" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="isused" property="isused" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, code, isused
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from basetitle
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from basetitle
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.emi.emiservice.entity.Basetitle" >
+    insert into basetitle (id, code, isused
+      )
+    values (#{id,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, #{isused,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.emi.emiservice.entity.Basetitle" >
+    insert into basetitle
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="isused != null" >
+        isused,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="isused != null" >
+        #{isused,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.emiservice.entity.Basetitle" >
+    update basetitle
+    <set >
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="isused != null" >
+        isused = #{isused,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.emi.emiservice.entity.Basetitle" >
+    update basetitle
+    set code = #{code,jdbcType=VARCHAR},
+      isused = #{isused,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="getFenPageBasetitle" resultType="com.emi.emiservice.entity.Basetitle">
+    SELECT * from basetitle where isused=0 ORDER BY `code`
+  </select>
+
+  <update id="batchupdate"  parameterType="java.util.List">
+
+    <foreach collection="list" item="item" index="index" open="" close="" separator=";">
+      update basetitle
+      <set>
+        isused=#{item.isused}
+      </set>
+      where code = #{item.code}
+    </foreach>
+
+  </update>
+
+  <select id="getValidBasetitle" resultType="com.emi.emiservice.entity.Basetitle">
+      SELECT  * from basetitle where code=#{code};
+  </select>
+
+</mapper>

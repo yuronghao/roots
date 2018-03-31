@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.roots.mapper.AzTicketMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzTicket" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+    <result column="ticket_type" property="ticketType" jdbcType="BIT" />
+    <result column="ticket_id" property="ticketId" jdbcType="INTEGER" />
+    <result column="start_time" property="startTime" jdbcType="VARCHAR" />
+    <result column="end_time" property="endTime" jdbcType="VARCHAR" />
+    <result column="sale_start_time" property="saleStartTime" jdbcType="VARCHAR" />
+    <result column="sale_end_time" property="saleEndTime" jdbcType="VARCHAR" />
+    <result column="start_date" property="startDate" jdbcType="INTEGER" />
+    <result column="end_date" property="endDate" jdbcType="INTEGER" />
+    <result column="week" property="week" jdbcType="VARCHAR" />
+    <result column="pic" property="pic" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.emi.roots.entity.AzTicketWithBLOBs" extends="BaseResultMap" >
+    <result column="comment" property="comment" jdbcType="LONGVARCHAR" />
+    <result column="description" property="description" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, price, parent_id, ticket_type, ticket_id, start_time, end_time, sale_start_time, 
+    sale_end_time, start_date, end_date, week, pic
+  </sql>
+  <sql id="Blob_Column_List" >
+    comment, description
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from az_ticket
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from az_ticket
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.emi.roots.entity.AzTicketWithBLOBs" >
+    insert into az_ticket (id, name, price, 
+      parent_id, ticket_type, ticket_id, 
+      start_time, end_time, sale_start_time, 
+      sale_end_time, start_date, end_date, 
+      week, pic, comment, 
+      description)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, 
+      #{parentId,jdbcType=INTEGER}, #{ticketType,jdbcType=BIT}, #{ticketId,jdbcType=INTEGER}, 
+      #{startTime,jdbcType=VARCHAR}, #{endTime,jdbcType=VARCHAR}, #{saleStartTime,jdbcType=VARCHAR}, 
+      #{saleEndTime,jdbcType=VARCHAR}, #{startDate,jdbcType=INTEGER}, #{endDate,jdbcType=INTEGER}, 
+      #{week,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}, #{comment,jdbcType=LONGVARCHAR}, 
+      #{description,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.emi.roots.entity.AzTicketWithBLOBs" >
+    insert into az_ticket
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="ticketType != null" >
+        ticket_type,
+      </if>
+      <if test="ticketId != null" >
+        ticket_id,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+      <if test="saleStartTime != null" >
+        sale_start_time,
+      </if>
+      <if test="saleEndTime != null" >
+        sale_end_time,
+      </if>
+      <if test="startDate != null" >
+        start_date,
+      </if>
+      <if test="endDate != null" >
+        end_date,
+      </if>
+      <if test="week != null" >
+        week,
+      </if>
+      <if test="pic != null" >
+        pic,
+      </if>
+      <if test="comment != null" >
+        comment,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="ticketType != null" >
+        #{ticketType,jdbcType=BIT},
+      </if>
+      <if test="ticketId != null" >
+        #{ticketId,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="saleStartTime != null" >
+        #{saleStartTime,jdbcType=VARCHAR},
+      </if>
+      <if test="saleEndTime != null" >
+        #{saleEndTime,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=INTEGER},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=INTEGER},
+      </if>
+      <if test="week != null" >
+        #{week,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null" >
+        #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null" >
+        #{comment,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.roots.entity.AzTicketWithBLOBs" >
+    update az_ticket
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="ticketType != null" >
+        ticket_type = #{ticketType,jdbcType=BIT},
+      </if>
+      <if test="ticketId != null" >
+        ticket_id = #{ticketId,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="saleStartTime != null" >
+        sale_start_time = #{saleStartTime,jdbcType=VARCHAR},
+      </if>
+      <if test="saleEndTime != null" >
+        sale_end_time = #{saleEndTime,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null" >
+        start_date = #{startDate,jdbcType=INTEGER},
+      </if>
+      <if test="endDate != null" >
+        end_date = #{endDate,jdbcType=INTEGER},
+      </if>
+      <if test="week != null" >
+        week = #{week,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null" >
+        pic = #{pic,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null" >
+        comment = #{comment,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.emi.roots.entity.AzTicketWithBLOBs" >
+    update az_ticket
+    set name = #{name,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      parent_id = #{parentId,jdbcType=INTEGER},
+      ticket_type = #{ticketType,jdbcType=BIT},
+      ticket_id = #{ticketId,jdbcType=INTEGER},
+      start_time = #{startTime,jdbcType=VARCHAR},
+      end_time = #{endTime,jdbcType=VARCHAR},
+      sale_start_time = #{saleStartTime,jdbcType=VARCHAR},
+      sale_end_time = #{saleEndTime,jdbcType=VARCHAR},
+      start_date = #{startDate,jdbcType=INTEGER},
+      end_date = #{endDate,jdbcType=INTEGER},
+      week = #{week,jdbcType=VARCHAR},
+      pic = #{pic,jdbcType=VARCHAR},
+      comment = #{comment,jdbcType=LONGVARCHAR},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzTicket" >
+    update az_ticket
+    set name = #{name,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      parent_id = #{parentId,jdbcType=INTEGER},
+      ticket_type = #{ticketType,jdbcType=BIT},
+      ticket_id = #{ticketId,jdbcType=INTEGER},
+      start_time = #{startTime,jdbcType=VARCHAR},
+      end_time = #{endTime,jdbcType=VARCHAR},
+      sale_start_time = #{saleStartTime,jdbcType=VARCHAR},
+      sale_end_time = #{saleEndTime,jdbcType=VARCHAR},
+      start_date = #{startDate,jdbcType=INTEGER},
+      end_date = #{endDate,jdbcType=INTEGER},
+      week = #{week,jdbcType=VARCHAR},
+      pic = #{pic,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

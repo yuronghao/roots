@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.emiservice.mapper.BroadcastMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.emiservice.entity.Broadcast" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="introduceimg" property="introduceimg" jdbcType="VARCHAR" />
+    <result column="begintime" property="begintime" jdbcType="TIMESTAMP" />
+    <result column="endtime" property="endtime" jdbcType="TIMESTAMP" />
+    <result column="closingtime" property="closingtime" jdbcType="TIMESTAMP" />
+    <result column="broadcastnum" property="broadcastnum" jdbcType="INTEGER" />
+    <result column="fee" property="fee" jdbcType="DECIMAL" />
+    <result column="privatefee" property="privatefee" jdbcType="DECIMAL" />
+    <result column="tutorfee" property="tutorfee" jdbcType="DECIMAL" />
+    <result column="directer" property="directer" jdbcType="VARCHAR" />
+    <result column="directerimg" property="directerimg" jdbcType="VARCHAR" />
+    <result column="directerdes" property="directerdes" jdbcType="VARCHAR" />
+    <result column="tisid" property="tisid" jdbcType="VARCHAR" />
+    <result column="isdelete" property="isdelete" jdbcType="INTEGER" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="directurl" property="directurl" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.emi.emiservice.entity.Broadcast" extends="BaseResultMap" >
+    <result column="introduce" property="introduce" jdbcType="LONGVARBINARY" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, title, introduceimg, begintime, endtime, closingtime, broadcastnum, fee, privatefee, 
+    tutorfee, directer,directerimg, isdelete, state, directurl,directerdes,tisid
+  </sql>
+  <sql id="Blob_Column_List" >
+    introduce
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    CONVERT(introduce USING  utf8) introduce
+    from broadcast
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from broadcast
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.emi.emiservice.entity.Broadcast" >
+    insert into broadcast (id, title, introduceimg, 
+      begintime, endtime, closingtime, 
+      broadcastnum, fee, privatefee, 
+      tutorfee, directer, isdelete, 
+      state, directurl, introduce
+      )
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{introduceimg,jdbcType=VARCHAR}, 
+      #{begintime,jdbcType=TIMESTAMP}, #{endtime,jdbcType=TIMESTAMP}, #{closingtime,jdbcType=TIMESTAMP}, 
+      #{broadcastnum,jdbcType=INTEGER}, #{fee,jdbcType=DECIMAL}, #{privatefee,jdbcType=DECIMAL}, 
+      #{tutorfee,jdbcType=DECIMAL}, #{directer,jdbcType=VARCHAR}, #{isdelete,jdbcType=INTEGER}, 
+      #{state,jdbcType=INTEGER}, #{directurl,jdbcType=VARCHAR}, #{introduce,jdbcType=LONGVARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.emi.emiservice.entity.Broadcast" >
+    insert into broadcast
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="introduceimg != null" >
+        introduceimg,
+      </if>
+      <if test="begintime != null" >
+        begintime,
+      </if>
+      <if test="endtime != null" >
+        endtime,
+      </if>
+      <if test="closingtime != null" >
+        closingtime,
+      </if>
+      <if test="broadcastnum != null" >
+        broadcastnum,
+      </if>
+      <if test="fee != null" >
+        fee,
+      </if>
+      <if test="privatefee != null" >
+        privatefee,
+      </if>
+      <if test="tutorfee != null" >
+        tutorfee,
+      </if>
+      <if test="directer != null" >
+        directer,
+      </if>
+      <if test="isdelete != null" >
+        isdelete,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="directurl != null" >
+        directurl,
+      </if>
+      <if test="introduce != null" >
+        introduce,
+      </if>
+      <if test="directerdes != null" >
+        directerdes,
+      </if>
+      <if test="tisid != null" >
+        tisid,
+      </if>
+      <if test="directerimg != null" >
+        directerimg,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="introduceimg != null" >
+        #{introduceimg,jdbcType=VARCHAR},
+      </if>
+      <if test="begintime != null" >
+        #{begintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null" >
+        #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="closingtime != null" >
+        #{closingtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="broadcastnum != null" >
+        #{broadcastnum,jdbcType=INTEGER},
+      </if>
+      <if test="fee != null" >
+        #{fee,jdbcType=DECIMAL},
+      </if>
+      <if test="privatefee != null" >
+        #{privatefee,jdbcType=DECIMAL},
+      </if>
+      <if test="tutorfee != null" >
+        #{tutorfee,jdbcType=DECIMAL},
+      </if>
+      <if test="directer != null" >
+        #{directer,jdbcType=VARCHAR},
+      </if>
+      <if test="isdelete != null" >
+        #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="directurl != null" >
+        #{directurl,jdbcType=VARCHAR},
+      </if>
+      <if test="introduce != null" >
+        #{introduce,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="directerdes != null" >
+        #{directerdes,jdbcType=VARCHAR},
+      </if>
+      <if test="tisid != null" >
+        #{tisid,jdbcType=VARCHAR},
+      </if>
+      <if test="directerimg != null" >
+        #{directerimg,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.emiservice.entity.Broadcast" >
+    update broadcast
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="introduceimg != null" >
+        introduceimg = #{introduceimg,jdbcType=VARCHAR},
+      </if>
+      <if test="begintime != null" >
+        begintime = #{begintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null" >
+        endtime = #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="closingtime != null" >
+        closingtime = #{closingtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="broadcastnum != null" >
+        broadcastnum = #{broadcastnum,jdbcType=INTEGER},
+      </if>
+      <if test="fee != null" >
+        fee = #{fee,jdbcType=DECIMAL},
+      </if>
+      <if test="privatefee != null" >
+        privatefee = #{privatefee,jdbcType=DECIMAL},
+      </if>
+      <if test="tutorfee != null" >
+        tutorfee = #{tutorfee,jdbcType=DECIMAL},
+      </if>
+      <if test="directer != null" >
+        directer = #{directer,jdbcType=VARCHAR},
+      </if>
+      <if test="isdelete != null" >
+        isdelete = #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="directurl != null" >
+        directurl = #{directurl,jdbcType=VARCHAR},
+      </if>
+      <if test="introduce != null" >
+        introduce = #{introduce,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="directerdes != null" >
+        directerdes = #{directerdes,jdbcType=VARCHAR},
+      </if>
+      <if test="tisid != null" >
+        tisid = #{tisid,jdbcType=VARCHAR},
+      </if>
+      <if test="directerimg != null" >
+        directerimg = #{directerimg,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.emi.emiservice.entity.Broadcast" >
+    update broadcast
+    set title = #{title,jdbcType=VARCHAR},
+      introduceimg = #{introduceimg,jdbcType=VARCHAR},
+      begintime = #{begintime,jdbcType=TIMESTAMP},
+      endtime = #{endtime,jdbcType=TIMESTAMP},
+      closingtime = #{closingtime,jdbcType=TIMESTAMP},
+      broadcastnum = #{broadcastnum,jdbcType=INTEGER},
+      fee = #{fee,jdbcType=DECIMAL},
+      privatefee = #{privatefee,jdbcType=DECIMAL},
+      tutorfee = #{tutorfee,jdbcType=DECIMAL},
+      directer = #{directer,jdbcType=VARCHAR},
+      isdelete = #{isdelete,jdbcType=INTEGER},
+      state = #{state,jdbcType=INTEGER},
+      directurl = #{directurl,jdbcType=VARCHAR},
+      introduce = #{introduce,jdbcType=LONGVARBINARY}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.emi.emiservice.entity.Broadcast" >
+    update broadcast
+    set title = #{title,jdbcType=VARCHAR},
+      introduceimg = #{introduceimg,jdbcType=VARCHAR},
+      begintime = #{begintime,jdbcType=TIMESTAMP},
+      endtime = #{endtime,jdbcType=TIMESTAMP},
+      closingtime = #{closingtime,jdbcType=TIMESTAMP},
+      broadcastnum = #{broadcastnum,jdbcType=INTEGER},
+      fee = #{fee,jdbcType=DECIMAL},
+      privatefee = #{privatefee,jdbcType=DECIMAL},
+      tutorfee = #{tutorfee,jdbcType=DECIMAL},
+      directer = #{directer,jdbcType=VARCHAR},
+      isdelete = #{isdelete,jdbcType=INTEGER},
+      state = #{state,jdbcType=INTEGER},
+      directurl = #{directurl,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="getBroadcast" resultType="com.emi.emiservice.entity.Broadcast" >
+      SELECT * from broadcast where
+      DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s') >= DATE_FORMAT(begintime,'%Y-%m-%d %H:%i:%s')
+     and DATE_FORMAT(endtime,'%Y-%m-%d %H:%i:%s') >= DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s')
+     and isdelete=0 and state=1
+
+  </select>
+
+  <select id="getFenPageBroadcast" resultType="com.emi.emiservice.entity.Broadcast" >
+    SELECT * from broadcast where
+    DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s') >= DATE_FORMAT(begintime,'%Y-%m-%d %H:%i:%s')
+    and DATE_FORMAT(endtime,'%Y-%m-%d %H:%i:%s') >= DATE_FORMAT(NOW(),'%Y-%m-%d %H:%i:%s')
+    and isdelete=0 and state=1
+    <if test="param!=null and param!=''">
+      and title like '%${param}%'
+    </if>
+  </select>
+
+
+</mapper>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.roots.mapper.AzSendMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzSend" >
+    <id column="id" property="id" jdbcType="SMALLINT" />
+    <result column="msgtype" property="msgtype" jdbcType="CHAR" />
+    <result column="media_id" property="mediaId" jdbcType="VARCHAR" />
+    <result column="sendtime" property="sendtime" jdbcType="INTEGER" />
+    <result column="group_id" property="groupId" jdbcType="SMALLINT" />
+    <result column="send_type" property="sendType" jdbcType="BIT" />
+    <result column="status" property="status" jdbcType="BIT" />
+    <result column="token" property="token" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.emi.roots.entity.AzSend" extends="BaseResultMap" >
+    <result column="comment" property="comment" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, msgtype, media_id, sendtime, group_id, send_type, status, token
+  </sql>
+  <sql id="Blob_Column_List" >
+    comment
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Short" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from az_send
+    where id = #{id,jdbcType=SMALLINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short" >
+    delete from az_send
+    where id = #{id,jdbcType=SMALLINT}
+  </delete>
+  <insert id="insert" parameterType="com.emi.roots.entity.AzSend" >
+    insert into az_send (id, msgtype, media_id, 
+      sendtime, group_id, send_type, 
+      status, token, comment
+      )
+    values (#{id,jdbcType=SMALLINT}, #{msgtype,jdbcType=CHAR}, #{mediaId,jdbcType=VARCHAR}, 
+      #{sendtime,jdbcType=INTEGER}, #{groupId,jdbcType=SMALLINT}, #{sendType,jdbcType=BIT}, 
+      #{status,jdbcType=BIT}, #{token,jdbcType=VARCHAR}, #{comment,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.emi.roots.entity.AzSend" >
+    insert into az_send
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="msgtype != null" >
+        msgtype,
+      </if>
+      <if test="mediaId != null" >
+        media_id,
+      </if>
+      <if test="sendtime != null" >
+        sendtime,
+      </if>
+      <if test="groupId != null" >
+        group_id,
+      </if>
+      <if test="sendType != null" >
+        send_type,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="token != null" >
+        token,
+      </if>
+      <if test="comment != null" >
+        comment,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=SMALLINT},
+      </if>
+      <if test="msgtype != null" >
+        #{msgtype,jdbcType=CHAR},
+      </if>
+      <if test="mediaId != null" >
+        #{mediaId,jdbcType=VARCHAR},
+      </if>
+      <if test="sendtime != null" >
+        #{sendtime,jdbcType=INTEGER},
+      </if>
+      <if test="groupId != null" >
+        #{groupId,jdbcType=SMALLINT},
+      </if>
+      <if test="sendType != null" >
+        #{sendType,jdbcType=BIT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=BIT},
+      </if>
+      <if test="token != null" >
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null" >
+        #{comment,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.roots.entity.AzSend" >
+    update az_send
+    <set >
+      <if test="msgtype != null" >
+        msgtype = #{msgtype,jdbcType=CHAR},
+      </if>
+      <if test="mediaId != null" >
+        media_id = #{mediaId,jdbcType=VARCHAR},
+      </if>
+      <if test="sendtime != null" >
+        sendtime = #{sendtime,jdbcType=INTEGER},
+      </if>
+      <if test="groupId != null" >
+        group_id = #{groupId,jdbcType=SMALLINT},
+      </if>
+      <if test="sendType != null" >
+        send_type = #{sendType,jdbcType=BIT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=BIT},
+      </if>
+      <if test="token != null" >
+        token = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null" >
+        comment = #{comment,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=SMALLINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.emi.roots.entity.AzSend" >
+    update az_send
+    set msgtype = #{msgtype,jdbcType=CHAR},
+      media_id = #{mediaId,jdbcType=VARCHAR},
+      sendtime = #{sendtime,jdbcType=INTEGER},
+      group_id = #{groupId,jdbcType=SMALLINT},
+      send_type = #{sendType,jdbcType=BIT},
+      status = #{status,jdbcType=BIT},
+      token = #{token,jdbcType=VARCHAR},
+      comment = #{comment,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=SMALLINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzSend" >
+    update az_send
+    set msgtype = #{msgtype,jdbcType=CHAR},
+      media_id = #{mediaId,jdbcType=VARCHAR},
+      sendtime = #{sendtime,jdbcType=INTEGER},
+      group_id = #{groupId,jdbcType=SMALLINT},
+      send_type = #{sendType,jdbcType=BIT},
+      status = #{status,jdbcType=BIT},
+      token = #{token,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=SMALLINT}
+  </update>
+</mapper>

@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.roots.mapper.AzCommentsMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzComments" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="post_table" property="postTable" jdbcType="VARCHAR" />
+    <result column="post_id" property="postId" jdbcType="INTEGER" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="to_uid" property="toUid" jdbcType="INTEGER" />
+    <result column="full_name" property="fullName" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="type" property="type" jdbcType="SMALLINT" />
+    <result column="parentid" property="parentid" jdbcType="BIGINT" />
+    <result column="path" property="path" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="SMALLINT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.emi.roots.entity.AzComments" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, post_table, post_id, url, uid, to_uid, full_name, email, createtime, type, parentid, 
+    path, status
+  </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from az_comments
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from az_comments
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.emi.roots.entity.AzComments" >
+    insert into az_comments (id, post_table, post_id, 
+      url, uid, to_uid, full_name, 
+      email, createtime, type, 
+      parentid, path, status, 
+      content)
+    values (#{id,jdbcType=BIGINT}, #{postTable,jdbcType=VARCHAR}, #{postId,jdbcType=INTEGER}, 
+      #{url,jdbcType=VARCHAR}, #{uid,jdbcType=INTEGER}, #{toUid,jdbcType=INTEGER}, #{fullName,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{type,jdbcType=SMALLINT}, 
+      #{parentid,jdbcType=BIGINT}, #{path,jdbcType=VARCHAR}, #{status,jdbcType=SMALLINT}, 
+      #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.emi.roots.entity.AzComments" >
+    insert into az_comments
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="postTable != null" >
+        post_table,
+      </if>
+      <if test="postId != null" >
+        post_id,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="toUid != null" >
+        to_uid,
+      </if>
+      <if test="fullName != null" >
+        full_name,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="parentid != null" >
+        parentid,
+      </if>
+      <if test="path != null" >
+        path,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="postTable != null" >
+        #{postTable,jdbcType=VARCHAR},
+      </if>
+      <if test="postId != null" >
+        #{postId,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="toUid != null" >
+        #{toUid,jdbcType=INTEGER},
+      </if>
+      <if test="fullName != null" >
+        #{fullName,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=SMALLINT},
+      </if>
+      <if test="parentid != null" >
+        #{parentid,jdbcType=BIGINT},
+      </if>
+      <if test="path != null" >
+        #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.roots.entity.AzComments" >
+    update az_comments
+    <set >
+      <if test="postTable != null" >
+        post_table = #{postTable,jdbcType=VARCHAR},
+      </if>
+      <if test="postId != null" >
+        post_id = #{postId,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="toUid != null" >
+        to_uid = #{toUid,jdbcType=INTEGER},
+      </if>
+      <if test="fullName != null" >
+        full_name = #{fullName,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=SMALLINT},
+      </if>
+      <if test="parentid != null" >
+        parentid = #{parentid,jdbcType=BIGINT},
+      </if>
+      <if test="path != null" >
+        path = #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=SMALLINT},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.emi.roots.entity.AzComments" >
+    update az_comments
+    set post_table = #{postTable,jdbcType=VARCHAR},
+      post_id = #{postId,jdbcType=INTEGER},
+      url = #{url,jdbcType=VARCHAR},
+      uid = #{uid,jdbcType=INTEGER},
+      to_uid = #{toUid,jdbcType=INTEGER},
+      full_name = #{fullName,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      type = #{type,jdbcType=SMALLINT},
+      parentid = #{parentid,jdbcType=BIGINT},
+      path = #{path,jdbcType=VARCHAR},
+      status = #{status,jdbcType=SMALLINT},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzComments" >
+    update az_comments
+    set post_table = #{postTable,jdbcType=VARCHAR},
+      post_id = #{postId,jdbcType=INTEGER},
+      url = #{url,jdbcType=VARCHAR},
+      uid = #{uid,jdbcType=INTEGER},
+      to_uid = #{toUid,jdbcType=INTEGER},
+      full_name = #{fullName,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      type = #{type,jdbcType=SMALLINT},
+      parentid = #{parentid,jdbcType=BIGINT},
+      path = #{path,jdbcType=VARCHAR},
+      status = #{status,jdbcType=SMALLINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

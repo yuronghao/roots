@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.roots.mapper.AzOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzOrder" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="order_id" property="orderId" jdbcType="CHAR" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="invoice" property="invoice" jdbcType="VARCHAR" />
+    <result column="arrival_time" property="arrivalTime" jdbcType="VARCHAR" />
+    <result column="total_money" property="totalMoney" jdbcType="DECIMAL" />
+    <result column="ship_fee" property="shipFee" jdbcType="DECIMAL" />
+    <result column="total_credit" property="totalCredit" jdbcType="INTEGER" />
+    <result column="coupon_id" property="couponId" jdbcType="INTEGER" />
+    <result column="coupon_money" property="couponMoney" jdbcType="DECIMAL" />
+    <result column="credit_use" property="creditUse" jdbcType="INTEGER" />
+    <result column="receiver" property="receiver" jdbcType="VARCHAR" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="district" property="district" jdbcType="VARCHAR" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="post_code" property="postCode" jdbcType="VARCHAR" />
+    <result column="tel" property="tel" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="BIT" />
+    <result column="order_ip" property="orderIp" jdbcType="CHAR" />
+    <result column="pay_time" property="payTime" jdbcType="TIMESTAMP" />
+    <result column="delivery_time" property="deliveryTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="express_cname" property="expressCname" jdbcType="VARCHAR" />
+    <result column="express_kid" property="expressKid" jdbcType="CHAR" />
+    <result column="payment_id" property="paymentId" jdbcType="CHAR" />
+    <result column="payway" property="payway" jdbcType="CHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.emi.roots.entity.AzOrder" extends="BaseResultMap" >
+    <result column="comment" property="comment" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, order_id, uid, invoice, arrival_time, total_money, ship_fee, total_credit, coupon_id, 
+    coupon_money, credit_use, receiver, province, city, district, address, post_code, 
+    tel, status, order_ip, pay_time, delivery_time, create_time, update_time, express_cname, 
+    express_kid, payment_id, payway
+  </sql>
+  <sql id="Blob_Column_List" >
+    comment
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from az_order
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from az_order
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.emi.roots.entity.AzOrder" >
+    insert into az_order (id, order_id, uid, 
+      invoice, arrival_time, total_money, 
+      ship_fee, total_credit, coupon_id, 
+      coupon_money, credit_use, receiver, 
+      province, city, district, 
+      address, post_code, tel, 
+      status, order_ip, pay_time, 
+      delivery_time, create_time, update_time, 
+      express_cname, express_kid, payment_id, 
+      payway, comment)
+    values (#{id,jdbcType=INTEGER}, #{orderId,jdbcType=CHAR}, #{uid,jdbcType=INTEGER}, 
+      #{invoice,jdbcType=VARCHAR}, #{arrivalTime,jdbcType=VARCHAR}, #{totalMoney,jdbcType=DECIMAL}, 
+      #{shipFee,jdbcType=DECIMAL}, #{totalCredit,jdbcType=INTEGER}, #{couponId,jdbcType=INTEGER}, 
+      #{couponMoney,jdbcType=DECIMAL}, #{creditUse,jdbcType=INTEGER}, #{receiver,jdbcType=VARCHAR}, 
+      #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{district,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{postCode,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, 
+      #{status,jdbcType=BIT}, #{orderIp,jdbcType=CHAR}, #{payTime,jdbcType=TIMESTAMP}, 
+      #{deliveryTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{expressCname,jdbcType=VARCHAR}, #{expressKid,jdbcType=CHAR}, #{paymentId,jdbcType=CHAR}, 
+      #{payway,jdbcType=CHAR}, #{comment,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.emi.roots.entity.AzOrder" >
+    insert into az_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="invoice != null" >
+        invoice,
+      </if>
+      <if test="arrivalTime != null" >
+        arrival_time,
+      </if>
+      <if test="totalMoney != null" >
+        total_money,
+      </if>
+      <if test="shipFee != null" >
+        ship_fee,
+      </if>
+      <if test="totalCredit != null" >
+        total_credit,
+      </if>
+      <if test="couponId != null" >
+        coupon_id,
+      </if>
+      <if test="couponMoney != null" >
+        coupon_money,
+      </if>
+      <if test="creditUse != null" >
+        credit_use,
+      </if>
+      <if test="receiver != null" >
+        receiver,
+      </if>
+      <if test="province != null" >
+        province,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="district != null" >
+        district,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="postCode != null" >
+        post_code,
+      </if>
+      <if test="tel != null" >
+        tel,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="orderIp != null" >
+        order_ip,
+      </if>
+      <if test="payTime != null" >
+        pay_time,
+      </if>
+      <if test="deliveryTime != null" >
+        delivery_time,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="expressCname != null" >
+        express_cname,
+      </if>
+      <if test="expressKid != null" >
+        express_kid,
+      </if>
+      <if test="paymentId != null" >
+        payment_id,
+      </if>
+      <if test="payway != null" >
+        payway,
+      </if>
+      <if test="comment != null" >
+        comment,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=CHAR},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="invoice != null" >
+        #{invoice,jdbcType=VARCHAR},
+      </if>
+      <if test="arrivalTime != null" >
+        #{arrivalTime,jdbcType=VARCHAR},
+      </if>
+      <if test="totalMoney != null" >
+        #{totalMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="shipFee != null" >
+        #{shipFee,jdbcType=DECIMAL},
+      </if>
+      <if test="totalCredit != null" >
+        #{totalCredit,jdbcType=INTEGER},
+      </if>
+      <if test="couponId != null" >
+        #{couponId,jdbcType=INTEGER},
+      </if>
+      <if test="couponMoney != null" >
+        #{couponMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="creditUse != null" >
+        #{creditUse,jdbcType=INTEGER},
+      </if>
+      <if test="receiver != null" >
+        #{receiver,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null" >
+        #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="postCode != null" >
+        #{postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=BIT},
+      </if>
+      <if test="orderIp != null" >
+        #{orderIp,jdbcType=CHAR},
+      </if>
+      <if test="payTime != null" >
+        #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deliveryTime != null" >
+        #{deliveryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expressCname != null" >
+        #{expressCname,jdbcType=VARCHAR},
+      </if>
+      <if test="expressKid != null" >
+        #{expressKid,jdbcType=CHAR},
+      </if>
+      <if test="paymentId != null" >
+        #{paymentId,jdbcType=CHAR},
+      </if>
+      <if test="payway != null" >
+        #{payway,jdbcType=CHAR},
+      </if>
+      <if test="comment != null" >
+        #{comment,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.roots.entity.AzOrder" >
+    update az_order
+    <set >
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=CHAR},
+      </if>
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="invoice != null" >
+        invoice = #{invoice,jdbcType=VARCHAR},
+      </if>
+      <if test="arrivalTime != null" >
+        arrival_time = #{arrivalTime,jdbcType=VARCHAR},
+      </if>
+      <if test="totalMoney != null" >
+        total_money = #{totalMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="shipFee != null" >
+        ship_fee = #{shipFee,jdbcType=DECIMAL},
+      </if>
+      <if test="totalCredit != null" >
+        total_credit = #{totalCredit,jdbcType=INTEGER},
+      </if>
+      <if test="couponId != null" >
+        coupon_id = #{couponId,jdbcType=INTEGER},
+      </if>
+      <if test="couponMoney != null" >
+        coupon_money = #{couponMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="creditUse != null" >
+        credit_use = #{creditUse,jdbcType=INTEGER},
+      </if>
+      <if test="receiver != null" >
+        receiver = #{receiver,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null" >
+        district = #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="postCode != null" >
+        post_code = #{postCode,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=BIT},
+      </if>
+      <if test="orderIp != null" >
+        order_ip = #{orderIp,jdbcType=CHAR},
+      </if>
+      <if test="payTime != null" >
+        pay_time = #{payTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deliveryTime != null" >
+        delivery_time = #{deliveryTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expressCname != null" >
+        express_cname = #{expressCname,jdbcType=VARCHAR},
+      </if>
+      <if test="expressKid != null" >
+        express_kid = #{expressKid,jdbcType=CHAR},
+      </if>
+      <if test="paymentId != null" >
+        payment_id = #{paymentId,jdbcType=CHAR},
+      </if>
+      <if test="payway != null" >
+        payway = #{payway,jdbcType=CHAR},
+      </if>
+      <if test="comment != null" >
+        comment = #{comment,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.emi.roots.entity.AzOrder" >
+    update az_order
+    set order_id = #{orderId,jdbcType=CHAR},
+      uid = #{uid,jdbcType=INTEGER},
+      invoice = #{invoice,jdbcType=VARCHAR},
+      arrival_time = #{arrivalTime,jdbcType=VARCHAR},
+      total_money = #{totalMoney,jdbcType=DECIMAL},
+      ship_fee = #{shipFee,jdbcType=DECIMAL},
+      total_credit = #{totalCredit,jdbcType=INTEGER},
+      coupon_id = #{couponId,jdbcType=INTEGER},
+      coupon_money = #{couponMoney,jdbcType=DECIMAL},
+      credit_use = #{creditUse,jdbcType=INTEGER},
+      receiver = #{receiver,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      district = #{district,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      post_code = #{postCode,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      status = #{status,jdbcType=BIT},
+      order_ip = #{orderIp,jdbcType=CHAR},
+      pay_time = #{payTime,jdbcType=TIMESTAMP},
+      delivery_time = #{deliveryTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      express_cname = #{expressCname,jdbcType=VARCHAR},
+      express_kid = #{expressKid,jdbcType=CHAR},
+      payment_id = #{paymentId,jdbcType=CHAR},
+      payway = #{payway,jdbcType=CHAR},
+      comment = #{comment,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzOrder" >
+    update az_order
+    set order_id = #{orderId,jdbcType=CHAR},
+      uid = #{uid,jdbcType=INTEGER},
+      invoice = #{invoice,jdbcType=VARCHAR},
+      arrival_time = #{arrivalTime,jdbcType=VARCHAR},
+      total_money = #{totalMoney,jdbcType=DECIMAL},
+      ship_fee = #{shipFee,jdbcType=DECIMAL},
+      total_credit = #{totalCredit,jdbcType=INTEGER},
+      coupon_id = #{couponId,jdbcType=INTEGER},
+      coupon_money = #{couponMoney,jdbcType=DECIMAL},
+      credit_use = #{creditUse,jdbcType=INTEGER},
+      receiver = #{receiver,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      district = #{district,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      post_code = #{postCode,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      status = #{status,jdbcType=BIT},
+      order_ip = #{orderIp,jdbcType=CHAR},
+      pay_time = #{payTime,jdbcType=TIMESTAMP},
+      delivery_time = #{deliveryTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      express_cname = #{expressCname,jdbcType=VARCHAR},
+      express_kid = #{expressKid,jdbcType=CHAR},
+      payment_id = #{paymentId,jdbcType=CHAR},
+      payway = #{payway,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

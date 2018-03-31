@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.emiservice.mapper.NewsMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.emiservice.entity.News" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="ctime" property="ctime" jdbcType="TIMESTAMP" />
+    <result column="clicknum" property="clicknum" jdbcType="INTEGER" />
+    <result column="commentnum" property="commentnum" jdbcType="INTEGER" />
+    <result column="isdelete" property="isdelete" jdbcType="INTEGER" />
+    <result column="newstype" property="newstype" jdbcType="INTEGER" />
+    <result column="newsimg" property="newsimg" jdbcType="VARCHAR" />
+    <result column="serviceorgid" property="serviceorgid" jdbcType="INTEGER" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.emi.emiservice.entity.News" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, title, ctime, clicknum, commentnum, isdelete, newstype, newsimg, serviceorgid, state
+  </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select
+    id,title,ctime,clicknum,commentnum,follownum,newstype,newsimg,serviceorgid,state,city,citycode,CAST(content AS CHAR CHARACTER SET utf8) AS content
+    from news
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from news
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.emi.emiservice.entity.News" >
+    insert into news (id, title, ctime, 
+      clicknum, commentnum, isdelete, 
+      newstype, newsimg, serviceorgid,
+      state, content)
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{ctime,jdbcType=TIMESTAMP}, 
+      #{clicknum,jdbcType=INTEGER}, #{commentnum,jdbcType=INTEGER}, #{isdelete,jdbcType=INTEGER}, 
+      #{newstype,jdbcType=INTEGER}, #{newsimg,jdbcType=VARCHAR}, #{serviceorgid,jdbcType=INTEGER},
+      #{state,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.emi.emiservice.entity.News" >
+    insert into news
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+        ctime,
+      <if test="clicknum != null" >
+        clicknum,
+      </if>
+      <if test="commentnum != null" >
+        commentnum,
+      </if>
+      <if test="isdelete != null" >
+        isdelete,
+      </if>
+      <if test="newstype != null" >
+        newstype,
+      </if>
+      <if test="newsimg != null" >
+        newsimg,
+      </if>
+      <if test="serviceorgid != null" >
+        serviceorgid,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+
+      <if test="city != null" >
+        city,
+      </if>
+
+      <if test="citycode != null" >
+        citycode,
+      </if>
+
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+        now(),
+      <if test="clicknum != null" >
+        #{clicknum,jdbcType=INTEGER},
+      </if>
+      <if test="commentnum != null" >
+        #{commentnum,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null" >
+        #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="newstype != null" >
+        #{newstype,jdbcType=INTEGER},
+      </if>
+      <if test="newsimg != null" >
+        #{newsimg,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceorgid != null" >
+        #{serviceorgid,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+
+      <if test="citycode != null" >
+        #{citycode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.emiservice.entity.News" >
+    update news
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="ctime != null" >
+        ctime = #{ctime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clicknum != null" >
+        clicknum = #{clicknum,jdbcType=INTEGER},
+      </if>
+      <if test="commentnum != null" >
+        commentnum = #{commentnum,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null" >
+        isdelete = #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="newstype != null" >
+        newstype = #{newstype,jdbcType=INTEGER},
+      </if>
+      <if test="newsimg != null" >
+        newsimg = #{newsimg,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceorgid != null" >
+        serviceorgid = #{serviceorgid,jdbcType=INTEGER},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="citycode != null" >
+        citycode = #{citycode,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.emi.emiservice.entity.News" >
+    update news
+    set title = #{title,jdbcType=VARCHAR},
+      ctime = #{ctime,jdbcType=TIMESTAMP},
+      clicknum = #{clicknum,jdbcType=INTEGER},
+      commentnum = #{commentnum,jdbcType=INTEGER},
+      isdelete = #{isdelete,jdbcType=INTEGER},
+      newstype = #{newstype,jdbcType=INTEGER},
+      newsimg = #{newsimg,jdbcType=VARCHAR},
+      serviceorgid = #{serviceorgid,jdbcType=INTEGER},
+      state = #{state,jdbcType=INTEGER},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.emi.emiservice.entity.News" >
+    update news
+    set title = #{title,jdbcType=VARCHAR},
+      ctime = #{ctime,jdbcType=TIMESTAMP},
+      clicknum = #{clicknum,jdbcType=INTEGER},
+      commentnum = #{commentnum,jdbcType=INTEGER},
+      isdelete = #{isdelete,jdbcType=INTEGER},
+      newstype = #{newstype,jdbcType=INTEGER},
+      newsimg = #{newsimg,jdbcType=VARCHAR},
+      serviceorgid = #{serviceorgid,jdbcType=INTEGER},
+      state = #{state,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="getFenPageNews" resultType="com.emi.emiservice.entity.News">
+    SELECT id,title,ctime,clicknum,commentnum,follownum,newstype,newsimg,serviceorgid,state,city,citycode,CAST(content AS CHAR CHARACTER SET utf8) AS content from news
+    where newstype=#{newstype} and news.state=1 and news.isdelete=0
+
+     <if test="param!=null">
+       and news.title like '%${param}%'
+     </if>
+
+       and serviceorgid=#{serviceorgid}
+
+     order by ctime DESC
+  </select>
+
+
+  <select id="getFenPageNewsList" resultType="com.emi.emiservice.entity.News">
+    select n.id,n.title,n.content,n.ctime,n.clicknum,n.commentnum,n.follownum,n.newsimg,n.serviceorgid,n.state,n.citycode,
+    case city when '全国' then '总部' else city END city  from news n where 1=1 and n.newstype = 1 and n.state = 1 and isdelete = 0
+
+    <if test="isdefaultdisplay ==1">
+      <choose>
+        <when test="memberid==0">and  n.citycode = '0'</when>
+        <when test="citycode==''"></when>
+        <when test="citycode==0"></when>
+        <when test="citycode !=null and citycode!='' and citycode!=0 ">and (n.citycode = '${citycode}' or n.citycode = '0')</when>
+      </choose>
+    </if>
+
+    <if test="isdefaultdisplay == 0">
+      <choose>
+        <when test="citycode==''"></when>
+        <when test="citycode==0">and  n.citycode = '0'</when>
+        <when test="citycode !=null and citycode!='' and citycode!=0">and n.citycode = '${citycode}'</when>
+      </choose>
+    </if>
+
+  order by n.ctime desc
+
+  </select>
+
+
+  <select id="getFenPageIndustryNews" resultType="com.emi.emiservice.entity.News">
+    select * from news n where 1=1 and n.newstype = 0 and n.state = 1 and isdelete = 0
+order by n.ctime desc
+
+  </select>
+
+  <update id="updateFollownum">
+
+    <if test="udtype==0">
+      update news set follownum=follownum+1 where id=#{newsid}
+    </if>
+
+    <if test="udtype==1">
+      update news set follownum=follownum-1 where id=#{newsid}
+    </if>
+
+  </update>
+
+
+  <update id="updateCommentnum">
+
+    <if test="udtype==0">
+      update news set commentnum=commentnum+1 where id=#{newsid}
+    </if>
+
+    <if test="udtype==1">
+      update news set commentnum=commentnum-1 where id=#{newsid}
+    </if>
+
+  </update>
+
+
+
+  <select id="getFenPageMyFollowedNewsList" resultType="com.emi.emiservice.entity.News">
+    select * from news n
+where n.id in (
+	select nf.newsid from newsfollow nf where nf.memberid = '${memberid}'
+	)
+
+  </select>
+
+  <select id="getselectnews" resultType="com.emi.emiservice.entity.News">
+    select id,title,ctime,clicknum,commentnum,follownum,isdelete,newstype,newsimg,serviceorgid,state,city,citycode,CAST(content AS CHAR CHARACTER SET utf8) AS content from news WHERE  id=#{newsid} AND isdelete=0
+  </select>
+
+  <update id="updateclicknum">
+      update news set clicknum=clicknum+1 where id=#{newsid}
+  </update>
+</mapper>

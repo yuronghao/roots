@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.roots.mapper.AzMenuMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzMenu" >
+    <id column="id" property="id" jdbcType="SMALLINT" />
+    <result column="parentid" property="parentid" jdbcType="SMALLINT" />
+    <result column="app" property="app" jdbcType="CHAR" />
+    <result column="model" property="model" jdbcType="CHAR" />
+    <result column="action" property="action" jdbcType="CHAR" />
+    <result column="data" property="data" jdbcType="CHAR" />
+    <result column="type" property="type" jdbcType="BIT" />
+    <result column="status" property="status" jdbcType="BIT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="icon" property="icon" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="listorder" property="listorder" jdbcType="SMALLINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, parentid, app, model, action, data, type, status, name, icon, remark, listorder
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Short" >
+    select 
+    <include refid="Base_Column_List" />
+    from az_menu
+    where id = #{id,jdbcType=SMALLINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short" >
+    delete from az_menu
+    where id = #{id,jdbcType=SMALLINT}
+  </delete>
+  <insert id="insert" parameterType="com.emi.roots.entity.AzMenu" >
+    insert into az_menu (id, parentid, app, 
+      model, action, data, type, 
+      status, name, icon, remark, 
+      listorder)
+    values (#{id,jdbcType=SMALLINT}, #{parentid,jdbcType=SMALLINT}, #{app,jdbcType=CHAR}, 
+      #{model,jdbcType=CHAR}, #{action,jdbcType=CHAR}, #{data,jdbcType=CHAR}, #{type,jdbcType=BIT}, 
+      #{status,jdbcType=BIT}, #{name,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{listorder,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.emi.roots.entity.AzMenu" >
+    insert into az_menu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="parentid != null" >
+        parentid,
+      </if>
+      <if test="app != null" >
+        app,
+      </if>
+      <if test="model != null" >
+        model,
+      </if>
+      <if test="action != null" >
+        action,
+      </if>
+      <if test="data != null" >
+        data,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="icon != null" >
+        icon,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="listorder != null" >
+        listorder,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=SMALLINT},
+      </if>
+      <if test="parentid != null" >
+        #{parentid,jdbcType=SMALLINT},
+      </if>
+      <if test="app != null" >
+        #{app,jdbcType=CHAR},
+      </if>
+      <if test="model != null" >
+        #{model,jdbcType=CHAR},
+      </if>
+      <if test="action != null" >
+        #{action,jdbcType=CHAR},
+      </if>
+      <if test="data != null" >
+        #{data,jdbcType=CHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=BIT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=BIT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="listorder != null" >
+        #{listorder,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.roots.entity.AzMenu" >
+    update az_menu
+    <set >
+      <if test="parentid != null" >
+        parentid = #{parentid,jdbcType=SMALLINT},
+      </if>
+      <if test="app != null" >
+        app = #{app,jdbcType=CHAR},
+      </if>
+      <if test="model != null" >
+        model = #{model,jdbcType=CHAR},
+      </if>
+      <if test="action != null" >
+        action = #{action,jdbcType=CHAR},
+      </if>
+      <if test="data != null" >
+        data = #{data,jdbcType=CHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=BIT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=BIT},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null" >
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="listorder != null" >
+        listorder = #{listorder,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=SMALLINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzMenu" >
+    update az_menu
+    set parentid = #{parentid,jdbcType=SMALLINT},
+      app = #{app,jdbcType=CHAR},
+      model = #{model,jdbcType=CHAR},
+      action = #{action,jdbcType=CHAR},
+      data = #{data,jdbcType=CHAR},
+      type = #{type,jdbcType=BIT},
+      status = #{status,jdbcType=BIT},
+      name = #{name,jdbcType=VARCHAR},
+      icon = #{icon,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      listorder = #{listorder,jdbcType=SMALLINT}
+    where id = #{id,jdbcType=SMALLINT}
+  </update>
+</mapper>

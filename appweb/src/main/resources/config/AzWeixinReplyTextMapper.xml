@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.roots.mapper.AzWeixinReplyTextMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzWeixinReplyText" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="keyword" property="keyword" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="TINYINT" />
+    <result column="view_count" property="viewCount" jdbcType="INTEGER" />
+    <result column="listorder" property="listorder" jdbcType="INTEGER" />
+    <result column="token" property="token" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.emi.roots.entity.AzWeixinReplyText" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, keyword, type, view_count, listorder, token
+  </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from az_weixin_reply_text
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from az_weixin_reply_text
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.emi.roots.entity.AzWeixinReplyText" >
+    insert into az_weixin_reply_text (id, keyword, type, 
+      view_count, listorder, token, 
+      content)
+    values (#{id,jdbcType=INTEGER}, #{keyword,jdbcType=VARCHAR}, #{type,jdbcType=TINYINT}, 
+      #{viewCount,jdbcType=INTEGER}, #{listorder,jdbcType=INTEGER}, #{token,jdbcType=VARCHAR}, 
+      #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.emi.roots.entity.AzWeixinReplyText" >
+    insert into az_weixin_reply_text
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="keyword != null" >
+        keyword,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="viewCount != null" >
+        view_count,
+      </if>
+      <if test="listorder != null" >
+        listorder,
+      </if>
+      <if test="token != null" >
+        token,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="keyword != null" >
+        #{keyword,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="viewCount != null" >
+        #{viewCount,jdbcType=INTEGER},
+      </if>
+      <if test="listorder != null" >
+        #{listorder,jdbcType=INTEGER},
+      </if>
+      <if test="token != null" >
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.roots.entity.AzWeixinReplyText" >
+    update az_weixin_reply_text
+    <set >
+      <if test="keyword != null" >
+        keyword = #{keyword,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=TINYINT},
+      </if>
+      <if test="viewCount != null" >
+        view_count = #{viewCount,jdbcType=INTEGER},
+      </if>
+      <if test="listorder != null" >
+        listorder = #{listorder,jdbcType=INTEGER},
+      </if>
+      <if test="token != null" >
+        token = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.emi.roots.entity.AzWeixinReplyText" >
+    update az_weixin_reply_text
+    set keyword = #{keyword,jdbcType=VARCHAR},
+      type = #{type,jdbcType=TINYINT},
+      view_count = #{viewCount,jdbcType=INTEGER},
+      listorder = #{listorder,jdbcType=INTEGER},
+      token = #{token,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzWeixinReplyText" >
+    update az_weixin_reply_text
+    set keyword = #{keyword,jdbcType=VARCHAR},
+      type = #{type,jdbcType=TINYINT},
+      view_count = #{viewCount,jdbcType=INTEGER},
+      listorder = #{listorder,jdbcType=INTEGER},
+      token = #{token,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

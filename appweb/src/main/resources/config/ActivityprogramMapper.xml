@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.emiservice.mapper.ActivityprogramMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.emiservice.entity.Activityprogram" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="activityid" property="activityid" jdbcType="INTEGER" />
+    <result column="programname" property="programname" jdbcType="VARCHAR" />
+    <result column="performer" property="performer" jdbcType="VARCHAR" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="ticketnums" property="ticketnums" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, activityid, programname, performer, sort, ticketnums
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from activityprogram
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from activityprogram
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.emi.emiservice.entity.Activityprogram" >
+    insert into activityprogram (activityid, programname,
+      performer, sort
+      )
+    values ( #{activityid,jdbcType=INTEGER}, #{programname,jdbcType=VARCHAR},
+      #{performer,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.emi.emiservice.entity.Activityprogram" >
+    insert into activityprogram
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="activityid != null" >
+        activityid,
+      </if>
+      <if test="programname != null" >
+        programname,
+      </if>
+      <if test="performer != null" >
+        performer,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+      <if test="ticketnums != null" >
+        ticketnums,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="activityid != null" >
+        #{activityid,jdbcType=INTEGER},
+      </if>
+      <if test="programname != null" >
+        #{programname,jdbcType=VARCHAR},
+      </if>
+      <if test="performer != null" >
+        #{performer,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="ticketnums != null" >
+        #{ticketnums,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.emiservice.entity.Activityprogram" >
+    update activityprogram
+    <set >
+      <if test="activityid != null" >
+        activityid = #{activityid,jdbcType=INTEGER},
+      </if>
+      <if test="programname != null" >
+        programname = #{programname,jdbcType=VARCHAR},
+      </if>
+      <if test="performer != null" >
+        performer = #{performer,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.emi.emiservice.entity.Activityprogram" >
+    update activityprogram
+    set activityid = #{activityid,jdbcType=INTEGER},
+      programname = #{programname,jdbcType=VARCHAR},
+      performer = #{performer,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=INTEGER},
+      ticketnums = #{ticketnums,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+  <update id="deleteActivityProgram">
+
+    update activityprogram ap set ap.isdel  = 1 where ap.id = '${id}'
+  </update>
+
+  <select id="getActivityRankingAjax" resultType="com.emi.emiservice.entity.Activityprogram">
+select * from activityprogram ap where ap.activityid = '${activityid}' and ap.isdel = 0 ORDER BY ap.ticketnums DESC
+  </select>
+
+
+  <select id="gettovoteprogam" resultType="com.emi.emiservice.entity.Activityprogram">
+    select * from activityprogram ap where ap.activityid = '${activityid}' and ap.isdel = 0 ORDER BY ap.sort asc
+  </select>
+
+  <update id="updateticketnums" >
+    update activityprogram set ticketnums=ifnull(ticketnums,0)+1 where id=#{id}
+  </update>
+
+</mapper>

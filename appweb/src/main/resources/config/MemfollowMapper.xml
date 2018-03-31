@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.emiservice.mapper.MemfollowMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.emiservice.entity.Memfollow" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="memberid" property="memberid" jdbcType="INTEGER" />
+    <result column="tomemberid" property="tomemberid" jdbcType="INTEGER" />
+    <result column="ctime" property="ctime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, memberid, tomemberid, ctime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from memfollow
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from memfollow
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.emi.emiservice.entity.Memfollow" >
+    insert into memfollow (id, memberid, tomemberid, 
+      ctime)
+    values (#{id,jdbcType=INTEGER}, #{memberid,jdbcType=INTEGER}, #{tomemberid,jdbcType=INTEGER}, 
+      #{ctime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.emi.emiservice.entity.Memfollow" >
+    insert into memfollow
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="memberid != null" >
+        memberid,
+      </if>
+      <if test="tomemberid != null" >
+        tomemberid,
+      </if>
+
+        ctime
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="memberid != null" >
+        #{memberid,jdbcType=INTEGER},
+      </if>
+      <if test="tomemberid != null" >
+        #{tomemberid,jdbcType=INTEGER},
+      </if>
+      now()
+    </trim>
+
+    ON DUPLICATE KEY UPDATE ctime = now()
+
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.emiservice.entity.Memfollow" >
+    update memfollow
+    <set >
+      <if test="memberid != null" >
+        memberid = #{memberid,jdbcType=INTEGER},
+      </if>
+      <if test="tomemberid != null" >
+        tomemberid = #{tomemberid,jdbcType=INTEGER},
+      </if>
+      <if test="ctime != null" >
+        ctime = #{ctime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.emi.emiservice.entity.Memfollow" >
+    update memfollow
+    set memberid = #{memberid,jdbcType=INTEGER},
+      tomemberid = #{tomemberid,jdbcType=INTEGER},
+      ctime = #{ctime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+  <delete id="delmemfollowBymemberidandtomemberid">
+    DELETE from memfollow  where memberid = '${memberid}' and tomemberid = '${tomemberid}'
+  </delete>
+
+
+  <select id="getFollowInfoBymemberidAndtomemberid" resultType="com.emi.emiservice.entity.Memfollow">
+    select * from memfollow mf where mf.memberid = '${memberid}' and mf.tomemberid = '${tomemberid}'
+  </select>
+</mapper>

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.baidu.ueditor:com.baidu.ueditor:1.0">
+    <CLASSES>
+      <root url="jar://E:/source/com/baidu/ueditor/com.baidu.ueditor/1.0/com.baidu.ueditor-1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://E:/source/com/baidu/ueditor/com.baidu.ueditor/1.0/com.baidu.ueditor-1.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://E:/source/com/baidu/ueditor/com.baidu.ueditor/1.0/com.baidu.ueditor-1.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

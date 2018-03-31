@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.roots.mapper.AzWeixinMenuMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzWeixinMenu" >
+    <id column="id" property="id" jdbcType="SMALLINT" />
+    <result column="parent_id" property="parentId" jdbcType="SMALLINT" />
+    <result column="menu_name" property="menuName" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="BIT" />
+    <result column="listorder" property="listorder" jdbcType="SMALLINT" />
+    <result column="comment" property="comment" jdbcType="VARCHAR" />
+    <result column="token" property="token" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, parent_id, menu_name, type, listorder, comment, token
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Short" >
+    select 
+    <include refid="Base_Column_List" />
+    from az_weixin_menu
+    where id = #{id,jdbcType=SMALLINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Short" >
+    delete from az_weixin_menu
+    where id = #{id,jdbcType=SMALLINT}
+  </delete>
+  <insert id="insert" parameterType="com.emi.roots.entity.AzWeixinMenu" >
+    insert into az_weixin_menu (id, parent_id, menu_name, 
+      type, listorder, comment, 
+      token)
+    values (#{id,jdbcType=SMALLINT}, #{parentId,jdbcType=SMALLINT}, #{menuName,jdbcType=VARCHAR}, 
+      #{type,jdbcType=BIT}, #{listorder,jdbcType=SMALLINT}, #{comment,jdbcType=VARCHAR}, 
+      #{token,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.emi.roots.entity.AzWeixinMenu" >
+    insert into az_weixin_menu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="menuName != null" >
+        menu_name,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="listorder != null" >
+        listorder,
+      </if>
+      <if test="comment != null" >
+        comment,
+      </if>
+      <if test="token != null" >
+        token,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=SMALLINT},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=SMALLINT},
+      </if>
+      <if test="menuName != null" >
+        #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=BIT},
+      </if>
+      <if test="listorder != null" >
+        #{listorder,jdbcType=SMALLINT},
+      </if>
+      <if test="comment != null" >
+        #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null" >
+        #{token,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.roots.entity.AzWeixinMenu" >
+    update az_weixin_menu
+    <set >
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=SMALLINT},
+      </if>
+      <if test="menuName != null" >
+        menu_name = #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=BIT},
+      </if>
+      <if test="listorder != null" >
+        listorder = #{listorder,jdbcType=SMALLINT},
+      </if>
+      <if test="comment != null" >
+        comment = #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null" >
+        token = #{token,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=SMALLINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzWeixinMenu" >
+    update az_weixin_menu
+    set parent_id = #{parentId,jdbcType=SMALLINT},
+      menu_name = #{menuName,jdbcType=VARCHAR},
+      type = #{type,jdbcType=BIT},
+      listorder = #{listorder,jdbcType=SMALLINT},
+      comment = #{comment,jdbcType=VARCHAR},
+      token = #{token,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=SMALLINT}
+  </update>
+</mapper>

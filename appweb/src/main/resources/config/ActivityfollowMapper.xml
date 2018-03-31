@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.emiservice.mapper.ActivityfollowMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.emiservice.entity.Activityfollow" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="activityid" property="activityid" jdbcType="INTEGER" />
+    <result column="memberid" property="memberid" jdbcType="INTEGER" />
+    <result column="ctime" property="ctime" jdbcType="TIMESTAMP" />
+    <result column="isdelete" property="isdelete" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, activityid, memberid, ctime, isdelete
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from activityfollow
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from activityfollow
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.emi.emiservice.entity.Activityfollow" >
+    insert into activityfollow (id, activityid, memberid, 
+      ctime, isdelete)
+    values (#{id,jdbcType=INTEGER}, #{activityid,jdbcType=INTEGER}, #{memberid,jdbcType=INTEGER}, 
+      #{ctime,jdbcType=TIMESTAMP}, #{isdelete,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.emi.emiservice.entity.Activityfollow" >
+    insert into activityfollow
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="activityid != null" >
+        activityid,
+      </if>
+      <if test="memberid != null" >
+        memberid,
+      </if>
+        ctime,
+      <if test="isdelete != null" >
+        isdelete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="activityid != null" >
+        #{activityid,jdbcType=INTEGER},
+      </if>
+      <if test="memberid != null" >
+        #{memberid,jdbcType=INTEGER},
+      </if>
+        now(),
+      <if test="isdelete != null" >
+        #{isdelete,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.emiservice.entity.Activityfollow" >
+    update activityfollow
+    <set >
+      <if test="activityid != null" >
+        activityid = #{activityid,jdbcType=INTEGER},
+      </if>
+      <if test="memberid != null" >
+        memberid = #{memberid,jdbcType=INTEGER},
+      </if>
+      <if test="ctime != null" >
+        ctime = #{ctime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isdelete != null" >
+        isdelete = #{isdelete,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.emi.emiservice.entity.Activityfollow" >
+    update activityfollow
+    set activityid = #{activityid,jdbcType=INTEGER},
+      memberid = #{memberid,jdbcType=INTEGER},
+      ctime = #{ctime,jdbcType=TIMESTAMP},
+      isdelete = #{isdelete,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="getActivityfollowByMember" resultType="com.emi.emiservice.entity.Activityfollow" >
+    SELECT * from activityfollow where activityid=#{activityid} and memberid=#{memberid}
+  </select>
+
+  <delete id="deleteByPrimaryKeyByMem">
+
+    DELETE from activityfollow where activityid=#{activityid} and memberid=#{memberid}
+  </delete>
+</mapper>

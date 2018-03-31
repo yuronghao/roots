@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.emiservice.mapper.MembermenuMapper" >
+
+
+  
+    
+    
+    <select id="findFenPageMangeUserTypeList" resultType="com.emi.emiservice.entity.UserType">
+		<![CDATA[ select u.* from usertype u  where u.isdel=0  ]]>
+		
+		<if test="param!=null">
+			<![CDATA[and u.name like '%${param}%' ]]>
+		</if>
+		<if test="orgid!=null">
+			<![CDATA[and u.orgid =#{orgid} ]]>
+		</if>
+
+		<![CDATA[order by u.id asc ]]>
+	</select>
+   
+   	<insert id="inserUsertype" parameterType="com.emi.emiservice.entity.UserType"  useGeneratedKeys="true" keyProperty="id">
+	<![CDATA[
+		insert into usertype(name,orgid) select #{name},#{orgid}
+	]]>	
+	</insert>
+    
+    <insert id="insertBaseUserTypeFunction">
+      <![CDATA[insert into user_type_base_functionlist (auth_function_id,user_type_id) select id,${usertype} from functionlist where id in (${functionids}) and isdel=0  
+       ON DUPLICATE KEY UPDATE user_type_id=${usertype}  ]]>
+	</insert>
+	
+	<select id="selectByPrimaryKey"  resultType="com.emi.emiservice.entity.UserType" >
+     <![CDATA[ select * from usertype where id = ${usertype} ]]>
+  </select> 
+	
+  <update id="updateByPrimaryKey" parameterType="com.emi.emiservice.entity.UserType" >
+
+    update usertype
+    set name = #{name,jdbcType=VARCHAR},
+      isdel = #{isdel,jdbcType=INTEGER},
+      orgid = #{orgid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    
+    <delete id="deleteBaseFunctions">
+	<![CDATA[delete from user_type_base_functionlist where auth_function_id not in(select id from functionlist where id in (${functionids}) and isdel=0) and user_type_id=${usertype} ]]>
+	</delete>
+	
+  <delete id="delusertypebasefunctionByusertypeid">
+  	delete from user_type_base_functionlist where user_type_id = '${id}'
+  </delete>
+  
+  	<delete id="deleteBaseFunctionOperations">
+	<![CDATA[delete from user_type_base_functionlist where auth_function_id not in(select id from functionlist_operation where id in (${functionids})  and isdel=0)  and user_type_id=${usertype} ]]>
+	</delete> 
+	
+	<insert id="insertBaseUserTypeFunctionOperations">
+      <![CDATA[insert into user_type_base_functionlist (auth_function_id,user_type_id,auth_type) 
+      select id,${usertype},1 from functionlist_operation where id in (${functionids}) and isdel=0 ON DUPLICATE KEY UPDATE  auth_type=1]]>
+	</insert>
+	
+	<delete id="deleteFunctions" >  
+       	<![CDATA[delete from usertype_functionlist  where user_type_id = #{id} and orgid=#{orgid}]]>
+    </delete> 
+    
+  <update id="deleteUserTypeById">
+  <![CDATA[ update usertype set isdel=1  where id=${usertype} ]]>
+  </update>
+  
+  <delete id="deleteUserUserTypeByUserType">
+  <![CDATA[ delete from userusertype where usertypeid=${usertype} ]]>
+  </delete>
+  
+     <select id="getUserTypeFunction" resultType="com.emi.emiservice.entity.UsertypeFunctionlist">
+  <![CDATA[ select * from user_type_base_functionlist where user_type_id=${usertype}  ]]>
+  </select>
+  
+  	<select id="getUserTypeListByOrgid" resultType="com.emi.emiservice.entity.UserType" >
+	 	<![CDATA[ select u.* from usertype u  where u.isdel=0  ]]> 	      
+	     <if test="orgid!=null">
+	     	and  find_in_set(u.orgid,getchildrenorg(#{orgid}))>0
+	     </if>
+
+	     
+	</select>
+    
+    <select id="findFenPageMangeUserList" resultType="com.emi.emiservice.entity.User">
+	select u.*,o.name orgname,so.name serviceorgname  from `user` u LEFT JOIN org o on u.orgid=o.id
+	LEFT join org so on u.serviceorgid=so.id
+	where  u.isstop = '0' and u.isdel = '0' and  isadmin=0
+
+	<if test="param != null">
+		and (u.username like '%${param}%' or u.mobile LIKE '%${param}%' or u.name LIKE '%${param}%')
+	</if>
+	
+	<if test="orgid!=0">
+		and find_in_set(u.orgid,getchildrenorg(#{orgid}))>0
+	</if>
+
+    </select>
+    
+    
+    <select id="findFenPageMangeUserListByAdmin" resultType="com.emi.emiservice.entity.User">
+		select u.*,o.name orgname,so.name serviceorgname from `user` u LEFT JOIN org o on u.orgid=o.id
+		LEFT join org so on u.serviceorgid=so.id
+		where  u.isstop = '0' and u.isdel = '0' and  isadmin=0
+		<if test="param != null">
+			and (u.username like '%${param}%' or u.mobile LIKE '%${param}%' or u.name LIKE '%${param}%')
+		</if>
+	
+    </select>
+    
+    
+    
+    
+    <select id="selectuserTypes" resultType="com.emi.emiservice.entity.UserType">
+	    <![CDATA[ select u.* from user_type u  where u.isdel=0 ]]> 	    
+	</select>
+	
+	<insert id="addManagerUser" parameterType="com.emi.emiservice.entity.User" useGeneratedKeys="true" keyProperty="id">
+	<![CDATA[insert into  user(username,password,orgid,mobile,name,serviceorgid) values(#{username},#{password},#{orgid},#{mobile},#{name},#{serviceorgid})   ]]>
+	</insert>
+	
+	<insert id="addUserUsertype">
+		<![CDATA[ insert into userusertype (userid,usertypeid) values ]]>
+		<foreach collection="list" index="index" item="item" open="" close="" separator="," >
+          <![CDATA[    (#{item.userid},#{item.usertypeid}) ]]>
+		</foreach>
+	</insert> 
+    
+    <update id="updateUserByid" parameterType="com.emi.emiservice.entity.User">
+		update user u set u.username = #{username},u.mobile = #{mobile},u.orgid = #{orgid},u.serviceorgid = #{serviceorgid},u.name=#{name}
+
+		<if test="password!=null">
+			,u.password=#{password}
+		</if>
+
+		 where u.id =#{id}
+	</update>
+    
+    <delete id="delUserUsertypeByuserid">
+		delete from userusertype where userid = ${id}
+	</delete>
+	
+	<update id="delUserByid" >
+		update `user` set isdel = '1' where id = '${id}'
+	</update>
+    
+    <select id="getUserByid"  resultType="com.emi.emiservice.entity.User">
+		select u.*,o.name orgname, so.name serviceorgname from `user` u
+		LEFT join org o on u.orgid=o.id
+		LEFT join org so on u.serviceorgid=so.id
+		 where u.id = '${id}'
+	</select>
+	
+	<select id="getUserUsertypeListByuserid" resultType="com.emi.emiservice.entity.UserUsertype">
+		select * from userusertype uu where uu.userid = '${id}' 
+	</select>
+	
+	<select id="getUsername" resultType="com.emi.emiservice.entity.User">
+		select username from user  where username=#{username}
+	</select>
+	
+	<insert id="insertUserTypeFunction">
+	<![CDATA[
+		insert into usertype_functionlist(auth_function_id,user_type_id,orgid) select id,${usertype},${orgid}  from functionlist where id in (${functionids}) order by id asc
+	]]>	
+	</insert>
+</mapper>

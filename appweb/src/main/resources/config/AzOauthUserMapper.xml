@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.roots.mapper.AzOauthUserMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzOauthUser" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="from" property="from" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="head_img" property="headImg" jdbcType="VARCHAR" />
+    <result column="uid" property="uid" jdbcType="VARCHAR" />
+    <result column="last_login_ip" property="lastLoginIp" jdbcType="VARCHAR" />
+    <result column="last_login_time" property="lastLoginTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="login_times" property="loginTimes" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="openid" property="openid" jdbcType="VARCHAR" />
+    <result column="user_status" property="userStatus" jdbcType="INTEGER" />
+    <result column="gag" property="gag" jdbcType="TINYINT" />
+    <result column="follow_num" property="followNum" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.emi.roots.entity.AzOauthUser" extends="BaseResultMap" >
+    <result column="wechat_user_options" property="wechatUserOptions" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, from, name, head_img, uid, last_login_ip, last_login_time, create_time, login_times, 
+    status, openid, user_status, gag, follow_num
+  </sql>
+  <sql id="Blob_Column_List" >
+    wechat_user_options
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from az_oauth_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from az_oauth_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.emi.roots.entity.AzOauthUser" >
+    insert into az_oauth_user (id, from, name, 
+      head_img, uid, last_login_ip, 
+      last_login_time, create_time, login_times, 
+      status, openid, user_status, 
+      gag, follow_num, wechat_user_options
+      )
+    values (#{id,jdbcType=INTEGER}, #{from,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{headImg,jdbcType=VARCHAR}, #{uid,jdbcType=VARCHAR}, #{lastLoginIp,jdbcType=VARCHAR}, 
+      #{lastLoginTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{loginTimes,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{openid,jdbcType=VARCHAR}, #{userStatus,jdbcType=INTEGER}, 
+      #{gag,jdbcType=TINYINT}, #{followNum,jdbcType=INTEGER}, #{wechatUserOptions,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.emi.roots.entity.AzOauthUser" >
+    insert into az_oauth_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="from != null" >
+        from,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="headImg != null" >
+        head_img,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="lastLoginIp != null" >
+        last_login_ip,
+      </if>
+      <if test="lastLoginTime != null" >
+        last_login_time,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="loginTimes != null" >
+        login_times,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="openid != null" >
+        openid,
+      </if>
+      <if test="userStatus != null" >
+        user_status,
+      </if>
+      <if test="gag != null" >
+        gag,
+      </if>
+      <if test="followNum != null" >
+        follow_num,
+      </if>
+      <if test="wechatUserOptions != null" >
+        wechat_user_options,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="from != null" >
+        #{from,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="headImg != null" >
+        #{headImg,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginIp != null" >
+        #{lastLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginTime != null" >
+        #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginTimes != null" >
+        #{loginTimes,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="openid != null" >
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="userStatus != null" >
+        #{userStatus,jdbcType=INTEGER},
+      </if>
+      <if test="gag != null" >
+        #{gag,jdbcType=TINYINT},
+      </if>
+      <if test="followNum != null" >
+        #{followNum,jdbcType=INTEGER},
+      </if>
+      <if test="wechatUserOptions != null" >
+        #{wechatUserOptions,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.roots.entity.AzOauthUser" >
+    update az_oauth_user
+    <set >
+      <if test="from != null" >
+        from = #{from,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="headImg != null" >
+        head_img = #{headImg,jdbcType=VARCHAR},
+      </if>
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginIp != null" >
+        last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginTime != null" >
+        last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginTimes != null" >
+        login_times = #{loginTimes,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="openid != null" >
+        openid = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="userStatus != null" >
+        user_status = #{userStatus,jdbcType=INTEGER},
+      </if>
+      <if test="gag != null" >
+        gag = #{gag,jdbcType=TINYINT},
+      </if>
+      <if test="followNum != null" >
+        follow_num = #{followNum,jdbcType=INTEGER},
+      </if>
+      <if test="wechatUserOptions != null" >
+        wechat_user_options = #{wechatUserOptions,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.emi.roots.entity.AzOauthUser" >
+    update az_oauth_user
+    set from = #{from,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      head_img = #{headImg,jdbcType=VARCHAR},
+      uid = #{uid,jdbcType=VARCHAR},
+      last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
+      last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      login_times = #{loginTimes,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      openid = #{openid,jdbcType=VARCHAR},
+      user_status = #{userStatus,jdbcType=INTEGER},
+      gag = #{gag,jdbcType=TINYINT},
+      follow_num = #{followNum,jdbcType=INTEGER},
+      wechat_user_options = #{wechatUserOptions,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzOauthUser" >
+    update az_oauth_user
+    set from = #{from,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      head_img = #{headImg,jdbcType=VARCHAR},
+      uid = #{uid,jdbcType=VARCHAR},
+      last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
+      last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      login_times = #{loginTimes,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      openid = #{openid,jdbcType=VARCHAR},
+      user_status = #{userStatus,jdbcType=INTEGER},
+      gag = #{gag,jdbcType=TINYINT},
+      follow_num = #{followNum,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

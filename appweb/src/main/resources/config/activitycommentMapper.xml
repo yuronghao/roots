@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.emiservice.mapper.ActivitycommentMapper" >
+
+
+
+    <select id="getActivitycomment" resultType="com.emi.emiservice.entity.Activitycomment">
+        <![CDATA[
+                SELECT n.id,n.activityid,n.commentid,CAST(n.content AS CHAR CHARACTER SET utf8) AS content,
+                       n.memberid,n.tomemberid,n.ctime,m.`name`,m.headimg
+                    FROM activitycomment n,member m  WHERE n.activityid=#{activityid} AND  n.memberid=m.id and n.isdel=0 ORDER BY n.id desc LIMIT 0,10
+          ]]>
+    </select>
+
+    <insert id="addActivitycomment" parameterType="com.emi.emiservice.entity.Activitycomment"  useGeneratedKeys="true" keyProperty="id">
+        <![CDATA[  insert into activitycomment(activityid,content,memberid,ctime)
+                   VALUES (#{activityid},#{content},#{memberid},now())   ]]>
+    </insert>
+
+
+    <select id="activitycomments" resultType="com.emi.emiservice.entity.Activitycomment">
+        <![CDATA[
+                SELECT n.id,n.activityid,n.commentid,CAST(n.content AS CHAR CHARACTER SET utf8) AS content,
+                       n.memberid,n.tomemberid,n.ctime,m.`name`,m.headimg
+                    FROM activitycomment n,member m  WHERE n.id=#{id} AND  n.memberid=m.id and n.isdel=0
+          ]]>
+    </select>
+
+    <select id="getFenPageActivitycomment" resultType="com.emi.emiservice.entity.Activitycomment">
+        <![CDATA[
+                SELECT n.id,n.activityid,n.commentid,CAST(n.content AS CHAR CHARACTER SET utf8) AS content,
+                       n.memberid,n.tomemberid,n.ctime,m.`name`,m.headimg
+                    FROM activitycomment n,member m  WHERE n.activityid=#{activityid} AND  n.memberid=m.id AND n.isdel=0 ORDER BY n.id desc
+          ]]>
+    </select>
+
+    <select id="getActivityCommentListAjax" resultType="com.emi.emiservice.entity.Activitycomment">
+        select n.id,n.activityid,n.commentid,CAST(n.content AS CHAR CHARACTER SET utf8) AS content,
+                       n.memberid,n.tomemberid,n.ctime,m.`name`,m.headimg from activitycomment n
+left join member m on m.id  = n.memberid
+where n.activityid = '${activityid}' and n.id > '${id}' and isdel=0 ORDER BY n.ctime asc
+    </select>
+
+    <update id="updateIsread">
+        <![CDATA[  update activitycomment ac set ac.isread = 1 where ac.id <= '${id}' ]]>
+    </update>
+
+    <select id="getActivityCommentListAjaxstart" resultType="com.emi.emiservice.entity.Activitycomment">
+        select n.id,n.activityid,n.commentid,CAST(n.content AS CHAR CHARACTER SET utf8) AS content,
+                       n.memberid,n.tomemberid,n.ctime,m.`name`,m.headimg from activitycomment n
+left join member m on m.id  = n.memberid
+where n.activityid = '${activityid}' and isdel=0  ORDER BY n.ctime desc LIMIT 0,10
+    </select>
+
+    <select id="getFenPageCommentList" resultType="com.emi.emiservice.entity.Activitycomment">
+        SELECT ac.id,CAST(content AS char CHARACTER SET utf8) content,ac.ctime,mb.`name` membername,mb.phonenum from activitycomment ac
+        LEFT JOIN member mb on ac.memberid=mb.id
+        where ac.activityid=#{id} and ac.isdel=0
+
+        <if test="param != null" >
+            <![CDATA[ ${param} ]]>
+        </if>
+
+        ORDER BY ac.ctime DESC
+
+    </select>
+
+    <update id="deletecomment">
+        <![CDATA[  update activitycomment set isdel = 1 where id =#{id} ]]>
+    </update>
+
+</mapper>

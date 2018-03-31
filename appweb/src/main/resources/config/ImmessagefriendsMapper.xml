@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.emiservice.mapper.ImmessagefriendsMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.emiservice.entity.Immessagefriends" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="fromid" property="fromid" jdbcType="INTEGER" />
+    <result column="toid" property="toid" jdbcType="INTEGER" />
+    <result column="ctime" property="ctime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, fromid, toid, ctime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from immessagefriends
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from immessagefriends
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.emi.emiservice.entity.Immessagefriends" >
+    insert into immessagefriends (id, fromid, toid, 
+      ctime)
+    values (#{id,jdbcType=INTEGER}, #{fromid,jdbcType=INTEGER}, #{toid,jdbcType=INTEGER}, 
+      #{ctime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.emi.emiservice.entity.Immessagefriends" >
+    insert into immessagefriends
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="fromid != null" >
+        fromid,
+      </if>
+      <if test="toid != null" >
+        toid,
+      </if>
+      <if test="ctime != null" >
+        ctime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="fromid != null" >
+        #{fromid,jdbcType=INTEGER},
+      </if>
+      <if test="toid != null" >
+        #{toid,jdbcType=INTEGER},
+      </if>
+      <if test="ctime != null" >
+        #{ctime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.emiservice.entity.Immessagefriends" >
+    update immessagefriends
+    <set >
+      <if test="fromid != null" >
+        fromid = #{fromid,jdbcType=INTEGER},
+      </if>
+      <if test="toid != null" >
+        toid = #{toid,jdbcType=INTEGER},
+      </if>
+      <if test="ctime != null" >
+        ctime = #{ctime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.emi.emiservice.entity.Immessagefriends" >
+    update immessagefriends
+    set fromid = #{fromid,jdbcType=INTEGER},
+      toid = #{toid,jdbcType=INTEGER},
+      ctime = #{ctime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+  <select id="getMyFriend" resultType="java.util.Map">
+      SELECT m.id userid,m.headimg avatar,m.name username from immessagefriends ifs LEFT join member m on ifs.toid=m.id where ifs.fromid=#{memberid}
+  </select>
+
+  <insert id="insertSelectiveList">
+    <![CDATA[ insert into immessagefriends (fromid,toid,ctime) values ]]>
+    <foreach collection="record" index="index" item="item" open="" close="" separator="," >
+      <![CDATA[    (#{item.fromid},#{item.toid},now()) ]]>
+    </foreach>
+  </insert>
+
+
+  <delete id="relieveFriend">
+
+    DELETE FROM immessagefriends WHERE (fromid=#{fromid} and toid=#{toid}) or (fromid=#{toid} and toid=#{fromid})
+
+
+  </delete>
+
+  <select id="getimmessagefriends" resultType="com.emi.emiservice.entity.Immessagefriends">
+    select * FROM  immessagefriends WHERE  fromid=#{memberid} AND toid = #{ownmemberid}
+  </select>
+</mapper>

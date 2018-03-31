@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.roots.mapper.AzKeywordMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzKeyword" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="keyword" property="keyword" jdbcType="VARCHAR" />
+    <result column="token" property="token" jdbcType="VARCHAR" />
+    <result column="addon" property="addon" jdbcType="VARCHAR" />
+    <result column="aim_id" property="aimId" jdbcType="INTEGER" />
+    <result column="cTime" property="ctime" jdbcType="INTEGER" />
+    <result column="keyword_length" property="keywordLength" jdbcType="INTEGER" />
+    <result column="keyword_type" property="keywordType" jdbcType="TINYINT" />
+    <result column="extra_int" property="extraInt" jdbcType="INTEGER" />
+    <result column="request_count" property="requestCount" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.emi.roots.entity.AzKeyword" extends="BaseResultMap" >
+    <result column="extra_text" property="extraText" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, keyword, token, addon, aim_id, cTime, keyword_length, keyword_type, extra_int, 
+    request_count
+  </sql>
+  <sql id="Blob_Column_List" >
+    extra_text
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from az_keyword
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from az_keyword
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.emi.roots.entity.AzKeyword" >
+    insert into az_keyword (id, keyword, token, 
+      addon, aim_id, cTime, 
+      keyword_length, keyword_type, extra_int, 
+      request_count, extra_text)
+    values (#{id,jdbcType=INTEGER}, #{keyword,jdbcType=VARCHAR}, #{token,jdbcType=VARCHAR}, 
+      #{addon,jdbcType=VARCHAR}, #{aimId,jdbcType=INTEGER}, #{ctime,jdbcType=INTEGER}, 
+      #{keywordLength,jdbcType=INTEGER}, #{keywordType,jdbcType=TINYINT}, #{extraInt,jdbcType=INTEGER}, 
+      #{requestCount,jdbcType=INTEGER}, #{extraText,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.emi.roots.entity.AzKeyword" >
+    insert into az_keyword
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="keyword != null" >
+        keyword,
+      </if>
+      <if test="token != null" >
+        token,
+      </if>
+      <if test="addon != null" >
+        addon,
+      </if>
+      <if test="aimId != null" >
+        aim_id,
+      </if>
+      <if test="ctime != null" >
+        cTime,
+      </if>
+      <if test="keywordLength != null" >
+        keyword_length,
+      </if>
+      <if test="keywordType != null" >
+        keyword_type,
+      </if>
+      <if test="extraInt != null" >
+        extra_int,
+      </if>
+      <if test="requestCount != null" >
+        request_count,
+      </if>
+      <if test="extraText != null" >
+        extra_text,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="keyword != null" >
+        #{keyword,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null" >
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="addon != null" >
+        #{addon,jdbcType=VARCHAR},
+      </if>
+      <if test="aimId != null" >
+        #{aimId,jdbcType=INTEGER},
+      </if>
+      <if test="ctime != null" >
+        #{ctime,jdbcType=INTEGER},
+      </if>
+      <if test="keywordLength != null" >
+        #{keywordLength,jdbcType=INTEGER},
+      </if>
+      <if test="keywordType != null" >
+        #{keywordType,jdbcType=TINYINT},
+      </if>
+      <if test="extraInt != null" >
+        #{extraInt,jdbcType=INTEGER},
+      </if>
+      <if test="requestCount != null" >
+        #{requestCount,jdbcType=INTEGER},
+      </if>
+      <if test="extraText != null" >
+        #{extraText,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.roots.entity.AzKeyword" >
+    update az_keyword
+    <set >
+      <if test="keyword != null" >
+        keyword = #{keyword,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null" >
+        token = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="addon != null" >
+        addon = #{addon,jdbcType=VARCHAR},
+      </if>
+      <if test="aimId != null" >
+        aim_id = #{aimId,jdbcType=INTEGER},
+      </if>
+      <if test="ctime != null" >
+        cTime = #{ctime,jdbcType=INTEGER},
+      </if>
+      <if test="keywordLength != null" >
+        keyword_length = #{keywordLength,jdbcType=INTEGER},
+      </if>
+      <if test="keywordType != null" >
+        keyword_type = #{keywordType,jdbcType=TINYINT},
+      </if>
+      <if test="extraInt != null" >
+        extra_int = #{extraInt,jdbcType=INTEGER},
+      </if>
+      <if test="requestCount != null" >
+        request_count = #{requestCount,jdbcType=INTEGER},
+      </if>
+      <if test="extraText != null" >
+        extra_text = #{extraText,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.emi.roots.entity.AzKeyword" >
+    update az_keyword
+    set keyword = #{keyword,jdbcType=VARCHAR},
+      token = #{token,jdbcType=VARCHAR},
+      addon = #{addon,jdbcType=VARCHAR},
+      aim_id = #{aimId,jdbcType=INTEGER},
+      cTime = #{ctime,jdbcType=INTEGER},
+      keyword_length = #{keywordLength,jdbcType=INTEGER},
+      keyword_type = #{keywordType,jdbcType=TINYINT},
+      extra_int = #{extraInt,jdbcType=INTEGER},
+      request_count = #{requestCount,jdbcType=INTEGER},
+      extra_text = #{extraText,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzKeyword" >
+    update az_keyword
+    set keyword = #{keyword,jdbcType=VARCHAR},
+      token = #{token,jdbcType=VARCHAR},
+      addon = #{addon,jdbcType=VARCHAR},
+      aim_id = #{aimId,jdbcType=INTEGER},
+      cTime = #{ctime,jdbcType=INTEGER},
+      keyword_length = #{keywordLength,jdbcType=INTEGER},
+      keyword_type = #{keywordType,jdbcType=TINYINT},
+      extra_int = #{extraInt,jdbcType=INTEGER},
+      request_count = #{requestCount,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.roots.mapper.AzAdMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzAd" >
+    <id column="ad_id" property="adId" jdbcType="BIGINT" />
+    <result column="ad_name" property="adName" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.emi.roots.entity.AzAd" extends="BaseResultMap" >
+    <result column="ad_content" property="adContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ad_id, ad_name, status
+  </sql>
+  <sql id="Blob_Column_List" >
+    ad_content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from az_ad
+    where ad_id = #{adId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from az_ad
+    where ad_id = #{adId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.emi.roots.entity.AzAd" >
+    insert into az_ad (ad_id, ad_name, status, 
+      ad_content)
+    values (#{adId,jdbcType=BIGINT}, #{adName,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{adContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.emi.roots.entity.AzAd" >
+    insert into az_ad
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="adId != null" >
+        ad_id,
+      </if>
+      <if test="adName != null" >
+        ad_name,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="adContent != null" >
+        ad_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="adId != null" >
+        #{adId,jdbcType=BIGINT},
+      </if>
+      <if test="adName != null" >
+        #{adName,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="adContent != null" >
+        #{adContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.roots.entity.AzAd" >
+    update az_ad
+    <set >
+      <if test="adName != null" >
+        ad_name = #{adName,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="adContent != null" >
+        ad_content = #{adContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ad_id = #{adId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.emi.roots.entity.AzAd" >
+    update az_ad
+    set ad_name = #{adName,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      ad_content = #{adContent,jdbcType=LONGVARCHAR}
+    where ad_id = #{adId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzAd" >
+    update az_ad
+    set ad_name = #{adName,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER}
+    where ad_id = #{adId,jdbcType=BIGINT}
+  </update>
+</mapper>

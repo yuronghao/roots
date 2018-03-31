@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.roots.mapper.AzSofMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzSof" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="INTEGER" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="TINYINT" />
+    <result column="praise_num" property="praiseNum" jdbcType="INTEGER" />
+    <result column="click_num" property="clickNum" jdbcType="INTEGER" />
+    <result column="reply_num" property="replyNum" jdbcType="INTEGER" />
+    <result column="isdel" property="isdel" jdbcType="TINYINT" />
+    <result column="istop" property="istop" jdbcType="TINYINT" />
+    <result column="ishot" property="ishot" jdbcType="TINYINT" />
+    <result column="label_id" property="labelId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, uid, create_time, update_time, content, state, praise_num, click_num, reply_num, 
+    isdel, istop, ishot, label_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from az_sof
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from az_sof
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.emi.roots.entity.AzSof" >
+    insert into az_sof (id, uid, create_time, 
+      update_time, content, state, 
+      praise_num, click_num, reply_num, 
+      isdel, istop, ishot, 
+      label_id)
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{createTime,jdbcType=INTEGER}, 
+      #{updateTime,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{state,jdbcType=TINYINT}, 
+      #{praiseNum,jdbcType=INTEGER}, #{clickNum,jdbcType=INTEGER}, #{replyNum,jdbcType=INTEGER}, 
+      #{isdel,jdbcType=TINYINT}, #{istop,jdbcType=TINYINT}, #{ishot,jdbcType=TINYINT}, 
+      #{labelId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.emi.roots.entity.AzSof" >
+    insert into az_sof
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="praiseNum != null" >
+        praise_num,
+      </if>
+      <if test="clickNum != null" >
+        click_num,
+      </if>
+      <if test="replyNum != null" >
+        reply_num,
+      </if>
+      <if test="isdel != null" >
+        isdel,
+      </if>
+      <if test="istop != null" >
+        istop,
+      </if>
+      <if test="ishot != null" >
+        ishot,
+      </if>
+      <if test="labelId != null" >
+        label_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=TINYINT},
+      </if>
+      <if test="praiseNum != null" >
+        #{praiseNum,jdbcType=INTEGER},
+      </if>
+      <if test="clickNum != null" >
+        #{clickNum,jdbcType=INTEGER},
+      </if>
+      <if test="replyNum != null" >
+        #{replyNum,jdbcType=INTEGER},
+      </if>
+      <if test="isdel != null" >
+        #{isdel,jdbcType=TINYINT},
+      </if>
+      <if test="istop != null" >
+        #{istop,jdbcType=TINYINT},
+      </if>
+      <if test="ishot != null" >
+        #{ishot,jdbcType=TINYINT},
+      </if>
+      <if test="labelId != null" >
+        #{labelId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.roots.entity.AzSof" >
+    update az_sof
+    <set >
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=TINYINT},
+      </if>
+      <if test="praiseNum != null" >
+        praise_num = #{praiseNum,jdbcType=INTEGER},
+      </if>
+      <if test="clickNum != null" >
+        click_num = #{clickNum,jdbcType=INTEGER},
+      </if>
+      <if test="replyNum != null" >
+        reply_num = #{replyNum,jdbcType=INTEGER},
+      </if>
+      <if test="isdel != null" >
+        isdel = #{isdel,jdbcType=TINYINT},
+      </if>
+      <if test="istop != null" >
+        istop = #{istop,jdbcType=TINYINT},
+      </if>
+      <if test="ishot != null" >
+        ishot = #{ishot,jdbcType=TINYINT},
+      </if>
+      <if test="labelId != null" >
+        label_id = #{labelId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzSof" >
+    update az_sof
+    set uid = #{uid,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=INTEGER},
+      content = #{content,jdbcType=VARCHAR},
+      state = #{state,jdbcType=TINYINT},
+      praise_num = #{praiseNum,jdbcType=INTEGER},
+      click_num = #{clickNum,jdbcType=INTEGER},
+      reply_num = #{replyNum,jdbcType=INTEGER},
+      isdel = #{isdel,jdbcType=TINYINT},
+      istop = #{istop,jdbcType=TINYINT},
+      ishot = #{ishot,jdbcType=TINYINT},
+      label_id = #{labelId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

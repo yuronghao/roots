@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/appinterface/appinterface.iml" filepath="$PROJECT_DIR$/appinterface/appinterface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/appweb/appweb.iml" filepath="$PROJECT_DIR$/appweb/appweb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/roots.iml" filepath="$PROJECT_DIR$/roots.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.emiservice.mapper.WeChatConfMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.emiservice.wechat.bean.WeChatConf" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="orgid" property="orgid" jdbcType="INTEGER" />
+    <result column="wxtype" property="wxtype" jdbcType="INTEGER" />
+    <result column="wxid" property="wxid" jdbcType="VARCHAR" />
+    <result column="wxname" property="wxname" jdbcType="VARCHAR" />
+    <result column="wxtoken" property="wxtoken" jdbcType="VARCHAR" />
+    <result column="wxappid" property="wxappid" jdbcType="VARCHAR" />
+    <result column="wxsecret" property="wxsecret" jdbcType="VARCHAR" />
+    <result column="accesstoken" property="accesstoken" jdbcType="VARCHAR" />
+    <result column="autoreply" property="autoreply" jdbcType="VARCHAR" />
+    <result column="wxlog" property="wxlog" jdbcType="VARCHAR" />
+    <result column="qrcode" property="qrcode" jdbcType="VARCHAR" />
+    <result column="ctime" property="ctime" jdbcType="TIMESTAMP" />
+    <result column="isapi" property="isapi" jdbcType="INTEGER" />
+    <result column="orgtype" property="orgtype" jdbcType="INTEGER" />
+    <result column="encodingaeskey" property="encodingaeskey" jdbcType="VARCHAR" />
+    <result column="subscribelog" property="subscribelog" jdbcType="VARCHAR" />
+    <result column="subscribetitle" property="subscribetitle" jdbcType="VARCHAR" />
+    <result column="subscribedescription" property="subscribedescription" jdbcType="VARCHAR" />
+    <result column="linkurl" property="linkurl" jdbcType="VARCHAR" />
+    <result column="keyword" property="keyword" jdbcType="VARCHAR" />
+    <result column="mchid" property="mchid" jdbcType="VARCHAR" />
+    <result column="apisecret" property="apisecret" jdbcType="VARCHAR" />
+    <result column="certfilepath" property="certfilepath" jdbcType="VARCHAR" />
+    <result column="certname" property="certname" jdbcType="VARCHAR" />
+    <result column="defaultreplay" property="defaultreplay" jdbcType="VARCHAR" />
+    <result column="sharetitle" property="sharetitle" jdbcType="VARCHAR" />
+    <result column="shareimg" property="shareimg" jdbcType="VARCHAR" />
+    <result column="mallname" property="mallname" jdbcType="VARCHAR" />
+    <result column="jsdkticket" property="jsdkticket" jdbcType="VARCHAR" />
+    <result column="apiticket" property="apiticket" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, orgid, wxtype, wxid, wxname, wxtoken, wxappid, wxsecret, accesstoken, autoreply, 
+    wxlog, qrcode, ctime, isapi, orgtype, encodingaeskey, subscribelog, subscribetitle, 
+    subscribedescription, linkurl, keyword, mchid, apisecret, certfilepath, certname, 
+    defaultreplay, sharetitle, shareimg, mallname, jsdkticket, apiticket
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from wx_base_conf
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from wx_base_conf
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.emi.emiservice.wechat.bean.WeChatConf" >
+    insert into wx_base_conf (id, orgid, wxtype, 
+      wxid, wxname, wxtoken, 
+      wxappid, wxsecret, accesstoken, 
+      autoreply, wxlog, qrcode, 
+      ctime, isapi, orgtype, 
+      encodingaeskey, subscribelog, subscribetitle, 
+      subscribedescription, linkurl, keyword, 
+      mchid, apisecret, certfilepath, 
+      certname, defaultreplay, sharetitle, 
+      shareimg, mallname, jsdkticket, 
+      apiticket)
+    values (#{id,jdbcType=INTEGER}, #{orgid,jdbcType=INTEGER}, #{wxtype,jdbcType=INTEGER}, 
+      #{wxid,jdbcType=VARCHAR}, #{wxname,jdbcType=VARCHAR}, #{wxtoken,jdbcType=VARCHAR}, 
+      #{wxappid,jdbcType=VARCHAR}, #{wxsecret,jdbcType=VARCHAR}, #{accesstoken,jdbcType=VARCHAR}, 
+      #{autoreply,jdbcType=VARCHAR}, #{wxlog,jdbcType=VARCHAR}, #{qrcode,jdbcType=VARCHAR}, 
+      #{ctime,jdbcType=TIMESTAMP}, #{isapi,jdbcType=INTEGER}, #{orgtype,jdbcType=INTEGER}, 
+      #{encodingaeskey,jdbcType=VARCHAR}, #{subscribelog,jdbcType=VARCHAR}, #{subscribetitle,jdbcType=VARCHAR}, 
+      #{subscribedescription,jdbcType=VARCHAR}, #{linkurl,jdbcType=VARCHAR}, #{keyword,jdbcType=VARCHAR}, 
+      #{mchid,jdbcType=VARCHAR}, #{apisecret,jdbcType=VARCHAR}, #{certfilepath,jdbcType=VARCHAR}, 
+      #{certname,jdbcType=VARCHAR}, #{defaultreplay,jdbcType=VARCHAR}, #{sharetitle,jdbcType=VARCHAR}, 
+      #{shareimg,jdbcType=VARCHAR}, #{mallname,jdbcType=VARCHAR}, #{jsdkticket,jdbcType=VARCHAR}, 
+      #{apiticket,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.emi.emiservice.wechat.bean.WeChatConf" >
+    insert into wx_base_conf
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="orgid != null" >
+        orgid,
+      </if>
+      <if test="wxtype != null" >
+        wxtype,
+      </if>
+      <if test="wxid != null" >
+        wxid,
+      </if>
+      <if test="wxname != null" >
+        wxname,
+      </if>
+      <if test="wxtoken != null" >
+        wxtoken,
+      </if>
+      <if test="wxappid != null" >
+        wxappid,
+      </if>
+      <if test="wxsecret != null" >
+        wxsecret,
+      </if>
+      <if test="accesstoken != null" >
+        accesstoken,
+      </if>
+      <if test="autoreply != null" >
+        autoreply,
+      </if>
+      <if test="wxlog != null" >
+        wxlog,
+      </if>
+      <if test="qrcode != null" >
+        qrcode,
+      </if>
+      <if test="ctime != null" >
+        ctime,
+      </if>
+      <if test="isapi != null" >
+        isapi,
+      </if>
+      <if test="orgtype != null" >
+        orgtype,
+      </if>
+      <if test="encodingaeskey != null" >
+        encodingaeskey,
+      </if>
+      <if test="subscribelog != null" >
+        subscribelog,
+      </if>
+      <if test="subscribetitle != null" >
+        subscribetitle,
+      </if>
+      <if test="subscribedescription != null" >
+        subscribedescription,
+      </if>
+      <if test="linkurl != null" >
+        linkurl,
+      </if>
+      <if test="keyword != null" >
+        keyword,
+      </if>
+      <if test="mchid != null" >
+        mchid,
+      </if>
+      <if test="apisecret != null" >
+        apisecret,
+      </if>
+      <if test="certfilepath != null" >
+        certfilepath,
+      </if>
+      <if test="certname != null" >
+        certname,
+      </if>
+      <if test="defaultreplay != null" >
+        defaultreplay,
+      </if>
+      <if test="sharetitle != null" >
+        sharetitle,
+      </if>
+      <if test="shareimg != null" >
+        shareimg,
+      </if>
+      <if test="mallname != null" >
+        mallname,
+      </if>
+      <if test="jsdkticket != null" >
+        jsdkticket,
+      </if>
+      <if test="apiticket != null" >
+        apiticket,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orgid != null" >
+        #{orgid,jdbcType=INTEGER},
+      </if>
+      <if test="wxtype != null" >
+        #{wxtype,jdbcType=INTEGER},
+      </if>
+      <if test="wxid != null" >
+        #{wxid,jdbcType=VARCHAR},
+      </if>
+      <if test="wxname != null" >
+        #{wxname,jdbcType=VARCHAR},
+      </if>
+      <if test="wxtoken != null" >
+        #{wxtoken,jdbcType=VARCHAR},
+      </if>
+      <if test="wxappid != null" >
+        #{wxappid,jdbcType=VARCHAR},
+      </if>
+      <if test="wxsecret != null" >
+        #{wxsecret,jdbcType=VARCHAR},
+      </if>
+      <if test="accesstoken != null" >
+        #{accesstoken,jdbcType=VARCHAR},
+      </if>
+      <if test="autoreply != null" >
+        #{autoreply,jdbcType=VARCHAR},
+      </if>
+      <if test="wxlog != null" >
+        #{wxlog,jdbcType=VARCHAR},
+      </if>
+      <if test="qrcode != null" >
+        #{qrcode,jdbcType=VARCHAR},
+      </if>
+      <if test="ctime != null" >
+        #{ctime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isapi != null" >
+        #{isapi,jdbcType=INTEGER},
+      </if>
+      <if test="orgtype != null" >
+        #{orgtype,jdbcType=INTEGER},
+      </if>
+      <if test="encodingaeskey != null" >
+        #{encodingaeskey,jdbcType=VARCHAR},
+      </if>
+      <if test="subscribelog != null" >
+        #{subscribelog,jdbcType=VARCHAR},
+      </if>
+      <if test="subscribetitle != null" >
+        #{subscribetitle,jdbcType=VARCHAR},
+      </if>
+      <if test="subscribedescription != null" >
+        #{subscribedescription,jdbcType=VARCHAR},
+      </if>
+      <if test="linkurl != null" >
+        #{linkurl,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword != null" >
+        #{keyword,jdbcType=VARCHAR},
+      </if>
+      <if test="mchid != null" >
+        #{mchid,jdbcType=VARCHAR},
+      </if>
+      <if test="apisecret != null" >
+        #{apisecret,jdbcType=VARCHAR},
+      </if>
+      <if test="certfilepath != null" >
+        #{certfilepath,jdbcType=VARCHAR},
+      </if>
+      <if test="certname != null" >
+        #{certname,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultreplay != null" >
+        #{defaultreplay,jdbcType=VARCHAR},
+      </if>
+      <if test="sharetitle != null" >
+        #{sharetitle,jdbcType=VARCHAR},
+      </if>
+      <if test="shareimg != null" >
+        #{shareimg,jdbcType=VARCHAR},
+      </if>
+      <if test="mallname != null" >
+        #{mallname,jdbcType=VARCHAR},
+      </if>
+      <if test="jsdkticket != null" >
+        #{jsdkticket,jdbcType=VARCHAR},
+      </if>
+      <if test="apiticket != null" >
+        #{apiticket,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.emiservice.wechat.bean.WeChatConf" >
+    update wx_base_conf
+    <set >
+      <if test="orgid != null" >
+        orgid = #{orgid,jdbcType=INTEGER},
+      </if>
+      <if test="wxtype != null" >
+        wxtype = #{wxtype,jdbcType=INTEGER},
+      </if>
+      <if test="wxid != null" >
+        wxid = #{wxid,jdbcType=VARCHAR},
+      </if>
+      <if test="wxname != null" >
+        wxname = #{wxname,jdbcType=VARCHAR},
+      </if>
+      <if test="wxtoken != null" >
+        wxtoken = #{wxtoken,jdbcType=VARCHAR},
+      </if>
+      <if test="wxappid != null" >
+        wxappid = #{wxappid,jdbcType=VARCHAR},
+      </if>
+      <if test="wxsecret != null" >
+        wxsecret = #{wxsecret,jdbcType=VARCHAR},
+      </if>
+      <if test="accesstoken != null" >
+        accesstoken = #{accesstoken,jdbcType=VARCHAR},
+      </if>
+      <if test="autoreply != null" >
+        autoreply = #{autoreply,jdbcType=VARCHAR},
+      </if>
+      <if test="wxlog != null" >
+        wxlog = #{wxlog,jdbcType=VARCHAR},
+      </if>
+      <if test="qrcode != null" >
+        qrcode = #{qrcode,jdbcType=VARCHAR},
+      </if>
+      <if test="ctime != null" >
+        ctime = #{ctime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isapi != null" >
+        isapi = #{isapi,jdbcType=INTEGER},
+      </if>
+      <if test="orgtype != null" >
+        orgtype = #{orgtype,jdbcType=INTEGER},
+      </if>
+      <if test="encodingaeskey != null" >
+        encodingaeskey = #{encodingaeskey,jdbcType=VARCHAR},
+      </if>
+      <if test="subscribelog != null" >
+        subscribelog = #{subscribelog,jdbcType=VARCHAR},
+      </if>
+      <if test="subscribetitle != null" >
+        subscribetitle = #{subscribetitle,jdbcType=VARCHAR},
+      </if>
+      <if test="subscribedescription != null" >
+        subscribedescription = #{subscribedescription,jdbcType=VARCHAR},
+      </if>
+      <if test="linkurl != null" >
+        linkurl = #{linkurl,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword != null" >
+        keyword = #{keyword,jdbcType=VARCHAR},
+      </if>
+      <if test="mchid != null" >
+        mchid = #{mchid,jdbcType=VARCHAR},
+      </if>
+      <if test="apisecret != null" >
+        apisecret = #{apisecret,jdbcType=VARCHAR},
+      </if>
+      <if test="certfilepath != null" >
+        certfilepath = #{certfilepath,jdbcType=VARCHAR},
+      </if>
+      <if test="certname != null" >
+        certname = #{certname,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultreplay != null" >
+        defaultreplay = #{defaultreplay,jdbcType=VARCHAR},
+      </if>
+      <if test="sharetitle != null" >
+        sharetitle = #{sharetitle,jdbcType=VARCHAR},
+      </if>
+      <if test="shareimg != null" >
+        shareimg = #{shareimg,jdbcType=VARCHAR},
+      </if>
+      <if test="mallname != null" >
+        mallname = #{mallname,jdbcType=VARCHAR},
+      </if>
+      <if test="jsdkticket != null" >
+        jsdkticket = #{jsdkticket,jdbcType=VARCHAR},
+      </if>
+      <if test="apiticket != null" >
+        apiticket = #{apiticket,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.emi.emiservice.wechat.bean.WeChatConf" >
+    update wx_base_conf
+    set orgid = #{orgid,jdbcType=INTEGER},
+      wxtype = #{wxtype,jdbcType=INTEGER},
+      wxid = #{wxid,jdbcType=VARCHAR},
+      wxname = #{wxname,jdbcType=VARCHAR},
+      wxtoken = #{wxtoken,jdbcType=VARCHAR},
+      wxappid = #{wxappid,jdbcType=VARCHAR},
+      wxsecret = #{wxsecret,jdbcType=VARCHAR},
+      accesstoken = #{accesstoken,jdbcType=VARCHAR},
+      autoreply = #{autoreply,jdbcType=VARCHAR},
+      wxlog = #{wxlog,jdbcType=VARCHAR},
+      qrcode = #{qrcode,jdbcType=VARCHAR},
+      ctime = #{ctime,jdbcType=TIMESTAMP},
+      isapi = #{isapi,jdbcType=INTEGER},
+      orgtype = #{orgtype,jdbcType=INTEGER},
+      encodingaeskey = #{encodingaeskey,jdbcType=VARCHAR},
+      subscribelog = #{subscribelog,jdbcType=VARCHAR},
+      subscribetitle = #{subscribetitle,jdbcType=VARCHAR},
+      subscribedescription = #{subscribedescription,jdbcType=VARCHAR},
+      linkurl = #{linkurl,jdbcType=VARCHAR},
+      keyword = #{keyword,jdbcType=VARCHAR},
+      mchid = #{mchid,jdbcType=VARCHAR},
+      apisecret = #{apisecret,jdbcType=VARCHAR},
+      certfilepath = #{certfilepath,jdbcType=VARCHAR},
+      certname = #{certname,jdbcType=VARCHAR},
+      defaultreplay = #{defaultreplay,jdbcType=VARCHAR},
+      sharetitle = #{sharetitle,jdbcType=VARCHAR},
+      shareimg = #{shareimg,jdbcType=VARCHAR},
+      mallname = #{mallname,jdbcType=VARCHAR},
+      jsdkticket = #{jsdkticket,jdbcType=VARCHAR},
+      apiticket = #{apiticket,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+  <select id="getWechatconf" resultType="com.emi.emiservice.wechat.bean.WeChatConf">
+    select  * from wx_base_conf  LIMIT  0,1
+  </select>
+
+
+  <update id="updateJSDKTicket">
+    update wx_base_conf set jsdkticket='${jsdkticket}' where id=${id}
+  </update>
+
+  <update id="updateAccesstoken">
+    update wx_base_conf set accesstoken='${accesstoken}' where id=${id}
+  </update>
+
+  <update id="updateApiTicket">
+    update wx_base_conf wb set wb.apiticket  = '${apiticket}' where wb.id = '${id}'
+  </update>
+
+
+</mapper>

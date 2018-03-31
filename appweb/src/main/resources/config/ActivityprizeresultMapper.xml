@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.emiservice.mapper.ActivityprizeresultMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.emiservice.entity.Activityprizeresult" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="activityid" property="activityid" jdbcType="INTEGER" />
+    <result column="memberid" property="memberid" jdbcType="INTEGER" />
+    <result column="activityprizeid" property="activityprizeid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, activityid, memberid, activityprizeid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from activityprizeresult
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from activityprizeresult
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.emi.emiservice.entity.Activityprizeresult" >
+    insert into activityprizeresult (id, activityid, memberid, 
+      activityprizeid)
+    values (#{id,jdbcType=INTEGER}, #{activityid,jdbcType=INTEGER}, #{memberid,jdbcType=INTEGER}, 
+      #{activityprizeid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.emi.emiservice.entity.Activityprizeresult" >
+    insert into activityprizeresult
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="activityid != null" >
+        activityid,
+      </if>
+      <if test="memberid != null" >
+        memberid,
+      </if>
+      <if test="activityprizeid != null" >
+        activityprizeid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="activityid != null" >
+        #{activityid,jdbcType=INTEGER},
+      </if>
+      <if test="memberid != null" >
+        #{memberid,jdbcType=INTEGER},
+      </if>
+      <if test="activityprizeid != null" >
+        #{activityprizeid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.emiservice.entity.Activityprizeresult" >
+    update activityprizeresult
+    <set >
+      <if test="activityid != null" >
+        activityid = #{activityid,jdbcType=INTEGER},
+      </if>
+      <if test="memberid != null" >
+        memberid = #{memberid,jdbcType=INTEGER},
+      </if>
+      <if test="activityprizeid != null" >
+        activityprizeid = #{activityprizeid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.emi.emiservice.entity.Activityprizeresult" >
+    update activityprizeresult
+    set activityid = #{activityid,jdbcType=INTEGER},
+      memberid = #{memberid,jdbcType=INTEGER},
+      activityprizeid = #{activityprizeid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+  <insert id="addActivityprizeresultList">
+    <![CDATA[ insert into activityprizeresult (activityid,memberid,activityprizeid) values ]]>
+    <foreach collection="list" index="index" item="item" open="" close="" separator="," >
+      <![CDATA[    (#{item.activityid},#{item.memberid},#{item.activityprizeid}) ]]>
+    </foreach>
+  </insert>
+
+  <select id="getPrizeMemByActivityId" resultType="com.emi.emiservice.entity.Activityprizeresult">
+      select ast.activityid,ast.activityprizeid,m.phonenum,ap.ranking,ap.prizename,m.name membername from activityprizeresult ast
+      LEFT JOIN member m on ast.memberid=m.id
+      LEFT JOIN activityprize ap on ast.activityprizeid=ap.id
+      where ast.activityid=#{activityId}
+      order by ap.rounds
+  </select>
+
+</mapper>

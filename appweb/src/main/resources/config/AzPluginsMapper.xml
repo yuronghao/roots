@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.emi.roots.mapper.AzPluginsMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzPlugins" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="TINYINT" />
+    <result column="status" property="status" jdbcType="BIT" />
+    <result column="hooks" property="hooks" jdbcType="VARCHAR" />
+    <result column="has_admin" property="hasAdmin" jdbcType="TINYINT" />
+    <result column="author" property="author" jdbcType="VARCHAR" />
+    <result column="version" property="version" jdbcType="VARCHAR" />
+    <result column="createtime" property="createtime" jdbcType="INTEGER" />
+    <result column="listorder" property="listorder" jdbcType="SMALLINT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.emi.roots.entity.AzPluginsWithBLOBs" extends="BaseResultMap" >
+    <result column="description" property="description" jdbcType="LONGVARCHAR" />
+    <result column="config" property="config" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, title, type, status, hooks, has_admin, author, version, createtime, listorder
+  </sql>
+  <sql id="Blob_Column_List" >
+    description, config
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from az_plugins
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from az_plugins
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.emi.roots.entity.AzPluginsWithBLOBs" >
+    insert into az_plugins (id, name, title, 
+      type, status, hooks, has_admin, 
+      author, version, createtime, 
+      listorder, description, config
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{type,jdbcType=TINYINT}, #{status,jdbcType=BIT}, #{hooks,jdbcType=VARCHAR}, #{hasAdmin,jdbcType=TINYINT}, 
+      #{author,jdbcType=VARCHAR}, #{version,jdbcType=VARCHAR}, #{createtime,jdbcType=INTEGER}, 
+      #{listorder,jdbcType=SMALLINT}, #{description,jdbcType=LONGVARCHAR}, #{config,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.emi.roots.entity.AzPluginsWithBLOBs" >
+    insert into az_plugins
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="hooks != null" >
+        hooks,
+      </if>
+      <if test="hasAdmin != null" >
+        has_admin,
+      </if>
+      <if test="author != null" >
+        author,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="listorder != null" >
+        listorder,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="config != null" >
+        config,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=BIT},
+      </if>
+      <if test="hooks != null" >
+        #{hooks,jdbcType=VARCHAR},
+      </if>
+      <if test="hasAdmin != null" >
+        #{hasAdmin,jdbcType=TINYINT},
+      </if>
+      <if test="author != null" >
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null" >
+        #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=INTEGER},
+      </if>
+      <if test="listorder != null" >
+        #{listorder,jdbcType=SMALLINT},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="config != null" >
+        #{config,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.roots.entity.AzPluginsWithBLOBs" >
+    update az_plugins
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=TINYINT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=BIT},
+      </if>
+      <if test="hooks != null" >
+        hooks = #{hooks,jdbcType=VARCHAR},
+      </if>
+      <if test="hasAdmin != null" >
+        has_admin = #{hasAdmin,jdbcType=TINYINT},
+      </if>
+      <if test="author != null" >
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null" >
+        version = #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=INTEGER},
+      </if>
+      <if test="listorder != null" >
+        listorder = #{listorder,jdbcType=SMALLINT},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="config != null" >
+        config = #{config,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.emi.roots.entity.AzPluginsWithBLOBs" >
+    update az_plugins
+    set name = #{name,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      type = #{type,jdbcType=TINYINT},
+      status = #{status,jdbcType=BIT},
+      hooks = #{hooks,jdbcType=VARCHAR},
+      has_admin = #{hasAdmin,jdbcType=TINYINT},
+      author = #{author,jdbcType=VARCHAR},
+      version = #{version,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=INTEGER},
+      listorder = #{listorder,jdbcType=SMALLINT},
+      description = #{description,jdbcType=LONGVARCHAR},
+      config = #{config,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzPlugins" >
+    update az_plugins
+    set name = #{name,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      type = #{type,jdbcType=TINYINT},
+      status = #{status,jdbcType=BIT},
+      hooks = #{hooks,jdbcType=VARCHAR},
+      has_admin = #{hasAdmin,jdbcType=TINYINT},
+      author = #{author,jdbcType=VARCHAR},
+      version = #{version,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=INTEGER},
+      listorder = #{listorder,jdbcType=SMALLINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
