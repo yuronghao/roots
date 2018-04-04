@@ -2,23 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.emi.roots.mapper.AzAuthAccessMapper" >
   <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzAuthAccess" >
-    <result column="role_id" property="roleId" jdbcType="INTEGER" />
-    <result column="rule_name" property="ruleName" jdbcType="VARCHAR" />
+    <result column="role_id" property="role_id" jdbcType="INTEGER" />
+    <result column="rule_name" property="rule_name" jdbcType="VARCHAR" />
     <result column="type" property="type" jdbcType="VARCHAR" />
   </resultMap>
   <insert id="insert" parameterType="com.emi.roots.entity.AzAuthAccess" >
     insert into az_auth_access (role_id, rule_name, type
       )
-    values (#{roleId,jdbcType=INTEGER}, #{ruleName,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}
+    values (#{role_id,jdbcType=INTEGER}, #{rule_name,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.emi.roots.entity.AzAuthAccess" >
     insert into az_auth_access
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="roleId != null" >
+      <if test="role_id != null" >
         role_id,
       </if>
-      <if test="ruleName != null" >
+      <if test="rule_name != null" >
         rule_name,
       </if>
       <if test="type != null" >
@@ -26,11 +26,11 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="roleId != null" >
-        #{roleId,jdbcType=INTEGER},
+      <if test="role_id != null" >
+        #{role_id,jdbcType=INTEGER},
       </if>
-      <if test="ruleName != null" >
-        #{ruleName,jdbcType=VARCHAR},
+      <if test="rule_name != null" >
+        #{rule_name,jdbcType=VARCHAR},
       </if>
       <if test="type != null" >
         #{type,jdbcType=VARCHAR},

@@ -11,7 +11,7 @@
     <result column="uploadtime" property="uploadtime" jdbcType="INTEGER" />
     <result column="status" property="status" jdbcType="INTEGER" />
     <result column="suffix" property="suffix" jdbcType="VARCHAR" />
-    <result column="download_times" property="downloadTimes" jdbcType="INTEGER" />
+    <result column="download_times" property="download_times" jdbcType="INTEGER" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.emi.roots.entity.AzAsset" extends="BaseResultMap" >
     <result column="meta" property="meta" jdbcType="LONGVARCHAR" />
@@ -42,7 +42,7 @@
     values (#{aid,jdbcType=BIGINT}, #{uid,jdbcType=INTEGER}, #{key,jdbcType=VARCHAR}, 
       #{filename,jdbcType=VARCHAR}, #{filesize,jdbcType=INTEGER}, #{filepath,jdbcType=VARCHAR}, 
       #{uploadtime,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{suffix,jdbcType=VARCHAR}, 
-      #{downloadTimes,jdbcType=INTEGER}, #{meta,jdbcType=LONGVARCHAR})
+      #{download_times,jdbcType=INTEGER}, #{meta,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.emi.roots.entity.AzAsset" >
     insert into az_asset
@@ -74,7 +74,7 @@
       <if test="suffix != null" >
         suffix,
       </if>
-      <if test="downloadTimes != null" >
+      <if test="download_times != null" >
         download_times,
       </if>
       <if test="meta != null" >
@@ -109,8 +109,8 @@
       <if test="suffix != null" >
         #{suffix,jdbcType=VARCHAR},
       </if>
-      <if test="downloadTimes != null" >
-        #{downloadTimes,jdbcType=INTEGER},
+      <if test="download_times != null" >
+        #{download_times,jdbcType=INTEGER},
       </if>
       <if test="meta != null" >
         #{meta,jdbcType=LONGVARCHAR},
@@ -144,8 +144,8 @@
       <if test="suffix != null" >
         suffix = #{suffix,jdbcType=VARCHAR},
       </if>
-      <if test="downloadTimes != null" >
-        download_times = #{downloadTimes,jdbcType=INTEGER},
+      <if test="download_times != null" >
+        download_times = #{download_times,jdbcType=INTEGER},
       </if>
       <if test="meta != null" >
         meta = #{meta,jdbcType=LONGVARCHAR},
@@ -163,7 +163,7 @@
       uploadtime = #{uploadtime,jdbcType=INTEGER},
       status = #{status,jdbcType=INTEGER},
       suffix = #{suffix,jdbcType=VARCHAR},
-      download_times = #{downloadTimes,jdbcType=INTEGER},
+      download_times = #{download_times,jdbcType=INTEGER},
       meta = #{meta,jdbcType=LONGVARCHAR}
     where aid = #{aid,jdbcType=BIGINT}
   </update>
@@ -177,7 +177,7 @@
       uploadtime = #{uploadtime,jdbcType=INTEGER},
       status = #{status,jdbcType=INTEGER},
       suffix = #{suffix,jdbcType=VARCHAR},
-      download_times = #{downloadTimes,jdbcType=INTEGER}
+      download_times = #{download_times,jdbcType=INTEGER}
     where aid = #{aid,jdbcType=BIGINT}
   </update>
 </mapper>

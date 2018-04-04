@@ -9,15 +9,15 @@
     <result column="keywords" property="keywords" jdbcType="VARCHAR" />
     <result column="stock" property="stock" jdbcType="INTEGER" />
     <result column="status" property="status" jdbcType="BIT" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="update_time" property="updateTime" jdbcType="INTEGER" />
+    <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="update_time" jdbcType="INTEGER" />
     <result column="clicks" property="clicks" jdbcType="INTEGER" />
     <result column="number" property="number" jdbcType="VARCHAR" />
-    <result column="is_delete" property="isDelete" jdbcType="BIT" />
-    <result column="ship_fee" property="shipFee" jdbcType="DECIMAL" />
-    <result column="is_recommend" property="isRecommend" jdbcType="BIT" />
+    <result column="is_delete" property="is_delete" jdbcType="BIT" />
+    <result column="ship_fee" property="ship_fee" jdbcType="DECIMAL" />
+    <result column="is_recommend" property="is_recommend" jdbcType="BIT" />
     <result column="listorder" property="listorder" jdbcType="INTEGER" />
-    <result column="is_hot" property="isHot" jdbcType="BIT" />
+    <result column="is_hot" property="is_hot" jdbcType="BIT" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.emi.roots.entity.AzGoodsWithBLOBs" extends="BaseResultMap" >
     <result column="smeta" property="smeta" jdbcType="LONGVARCHAR" />
@@ -54,10 +54,10 @@
       summary, content)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, 
       #{cid,jdbcType=SMALLINT}, #{keywords,jdbcType=VARCHAR}, #{stock,jdbcType=INTEGER}, 
-      #{status,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=INTEGER}, 
-      #{clicks,jdbcType=INTEGER}, #{number,jdbcType=VARCHAR}, #{isDelete,jdbcType=BIT}, 
-      #{shipFee,jdbcType=DECIMAL}, #{isRecommend,jdbcType=BIT}, #{listorder,jdbcType=INTEGER}, 
-      #{isHot,jdbcType=BIT}, #{smeta,jdbcType=LONGVARCHAR}, #{description,jdbcType=LONGVARCHAR}, 
+      #{status,jdbcType=BIT}, #{create_time,jdbcType=TIMESTAMP}, #{update_time,jdbcType=INTEGER}, 
+      #{clicks,jdbcType=INTEGER}, #{number,jdbcType=VARCHAR}, #{is_delete,jdbcType=BIT}, 
+      #{ship_fee,jdbcType=DECIMAL}, #{is_recommend,jdbcType=BIT}, #{listorder,jdbcType=INTEGER}, 
+      #{is_hot,jdbcType=BIT}, #{smeta,jdbcType=LONGVARCHAR}, #{description,jdbcType=LONGVARCHAR}, 
       #{summary,jdbcType=LONGVARCHAR}, #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.emi.roots.entity.AzGoodsWithBLOBs" >
@@ -84,10 +84,10 @@
       <if test="status != null" >
         status,
       </if>
-      <if test="createTime != null" >
+      <if test="create_time != null" >
         create_time,
       </if>
-      <if test="updateTime != null" >
+      <if test="update_time != null" >
         update_time,
       </if>
       <if test="clicks != null" >
@@ -96,19 +96,19 @@
       <if test="number != null" >
         number,
       </if>
-      <if test="isDelete != null" >
+      <if test="is_delete != null" >
         is_delete,
       </if>
-      <if test="shipFee != null" >
+      <if test="ship_fee != null" >
         ship_fee,
       </if>
-      <if test="isRecommend != null" >
+      <if test="is_recommend != null" >
         is_recommend,
       </if>
       <if test="listorder != null" >
         listorder,
       </if>
-      <if test="isHot != null" >
+      <if test="is_hot != null" >
         is_hot,
       </if>
       <if test="smeta != null" >
@@ -146,11 +146,11 @@
       <if test="status != null" >
         #{status,jdbcType=BIT},
       </if>
-      <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
+      <if test="create_time != null" >
+        #{create_time,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null" >
-        #{updateTime,jdbcType=INTEGER},
+      <if test="update_time != null" >
+        #{update_time,jdbcType=INTEGER},
       </if>
       <if test="clicks != null" >
         #{clicks,jdbcType=INTEGER},
@@ -158,20 +158,20 @@
       <if test="number != null" >
         #{number,jdbcType=VARCHAR},
       </if>
-      <if test="isDelete != null" >
-        #{isDelete,jdbcType=BIT},
+      <if test="is_delete != null" >
+        #{is_delete,jdbcType=BIT},
       </if>
-      <if test="shipFee != null" >
-        #{shipFee,jdbcType=DECIMAL},
+      <if test="ship_fee != null" >
+        #{ship_fee,jdbcType=DECIMAL},
       </if>
-      <if test="isRecommend != null" >
-        #{isRecommend,jdbcType=BIT},
+      <if test="is_recommend != null" >
+        #{is_recommend,jdbcType=BIT},
       </if>
       <if test="listorder != null" >
         #{listorder,jdbcType=INTEGER},
       </if>
-      <if test="isHot != null" >
-        #{isHot,jdbcType=BIT},
+      <if test="is_hot != null" >
+        #{is_hot,jdbcType=BIT},
       </if>
       <if test="smeta != null" >
         #{smeta,jdbcType=LONGVARCHAR},
@@ -208,11 +208,11 @@
       <if test="status != null" >
         status = #{status,jdbcType=BIT},
       </if>
-      <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=TIMESTAMP},
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=TIMESTAMP},
       </if>
-      <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=INTEGER},
+      <if test="update_time != null" >
+        update_time = #{update_time,jdbcType=INTEGER},
       </if>
       <if test="clicks != null" >
         clicks = #{clicks,jdbcType=INTEGER},
@@ -220,20 +220,20 @@
       <if test="number != null" >
         number = #{number,jdbcType=VARCHAR},
       </if>
-      <if test="isDelete != null" >
-        is_delete = #{isDelete,jdbcType=BIT},
+      <if test="is_delete != null" >
+        is_delete = #{is_delete,jdbcType=BIT},
       </if>
-      <if test="shipFee != null" >
-        ship_fee = #{shipFee,jdbcType=DECIMAL},
+      <if test="ship_fee != null" >
+        ship_fee = #{ship_fee,jdbcType=DECIMAL},
       </if>
-      <if test="isRecommend != null" >
-        is_recommend = #{isRecommend,jdbcType=BIT},
+      <if test="is_recommend != null" >
+        is_recommend = #{is_recommend,jdbcType=BIT},
       </if>
       <if test="listorder != null" >
         listorder = #{listorder,jdbcType=INTEGER},
       </if>
-      <if test="isHot != null" >
-        is_hot = #{isHot,jdbcType=BIT},
+      <if test="is_hot != null" >
+        is_hot = #{is_hot,jdbcType=BIT},
       </if>
       <if test="smeta != null" >
         smeta = #{smeta,jdbcType=LONGVARCHAR},
@@ -258,15 +258,15 @@
       keywords = #{keywords,jdbcType=VARCHAR},
       stock = #{stock,jdbcType=INTEGER},
       status = #{status,jdbcType=BIT},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=INTEGER},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=INTEGER},
       clicks = #{clicks,jdbcType=INTEGER},
       number = #{number,jdbcType=VARCHAR},
-      is_delete = #{isDelete,jdbcType=BIT},
-      ship_fee = #{shipFee,jdbcType=DECIMAL},
-      is_recommend = #{isRecommend,jdbcType=BIT},
+      is_delete = #{is_delete,jdbcType=BIT},
+      ship_fee = #{ship_fee,jdbcType=DECIMAL},
+      is_recommend = #{is_recommend,jdbcType=BIT},
       listorder = #{listorder,jdbcType=INTEGER},
-      is_hot = #{isHot,jdbcType=BIT},
+      is_hot = #{is_hot,jdbcType=BIT},
       smeta = #{smeta,jdbcType=LONGVARCHAR},
       description = #{description,jdbcType=LONGVARCHAR},
       summary = #{summary,jdbcType=LONGVARCHAR},
@@ -281,15 +281,15 @@
       keywords = #{keywords,jdbcType=VARCHAR},
       stock = #{stock,jdbcType=INTEGER},
       status = #{status,jdbcType=BIT},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=INTEGER},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      update_time = #{update_time,jdbcType=INTEGER},
       clicks = #{clicks,jdbcType=INTEGER},
       number = #{number,jdbcType=VARCHAR},
-      is_delete = #{isDelete,jdbcType=BIT},
-      ship_fee = #{shipFee,jdbcType=DECIMAL},
-      is_recommend = #{isRecommend,jdbcType=BIT},
+      is_delete = #{is_delete,jdbcType=BIT},
+      ship_fee = #{ship_fee,jdbcType=DECIMAL},
+      is_recommend = #{is_recommend,jdbcType=BIT},
       listorder = #{listorder,jdbcType=INTEGER},
-      is_hot = #{isHot,jdbcType=BIT}
+      is_hot = #{is_hot,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

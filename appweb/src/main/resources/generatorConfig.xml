@@ -30,10 +30,19 @@
 
 		<javaClientGenerator targetPackage="com.emi.roots.mapper" targetProject="E:/intellij-workspace/roots/appinterface/src/main/java" type="XMLMAPPER">
 			<property name="enableSubPackages" value="true" />
+			<!-- 用于指定一个所有生成的接口都继承的父接口。 这个值可以通过<table>配置的rootInterface属性覆盖 -->
+			<property name="rootInterface" value="com.emi.roots.mapper.SqlMapper"/>
+
 		</javaClientGenerator>
 
 		<table tableName="%" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
-    enableSelectByExample="false" selectByExampleQueryId="false" />
+			   enableSelectByExample="false" selectByExampleQueryId="false" >
+
+			<!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名 -->
+			<property name="useActualColumnNames" value="true"/>
+
+
+		</table>
 
 	</context>
 </generatorConfiguration>

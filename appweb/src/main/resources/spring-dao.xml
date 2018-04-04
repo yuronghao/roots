@@ -58,8 +58,8 @@
 	
 	<!--４:配置扫描Dao接口包,动态实现DAO接口,注入到spring容器-->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.emi.emiservice.mapper" />
-		<property name="markerInterface" value="com.emi.emiservice.mapper.SqlMapper" />
+		<property name="basePackage" value="com.emi.roots.mapper" />
+		<property name="markerInterface" value="com.emi.roots.mapper.SqlMapper" />
 	</bean>
 	
 	

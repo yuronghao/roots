@@ -3,8 +3,8 @@
 <mapper namespace="com.emi.roots.mapper.AzTermRelationshipsMapper" >
   <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzTermRelationships" >
     <id column="tid" property="tid" jdbcType="BIGINT" />
-    <result column="object_id" property="objectId" jdbcType="BIGINT" />
-    <result column="term_id" property="termId" jdbcType="BIGINT" />
+    <result column="object_id" property="object_id" jdbcType="BIGINT" />
+    <result column="term_id" property="term_id" jdbcType="BIGINT" />
     <result column="listorder" property="listorder" jdbcType="INTEGER" />
     <result column="status" property="status" jdbcType="INTEGER" />
   </resultMap>
@@ -24,7 +24,7 @@
   <insert id="insert" parameterType="com.emi.roots.entity.AzTermRelationships" >
     insert into az_term_relationships (tid, object_id, term_id, 
       listorder, status)
-    values (#{tid,jdbcType=BIGINT}, #{objectId,jdbcType=BIGINT}, #{termId,jdbcType=BIGINT}, 
+    values (#{tid,jdbcType=BIGINT}, #{object_id,jdbcType=BIGINT}, #{term_id,jdbcType=BIGINT}, 
       #{listorder,jdbcType=INTEGER}, #{status,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.emi.roots.entity.AzTermRelationships" >
@@ -33,10 +33,10 @@
       <if test="tid != null" >
         tid,
       </if>
-      <if test="objectId != null" >
+      <if test="object_id != null" >
         object_id,
       </if>
-      <if test="termId != null" >
+      <if test="term_id != null" >
         term_id,
       </if>
       <if test="listorder != null" >
@@ -50,11 +50,11 @@
       <if test="tid != null" >
         #{tid,jdbcType=BIGINT},
       </if>
-      <if test="objectId != null" >
-        #{objectId,jdbcType=BIGINT},
+      <if test="object_id != null" >
+        #{object_id,jdbcType=BIGINT},
       </if>
-      <if test="termId != null" >
-        #{termId,jdbcType=BIGINT},
+      <if test="term_id != null" >
+        #{term_id,jdbcType=BIGINT},
       </if>
       <if test="listorder != null" >
         #{listorder,jdbcType=INTEGER},
@@ -67,11 +67,11 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.emi.roots.entity.AzTermRelationships" >
     update az_term_relationships
     <set >
-      <if test="objectId != null" >
-        object_id = #{objectId,jdbcType=BIGINT},
+      <if test="object_id != null" >
+        object_id = #{object_id,jdbcType=BIGINT},
       </if>
-      <if test="termId != null" >
-        term_id = #{termId,jdbcType=BIGINT},
+      <if test="term_id != null" >
+        term_id = #{term_id,jdbcType=BIGINT},
       </if>
       <if test="listorder != null" >
         listorder = #{listorder,jdbcType=INTEGER},
@@ -84,8 +84,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzTermRelationships" >
     update az_term_relationships
-    set object_id = #{objectId,jdbcType=BIGINT},
-      term_id = #{termId,jdbcType=BIGINT},
+    set object_id = #{object_id,jdbcType=BIGINT},
+      term_id = #{term_id,jdbcType=BIGINT},
       listorder = #{listorder,jdbcType=INTEGER},
       status = #{status,jdbcType=INTEGER}
     where tid = #{tid,jdbcType=BIGINT}

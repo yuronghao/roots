@@ -3,7 +3,7 @@
 <mapper namespace="com.emi.roots.mapper.AzLabelMapper" >
   <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzLabel" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+    <result column="parent_id" property="parent_id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="type" property="type" jdbcType="TINYINT" />
   </resultMap>
@@ -23,7 +23,7 @@
   <insert id="insert" parameterType="com.emi.roots.entity.AzLabel" >
     insert into az_label (id, parent_id, name, 
       type)
-    values (#{id,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{parent_id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
       #{type,jdbcType=TINYINT})
   </insert>
   <insert id="insertSelective" parameterType="com.emi.roots.entity.AzLabel" >
@@ -32,7 +32,7 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="parentId != null" >
+      <if test="parent_id != null" >
         parent_id,
       </if>
       <if test="name != null" >
@@ -46,8 +46,8 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="parentId != null" >
-        #{parentId,jdbcType=INTEGER},
+      <if test="parent_id != null" >
+        #{parent_id,jdbcType=INTEGER},
       </if>
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
@@ -60,8 +60,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.emi.roots.entity.AzLabel" >
     update az_label
     <set >
-      <if test="parentId != null" >
-        parent_id = #{parentId,jdbcType=INTEGER},
+      <if test="parent_id != null" >
+        parent_id = #{parent_id,jdbcType=INTEGER},
       </if>
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
@@ -74,7 +74,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzLabel" >
     update az_label
-    set parent_id = #{parentId,jdbcType=INTEGER},
+    set parent_id = #{parent_id,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},
       type = #{type,jdbcType=TINYINT}
     where id = #{id,jdbcType=INTEGER}

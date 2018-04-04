@@ -8,7 +8,7 @@
     <result column="type" property="type" jdbcType="TINYINT" />
     <result column="status" property="status" jdbcType="BIT" />
     <result column="hooks" property="hooks" jdbcType="VARCHAR" />
-    <result column="has_admin" property="hasAdmin" jdbcType="TINYINT" />
+    <result column="has_admin" property="has_admin" jdbcType="TINYINT" />
     <result column="author" property="author" jdbcType="VARCHAR" />
     <result column="version" property="version" jdbcType="VARCHAR" />
     <result column="createtime" property="createtime" jdbcType="INTEGER" />
@@ -43,7 +43,7 @@
       listorder, description, config
       )
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
-      #{type,jdbcType=TINYINT}, #{status,jdbcType=BIT}, #{hooks,jdbcType=VARCHAR}, #{hasAdmin,jdbcType=TINYINT}, 
+      #{type,jdbcType=TINYINT}, #{status,jdbcType=BIT}, #{hooks,jdbcType=VARCHAR}, #{has_admin,jdbcType=TINYINT}, 
       #{author,jdbcType=VARCHAR}, #{version,jdbcType=VARCHAR}, #{createtime,jdbcType=INTEGER}, 
       #{listorder,jdbcType=SMALLINT}, #{description,jdbcType=LONGVARCHAR}, #{config,jdbcType=LONGVARCHAR}
       )
@@ -69,7 +69,7 @@
       <if test="hooks != null" >
         hooks,
       </if>
-      <if test="hasAdmin != null" >
+      <if test="has_admin != null" >
         has_admin,
       </if>
       <if test="author != null" >
@@ -110,8 +110,8 @@
       <if test="hooks != null" >
         #{hooks,jdbcType=VARCHAR},
       </if>
-      <if test="hasAdmin != null" >
-        #{hasAdmin,jdbcType=TINYINT},
+      <if test="has_admin != null" >
+        #{has_admin,jdbcType=TINYINT},
       </if>
       <if test="author != null" >
         #{author,jdbcType=VARCHAR},
@@ -151,8 +151,8 @@
       <if test="hooks != null" >
         hooks = #{hooks,jdbcType=VARCHAR},
       </if>
-      <if test="hasAdmin != null" >
-        has_admin = #{hasAdmin,jdbcType=TINYINT},
+      <if test="has_admin != null" >
+        has_admin = #{has_admin,jdbcType=TINYINT},
       </if>
       <if test="author != null" >
         author = #{author,jdbcType=VARCHAR},
@@ -182,7 +182,7 @@
       type = #{type,jdbcType=TINYINT},
       status = #{status,jdbcType=BIT},
       hooks = #{hooks,jdbcType=VARCHAR},
-      has_admin = #{hasAdmin,jdbcType=TINYINT},
+      has_admin = #{has_admin,jdbcType=TINYINT},
       author = #{author,jdbcType=VARCHAR},
       version = #{version,jdbcType=VARCHAR},
       createtime = #{createtime,jdbcType=INTEGER},
@@ -198,7 +198,7 @@
       type = #{type,jdbcType=TINYINT},
       status = #{status,jdbcType=BIT},
       hooks = #{hooks,jdbcType=VARCHAR},
-      has_admin = #{hasAdmin,jdbcType=TINYINT},
+      has_admin = #{has_admin,jdbcType=TINYINT},
       author = #{author,jdbcType=VARCHAR},
       version = #{version,jdbcType=VARCHAR},
       createtime = #{createtime,jdbcType=INTEGER},

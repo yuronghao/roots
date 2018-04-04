@@ -4,9 +4,9 @@
   <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzCharging" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="openid" property="openid" jdbcType="VARCHAR" />
-    <result column="user_openid" property="userOpenid" jdbcType="VARCHAR" />
+    <result column="user_openid" property="user_openid" jdbcType="VARCHAR" />
     <result column="degree" property="degree" jdbcType="TINYINT" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, openid, user_openid, degree, create_time
@@ -24,8 +24,8 @@
   <insert id="insert" parameterType="com.emi.roots.entity.AzCharging" >
     insert into az_charging (id, openid, user_openid, 
       degree, create_time)
-    values (#{id,jdbcType=INTEGER}, #{openid,jdbcType=VARCHAR}, #{userOpenid,jdbcType=VARCHAR}, 
-      #{degree,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP})
+    values (#{id,jdbcType=INTEGER}, #{openid,jdbcType=VARCHAR}, #{user_openid,jdbcType=VARCHAR}, 
+      #{degree,jdbcType=TINYINT}, #{create_time,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.emi.roots.entity.AzCharging" >
     insert into az_charging
@@ -36,13 +36,13 @@
       <if test="openid != null" >
         openid,
       </if>
-      <if test="userOpenid != null" >
+      <if test="user_openid != null" >
         user_openid,
       </if>
       <if test="degree != null" >
         degree,
       </if>
-      <if test="createTime != null" >
+      <if test="create_time != null" >
         create_time,
       </if>
     </trim>
@@ -53,14 +53,14 @@
       <if test="openid != null" >
         #{openid,jdbcType=VARCHAR},
       </if>
-      <if test="userOpenid != null" >
-        #{userOpenid,jdbcType=VARCHAR},
+      <if test="user_openid != null" >
+        #{user_openid,jdbcType=VARCHAR},
       </if>
       <if test="degree != null" >
         #{degree,jdbcType=TINYINT},
       </if>
-      <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
+      <if test="create_time != null" >
+        #{create_time,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -70,14 +70,14 @@
       <if test="openid != null" >
         openid = #{openid,jdbcType=VARCHAR},
       </if>
-      <if test="userOpenid != null" >
-        user_openid = #{userOpenid,jdbcType=VARCHAR},
+      <if test="user_openid != null" >
+        user_openid = #{user_openid,jdbcType=VARCHAR},
       </if>
       <if test="degree != null" >
         degree = #{degree,jdbcType=TINYINT},
       </if>
-      <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=TIMESTAMP},
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=TIMESTAMP},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -85,9 +85,9 @@
   <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzCharging" >
     update az_charging
     set openid = #{openid,jdbcType=VARCHAR},
-      user_openid = #{userOpenid,jdbcType=VARCHAR},
+      user_openid = #{user_openid,jdbcType=VARCHAR},
       degree = #{degree,jdbcType=TINYINT},
-      create_time = #{createTime,jdbcType=TIMESTAMP}
+      create_time = #{create_time,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

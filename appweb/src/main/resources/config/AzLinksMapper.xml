@@ -2,18 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.emi.roots.mapper.AzLinksMapper" >
   <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzLinks" >
-    <id column="link_id" property="linkId" jdbcType="BIGINT" />
-    <result column="link_url" property="linkUrl" jdbcType="VARCHAR" />
-    <result column="link_name" property="linkName" jdbcType="VARCHAR" />
-    <result column="link_image" property="linkImage" jdbcType="VARCHAR" />
-    <result column="link_target" property="linkTarget" jdbcType="VARCHAR" />
-    <result column="link_status" property="linkStatus" jdbcType="INTEGER" />
-    <result column="link_rating" property="linkRating" jdbcType="INTEGER" />
-    <result column="link_rel" property="linkRel" jdbcType="VARCHAR" />
+    <id column="link_id" property="link_id" jdbcType="BIGINT" />
+    <result column="link_url" property="link_url" jdbcType="VARCHAR" />
+    <result column="link_name" property="link_name" jdbcType="VARCHAR" />
+    <result column="link_image" property="link_image" jdbcType="VARCHAR" />
+    <result column="link_target" property="link_target" jdbcType="VARCHAR" />
+    <result column="link_status" property="link_status" jdbcType="INTEGER" />
+    <result column="link_rating" property="link_rating" jdbcType="INTEGER" />
+    <result column="link_rel" property="link_rel" jdbcType="VARCHAR" />
     <result column="listorder" property="listorder" jdbcType="INTEGER" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.emi.roots.entity.AzLinks" extends="BaseResultMap" >
-    <result column="link_description" property="linkDescription" jdbcType="LONGVARCHAR" />
+    <result column="link_description" property="link_description" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     link_id, link_url, link_name, link_image, link_target, link_status, link_rating, 
@@ -28,145 +28,145 @@
     ,
     <include refid="Blob_Column_List" />
     from az_links
-    where link_id = #{linkId,jdbcType=BIGINT}
+    where link_id = #{link_id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from az_links
-    where link_id = #{linkId,jdbcType=BIGINT}
+    where link_id = #{link_id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.emi.roots.entity.AzLinks" >
     insert into az_links (link_id, link_url, link_name, 
       link_image, link_target, link_status, 
       link_rating, link_rel, listorder, 
       link_description)
-    values (#{linkId,jdbcType=BIGINT}, #{linkUrl,jdbcType=VARCHAR}, #{linkName,jdbcType=VARCHAR}, 
-      #{linkImage,jdbcType=VARCHAR}, #{linkTarget,jdbcType=VARCHAR}, #{linkStatus,jdbcType=INTEGER}, 
-      #{linkRating,jdbcType=INTEGER}, #{linkRel,jdbcType=VARCHAR}, #{listorder,jdbcType=INTEGER}, 
-      #{linkDescription,jdbcType=LONGVARCHAR})
+    values (#{link_id,jdbcType=BIGINT}, #{link_url,jdbcType=VARCHAR}, #{link_name,jdbcType=VARCHAR}, 
+      #{link_image,jdbcType=VARCHAR}, #{link_target,jdbcType=VARCHAR}, #{link_status,jdbcType=INTEGER}, 
+      #{link_rating,jdbcType=INTEGER}, #{link_rel,jdbcType=VARCHAR}, #{listorder,jdbcType=INTEGER}, 
+      #{link_description,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.emi.roots.entity.AzLinks" >
     insert into az_links
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="linkId != null" >
+      <if test="link_id != null" >
         link_id,
       </if>
-      <if test="linkUrl != null" >
+      <if test="link_url != null" >
         link_url,
       </if>
-      <if test="linkName != null" >
+      <if test="link_name != null" >
         link_name,
       </if>
-      <if test="linkImage != null" >
+      <if test="link_image != null" >
         link_image,
       </if>
-      <if test="linkTarget != null" >
+      <if test="link_target != null" >
         link_target,
       </if>
-      <if test="linkStatus != null" >
+      <if test="link_status != null" >
         link_status,
       </if>
-      <if test="linkRating != null" >
+      <if test="link_rating != null" >
         link_rating,
       </if>
-      <if test="linkRel != null" >
+      <if test="link_rel != null" >
         link_rel,
       </if>
       <if test="listorder != null" >
         listorder,
       </if>
-      <if test="linkDescription != null" >
+      <if test="link_description != null" >
         link_description,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="linkId != null" >
-        #{linkId,jdbcType=BIGINT},
+      <if test="link_id != null" >
+        #{link_id,jdbcType=BIGINT},
       </if>
-      <if test="linkUrl != null" >
-        #{linkUrl,jdbcType=VARCHAR},
+      <if test="link_url != null" >
+        #{link_url,jdbcType=VARCHAR},
       </if>
-      <if test="linkName != null" >
-        #{linkName,jdbcType=VARCHAR},
+      <if test="link_name != null" >
+        #{link_name,jdbcType=VARCHAR},
       </if>
-      <if test="linkImage != null" >
-        #{linkImage,jdbcType=VARCHAR},
+      <if test="link_image != null" >
+        #{link_image,jdbcType=VARCHAR},
       </if>
-      <if test="linkTarget != null" >
-        #{linkTarget,jdbcType=VARCHAR},
+      <if test="link_target != null" >
+        #{link_target,jdbcType=VARCHAR},
       </if>
-      <if test="linkStatus != null" >
-        #{linkStatus,jdbcType=INTEGER},
+      <if test="link_status != null" >
+        #{link_status,jdbcType=INTEGER},
       </if>
-      <if test="linkRating != null" >
-        #{linkRating,jdbcType=INTEGER},
+      <if test="link_rating != null" >
+        #{link_rating,jdbcType=INTEGER},
       </if>
-      <if test="linkRel != null" >
-        #{linkRel,jdbcType=VARCHAR},
+      <if test="link_rel != null" >
+        #{link_rel,jdbcType=VARCHAR},
       </if>
       <if test="listorder != null" >
         #{listorder,jdbcType=INTEGER},
       </if>
-      <if test="linkDescription != null" >
-        #{linkDescription,jdbcType=LONGVARCHAR},
+      <if test="link_description != null" >
+        #{link_description,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.emi.roots.entity.AzLinks" >
     update az_links
     <set >
-      <if test="linkUrl != null" >
-        link_url = #{linkUrl,jdbcType=VARCHAR},
+      <if test="link_url != null" >
+        link_url = #{link_url,jdbcType=VARCHAR},
       </if>
-      <if test="linkName != null" >
-        link_name = #{linkName,jdbcType=VARCHAR},
+      <if test="link_name != null" >
+        link_name = #{link_name,jdbcType=VARCHAR},
       </if>
-      <if test="linkImage != null" >
-        link_image = #{linkImage,jdbcType=VARCHAR},
+      <if test="link_image != null" >
+        link_image = #{link_image,jdbcType=VARCHAR},
       </if>
-      <if test="linkTarget != null" >
-        link_target = #{linkTarget,jdbcType=VARCHAR},
+      <if test="link_target != null" >
+        link_target = #{link_target,jdbcType=VARCHAR},
       </if>
-      <if test="linkStatus != null" >
-        link_status = #{linkStatus,jdbcType=INTEGER},
+      <if test="link_status != null" >
+        link_status = #{link_status,jdbcType=INTEGER},
       </if>
-      <if test="linkRating != null" >
-        link_rating = #{linkRating,jdbcType=INTEGER},
+      <if test="link_rating != null" >
+        link_rating = #{link_rating,jdbcType=INTEGER},
       </if>
-      <if test="linkRel != null" >
-        link_rel = #{linkRel,jdbcType=VARCHAR},
+      <if test="link_rel != null" >
+        link_rel = #{link_rel,jdbcType=VARCHAR},
       </if>
       <if test="listorder != null" >
         listorder = #{listorder,jdbcType=INTEGER},
       </if>
-      <if test="linkDescription != null" >
-        link_description = #{linkDescription,jdbcType=LONGVARCHAR},
+      <if test="link_description != null" >
+        link_description = #{link_description,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    where link_id = #{linkId,jdbcType=BIGINT}
+    where link_id = #{link_id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.emi.roots.entity.AzLinks" >
     update az_links
-    set link_url = #{linkUrl,jdbcType=VARCHAR},
-      link_name = #{linkName,jdbcType=VARCHAR},
-      link_image = #{linkImage,jdbcType=VARCHAR},
-      link_target = #{linkTarget,jdbcType=VARCHAR},
-      link_status = #{linkStatus,jdbcType=INTEGER},
-      link_rating = #{linkRating,jdbcType=INTEGER},
-      link_rel = #{linkRel,jdbcType=VARCHAR},
+    set link_url = #{link_url,jdbcType=VARCHAR},
+      link_name = #{link_name,jdbcType=VARCHAR},
+      link_image = #{link_image,jdbcType=VARCHAR},
+      link_target = #{link_target,jdbcType=VARCHAR},
+      link_status = #{link_status,jdbcType=INTEGER},
+      link_rating = #{link_rating,jdbcType=INTEGER},
+      link_rel = #{link_rel,jdbcType=VARCHAR},
       listorder = #{listorder,jdbcType=INTEGER},
-      link_description = #{linkDescription,jdbcType=LONGVARCHAR}
-    where link_id = #{linkId,jdbcType=BIGINT}
+      link_description = #{link_description,jdbcType=LONGVARCHAR}
+    where link_id = #{link_id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzLinks" >
     update az_links
-    set link_url = #{linkUrl,jdbcType=VARCHAR},
-      link_name = #{linkName,jdbcType=VARCHAR},
-      link_image = #{linkImage,jdbcType=VARCHAR},
-      link_target = #{linkTarget,jdbcType=VARCHAR},
-      link_status = #{linkStatus,jdbcType=INTEGER},
-      link_rating = #{linkRating,jdbcType=INTEGER},
-      link_rel = #{linkRel,jdbcType=VARCHAR},
+    set link_url = #{link_url,jdbcType=VARCHAR},
+      link_name = #{link_name,jdbcType=VARCHAR},
+      link_image = #{link_image,jdbcType=VARCHAR},
+      link_target = #{link_target,jdbcType=VARCHAR},
+      link_status = #{link_status,jdbcType=INTEGER},
+      link_rating = #{link_rating,jdbcType=INTEGER},
+      link_rel = #{link_rel,jdbcType=VARCHAR},
       listorder = #{listorder,jdbcType=INTEGER}
-    where link_id = #{linkId,jdbcType=BIGINT}
+    where link_id = #{link_id,jdbcType=BIGINT}
   </update>
 </mapper>

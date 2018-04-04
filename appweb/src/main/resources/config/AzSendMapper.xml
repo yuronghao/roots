@@ -4,10 +4,10 @@
   <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzSend" >
     <id column="id" property="id" jdbcType="SMALLINT" />
     <result column="msgtype" property="msgtype" jdbcType="CHAR" />
-    <result column="media_id" property="mediaId" jdbcType="VARCHAR" />
+    <result column="media_id" property="media_id" jdbcType="VARCHAR" />
     <result column="sendtime" property="sendtime" jdbcType="INTEGER" />
-    <result column="group_id" property="groupId" jdbcType="SMALLINT" />
-    <result column="send_type" property="sendType" jdbcType="BIT" />
+    <result column="group_id" property="group_id" jdbcType="SMALLINT" />
+    <result column="send_type" property="send_type" jdbcType="BIT" />
     <result column="status" property="status" jdbcType="BIT" />
     <result column="token" property="token" jdbcType="VARCHAR" />
   </resultMap>
@@ -37,8 +37,8 @@
       sendtime, group_id, send_type, 
       status, token, comment
       )
-    values (#{id,jdbcType=SMALLINT}, #{msgtype,jdbcType=CHAR}, #{mediaId,jdbcType=VARCHAR}, 
-      #{sendtime,jdbcType=INTEGER}, #{groupId,jdbcType=SMALLINT}, #{sendType,jdbcType=BIT}, 
+    values (#{id,jdbcType=SMALLINT}, #{msgtype,jdbcType=CHAR}, #{media_id,jdbcType=VARCHAR}, 
+      #{sendtime,jdbcType=INTEGER}, #{group_id,jdbcType=SMALLINT}, #{send_type,jdbcType=BIT}, 
       #{status,jdbcType=BIT}, #{token,jdbcType=VARCHAR}, #{comment,jdbcType=LONGVARCHAR}
       )
   </insert>
@@ -51,16 +51,16 @@
       <if test="msgtype != null" >
         msgtype,
       </if>
-      <if test="mediaId != null" >
+      <if test="media_id != null" >
         media_id,
       </if>
       <if test="sendtime != null" >
         sendtime,
       </if>
-      <if test="groupId != null" >
+      <if test="group_id != null" >
         group_id,
       </if>
-      <if test="sendType != null" >
+      <if test="send_type != null" >
         send_type,
       </if>
       <if test="status != null" >
@@ -80,17 +80,17 @@
       <if test="msgtype != null" >
         #{msgtype,jdbcType=CHAR},
       </if>
-      <if test="mediaId != null" >
-        #{mediaId,jdbcType=VARCHAR},
+      <if test="media_id != null" >
+        #{media_id,jdbcType=VARCHAR},
       </if>
       <if test="sendtime != null" >
         #{sendtime,jdbcType=INTEGER},
       </if>
-      <if test="groupId != null" >
-        #{groupId,jdbcType=SMALLINT},
+      <if test="group_id != null" >
+        #{group_id,jdbcType=SMALLINT},
       </if>
-      <if test="sendType != null" >
-        #{sendType,jdbcType=BIT},
+      <if test="send_type != null" >
+        #{send_type,jdbcType=BIT},
       </if>
       <if test="status != null" >
         #{status,jdbcType=BIT},
@@ -109,17 +109,17 @@
       <if test="msgtype != null" >
         msgtype = #{msgtype,jdbcType=CHAR},
       </if>
-      <if test="mediaId != null" >
-        media_id = #{mediaId,jdbcType=VARCHAR},
+      <if test="media_id != null" >
+        media_id = #{media_id,jdbcType=VARCHAR},
       </if>
       <if test="sendtime != null" >
         sendtime = #{sendtime,jdbcType=INTEGER},
       </if>
-      <if test="groupId != null" >
-        group_id = #{groupId,jdbcType=SMALLINT},
+      <if test="group_id != null" >
+        group_id = #{group_id,jdbcType=SMALLINT},
       </if>
-      <if test="sendType != null" >
-        send_type = #{sendType,jdbcType=BIT},
+      <if test="send_type != null" >
+        send_type = #{send_type,jdbcType=BIT},
       </if>
       <if test="status != null" >
         status = #{status,jdbcType=BIT},
@@ -136,10 +136,10 @@
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.emi.roots.entity.AzSend" >
     update az_send
     set msgtype = #{msgtype,jdbcType=CHAR},
-      media_id = #{mediaId,jdbcType=VARCHAR},
+      media_id = #{media_id,jdbcType=VARCHAR},
       sendtime = #{sendtime,jdbcType=INTEGER},
-      group_id = #{groupId,jdbcType=SMALLINT},
-      send_type = #{sendType,jdbcType=BIT},
+      group_id = #{group_id,jdbcType=SMALLINT},
+      send_type = #{send_type,jdbcType=BIT},
       status = #{status,jdbcType=BIT},
       token = #{token,jdbcType=VARCHAR},
       comment = #{comment,jdbcType=LONGVARCHAR}
@@ -148,10 +148,10 @@
   <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzSend" >
     update az_send
     set msgtype = #{msgtype,jdbcType=CHAR},
-      media_id = #{mediaId,jdbcType=VARCHAR},
+      media_id = #{media_id,jdbcType=VARCHAR},
       sendtime = #{sendtime,jdbcType=INTEGER},
-      group_id = #{groupId,jdbcType=SMALLINT},
-      send_type = #{sendType,jdbcType=BIT},
+      group_id = #{group_id,jdbcType=SMALLINT},
+      send_type = #{send_type,jdbcType=BIT},
       status = #{status,jdbcType=BIT},
       token = #{token,jdbcType=VARCHAR}
     where id = #{id,jdbcType=SMALLINT}

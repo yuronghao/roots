@@ -4,12 +4,12 @@
   <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzWeixinOptionsLink" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="uid" property="uid" jdbcType="INTEGER" />
-    <result column="mp_id" property="mpId" jdbcType="INTEGER" />
-    <result column="is_creator" property="isCreator" jdbcType="TINYINT" />
-    <result column="is_use" property="isUse" jdbcType="TINYINT" />
+    <result column="mp_id" property="mp_id" jdbcType="INTEGER" />
+    <result column="is_creator" property="is_creator" jdbcType="TINYINT" />
+    <result column="is_use" property="is_use" jdbcType="TINYINT" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.emi.roots.entity.AzWeixinOptionsLink" extends="BaseResultMap" >
-    <result column="addon_status" property="addonStatus" jdbcType="LONGVARCHAR" />
+    <result column="addon_status" property="addon_status" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, uid, mp_id, is_creator, is_use
@@ -33,8 +33,8 @@
     insert into az_weixin_options_link (id, uid, mp_id, 
       is_creator, is_use, addon_status
       )
-    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{mpId,jdbcType=INTEGER}, 
-      #{isCreator,jdbcType=TINYINT}, #{isUse,jdbcType=TINYINT}, #{addonStatus,jdbcType=LONGVARCHAR}
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{mp_id,jdbcType=INTEGER}, 
+      #{is_creator,jdbcType=TINYINT}, #{is_use,jdbcType=TINYINT}, #{addon_status,jdbcType=LONGVARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.emi.roots.entity.AzWeixinOptionsLink" >
@@ -46,16 +46,16 @@
       <if test="uid != null" >
         uid,
       </if>
-      <if test="mpId != null" >
+      <if test="mp_id != null" >
         mp_id,
       </if>
-      <if test="isCreator != null" >
+      <if test="is_creator != null" >
         is_creator,
       </if>
-      <if test="isUse != null" >
+      <if test="is_use != null" >
         is_use,
       </if>
-      <if test="addonStatus != null" >
+      <if test="addon_status != null" >
         addon_status,
       </if>
     </trim>
@@ -66,17 +66,17 @@
       <if test="uid != null" >
         #{uid,jdbcType=INTEGER},
       </if>
-      <if test="mpId != null" >
-        #{mpId,jdbcType=INTEGER},
+      <if test="mp_id != null" >
+        #{mp_id,jdbcType=INTEGER},
       </if>
-      <if test="isCreator != null" >
-        #{isCreator,jdbcType=TINYINT},
+      <if test="is_creator != null" >
+        #{is_creator,jdbcType=TINYINT},
       </if>
-      <if test="isUse != null" >
-        #{isUse,jdbcType=TINYINT},
+      <if test="is_use != null" >
+        #{is_use,jdbcType=TINYINT},
       </if>
-      <if test="addonStatus != null" >
-        #{addonStatus,jdbcType=LONGVARCHAR},
+      <if test="addon_status != null" >
+        #{addon_status,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -86,17 +86,17 @@
       <if test="uid != null" >
         uid = #{uid,jdbcType=INTEGER},
       </if>
-      <if test="mpId != null" >
-        mp_id = #{mpId,jdbcType=INTEGER},
+      <if test="mp_id != null" >
+        mp_id = #{mp_id,jdbcType=INTEGER},
       </if>
-      <if test="isCreator != null" >
-        is_creator = #{isCreator,jdbcType=TINYINT},
+      <if test="is_creator != null" >
+        is_creator = #{is_creator,jdbcType=TINYINT},
       </if>
-      <if test="isUse != null" >
-        is_use = #{isUse,jdbcType=TINYINT},
+      <if test="is_use != null" >
+        is_use = #{is_use,jdbcType=TINYINT},
       </if>
-      <if test="addonStatus != null" >
-        addon_status = #{addonStatus,jdbcType=LONGVARCHAR},
+      <if test="addon_status != null" >
+        addon_status = #{addon_status,jdbcType=LONGVARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -104,18 +104,18 @@
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.emi.roots.entity.AzWeixinOptionsLink" >
     update az_weixin_options_link
     set uid = #{uid,jdbcType=INTEGER},
-      mp_id = #{mpId,jdbcType=INTEGER},
-      is_creator = #{isCreator,jdbcType=TINYINT},
-      is_use = #{isUse,jdbcType=TINYINT},
-      addon_status = #{addonStatus,jdbcType=LONGVARCHAR}
+      mp_id = #{mp_id,jdbcType=INTEGER},
+      is_creator = #{is_creator,jdbcType=TINYINT},
+      is_use = #{is_use,jdbcType=TINYINT},
+      addon_status = #{addon_status,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzWeixinOptionsLink" >
     update az_weixin_options_link
     set uid = #{uid,jdbcType=INTEGER},
-      mp_id = #{mpId,jdbcType=INTEGER},
-      is_creator = #{isCreator,jdbcType=TINYINT},
-      is_use = #{isUse,jdbcType=TINYINT}
+      mp_id = #{mp_id,jdbcType=INTEGER},
+      is_creator = #{is_creator,jdbcType=TINYINT},
+      is_use = #{is_use,jdbcType=TINYINT}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -5,20 +5,20 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="from" property="from" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="head_img" property="headImg" jdbcType="VARCHAR" />
+    <result column="head_img" property="head_img" jdbcType="VARCHAR" />
     <result column="uid" property="uid" jdbcType="VARCHAR" />
-    <result column="last_login_ip" property="lastLoginIp" jdbcType="VARCHAR" />
-    <result column="last_login_time" property="lastLoginTime" jdbcType="TIMESTAMP" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="login_times" property="loginTimes" jdbcType="INTEGER" />
+    <result column="last_login_ip" property="last_login_ip" jdbcType="VARCHAR" />
+    <result column="last_login_time" property="last_login_time" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+    <result column="login_times" property="login_times" jdbcType="INTEGER" />
     <result column="status" property="status" jdbcType="INTEGER" />
     <result column="openid" property="openid" jdbcType="VARCHAR" />
-    <result column="user_status" property="userStatus" jdbcType="INTEGER" />
+    <result column="user_status" property="user_status" jdbcType="INTEGER" />
     <result column="gag" property="gag" jdbcType="TINYINT" />
-    <result column="follow_num" property="followNum" jdbcType="INTEGER" />
+    <result column="follow_num" property="follow_num" jdbcType="INTEGER" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.emi.roots.entity.AzOauthUser" extends="BaseResultMap" >
-    <result column="wechat_user_options" property="wechatUserOptions" jdbcType="LONGVARCHAR" />
+    <result column="wechat_user_options" property="wechat_user_options" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, from, name, head_img, uid, last_login_ip, last_login_time, create_time, login_times, 
@@ -47,10 +47,10 @@
       gag, follow_num, wechat_user_options
       )
     values (#{id,jdbcType=INTEGER}, #{from,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
-      #{headImg,jdbcType=VARCHAR}, #{uid,jdbcType=VARCHAR}, #{lastLoginIp,jdbcType=VARCHAR}, 
-      #{lastLoginTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, #{loginTimes,jdbcType=INTEGER}, 
-      #{status,jdbcType=INTEGER}, #{openid,jdbcType=VARCHAR}, #{userStatus,jdbcType=INTEGER}, 
-      #{gag,jdbcType=TINYINT}, #{followNum,jdbcType=INTEGER}, #{wechatUserOptions,jdbcType=LONGVARCHAR}
+      #{head_img,jdbcType=VARCHAR}, #{uid,jdbcType=VARCHAR}, #{last_login_ip,jdbcType=VARCHAR}, 
+      #{last_login_time,jdbcType=TIMESTAMP}, #{create_time,jdbcType=TIMESTAMP}, #{login_times,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{openid,jdbcType=VARCHAR}, #{user_status,jdbcType=INTEGER}, 
+      #{gag,jdbcType=TINYINT}, #{follow_num,jdbcType=INTEGER}, #{wechat_user_options,jdbcType=LONGVARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.emi.roots.entity.AzOauthUser" >
@@ -65,22 +65,22 @@
       <if test="name != null" >
         name,
       </if>
-      <if test="headImg != null" >
+      <if test="head_img != null" >
         head_img,
       </if>
       <if test="uid != null" >
         uid,
       </if>
-      <if test="lastLoginIp != null" >
+      <if test="last_login_ip != null" >
         last_login_ip,
       </if>
-      <if test="lastLoginTime != null" >
+      <if test="last_login_time != null" >
         last_login_time,
       </if>
-      <if test="createTime != null" >
+      <if test="create_time != null" >
         create_time,
       </if>
-      <if test="loginTimes != null" >
+      <if test="login_times != null" >
         login_times,
       </if>
       <if test="status != null" >
@@ -89,16 +89,16 @@
       <if test="openid != null" >
         openid,
       </if>
-      <if test="userStatus != null" >
+      <if test="user_status != null" >
         user_status,
       </if>
       <if test="gag != null" >
         gag,
       </if>
-      <if test="followNum != null" >
+      <if test="follow_num != null" >
         follow_num,
       </if>
-      <if test="wechatUserOptions != null" >
+      <if test="wechat_user_options != null" >
         wechat_user_options,
       </if>
     </trim>
@@ -112,23 +112,23 @@
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="headImg != null" >
-        #{headImg,jdbcType=VARCHAR},
+      <if test="head_img != null" >
+        #{head_img,jdbcType=VARCHAR},
       </if>
       <if test="uid != null" >
         #{uid,jdbcType=VARCHAR},
       </if>
-      <if test="lastLoginIp != null" >
-        #{lastLoginIp,jdbcType=VARCHAR},
+      <if test="last_login_ip != null" >
+        #{last_login_ip,jdbcType=VARCHAR},
       </if>
-      <if test="lastLoginTime != null" >
-        #{lastLoginTime,jdbcType=TIMESTAMP},
+      <if test="last_login_time != null" >
+        #{last_login_time,jdbcType=TIMESTAMP},
       </if>
-      <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
+      <if test="create_time != null" >
+        #{create_time,jdbcType=TIMESTAMP},
       </if>
-      <if test="loginTimes != null" >
-        #{loginTimes,jdbcType=INTEGER},
+      <if test="login_times != null" >
+        #{login_times,jdbcType=INTEGER},
       </if>
       <if test="status != null" >
         #{status,jdbcType=INTEGER},
@@ -136,17 +136,17 @@
       <if test="openid != null" >
         #{openid,jdbcType=VARCHAR},
       </if>
-      <if test="userStatus != null" >
-        #{userStatus,jdbcType=INTEGER},
+      <if test="user_status != null" >
+        #{user_status,jdbcType=INTEGER},
       </if>
       <if test="gag != null" >
         #{gag,jdbcType=TINYINT},
       </if>
-      <if test="followNum != null" >
-        #{followNum,jdbcType=INTEGER},
+      <if test="follow_num != null" >
+        #{follow_num,jdbcType=INTEGER},
       </if>
-      <if test="wechatUserOptions != null" >
-        #{wechatUserOptions,jdbcType=LONGVARCHAR},
+      <if test="wechat_user_options != null" >
+        #{wechat_user_options,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -159,23 +159,23 @@
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="headImg != null" >
-        head_img = #{headImg,jdbcType=VARCHAR},
+      <if test="head_img != null" >
+        head_img = #{head_img,jdbcType=VARCHAR},
       </if>
       <if test="uid != null" >
         uid = #{uid,jdbcType=VARCHAR},
       </if>
-      <if test="lastLoginIp != null" >
-        last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
+      <if test="last_login_ip != null" >
+        last_login_ip = #{last_login_ip,jdbcType=VARCHAR},
       </if>
-      <if test="lastLoginTime != null" >
-        last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      <if test="last_login_time != null" >
+        last_login_time = #{last_login_time,jdbcType=TIMESTAMP},
       </if>
-      <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=TIMESTAMP},
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=TIMESTAMP},
       </if>
-      <if test="loginTimes != null" >
-        login_times = #{loginTimes,jdbcType=INTEGER},
+      <if test="login_times != null" >
+        login_times = #{login_times,jdbcType=INTEGER},
       </if>
       <if test="status != null" >
         status = #{status,jdbcType=INTEGER},
@@ -183,17 +183,17 @@
       <if test="openid != null" >
         openid = #{openid,jdbcType=VARCHAR},
       </if>
-      <if test="userStatus != null" >
-        user_status = #{userStatus,jdbcType=INTEGER},
+      <if test="user_status != null" >
+        user_status = #{user_status,jdbcType=INTEGER},
       </if>
       <if test="gag != null" >
         gag = #{gag,jdbcType=TINYINT},
       </if>
-      <if test="followNum != null" >
-        follow_num = #{followNum,jdbcType=INTEGER},
+      <if test="follow_num != null" >
+        follow_num = #{follow_num,jdbcType=INTEGER},
       </if>
-      <if test="wechatUserOptions != null" >
-        wechat_user_options = #{wechatUserOptions,jdbcType=LONGVARCHAR},
+      <if test="wechat_user_options != null" >
+        wechat_user_options = #{wechat_user_options,jdbcType=LONGVARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -202,35 +202,35 @@
     update az_oauth_user
     set from = #{from,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
-      head_img = #{headImg,jdbcType=VARCHAR},
+      head_img = #{head_img,jdbcType=VARCHAR},
       uid = #{uid,jdbcType=VARCHAR},
-      last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
-      last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      login_times = #{loginTimes,jdbcType=INTEGER},
+      last_login_ip = #{last_login_ip,jdbcType=VARCHAR},
+      last_login_time = #{last_login_time,jdbcType=TIMESTAMP},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      login_times = #{login_times,jdbcType=INTEGER},
       status = #{status,jdbcType=INTEGER},
       openid = #{openid,jdbcType=VARCHAR},
-      user_status = #{userStatus,jdbcType=INTEGER},
+      user_status = #{user_status,jdbcType=INTEGER},
       gag = #{gag,jdbcType=TINYINT},
-      follow_num = #{followNum,jdbcType=INTEGER},
-      wechat_user_options = #{wechatUserOptions,jdbcType=LONGVARCHAR}
+      follow_num = #{follow_num,jdbcType=INTEGER},
+      wechat_user_options = #{wechat_user_options,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzOauthUser" >
     update az_oauth_user
     set from = #{from,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
-      head_img = #{headImg,jdbcType=VARCHAR},
+      head_img = #{head_img,jdbcType=VARCHAR},
       uid = #{uid,jdbcType=VARCHAR},
-      last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
-      last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      login_times = #{loginTimes,jdbcType=INTEGER},
+      last_login_ip = #{last_login_ip,jdbcType=VARCHAR},
+      last_login_time = #{last_login_time,jdbcType=TIMESTAMP},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      login_times = #{login_times,jdbcType=INTEGER},
       status = #{status,jdbcType=INTEGER},
       openid = #{openid,jdbcType=VARCHAR},
-      user_status = #{userStatus,jdbcType=INTEGER},
+      user_status = #{user_status,jdbcType=INTEGER},
       gag = #{gag,jdbcType=TINYINT},
-      follow_num = #{followNum,jdbcType=INTEGER}
+      follow_num = #{follow_num,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

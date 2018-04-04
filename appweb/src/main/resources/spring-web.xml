@@ -37,7 +37,7 @@
     </bean> -->
     
     <!--4:扫描web相关的controller-->
-    <context:component-scan base-package="com.emi.emiservice,com.emi.page,com.aodianyun" >
+    <context:component-scan base-package="com.emi.roots,com.emi.page" >
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service" />
 	</context:component-scan>
 	

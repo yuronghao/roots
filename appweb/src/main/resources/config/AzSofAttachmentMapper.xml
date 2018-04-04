@@ -3,17 +3,17 @@
 <mapper namespace="com.emi.roots.mapper.AzSofAttachmentMapper" >
   <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzSofAttachment" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="object_id" property="objectId" jdbcType="INTEGER" />
+    <result column="object_id" property="object_id" jdbcType="INTEGER" />
     <result column="tablename" property="tablename" jdbcType="VARCHAR" />
     <result column="uid" property="uid" jdbcType="INTEGER" />
-    <result column="create_time" property="createTime" jdbcType="INTEGER" />
-    <result column="update_time" property="updateTime" jdbcType="INTEGER" />
+    <result column="create_time" property="create_time" jdbcType="INTEGER" />
+    <result column="update_time" property="update_time" jdbcType="INTEGER" />
     <result column="state" property="state" jdbcType="TINYINT" />
     <result column="url" property="url" jdbcType="VARCHAR" />
     <result column="size" property="size" jdbcType="BIGINT" />
-    <result column="praise_num" property="praiseNum" jdbcType="INTEGER" />
-    <result column="click_num" property="clickNum" jdbcType="INTEGER" />
-    <result column="reply_num" property="replyNum" jdbcType="INTEGER" />
+    <result column="praise_num" property="praise_num" jdbcType="INTEGER" />
+    <result column="click_num" property="click_num" jdbcType="INTEGER" />
+    <result column="reply_num" property="reply_num" jdbcType="INTEGER" />
     <result column="isdel" property="isdel" jdbcType="TINYINT" />
     <result column="istop" property="istop" jdbcType="TINYINT" />
     <result column="ishot" property="ishot" jdbcType="TINYINT" />
@@ -42,10 +42,10 @@
       click_num, reply_num, isdel, 
       istop, ishot, title, 
       type, listorder)
-    values (#{id,jdbcType=INTEGER}, #{objectId,jdbcType=INTEGER}, #{tablename,jdbcType=VARCHAR}, 
-      #{uid,jdbcType=INTEGER}, #{createTime,jdbcType=INTEGER}, #{updateTime,jdbcType=INTEGER}, 
-      #{state,jdbcType=TINYINT}, #{url,jdbcType=VARCHAR}, #{size,jdbcType=BIGINT}, #{praiseNum,jdbcType=INTEGER}, 
-      #{clickNum,jdbcType=INTEGER}, #{replyNum,jdbcType=INTEGER}, #{isdel,jdbcType=TINYINT}, 
+    values (#{id,jdbcType=INTEGER}, #{object_id,jdbcType=INTEGER}, #{tablename,jdbcType=VARCHAR}, 
+      #{uid,jdbcType=INTEGER}, #{create_time,jdbcType=INTEGER}, #{update_time,jdbcType=INTEGER}, 
+      #{state,jdbcType=TINYINT}, #{url,jdbcType=VARCHAR}, #{size,jdbcType=BIGINT}, #{praise_num,jdbcType=INTEGER}, 
+      #{click_num,jdbcType=INTEGER}, #{reply_num,jdbcType=INTEGER}, #{isdel,jdbcType=TINYINT}, 
       #{istop,jdbcType=TINYINT}, #{ishot,jdbcType=TINYINT}, #{title,jdbcType=VARCHAR}, 
       #{type,jdbcType=TINYINT}, #{listorder,jdbcType=INTEGER})
   </insert>
@@ -55,7 +55,7 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="objectId != null" >
+      <if test="object_id != null" >
         object_id,
       </if>
       <if test="tablename != null" >
@@ -64,10 +64,10 @@
       <if test="uid != null" >
         uid,
       </if>
-      <if test="createTime != null" >
+      <if test="create_time != null" >
         create_time,
       </if>
-      <if test="updateTime != null" >
+      <if test="update_time != null" >
         update_time,
       </if>
       <if test="state != null" >
@@ -79,13 +79,13 @@
       <if test="size != null" >
         size,
       </if>
-      <if test="praiseNum != null" >
+      <if test="praise_num != null" >
         praise_num,
       </if>
-      <if test="clickNum != null" >
+      <if test="click_num != null" >
         click_num,
       </if>
-      <if test="replyNum != null" >
+      <if test="reply_num != null" >
         reply_num,
       </if>
       <if test="isdel != null" >
@@ -111,8 +111,8 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="objectId != null" >
-        #{objectId,jdbcType=INTEGER},
+      <if test="object_id != null" >
+        #{object_id,jdbcType=INTEGER},
       </if>
       <if test="tablename != null" >
         #{tablename,jdbcType=VARCHAR},
@@ -120,11 +120,11 @@
       <if test="uid != null" >
         #{uid,jdbcType=INTEGER},
       </if>
-      <if test="createTime != null" >
-        #{createTime,jdbcType=INTEGER},
+      <if test="create_time != null" >
+        #{create_time,jdbcType=INTEGER},
       </if>
-      <if test="updateTime != null" >
-        #{updateTime,jdbcType=INTEGER},
+      <if test="update_time != null" >
+        #{update_time,jdbcType=INTEGER},
       </if>
       <if test="state != null" >
         #{state,jdbcType=TINYINT},
@@ -135,14 +135,14 @@
       <if test="size != null" >
         #{size,jdbcType=BIGINT},
       </if>
-      <if test="praiseNum != null" >
-        #{praiseNum,jdbcType=INTEGER},
+      <if test="praise_num != null" >
+        #{praise_num,jdbcType=INTEGER},
       </if>
-      <if test="clickNum != null" >
-        #{clickNum,jdbcType=INTEGER},
+      <if test="click_num != null" >
+        #{click_num,jdbcType=INTEGER},
       </if>
-      <if test="replyNum != null" >
-        #{replyNum,jdbcType=INTEGER},
+      <if test="reply_num != null" >
+        #{reply_num,jdbcType=INTEGER},
       </if>
       <if test="isdel != null" >
         #{isdel,jdbcType=TINYINT},
@@ -167,8 +167,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.emi.roots.entity.AzSofAttachment" >
     update az_sof_attachment
     <set >
-      <if test="objectId != null" >
-        object_id = #{objectId,jdbcType=INTEGER},
+      <if test="object_id != null" >
+        object_id = #{object_id,jdbcType=INTEGER},
       </if>
       <if test="tablename != null" >
         tablename = #{tablename,jdbcType=VARCHAR},
@@ -176,11 +176,11 @@
       <if test="uid != null" >
         uid = #{uid,jdbcType=INTEGER},
       </if>
-      <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=INTEGER},
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=INTEGER},
       </if>
-      <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=INTEGER},
+      <if test="update_time != null" >
+        update_time = #{update_time,jdbcType=INTEGER},
       </if>
       <if test="state != null" >
         state = #{state,jdbcType=TINYINT},
@@ -191,14 +191,14 @@
       <if test="size != null" >
         size = #{size,jdbcType=BIGINT},
       </if>
-      <if test="praiseNum != null" >
-        praise_num = #{praiseNum,jdbcType=INTEGER},
+      <if test="praise_num != null" >
+        praise_num = #{praise_num,jdbcType=INTEGER},
       </if>
-      <if test="clickNum != null" >
-        click_num = #{clickNum,jdbcType=INTEGER},
+      <if test="click_num != null" >
+        click_num = #{click_num,jdbcType=INTEGER},
       </if>
-      <if test="replyNum != null" >
-        reply_num = #{replyNum,jdbcType=INTEGER},
+      <if test="reply_num != null" >
+        reply_num = #{reply_num,jdbcType=INTEGER},
       </if>
       <if test="isdel != null" >
         isdel = #{isdel,jdbcType=TINYINT},
@@ -223,17 +223,17 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzSofAttachment" >
     update az_sof_attachment
-    set object_id = #{objectId,jdbcType=INTEGER},
+    set object_id = #{object_id,jdbcType=INTEGER},
       tablename = #{tablename,jdbcType=VARCHAR},
       uid = #{uid,jdbcType=INTEGER},
-      create_time = #{createTime,jdbcType=INTEGER},
-      update_time = #{updateTime,jdbcType=INTEGER},
+      create_time = #{create_time,jdbcType=INTEGER},
+      update_time = #{update_time,jdbcType=INTEGER},
       state = #{state,jdbcType=TINYINT},
       url = #{url,jdbcType=VARCHAR},
       size = #{size,jdbcType=BIGINT},
-      praise_num = #{praiseNum,jdbcType=INTEGER},
-      click_num = #{clickNum,jdbcType=INTEGER},
-      reply_num = #{replyNum,jdbcType=INTEGER},
+      praise_num = #{praise_num,jdbcType=INTEGER},
+      click_num = #{click_num,jdbcType=INTEGER},
+      reply_num = #{reply_num,jdbcType=INTEGER},
       isdel = #{isdel,jdbcType=TINYINT},
       istop = #{istop,jdbcType=TINYINT},
       ishot = #{ishot,jdbcType=TINYINT},

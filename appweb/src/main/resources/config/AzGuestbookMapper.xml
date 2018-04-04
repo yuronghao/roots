@@ -3,7 +3,7 @@
 <mapper namespace="com.emi.roots.mapper.AzGuestbookMapper" >
   <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzGuestbook" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="full_name" property="fullName" jdbcType="VARCHAR" />
+    <result column="full_name" property="full_name" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
@@ -34,7 +34,7 @@
     insert into az_guestbook (id, full_name, email, 
       title, createtime, status, 
       msg)
-    values (#{id,jdbcType=INTEGER}, #{fullName,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{full_name,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
       #{title,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{status,jdbcType=SMALLINT}, 
       #{msg,jdbcType=LONGVARCHAR})
   </insert>
@@ -44,7 +44,7 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="fullName != null" >
+      <if test="full_name != null" >
         full_name,
       </if>
       <if test="email != null" >
@@ -67,8 +67,8 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="fullName != null" >
-        #{fullName,jdbcType=VARCHAR},
+      <if test="full_name != null" >
+        #{full_name,jdbcType=VARCHAR},
       </if>
       <if test="email != null" >
         #{email,jdbcType=VARCHAR},
@@ -90,8 +90,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.emi.roots.entity.AzGuestbook" >
     update az_guestbook
     <set >
-      <if test="fullName != null" >
-        full_name = #{fullName,jdbcType=VARCHAR},
+      <if test="full_name != null" >
+        full_name = #{full_name,jdbcType=VARCHAR},
       </if>
       <if test="email != null" >
         email = #{email,jdbcType=VARCHAR},
@@ -113,7 +113,7 @@
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.emi.roots.entity.AzGuestbook" >
     update az_guestbook
-    set full_name = #{fullName,jdbcType=VARCHAR},
+    set full_name = #{full_name,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       title = #{title,jdbcType=VARCHAR},
       createtime = #{createtime,jdbcType=TIMESTAMP},
@@ -123,7 +123,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzGuestbook" >
     update az_guestbook
-    set full_name = #{fullName,jdbcType=VARCHAR},
+    set full_name = #{full_name,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
       title = #{title,jdbcType=VARCHAR},
       createtime = #{createtime,jdbcType=TIMESTAMP},

@@ -3,12 +3,12 @@
 <mapper namespace="com.emi.roots.mapper.AzMessageMapper" >
   <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzMessage" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="content_id" property="contentId" jdbcType="INTEGER" />
-    <result column="from_uid" property="fromUid" jdbcType="INTEGER" />
-    <result column="to_uid" property="toUid" jdbcType="INTEGER" />
-    <result column="create_time" property="createTime" jdbcType="INTEGER" />
+    <result column="content_id" property="content_id" jdbcType="INTEGER" />
+    <result column="from_uid" property="from_uid" jdbcType="INTEGER" />
+    <result column="to_uid" property="to_uid" jdbcType="INTEGER" />
+    <result column="create_time" property="create_time" jdbcType="INTEGER" />
     <result column="isread" property="isread" jdbcType="TINYINT" />
-    <result column="read_time" property="readTime" jdbcType="INTEGER" />
+    <result column="read_time" property="read_time" jdbcType="INTEGER" />
     <result column="status" property="status" jdbcType="TINYINT" />
     <result column="isdel" property="isdel" jdbcType="TINYINT" />
   </resultMap>
@@ -30,9 +30,9 @@
       to_uid, create_time, isread, 
       read_time, status, isdel
       )
-    values (#{id,jdbcType=INTEGER}, #{contentId,jdbcType=INTEGER}, #{fromUid,jdbcType=INTEGER}, 
-      #{toUid,jdbcType=INTEGER}, #{createTime,jdbcType=INTEGER}, #{isread,jdbcType=TINYINT}, 
-      #{readTime,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, #{isdel,jdbcType=TINYINT}
+    values (#{id,jdbcType=INTEGER}, #{content_id,jdbcType=INTEGER}, #{from_uid,jdbcType=INTEGER}, 
+      #{to_uid,jdbcType=INTEGER}, #{create_time,jdbcType=INTEGER}, #{isread,jdbcType=TINYINT}, 
+      #{read_time,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, #{isdel,jdbcType=TINYINT}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.emi.roots.entity.AzMessage" >
@@ -41,22 +41,22 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="contentId != null" >
+      <if test="content_id != null" >
         content_id,
       </if>
-      <if test="fromUid != null" >
+      <if test="from_uid != null" >
         from_uid,
       </if>
-      <if test="toUid != null" >
+      <if test="to_uid != null" >
         to_uid,
       </if>
-      <if test="createTime != null" >
+      <if test="create_time != null" >
         create_time,
       </if>
       <if test="isread != null" >
         isread,
       </if>
-      <if test="readTime != null" >
+      <if test="read_time != null" >
         read_time,
       </if>
       <if test="status != null" >
@@ -70,23 +70,23 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="contentId != null" >
-        #{contentId,jdbcType=INTEGER},
+      <if test="content_id != null" >
+        #{content_id,jdbcType=INTEGER},
       </if>
-      <if test="fromUid != null" >
-        #{fromUid,jdbcType=INTEGER},
+      <if test="from_uid != null" >
+        #{from_uid,jdbcType=INTEGER},
       </if>
-      <if test="toUid != null" >
-        #{toUid,jdbcType=INTEGER},
+      <if test="to_uid != null" >
+        #{to_uid,jdbcType=INTEGER},
       </if>
-      <if test="createTime != null" >
-        #{createTime,jdbcType=INTEGER},
+      <if test="create_time != null" >
+        #{create_time,jdbcType=INTEGER},
       </if>
       <if test="isread != null" >
         #{isread,jdbcType=TINYINT},
       </if>
-      <if test="readTime != null" >
-        #{readTime,jdbcType=INTEGER},
+      <if test="read_time != null" >
+        #{read_time,jdbcType=INTEGER},
       </if>
       <if test="status != null" >
         #{status,jdbcType=TINYINT},
@@ -99,23 +99,23 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.emi.roots.entity.AzMessage" >
     update az_message
     <set >
-      <if test="contentId != null" >
-        content_id = #{contentId,jdbcType=INTEGER},
+      <if test="content_id != null" >
+        content_id = #{content_id,jdbcType=INTEGER},
       </if>
-      <if test="fromUid != null" >
-        from_uid = #{fromUid,jdbcType=INTEGER},
+      <if test="from_uid != null" >
+        from_uid = #{from_uid,jdbcType=INTEGER},
       </if>
-      <if test="toUid != null" >
-        to_uid = #{toUid,jdbcType=INTEGER},
+      <if test="to_uid != null" >
+        to_uid = #{to_uid,jdbcType=INTEGER},
       </if>
-      <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=INTEGER},
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=INTEGER},
       </if>
       <if test="isread != null" >
         isread = #{isread,jdbcType=TINYINT},
       </if>
-      <if test="readTime != null" >
-        read_time = #{readTime,jdbcType=INTEGER},
+      <if test="read_time != null" >
+        read_time = #{read_time,jdbcType=INTEGER},
       </if>
       <if test="status != null" >
         status = #{status,jdbcType=TINYINT},
@@ -128,12 +128,12 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzMessage" >
     update az_message
-    set content_id = #{contentId,jdbcType=INTEGER},
-      from_uid = #{fromUid,jdbcType=INTEGER},
-      to_uid = #{toUid,jdbcType=INTEGER},
-      create_time = #{createTime,jdbcType=INTEGER},
+    set content_id = #{content_id,jdbcType=INTEGER},
+      from_uid = #{from_uid,jdbcType=INTEGER},
+      to_uid = #{to_uid,jdbcType=INTEGER},
+      create_time = #{create_time,jdbcType=INTEGER},
       isread = #{isread,jdbcType=TINYINT},
-      read_time = #{readTime,jdbcType=INTEGER},
+      read_time = #{read_time,jdbcType=INTEGER},
       status = #{status,jdbcType=TINYINT},
       isdel = #{isdel,jdbcType=TINYINT}
     where id = #{id,jdbcType=INTEGER}

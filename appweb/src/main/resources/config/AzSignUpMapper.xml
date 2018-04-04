@@ -4,22 +4,30 @@
   <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzSignUp" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="uid" property="uid" jdbcType="INTEGER" />
-    <result column="object_id" property="objectId" jdbcType="INTEGER" />
-    <result column="sign_status" property="signStatus" jdbcType="BIT" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="check_time" property="checkTime" jdbcType="TIMESTAMP" />
-    <result column="audit_status" property="auditStatus" jdbcType="BIT" />
-    <result column="pay_status" property="payStatus" jdbcType="BIT" />
-    <result column="order_id" property="orderId" jdbcType="VARCHAR" />
+    <result column="object_id" property="object_id" jdbcType="INTEGER" />
+    <result column="sign_status" property="sign_status" jdbcType="BIT" />
+    <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+    <result column="check_time" property="check_time" jdbcType="TIMESTAMP" />
+    <result column="audit_status" property="audit_status" jdbcType="BIT" />
+    <result column="pay_status" property="pay_status" jdbcType="BIT" />
+    <result column="order_id" property="order_id" jdbcType="VARCHAR" />
     <result column="comment" property="comment" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.emi.roots.entity.AzSignUp" extends="BaseResultMap" >
+    <result column="opus" property="opus" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, uid, object_id, sign_status, create_time, check_time, audit_status, pay_status, 
     order_id, comment
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <sql id="Blob_Column_List" >
+    opus
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
     from az_sign_up
     where id = #{id,jdbcType=INTEGER}
   </select>
@@ -31,11 +39,11 @@
     insert into az_sign_up (id, uid, object_id, 
       sign_status, create_time, check_time, 
       audit_status, pay_status, order_id, 
-      comment)
-    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{objectId,jdbcType=INTEGER}, 
-      #{signStatus,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, #{checkTime,jdbcType=TIMESTAMP}, 
-      #{auditStatus,jdbcType=BIT}, #{payStatus,jdbcType=BIT}, #{orderId,jdbcType=VARCHAR}, 
-      #{comment,jdbcType=VARCHAR})
+      comment, opus)
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{object_id,jdbcType=INTEGER}, 
+      #{sign_status,jdbcType=BIT}, #{create_time,jdbcType=TIMESTAMP}, #{check_time,jdbcType=TIMESTAMP}, 
+      #{audit_status,jdbcType=BIT}, #{pay_status,jdbcType=BIT}, #{order_id,jdbcType=VARCHAR}, 
+      #{comment,jdbcType=VARCHAR}, #{opus,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.emi.roots.entity.AzSignUp" >
     insert into az_sign_up
@@ -46,29 +54,32 @@
       <if test="uid != null" >
         uid,
       </if>
-      <if test="objectId != null" >
+      <if test="object_id != null" >
         object_id,
       </if>
-      <if test="signStatus != null" >
+      <if test="sign_status != null" >
         sign_status,
       </if>
-      <if test="createTime != null" >
+      <if test="create_time != null" >
         create_time,
       </if>
-      <if test="checkTime != null" >
+      <if test="check_time != null" >
         check_time,
       </if>
-      <if test="auditStatus != null" >
+      <if test="audit_status != null" >
         audit_status,
       </if>
-      <if test="payStatus != null" >
+      <if test="pay_status != null" >
         pay_status,
       </if>
-      <if test="orderId != null" >
+      <if test="order_id != null" >
         order_id,
       </if>
       <if test="comment != null" >
         comment,
+      </if>
+      <if test="opus != null" >
+        opus,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -78,29 +89,32 @@
       <if test="uid != null" >
         #{uid,jdbcType=INTEGER},
       </if>
-      <if test="objectId != null" >
-        #{objectId,jdbcType=INTEGER},
+      <if test="object_id != null" >
+        #{object_id,jdbcType=INTEGER},
       </if>
-      <if test="signStatus != null" >
-        #{signStatus,jdbcType=BIT},
+      <if test="sign_status != null" >
+        #{sign_status,jdbcType=BIT},
       </if>
-      <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
+      <if test="create_time != null" >
+        #{create_time,jdbcType=TIMESTAMP},
       </if>
-      <if test="checkTime != null" >
-        #{checkTime,jdbcType=TIMESTAMP},
+      <if test="check_time != null" >
+        #{check_time,jdbcType=TIMESTAMP},
       </if>
-      <if test="auditStatus != null" >
-        #{auditStatus,jdbcType=BIT},
+      <if test="audit_status != null" >
+        #{audit_status,jdbcType=BIT},
       </if>
-      <if test="payStatus != null" >
-        #{payStatus,jdbcType=BIT},
+      <if test="pay_status != null" >
+        #{pay_status,jdbcType=BIT},
       </if>
-      <if test="orderId != null" >
-        #{orderId,jdbcType=VARCHAR},
+      <if test="order_id != null" >
+        #{order_id,jdbcType=VARCHAR},
       </if>
       <if test="comment != null" >
         #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="opus != null" >
+        #{opus,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -110,43 +124,60 @@
       <if test="uid != null" >
         uid = #{uid,jdbcType=INTEGER},
       </if>
-      <if test="objectId != null" >
-        object_id = #{objectId,jdbcType=INTEGER},
+      <if test="object_id != null" >
+        object_id = #{object_id,jdbcType=INTEGER},
       </if>
-      <if test="signStatus != null" >
-        sign_status = #{signStatus,jdbcType=BIT},
+      <if test="sign_status != null" >
+        sign_status = #{sign_status,jdbcType=BIT},
       </if>
-      <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=TIMESTAMP},
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=TIMESTAMP},
       </if>
-      <if test="checkTime != null" >
-        check_time = #{checkTime,jdbcType=TIMESTAMP},
+      <if test="check_time != null" >
+        check_time = #{check_time,jdbcType=TIMESTAMP},
       </if>
-      <if test="auditStatus != null" >
-        audit_status = #{auditStatus,jdbcType=BIT},
+      <if test="audit_status != null" >
+        audit_status = #{audit_status,jdbcType=BIT},
       </if>
-      <if test="payStatus != null" >
-        pay_status = #{payStatus,jdbcType=BIT},
+      <if test="pay_status != null" >
+        pay_status = #{pay_status,jdbcType=BIT},
       </if>
-      <if test="orderId != null" >
-        order_id = #{orderId,jdbcType=VARCHAR},
+      <if test="order_id != null" >
+        order_id = #{order_id,jdbcType=VARCHAR},
       </if>
       <if test="comment != null" >
         comment = #{comment,jdbcType=VARCHAR},
       </if>
+      <if test="opus != null" >
+        opus = #{opus,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.emi.roots.entity.AzSignUp" >
+    update az_sign_up
+    set uid = #{uid,jdbcType=INTEGER},
+      object_id = #{object_id,jdbcType=INTEGER},
+      sign_status = #{sign_status,jdbcType=BIT},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      check_time = #{check_time,jdbcType=TIMESTAMP},
+      audit_status = #{audit_status,jdbcType=BIT},
+      pay_status = #{pay_status,jdbcType=BIT},
+      order_id = #{order_id,jdbcType=VARCHAR},
+      comment = #{comment,jdbcType=VARCHAR},
+      opus = #{opus,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzSignUp" >
     update az_sign_up
     set uid = #{uid,jdbcType=INTEGER},
-      object_id = #{objectId,jdbcType=INTEGER},
-      sign_status = #{signStatus,jdbcType=BIT},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      check_time = #{checkTime,jdbcType=TIMESTAMP},
-      audit_status = #{auditStatus,jdbcType=BIT},
-      pay_status = #{payStatus,jdbcType=BIT},
-      order_id = #{orderId,jdbcType=VARCHAR},
+      object_id = #{object_id,jdbcType=INTEGER},
+      sign_status = #{sign_status,jdbcType=BIT},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      check_time = #{check_time,jdbcType=TIMESTAMP},
+      audit_status = #{audit_status,jdbcType=BIT},
+      pay_status = #{pay_status,jdbcType=BIT},
+      order_id = #{order_id,jdbcType=VARCHAR},
       comment = #{comment,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>

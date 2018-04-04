@@ -8,7 +8,7 @@
     <result column="url" property="url" jdbcType="VARCHAR" />
     <result column="description" property="description" jdbcType="VARCHAR" />
     <result column="table" property="table" jdbcType="VARCHAR" />
-    <result column="object_id" property="objectId" jdbcType="INTEGER" />
+    <result column="object_id" property="object_id" jdbcType="INTEGER" />
     <result column="createtime" property="createtime" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
@@ -30,7 +30,7 @@
       object_id, createtime)
     values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, 
       #{url,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{table,jdbcType=VARCHAR}, 
-      #{objectId,jdbcType=INTEGER}, #{createtime,jdbcType=INTEGER})
+      #{object_id,jdbcType=INTEGER}, #{createtime,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.emi.roots.entity.AzUserFavorites" >
     insert into az_user_favorites
@@ -53,7 +53,7 @@
       <if test="table != null" >
         table,
       </if>
-      <if test="objectId != null" >
+      <if test="object_id != null" >
         object_id,
       </if>
       <if test="createtime != null" >
@@ -79,8 +79,8 @@
       <if test="table != null" >
         #{table,jdbcType=VARCHAR},
       </if>
-      <if test="objectId != null" >
-        #{objectId,jdbcType=INTEGER},
+      <if test="object_id != null" >
+        #{object_id,jdbcType=INTEGER},
       </if>
       <if test="createtime != null" >
         #{createtime,jdbcType=INTEGER},
@@ -105,8 +105,8 @@
       <if test="table != null" >
         table = #{table,jdbcType=VARCHAR},
       </if>
-      <if test="objectId != null" >
-        object_id = #{objectId,jdbcType=INTEGER},
+      <if test="object_id != null" >
+        object_id = #{object_id,jdbcType=INTEGER},
       </if>
       <if test="createtime != null" >
         createtime = #{createtime,jdbcType=INTEGER},
@@ -121,7 +121,7 @@
       url = #{url,jdbcType=VARCHAR},
       description = #{description,jdbcType=VARCHAR},
       table = #{table,jdbcType=VARCHAR},
-      object_id = #{objectId,jdbcType=INTEGER},
+      object_id = #{object_id,jdbcType=INTEGER},
       createtime = #{createtime,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>

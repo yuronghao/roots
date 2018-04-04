@@ -1,42 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.emi.roots.mapper.AzReplyMapper" >
-  <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzReply" >
+<mapper namespace="com.emi.roots.mapper.AzLikeMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzLike" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="object_id" property="object_id" jdbcType="INTEGER" />
     <result column="tablename" property="tablename" jdbcType="VARCHAR" />
     <result column="uid" property="uid" jdbcType="INTEGER" />
     <result column="create_time" property="create_time" jdbcType="INTEGER" />
-    <result column="content" property="content" jdbcType="VARCHAR" />
-    <result column="praise_num" property="praise_num" jdbcType="INTEGER" />
-    <result column="isdel" property="isdel" jdbcType="TINYINT" />
-    <result column="ishot" property="ishot" jdbcType="TINYINT" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, object_id, tablename, uid, create_time, content, praise_num, isdel, ishot
+    id, object_id, tablename, uid, create_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from az_reply
+    from az_like
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from az_reply
+    delete from az_like
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.emi.roots.entity.AzReply" >
-    insert into az_reply (id, object_id, tablename, 
-      uid, create_time, content, 
-      praise_num, isdel, ishot
-      )
+  <insert id="insert" parameterType="com.emi.roots.entity.AzLike" >
+    insert into az_like (id, object_id, tablename, 
+      uid, create_time)
     values (#{id,jdbcType=INTEGER}, #{object_id,jdbcType=INTEGER}, #{tablename,jdbcType=VARCHAR}, 
-      #{uid,jdbcType=INTEGER}, #{create_time,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, 
-      #{praise_num,jdbcType=INTEGER}, #{isdel,jdbcType=TINYINT}, #{ishot,jdbcType=TINYINT}
-      )
+      #{uid,jdbcType=INTEGER}, #{create_time,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.emi.roots.entity.AzReply" >
-    insert into az_reply
+  <insert id="insertSelective" parameterType="com.emi.roots.entity.AzLike" >
+    insert into az_like
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -52,18 +44,6 @@
       </if>
       <if test="create_time != null" >
         create_time,
-      </if>
-      <if test="content != null" >
-        content,
-      </if>
-      <if test="praise_num != null" >
-        praise_num,
-      </if>
-      <if test="isdel != null" >
-        isdel,
-      </if>
-      <if test="ishot != null" >
-        ishot,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -82,22 +62,10 @@
       <if test="create_time != null" >
         #{create_time,jdbcType=INTEGER},
       </if>
-      <if test="content != null" >
-        #{content,jdbcType=VARCHAR},
-      </if>
-      <if test="praise_num != null" >
-        #{praise_num,jdbcType=INTEGER},
-      </if>
-      <if test="isdel != null" >
-        #{isdel,jdbcType=TINYINT},
-      </if>
-      <if test="ishot != null" >
-        #{ishot,jdbcType=TINYINT},
-      </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.emi.roots.entity.AzReply" >
-    update az_reply
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.roots.entity.AzLike" >
+    update az_like
     <set >
       <if test="object_id != null" >
         object_id = #{object_id,jdbcType=INTEGER},
@@ -111,31 +79,15 @@
       <if test="create_time != null" >
         create_time = #{create_time,jdbcType=INTEGER},
       </if>
-      <if test="content != null" >
-        content = #{content,jdbcType=VARCHAR},
-      </if>
-      <if test="praise_num != null" >
-        praise_num = #{praise_num,jdbcType=INTEGER},
-      </if>
-      <if test="isdel != null" >
-        isdel = #{isdel,jdbcType=TINYINT},
-      </if>
-      <if test="ishot != null" >
-        ishot = #{ishot,jdbcType=TINYINT},
-      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzReply" >
-    update az_reply
+  <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzLike" >
+    update az_like
     set object_id = #{object_id,jdbcType=INTEGER},
       tablename = #{tablename,jdbcType=VARCHAR},
       uid = #{uid,jdbcType=INTEGER},
-      create_time = #{create_time,jdbcType=INTEGER},
-      content = #{content,jdbcType=VARCHAR},
-      praise_num = #{praise_num,jdbcType=INTEGER},
-      isdel = #{isdel,jdbcType=TINYINT},
-      ishot = #{ishot,jdbcType=TINYINT}
+      create_time = #{create_time,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

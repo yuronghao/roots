@@ -3,8 +3,8 @@
 <mapper namespace="com.emi.roots.mapper.AzWeixinMenuMapper" >
   <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzWeixinMenu" >
     <id column="id" property="id" jdbcType="SMALLINT" />
-    <result column="parent_id" property="parentId" jdbcType="SMALLINT" />
-    <result column="menu_name" property="menuName" jdbcType="VARCHAR" />
+    <result column="parent_id" property="parent_id" jdbcType="SMALLINT" />
+    <result column="menu_name" property="menu_name" jdbcType="VARCHAR" />
     <result column="type" property="type" jdbcType="BIT" />
     <result column="listorder" property="listorder" jdbcType="SMALLINT" />
     <result column="comment" property="comment" jdbcType="VARCHAR" />
@@ -27,7 +27,7 @@
     insert into az_weixin_menu (id, parent_id, menu_name, 
       type, listorder, comment, 
       token)
-    values (#{id,jdbcType=SMALLINT}, #{parentId,jdbcType=SMALLINT}, #{menuName,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=SMALLINT}, #{parent_id,jdbcType=SMALLINT}, #{menu_name,jdbcType=VARCHAR}, 
       #{type,jdbcType=BIT}, #{listorder,jdbcType=SMALLINT}, #{comment,jdbcType=VARCHAR}, 
       #{token,jdbcType=VARCHAR})
   </insert>
@@ -37,10 +37,10 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="parentId != null" >
+      <if test="parent_id != null" >
         parent_id,
       </if>
-      <if test="menuName != null" >
+      <if test="menu_name != null" >
         menu_name,
       </if>
       <if test="type != null" >
@@ -60,11 +60,11 @@
       <if test="id != null" >
         #{id,jdbcType=SMALLINT},
       </if>
-      <if test="parentId != null" >
-        #{parentId,jdbcType=SMALLINT},
+      <if test="parent_id != null" >
+        #{parent_id,jdbcType=SMALLINT},
       </if>
-      <if test="menuName != null" >
-        #{menuName,jdbcType=VARCHAR},
+      <if test="menu_name != null" >
+        #{menu_name,jdbcType=VARCHAR},
       </if>
       <if test="type != null" >
         #{type,jdbcType=BIT},
@@ -83,11 +83,11 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.emi.roots.entity.AzWeixinMenu" >
     update az_weixin_menu
     <set >
-      <if test="parentId != null" >
-        parent_id = #{parentId,jdbcType=SMALLINT},
+      <if test="parent_id != null" >
+        parent_id = #{parent_id,jdbcType=SMALLINT},
       </if>
-      <if test="menuName != null" >
-        menu_name = #{menuName,jdbcType=VARCHAR},
+      <if test="menu_name != null" >
+        menu_name = #{menu_name,jdbcType=VARCHAR},
       </if>
       <if test="type != null" >
         type = #{type,jdbcType=BIT},
@@ -106,8 +106,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzWeixinMenu" >
     update az_weixin_menu
-    set parent_id = #{parentId,jdbcType=SMALLINT},
-      menu_name = #{menuName,jdbcType=VARCHAR},
+    set parent_id = #{parent_id,jdbcType=SMALLINT},
+      menu_name = #{menu_name,jdbcType=VARCHAR},
       type = #{type,jdbcType=BIT},
       listorder = #{listorder,jdbcType=SMALLINT},
       comment = #{comment,jdbcType=VARCHAR},

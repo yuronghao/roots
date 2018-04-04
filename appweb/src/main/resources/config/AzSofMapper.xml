@@ -4,17 +4,17 @@
   <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzSof" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="uid" property="uid" jdbcType="INTEGER" />
-    <result column="create_time" property="createTime" jdbcType="INTEGER" />
-    <result column="update_time" property="updateTime" jdbcType="INTEGER" />
+    <result column="create_time" property="create_time" jdbcType="INTEGER" />
+    <result column="update_time" property="update_time" jdbcType="INTEGER" />
     <result column="content" property="content" jdbcType="VARCHAR" />
     <result column="state" property="state" jdbcType="TINYINT" />
-    <result column="praise_num" property="praiseNum" jdbcType="INTEGER" />
-    <result column="click_num" property="clickNum" jdbcType="INTEGER" />
-    <result column="reply_num" property="replyNum" jdbcType="INTEGER" />
+    <result column="praise_num" property="praise_num" jdbcType="INTEGER" />
+    <result column="click_num" property="click_num" jdbcType="INTEGER" />
+    <result column="reply_num" property="reply_num" jdbcType="INTEGER" />
     <result column="isdel" property="isdel" jdbcType="TINYINT" />
     <result column="istop" property="istop" jdbcType="TINYINT" />
     <result column="ishot" property="ishot" jdbcType="TINYINT" />
-    <result column="label_id" property="labelId" jdbcType="VARCHAR" />
+    <result column="label_id" property="label_id" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, uid, create_time, update_time, content, state, praise_num, click_num, reply_num, 
@@ -36,11 +36,11 @@
       praise_num, click_num, reply_num, 
       isdel, istop, ishot, 
       label_id)
-    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{createTime,jdbcType=INTEGER}, 
-      #{updateTime,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{state,jdbcType=TINYINT}, 
-      #{praiseNum,jdbcType=INTEGER}, #{clickNum,jdbcType=INTEGER}, #{replyNum,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{create_time,jdbcType=INTEGER}, 
+      #{update_time,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{state,jdbcType=TINYINT}, 
+      #{praise_num,jdbcType=INTEGER}, #{click_num,jdbcType=INTEGER}, #{reply_num,jdbcType=INTEGER}, 
       #{isdel,jdbcType=TINYINT}, #{istop,jdbcType=TINYINT}, #{ishot,jdbcType=TINYINT}, 
-      #{labelId,jdbcType=VARCHAR})
+      #{label_id,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.emi.roots.entity.AzSof" >
     insert into az_sof
@@ -51,10 +51,10 @@
       <if test="uid != null" >
         uid,
       </if>
-      <if test="createTime != null" >
+      <if test="create_time != null" >
         create_time,
       </if>
-      <if test="updateTime != null" >
+      <if test="update_time != null" >
         update_time,
       </if>
       <if test="content != null" >
@@ -63,13 +63,13 @@
       <if test="state != null" >
         state,
       </if>
-      <if test="praiseNum != null" >
+      <if test="praise_num != null" >
         praise_num,
       </if>
-      <if test="clickNum != null" >
+      <if test="click_num != null" >
         click_num,
       </if>
-      <if test="replyNum != null" >
+      <if test="reply_num != null" >
         reply_num,
       </if>
       <if test="isdel != null" >
@@ -81,7 +81,7 @@
       <if test="ishot != null" >
         ishot,
       </if>
-      <if test="labelId != null" >
+      <if test="label_id != null" >
         label_id,
       </if>
     </trim>
@@ -92,11 +92,11 @@
       <if test="uid != null" >
         #{uid,jdbcType=INTEGER},
       </if>
-      <if test="createTime != null" >
-        #{createTime,jdbcType=INTEGER},
+      <if test="create_time != null" >
+        #{create_time,jdbcType=INTEGER},
       </if>
-      <if test="updateTime != null" >
-        #{updateTime,jdbcType=INTEGER},
+      <if test="update_time != null" >
+        #{update_time,jdbcType=INTEGER},
       </if>
       <if test="content != null" >
         #{content,jdbcType=VARCHAR},
@@ -104,14 +104,14 @@
       <if test="state != null" >
         #{state,jdbcType=TINYINT},
       </if>
-      <if test="praiseNum != null" >
-        #{praiseNum,jdbcType=INTEGER},
+      <if test="praise_num != null" >
+        #{praise_num,jdbcType=INTEGER},
       </if>
-      <if test="clickNum != null" >
-        #{clickNum,jdbcType=INTEGER},
+      <if test="click_num != null" >
+        #{click_num,jdbcType=INTEGER},
       </if>
-      <if test="replyNum != null" >
-        #{replyNum,jdbcType=INTEGER},
+      <if test="reply_num != null" >
+        #{reply_num,jdbcType=INTEGER},
       </if>
       <if test="isdel != null" >
         #{isdel,jdbcType=TINYINT},
@@ -122,8 +122,8 @@
       <if test="ishot != null" >
         #{ishot,jdbcType=TINYINT},
       </if>
-      <if test="labelId != null" >
-        #{labelId,jdbcType=VARCHAR},
+      <if test="label_id != null" >
+        #{label_id,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -133,11 +133,11 @@
       <if test="uid != null" >
         uid = #{uid,jdbcType=INTEGER},
       </if>
-      <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=INTEGER},
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=INTEGER},
       </if>
-      <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=INTEGER},
+      <if test="update_time != null" >
+        update_time = #{update_time,jdbcType=INTEGER},
       </if>
       <if test="content != null" >
         content = #{content,jdbcType=VARCHAR},
@@ -145,14 +145,14 @@
       <if test="state != null" >
         state = #{state,jdbcType=TINYINT},
       </if>
-      <if test="praiseNum != null" >
-        praise_num = #{praiseNum,jdbcType=INTEGER},
+      <if test="praise_num != null" >
+        praise_num = #{praise_num,jdbcType=INTEGER},
       </if>
-      <if test="clickNum != null" >
-        click_num = #{clickNum,jdbcType=INTEGER},
+      <if test="click_num != null" >
+        click_num = #{click_num,jdbcType=INTEGER},
       </if>
-      <if test="replyNum != null" >
-        reply_num = #{replyNum,jdbcType=INTEGER},
+      <if test="reply_num != null" >
+        reply_num = #{reply_num,jdbcType=INTEGER},
       </if>
       <if test="isdel != null" >
         isdel = #{isdel,jdbcType=TINYINT},
@@ -163,8 +163,8 @@
       <if test="ishot != null" >
         ishot = #{ishot,jdbcType=TINYINT},
       </if>
-      <if test="labelId != null" >
-        label_id = #{labelId,jdbcType=VARCHAR},
+      <if test="label_id != null" >
+        label_id = #{label_id,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -172,17 +172,17 @@
   <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzSof" >
     update az_sof
     set uid = #{uid,jdbcType=INTEGER},
-      create_time = #{createTime,jdbcType=INTEGER},
-      update_time = #{updateTime,jdbcType=INTEGER},
+      create_time = #{create_time,jdbcType=INTEGER},
+      update_time = #{update_time,jdbcType=INTEGER},
       content = #{content,jdbcType=VARCHAR},
       state = #{state,jdbcType=TINYINT},
-      praise_num = #{praiseNum,jdbcType=INTEGER},
-      click_num = #{clickNum,jdbcType=INTEGER},
-      reply_num = #{replyNum,jdbcType=INTEGER},
+      praise_num = #{praise_num,jdbcType=INTEGER},
+      click_num = #{click_num,jdbcType=INTEGER},
+      reply_num = #{reply_num,jdbcType=INTEGER},
       isdel = #{isdel,jdbcType=TINYINT},
       istop = #{istop,jdbcType=TINYINT},
       ishot = #{ishot,jdbcType=TINYINT},
-      label_id = #{labelId,jdbcType=VARCHAR}
+      label_id = #{label_id,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

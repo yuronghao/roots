@@ -3,11 +3,11 @@
 <mapper namespace="com.emi.roots.mapper.AzMessageContentMapper" >
   <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzMessageContent" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="from_id" property="fromId" jdbcType="INTEGER" />
+    <result column="from_id" property="from_id" jdbcType="INTEGER" />
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="url" property="url" jdbcType="VARCHAR" />
     <result column="type" property="type" jdbcType="TINYINT" />
-    <result column="create_time" property="createTime" jdbcType="INTEGER" />
+    <result column="create_time" property="create_time" jdbcType="INTEGER" />
     <result column="status" property="status" jdbcType="TINYINT" />
     <result column="isdel" property="isdel" jdbcType="TINYINT" />
   </resultMap>
@@ -38,8 +38,8 @@
       url, type, create_time, 
       status, isdel, content, 
       args)
-    values (#{id,jdbcType=INTEGER}, #{fromId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
-      #{url,jdbcType=VARCHAR}, #{type,jdbcType=TINYINT}, #{createTime,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{from_id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR}, #{type,jdbcType=TINYINT}, #{create_time,jdbcType=INTEGER}, 
       #{status,jdbcType=TINYINT}, #{isdel,jdbcType=TINYINT}, #{content,jdbcType=LONGVARCHAR}, 
       #{args,jdbcType=LONGVARCHAR})
   </insert>
@@ -49,7 +49,7 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="fromId != null" >
+      <if test="from_id != null" >
         from_id,
       </if>
       <if test="title != null" >
@@ -61,7 +61,7 @@
       <if test="type != null" >
         type,
       </if>
-      <if test="createTime != null" >
+      <if test="create_time != null" >
         create_time,
       </if>
       <if test="status != null" >
@@ -81,8 +81,8 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="fromId != null" >
-        #{fromId,jdbcType=INTEGER},
+      <if test="from_id != null" >
+        #{from_id,jdbcType=INTEGER},
       </if>
       <if test="title != null" >
         #{title,jdbcType=VARCHAR},
@@ -93,8 +93,8 @@
       <if test="type != null" >
         #{type,jdbcType=TINYINT},
       </if>
-      <if test="createTime != null" >
-        #{createTime,jdbcType=INTEGER},
+      <if test="create_time != null" >
+        #{create_time,jdbcType=INTEGER},
       </if>
       <if test="status != null" >
         #{status,jdbcType=TINYINT},
@@ -113,8 +113,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.emi.roots.entity.AzMessageContentWithBLOBs" >
     update az_message_content
     <set >
-      <if test="fromId != null" >
-        from_id = #{fromId,jdbcType=INTEGER},
+      <if test="from_id != null" >
+        from_id = #{from_id,jdbcType=INTEGER},
       </if>
       <if test="title != null" >
         title = #{title,jdbcType=VARCHAR},
@@ -125,8 +125,8 @@
       <if test="type != null" >
         type = #{type,jdbcType=TINYINT},
       </if>
-      <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=INTEGER},
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=INTEGER},
       </if>
       <if test="status != null" >
         status = #{status,jdbcType=TINYINT},
@@ -145,11 +145,11 @@
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.emi.roots.entity.AzMessageContentWithBLOBs" >
     update az_message_content
-    set from_id = #{fromId,jdbcType=INTEGER},
+    set from_id = #{from_id,jdbcType=INTEGER},
       title = #{title,jdbcType=VARCHAR},
       url = #{url,jdbcType=VARCHAR},
       type = #{type,jdbcType=TINYINT},
-      create_time = #{createTime,jdbcType=INTEGER},
+      create_time = #{create_time,jdbcType=INTEGER},
       status = #{status,jdbcType=TINYINT},
       isdel = #{isdel,jdbcType=TINYINT},
       content = #{content,jdbcType=LONGVARCHAR},
@@ -158,11 +158,11 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzMessageContent" >
     update az_message_content
-    set from_id = #{fromId,jdbcType=INTEGER},
+    set from_id = #{from_id,jdbcType=INTEGER},
       title = #{title,jdbcType=VARCHAR},
       url = #{url,jdbcType=VARCHAR},
       type = #{type,jdbcType=TINYINT},
-      create_time = #{createTime,jdbcType=INTEGER},
+      create_time = #{create_time,jdbcType=INTEGER},
       status = #{status,jdbcType=TINYINT},
       isdel = #{isdel,jdbcType=TINYINT}
     where id = #{id,jdbcType=INTEGER}

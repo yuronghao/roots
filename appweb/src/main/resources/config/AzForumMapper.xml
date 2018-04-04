@@ -3,17 +3,17 @@
 <mapper namespace="com.emi.roots.mapper.AzForumMapper" >
   <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzForum" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="type_id" property="typeId" jdbcType="INTEGER" />
+    <result column="type_id" property="type_id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="thumb" property="thumb" jdbcType="VARCHAR" />
     <result column="master" property="master" jdbcType="VARCHAR" />
     <result column="permissions" property="permissions" jdbcType="TINYINT" />
     <result column="descr" property="descr" jdbcType="VARCHAR" />
-    <result column="follow_num" property="followNum" jdbcType="INTEGER" />
-    <result column="click_num" property="clickNum" jdbcType="INTEGER" />
+    <result column="follow_num" property="follow_num" jdbcType="INTEGER" />
+    <result column="click_num" property="click_num" jdbcType="INTEGER" />
     <result column="listorder" property="listorder" jdbcType="INTEGER" />
     <result column="state" property="state" jdbcType="TINYINT" />
-    <result column="create_time" property="createTime" jdbcType="INTEGER" />
+    <result column="create_time" property="create_time" jdbcType="INTEGER" />
     <result column="uid" property="uid" jdbcType="INTEGER" />
     <result column="isdel" property="isdel" jdbcType="TINYINT" />
   </resultMap>
@@ -37,10 +37,10 @@
       descr, follow_num, click_num, 
       listorder, state, create_time, 
       uid, isdel)
-    values (#{id,jdbcType=INTEGER}, #{typeId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{type_id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
       #{thumb,jdbcType=VARCHAR}, #{master,jdbcType=VARCHAR}, #{permissions,jdbcType=TINYINT}, 
-      #{descr,jdbcType=VARCHAR}, #{followNum,jdbcType=INTEGER}, #{clickNum,jdbcType=INTEGER}, 
-      #{listorder,jdbcType=INTEGER}, #{state,jdbcType=TINYINT}, #{createTime,jdbcType=INTEGER}, 
+      #{descr,jdbcType=VARCHAR}, #{follow_num,jdbcType=INTEGER}, #{click_num,jdbcType=INTEGER}, 
+      #{listorder,jdbcType=INTEGER}, #{state,jdbcType=TINYINT}, #{create_time,jdbcType=INTEGER}, 
       #{uid,jdbcType=INTEGER}, #{isdel,jdbcType=TINYINT})
   </insert>
   <insert id="insertSelective" parameterType="com.emi.roots.entity.AzForum" >
@@ -49,7 +49,7 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="typeId != null" >
+      <if test="type_id != null" >
         type_id,
       </if>
       <if test="name != null" >
@@ -67,10 +67,10 @@
       <if test="descr != null" >
         descr,
       </if>
-      <if test="followNum != null" >
+      <if test="follow_num != null" >
         follow_num,
       </if>
-      <if test="clickNum != null" >
+      <if test="click_num != null" >
         click_num,
       </if>
       <if test="listorder != null" >
@@ -79,7 +79,7 @@
       <if test="state != null" >
         state,
       </if>
-      <if test="createTime != null" >
+      <if test="create_time != null" >
         create_time,
       </if>
       <if test="uid != null" >
@@ -93,8 +93,8 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="typeId != null" >
-        #{typeId,jdbcType=INTEGER},
+      <if test="type_id != null" >
+        #{type_id,jdbcType=INTEGER},
       </if>
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
@@ -111,11 +111,11 @@
       <if test="descr != null" >
         #{descr,jdbcType=VARCHAR},
       </if>
-      <if test="followNum != null" >
-        #{followNum,jdbcType=INTEGER},
+      <if test="follow_num != null" >
+        #{follow_num,jdbcType=INTEGER},
       </if>
-      <if test="clickNum != null" >
-        #{clickNum,jdbcType=INTEGER},
+      <if test="click_num != null" >
+        #{click_num,jdbcType=INTEGER},
       </if>
       <if test="listorder != null" >
         #{listorder,jdbcType=INTEGER},
@@ -123,8 +123,8 @@
       <if test="state != null" >
         #{state,jdbcType=TINYINT},
       </if>
-      <if test="createTime != null" >
-        #{createTime,jdbcType=INTEGER},
+      <if test="create_time != null" >
+        #{create_time,jdbcType=INTEGER},
       </if>
       <if test="uid != null" >
         #{uid,jdbcType=INTEGER},
@@ -137,8 +137,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.emi.roots.entity.AzForum" >
     update az_forum
     <set >
-      <if test="typeId != null" >
-        type_id = #{typeId,jdbcType=INTEGER},
+      <if test="type_id != null" >
+        type_id = #{type_id,jdbcType=INTEGER},
       </if>
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
@@ -155,11 +155,11 @@
       <if test="descr != null" >
         descr = #{descr,jdbcType=VARCHAR},
       </if>
-      <if test="followNum != null" >
-        follow_num = #{followNum,jdbcType=INTEGER},
+      <if test="follow_num != null" >
+        follow_num = #{follow_num,jdbcType=INTEGER},
       </if>
-      <if test="clickNum != null" >
-        click_num = #{clickNum,jdbcType=INTEGER},
+      <if test="click_num != null" >
+        click_num = #{click_num,jdbcType=INTEGER},
       </if>
       <if test="listorder != null" >
         listorder = #{listorder,jdbcType=INTEGER},
@@ -167,8 +167,8 @@
       <if test="state != null" >
         state = #{state,jdbcType=TINYINT},
       </if>
-      <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=INTEGER},
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=INTEGER},
       </if>
       <if test="uid != null" >
         uid = #{uid,jdbcType=INTEGER},
@@ -181,17 +181,17 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzForum" >
     update az_forum
-    set type_id = #{typeId,jdbcType=INTEGER},
+    set type_id = #{type_id,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},
       thumb = #{thumb,jdbcType=VARCHAR},
       master = #{master,jdbcType=VARCHAR},
       permissions = #{permissions,jdbcType=TINYINT},
       descr = #{descr,jdbcType=VARCHAR},
-      follow_num = #{followNum,jdbcType=INTEGER},
-      click_num = #{clickNum,jdbcType=INTEGER},
+      follow_num = #{follow_num,jdbcType=INTEGER},
+      click_num = #{click_num,jdbcType=INTEGER},
       listorder = #{listorder,jdbcType=INTEGER},
       state = #{state,jdbcType=TINYINT},
-      create_time = #{createTime,jdbcType=INTEGER},
+      create_time = #{create_time,jdbcType=INTEGER},
       uid = #{uid,jdbcType=INTEGER},
       isdel = #{isdel,jdbcType=TINYINT}
     where id = #{id,jdbcType=INTEGER}

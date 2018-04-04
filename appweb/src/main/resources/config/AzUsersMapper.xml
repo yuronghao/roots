@@ -3,27 +3,27 @@
 <mapper namespace="com.emi.roots.mapper.AzUsersMapper" >
   <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzUsers" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="user_login" property="userLogin" jdbcType="VARCHAR" />
-    <result column="user_pass" property="userPass" jdbcType="VARCHAR" />
-    <result column="user_nicename" property="userNicename" jdbcType="VARCHAR" />
-    <result column="user_email" property="userEmail" jdbcType="VARCHAR" />
-    <result column="user_url" property="userUrl" jdbcType="VARCHAR" />
+    <result column="user_login" property="user_login" jdbcType="VARCHAR" />
+    <result column="user_pass" property="user_pass" jdbcType="VARCHAR" />
+    <result column="user_nicename" property="user_nicename" jdbcType="VARCHAR" />
+    <result column="user_email" property="user_email" jdbcType="VARCHAR" />
+    <result column="user_url" property="user_url" jdbcType="VARCHAR" />
     <result column="avatar" property="avatar" jdbcType="VARCHAR" />
     <result column="sex" property="sex" jdbcType="SMALLINT" />
     <result column="birthday" property="birthday" jdbcType="DATE" />
     <result column="signature" property="signature" jdbcType="VARCHAR" />
-    <result column="last_login_ip" property="lastLoginIp" jdbcType="VARCHAR" />
-    <result column="last_login_time" property="lastLoginTime" jdbcType="TIMESTAMP" />
-    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
-    <result column="user_activation_key" property="userActivationKey" jdbcType="VARCHAR" />
-    <result column="user_status" property="userStatus" jdbcType="INTEGER" />
+    <result column="last_login_ip" property="last_login_ip" jdbcType="VARCHAR" />
+    <result column="last_login_time" property="last_login_time" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+    <result column="user_activation_key" property="user_activation_key" jdbcType="VARCHAR" />
+    <result column="user_status" property="user_status" jdbcType="INTEGER" />
     <result column="score" property="score" jdbcType="INTEGER" />
-    <result column="user_type" property="userType" jdbcType="SMALLINT" />
+    <result column="user_type" property="user_type" jdbcType="SMALLINT" />
     <result column="coin" property="coin" jdbcType="INTEGER" />
     <result column="mobile" property="mobile" jdbcType="VARCHAR" />
-    <result column="follow_num" property="followNum" jdbcType="INTEGER" />
+    <result column="follow_num" property="follow_num" jdbcType="INTEGER" />
     <result column="gag" property="gag" jdbcType="TINYINT" />
-    <result column="oauth_id" property="oauthId" jdbcType="VARCHAR" />
+    <result column="oauth_id" property="oauth_id" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, user_login, user_pass, user_nicename, user_email, user_url, avatar, sex, birthday, 
@@ -49,14 +49,14 @@
       score, user_type, coin, 
       mobile, follow_num, gag, 
       oauth_id)
-    values (#{id,jdbcType=INTEGER}, #{userLogin,jdbcType=VARCHAR}, #{userPass,jdbcType=VARCHAR}, 
-      #{userNicename,jdbcType=VARCHAR}, #{userEmail,jdbcType=VARCHAR}, #{userUrl,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{user_login,jdbcType=VARCHAR}, #{user_pass,jdbcType=VARCHAR}, 
+      #{user_nicename,jdbcType=VARCHAR}, #{user_email,jdbcType=VARCHAR}, #{user_url,jdbcType=VARCHAR}, 
       #{avatar,jdbcType=VARCHAR}, #{sex,jdbcType=SMALLINT}, #{birthday,jdbcType=DATE}, 
-      #{signature,jdbcType=VARCHAR}, #{lastLoginIp,jdbcType=VARCHAR}, #{lastLoginTime,jdbcType=TIMESTAMP}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{userActivationKey,jdbcType=VARCHAR}, #{userStatus,jdbcType=INTEGER}, 
-      #{score,jdbcType=INTEGER}, #{userType,jdbcType=SMALLINT}, #{coin,jdbcType=INTEGER}, 
-      #{mobile,jdbcType=VARCHAR}, #{followNum,jdbcType=INTEGER}, #{gag,jdbcType=TINYINT}, 
-      #{oauthId,jdbcType=VARCHAR})
+      #{signature,jdbcType=VARCHAR}, #{last_login_ip,jdbcType=VARCHAR}, #{last_login_time,jdbcType=TIMESTAMP}, 
+      #{create_time,jdbcType=TIMESTAMP}, #{user_activation_key,jdbcType=VARCHAR}, #{user_status,jdbcType=INTEGER}, 
+      #{score,jdbcType=INTEGER}, #{user_type,jdbcType=SMALLINT}, #{coin,jdbcType=INTEGER}, 
+      #{mobile,jdbcType=VARCHAR}, #{follow_num,jdbcType=INTEGER}, #{gag,jdbcType=TINYINT}, 
+      #{oauth_id,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.emi.roots.entity.AzUsers" >
     insert into az_users
@@ -64,19 +64,19 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="userLogin != null" >
+      <if test="user_login != null" >
         user_login,
       </if>
-      <if test="userPass != null" >
+      <if test="user_pass != null" >
         user_pass,
       </if>
-      <if test="userNicename != null" >
+      <if test="user_nicename != null" >
         user_nicename,
       </if>
-      <if test="userEmail != null" >
+      <if test="user_email != null" >
         user_email,
       </if>
-      <if test="userUrl != null" >
+      <if test="user_url != null" >
         user_url,
       </if>
       <if test="avatar != null" >
@@ -91,25 +91,25 @@
       <if test="signature != null" >
         signature,
       </if>
-      <if test="lastLoginIp != null" >
+      <if test="last_login_ip != null" >
         last_login_ip,
       </if>
-      <if test="lastLoginTime != null" >
+      <if test="last_login_time != null" >
         last_login_time,
       </if>
-      <if test="createTime != null" >
+      <if test="create_time != null" >
         create_time,
       </if>
-      <if test="userActivationKey != null" >
+      <if test="user_activation_key != null" >
         user_activation_key,
       </if>
-      <if test="userStatus != null" >
+      <if test="user_status != null" >
         user_status,
       </if>
       <if test="score != null" >
         score,
       </if>
-      <if test="userType != null" >
+      <if test="user_type != null" >
         user_type,
       </if>
       <if test="coin != null" >
@@ -118,13 +118,13 @@
       <if test="mobile != null" >
         mobile,
       </if>
-      <if test="followNum != null" >
+      <if test="follow_num != null" >
         follow_num,
       </if>
       <if test="gag != null" >
         gag,
       </if>
-      <if test="oauthId != null" >
+      <if test="oauth_id != null" >
         oauth_id,
       </if>
     </trim>
@@ -132,20 +132,20 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="userLogin != null" >
-        #{userLogin,jdbcType=VARCHAR},
+      <if test="user_login != null" >
+        #{user_login,jdbcType=VARCHAR},
       </if>
-      <if test="userPass != null" >
-        #{userPass,jdbcType=VARCHAR},
+      <if test="user_pass != null" >
+        #{user_pass,jdbcType=VARCHAR},
       </if>
-      <if test="userNicename != null" >
-        #{userNicename,jdbcType=VARCHAR},
+      <if test="user_nicename != null" >
+        #{user_nicename,jdbcType=VARCHAR},
       </if>
-      <if test="userEmail != null" >
-        #{userEmail,jdbcType=VARCHAR},
+      <if test="user_email != null" >
+        #{user_email,jdbcType=VARCHAR},
       </if>
-      <if test="userUrl != null" >
-        #{userUrl,jdbcType=VARCHAR},
+      <if test="user_url != null" >
+        #{user_url,jdbcType=VARCHAR},
       </if>
       <if test="avatar != null" >
         #{avatar,jdbcType=VARCHAR},
@@ -159,26 +159,26 @@
       <if test="signature != null" >
         #{signature,jdbcType=VARCHAR},
       </if>
-      <if test="lastLoginIp != null" >
-        #{lastLoginIp,jdbcType=VARCHAR},
+      <if test="last_login_ip != null" >
+        #{last_login_ip,jdbcType=VARCHAR},
       </if>
-      <if test="lastLoginTime != null" >
-        #{lastLoginTime,jdbcType=TIMESTAMP},
+      <if test="last_login_time != null" >
+        #{last_login_time,jdbcType=TIMESTAMP},
       </if>
-      <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
+      <if test="create_time != null" >
+        #{create_time,jdbcType=TIMESTAMP},
       </if>
-      <if test="userActivationKey != null" >
-        #{userActivationKey,jdbcType=VARCHAR},
+      <if test="user_activation_key != null" >
+        #{user_activation_key,jdbcType=VARCHAR},
       </if>
-      <if test="userStatus != null" >
-        #{userStatus,jdbcType=INTEGER},
+      <if test="user_status != null" >
+        #{user_status,jdbcType=INTEGER},
       </if>
       <if test="score != null" >
         #{score,jdbcType=INTEGER},
       </if>
-      <if test="userType != null" >
-        #{userType,jdbcType=SMALLINT},
+      <if test="user_type != null" >
+        #{user_type,jdbcType=SMALLINT},
       </if>
       <if test="coin != null" >
         #{coin,jdbcType=INTEGER},
@@ -186,34 +186,34 @@
       <if test="mobile != null" >
         #{mobile,jdbcType=VARCHAR},
       </if>
-      <if test="followNum != null" >
-        #{followNum,jdbcType=INTEGER},
+      <if test="follow_num != null" >
+        #{follow_num,jdbcType=INTEGER},
       </if>
       <if test="gag != null" >
         #{gag,jdbcType=TINYINT},
       </if>
-      <if test="oauthId != null" >
-        #{oauthId,jdbcType=VARCHAR},
+      <if test="oauth_id != null" >
+        #{oauth_id,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.emi.roots.entity.AzUsers" >
     update az_users
     <set >
-      <if test="userLogin != null" >
-        user_login = #{userLogin,jdbcType=VARCHAR},
+      <if test="user_login != null" >
+        user_login = #{user_login,jdbcType=VARCHAR},
       </if>
-      <if test="userPass != null" >
-        user_pass = #{userPass,jdbcType=VARCHAR},
+      <if test="user_pass != null" >
+        user_pass = #{user_pass,jdbcType=VARCHAR},
       </if>
-      <if test="userNicename != null" >
-        user_nicename = #{userNicename,jdbcType=VARCHAR},
+      <if test="user_nicename != null" >
+        user_nicename = #{user_nicename,jdbcType=VARCHAR},
       </if>
-      <if test="userEmail != null" >
-        user_email = #{userEmail,jdbcType=VARCHAR},
+      <if test="user_email != null" >
+        user_email = #{user_email,jdbcType=VARCHAR},
       </if>
-      <if test="userUrl != null" >
-        user_url = #{userUrl,jdbcType=VARCHAR},
+      <if test="user_url != null" >
+        user_url = #{user_url,jdbcType=VARCHAR},
       </if>
       <if test="avatar != null" >
         avatar = #{avatar,jdbcType=VARCHAR},
@@ -227,26 +227,26 @@
       <if test="signature != null" >
         signature = #{signature,jdbcType=VARCHAR},
       </if>
-      <if test="lastLoginIp != null" >
-        last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
+      <if test="last_login_ip != null" >
+        last_login_ip = #{last_login_ip,jdbcType=VARCHAR},
       </if>
-      <if test="lastLoginTime != null" >
-        last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      <if test="last_login_time != null" >
+        last_login_time = #{last_login_time,jdbcType=TIMESTAMP},
       </if>
-      <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=TIMESTAMP},
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=TIMESTAMP},
       </if>
-      <if test="userActivationKey != null" >
-        user_activation_key = #{userActivationKey,jdbcType=VARCHAR},
+      <if test="user_activation_key != null" >
+        user_activation_key = #{user_activation_key,jdbcType=VARCHAR},
       </if>
-      <if test="userStatus != null" >
-        user_status = #{userStatus,jdbcType=INTEGER},
+      <if test="user_status != null" >
+        user_status = #{user_status,jdbcType=INTEGER},
       </if>
       <if test="score != null" >
         score = #{score,jdbcType=INTEGER},
       </if>
-      <if test="userType != null" >
-        user_type = #{userType,jdbcType=SMALLINT},
+      <if test="user_type != null" >
+        user_type = #{user_type,jdbcType=SMALLINT},
       </if>
       <if test="coin != null" >
         coin = #{coin,jdbcType=INTEGER},
@@ -254,41 +254,47 @@
       <if test="mobile != null" >
         mobile = #{mobile,jdbcType=VARCHAR},
       </if>
-      <if test="followNum != null" >
-        follow_num = #{followNum,jdbcType=INTEGER},
+      <if test="follow_num != null" >
+        follow_num = #{follow_num,jdbcType=INTEGER},
       </if>
       <if test="gag != null" >
         gag = #{gag,jdbcType=TINYINT},
       </if>
-      <if test="oauthId != null" >
-        oauth_id = #{oauthId,jdbcType=VARCHAR},
+      <if test="oauth_id != null" >
+        oauth_id = #{oauth_id,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzUsers" >
     update az_users
-    set user_login = #{userLogin,jdbcType=VARCHAR},
-      user_pass = #{userPass,jdbcType=VARCHAR},
-      user_nicename = #{userNicename,jdbcType=VARCHAR},
-      user_email = #{userEmail,jdbcType=VARCHAR},
-      user_url = #{userUrl,jdbcType=VARCHAR},
+    set user_login = #{user_login,jdbcType=VARCHAR},
+      user_pass = #{user_pass,jdbcType=VARCHAR},
+      user_nicename = #{user_nicename,jdbcType=VARCHAR},
+      user_email = #{user_email,jdbcType=VARCHAR},
+      user_url = #{user_url,jdbcType=VARCHAR},
       avatar = #{avatar,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=SMALLINT},
       birthday = #{birthday,jdbcType=DATE},
       signature = #{signature,jdbcType=VARCHAR},
-      last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
-      last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      user_activation_key = #{userActivationKey,jdbcType=VARCHAR},
-      user_status = #{userStatus,jdbcType=INTEGER},
+      last_login_ip = #{last_login_ip,jdbcType=VARCHAR},
+      last_login_time = #{last_login_time,jdbcType=TIMESTAMP},
+      create_time = #{create_time,jdbcType=TIMESTAMP},
+      user_activation_key = #{user_activation_key,jdbcType=VARCHAR},
+      user_status = #{user_status,jdbcType=INTEGER},
       score = #{score,jdbcType=INTEGER},
-      user_type = #{userType,jdbcType=SMALLINT},
+      user_type = #{user_type,jdbcType=SMALLINT},
       coin = #{coin,jdbcType=INTEGER},
       mobile = #{mobile,jdbcType=VARCHAR},
-      follow_num = #{followNum,jdbcType=INTEGER},
+      follow_num = #{follow_num,jdbcType=INTEGER},
       gag = #{gag,jdbcType=TINYINT},
-      oauth_id = #{oauthId,jdbcType=VARCHAR}
+      oauth_id = #{oauth_id,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+
+  <select id="login" resultType="com.emi.roots.entity.AzUsers">
+    select * from az_users a where a.mobile = '${phoneNum}'
+  </select>
+
 </mapper>

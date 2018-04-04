@@ -4,10 +4,10 @@
   <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzTalkMessagePush" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="uid" property="uid" jdbcType="INTEGER" />
-    <result column="create_time" property="createTime" jdbcType="INTEGER" />
+    <result column="create_time" property="create_time" jdbcType="INTEGER" />
     <result column="status" property="status" jdbcType="TINYINT" />
-    <result column="source_id" property="sourceId" jdbcType="INTEGER" />
-    <result column="talk_id" property="talkId" jdbcType="INTEGER" />
+    <result column="source_id" property="source_id" jdbcType="INTEGER" />
+    <result column="talk_id" property="talk_id" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, uid, create_time, status, source_id, talk_id
@@ -26,8 +26,8 @@
     insert into az_talk_message_push (id, uid, create_time, 
       status, source_id, talk_id
       )
-    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{createTime,jdbcType=INTEGER}, 
-      #{status,jdbcType=TINYINT}, #{sourceId,jdbcType=INTEGER}, #{talkId,jdbcType=INTEGER}
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{create_time,jdbcType=INTEGER}, 
+      #{status,jdbcType=TINYINT}, #{source_id,jdbcType=INTEGER}, #{talk_id,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.emi.roots.entity.AzTalkMessagePush" >
@@ -39,16 +39,16 @@
       <if test="uid != null" >
         uid,
       </if>
-      <if test="createTime != null" >
+      <if test="create_time != null" >
         create_time,
       </if>
       <if test="status != null" >
         status,
       </if>
-      <if test="sourceId != null" >
+      <if test="source_id != null" >
         source_id,
       </if>
-      <if test="talkId != null" >
+      <if test="talk_id != null" >
         talk_id,
       </if>
     </trim>
@@ -59,17 +59,17 @@
       <if test="uid != null" >
         #{uid,jdbcType=INTEGER},
       </if>
-      <if test="createTime != null" >
-        #{createTime,jdbcType=INTEGER},
+      <if test="create_time != null" >
+        #{create_time,jdbcType=INTEGER},
       </if>
       <if test="status != null" >
         #{status,jdbcType=TINYINT},
       </if>
-      <if test="sourceId != null" >
-        #{sourceId,jdbcType=INTEGER},
+      <if test="source_id != null" >
+        #{source_id,jdbcType=INTEGER},
       </if>
-      <if test="talkId != null" >
-        #{talkId,jdbcType=INTEGER},
+      <if test="talk_id != null" >
+        #{talk_id,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -79,17 +79,17 @@
       <if test="uid != null" >
         uid = #{uid,jdbcType=INTEGER},
       </if>
-      <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=INTEGER},
+      <if test="create_time != null" >
+        create_time = #{create_time,jdbcType=INTEGER},
       </if>
       <if test="status != null" >
         status = #{status,jdbcType=TINYINT},
       </if>
-      <if test="sourceId != null" >
-        source_id = #{sourceId,jdbcType=INTEGER},
+      <if test="source_id != null" >
+        source_id = #{source_id,jdbcType=INTEGER},
       </if>
-      <if test="talkId != null" >
-        talk_id = #{talkId,jdbcType=INTEGER},
+      <if test="talk_id != null" >
+        talk_id = #{talk_id,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -97,10 +97,10 @@
   <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzTalkMessagePush" >
     update az_talk_message_push
     set uid = #{uid,jdbcType=INTEGER},
-      create_time = #{createTime,jdbcType=INTEGER},
+      create_time = #{create_time,jdbcType=INTEGER},
       status = #{status,jdbcType=TINYINT},
-      source_id = #{sourceId,jdbcType=INTEGER},
-      talk_id = #{talkId,jdbcType=INTEGER}
+      source_id = #{source_id,jdbcType=INTEGER},
+      talk_id = #{talk_id,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

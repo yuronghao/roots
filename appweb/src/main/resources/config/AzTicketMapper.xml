@@ -5,15 +5,15 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="price" property="price" jdbcType="DECIMAL" />
-    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
-    <result column="ticket_type" property="ticketType" jdbcType="BIT" />
-    <result column="ticket_id" property="ticketId" jdbcType="INTEGER" />
-    <result column="start_time" property="startTime" jdbcType="VARCHAR" />
-    <result column="end_time" property="endTime" jdbcType="VARCHAR" />
-    <result column="sale_start_time" property="saleStartTime" jdbcType="VARCHAR" />
-    <result column="sale_end_time" property="saleEndTime" jdbcType="VARCHAR" />
-    <result column="start_date" property="startDate" jdbcType="INTEGER" />
-    <result column="end_date" property="endDate" jdbcType="INTEGER" />
+    <result column="parent_id" property="parent_id" jdbcType="INTEGER" />
+    <result column="ticket_type" property="ticket_type" jdbcType="BIT" />
+    <result column="ticket_id" property="ticket_id" jdbcType="INTEGER" />
+    <result column="start_time" property="start_time" jdbcType="VARCHAR" />
+    <result column="end_time" property="end_time" jdbcType="VARCHAR" />
+    <result column="sale_start_time" property="sale_start_time" jdbcType="VARCHAR" />
+    <result column="sale_end_time" property="sale_end_time" jdbcType="VARCHAR" />
+    <result column="start_date" property="start_date" jdbcType="INTEGER" />
+    <result column="end_date" property="end_date" jdbcType="INTEGER" />
     <result column="week" property="week" jdbcType="VARCHAR" />
     <result column="pic" property="pic" jdbcType="VARCHAR" />
   </resultMap>
@@ -48,9 +48,9 @@
       week, pic, comment, 
       description)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, 
-      #{parentId,jdbcType=INTEGER}, #{ticketType,jdbcType=BIT}, #{ticketId,jdbcType=INTEGER}, 
-      #{startTime,jdbcType=VARCHAR}, #{endTime,jdbcType=VARCHAR}, #{saleStartTime,jdbcType=VARCHAR}, 
-      #{saleEndTime,jdbcType=VARCHAR}, #{startDate,jdbcType=INTEGER}, #{endDate,jdbcType=INTEGER}, 
+      #{parent_id,jdbcType=INTEGER}, #{ticket_type,jdbcType=BIT}, #{ticket_id,jdbcType=INTEGER}, 
+      #{start_time,jdbcType=VARCHAR}, #{end_time,jdbcType=VARCHAR}, #{sale_start_time,jdbcType=VARCHAR}, 
+      #{sale_end_time,jdbcType=VARCHAR}, #{start_date,jdbcType=INTEGER}, #{end_date,jdbcType=INTEGER}, 
       #{week,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR}, #{comment,jdbcType=LONGVARCHAR}, 
       #{description,jdbcType=LONGVARCHAR})
   </insert>
@@ -66,31 +66,31 @@
       <if test="price != null" >
         price,
       </if>
-      <if test="parentId != null" >
+      <if test="parent_id != null" >
         parent_id,
       </if>
-      <if test="ticketType != null" >
+      <if test="ticket_type != null" >
         ticket_type,
       </if>
-      <if test="ticketId != null" >
+      <if test="ticket_id != null" >
         ticket_id,
       </if>
-      <if test="startTime != null" >
+      <if test="start_time != null" >
         start_time,
       </if>
-      <if test="endTime != null" >
+      <if test="end_time != null" >
         end_time,
       </if>
-      <if test="saleStartTime != null" >
+      <if test="sale_start_time != null" >
         sale_start_time,
       </if>
-      <if test="saleEndTime != null" >
+      <if test="sale_end_time != null" >
         sale_end_time,
       </if>
-      <if test="startDate != null" >
+      <if test="start_date != null" >
         start_date,
       </if>
-      <if test="endDate != null" >
+      <if test="end_date != null" >
         end_date,
       </if>
       <if test="week != null" >
@@ -116,32 +116,32 @@
       <if test="price != null" >
         #{price,jdbcType=DECIMAL},
       </if>
-      <if test="parentId != null" >
-        #{parentId,jdbcType=INTEGER},
+      <if test="parent_id != null" >
+        #{parent_id,jdbcType=INTEGER},
       </if>
-      <if test="ticketType != null" >
-        #{ticketType,jdbcType=BIT},
+      <if test="ticket_type != null" >
+        #{ticket_type,jdbcType=BIT},
       </if>
-      <if test="ticketId != null" >
-        #{ticketId,jdbcType=INTEGER},
+      <if test="ticket_id != null" >
+        #{ticket_id,jdbcType=INTEGER},
       </if>
-      <if test="startTime != null" >
-        #{startTime,jdbcType=VARCHAR},
+      <if test="start_time != null" >
+        #{start_time,jdbcType=VARCHAR},
       </if>
-      <if test="endTime != null" >
-        #{endTime,jdbcType=VARCHAR},
+      <if test="end_time != null" >
+        #{end_time,jdbcType=VARCHAR},
       </if>
-      <if test="saleStartTime != null" >
-        #{saleStartTime,jdbcType=VARCHAR},
+      <if test="sale_start_time != null" >
+        #{sale_start_time,jdbcType=VARCHAR},
       </if>
-      <if test="saleEndTime != null" >
-        #{saleEndTime,jdbcType=VARCHAR},
+      <if test="sale_end_time != null" >
+        #{sale_end_time,jdbcType=VARCHAR},
       </if>
-      <if test="startDate != null" >
-        #{startDate,jdbcType=INTEGER},
+      <if test="start_date != null" >
+        #{start_date,jdbcType=INTEGER},
       </if>
-      <if test="endDate != null" >
-        #{endDate,jdbcType=INTEGER},
+      <if test="end_date != null" >
+        #{end_date,jdbcType=INTEGER},
       </if>
       <if test="week != null" >
         #{week,jdbcType=VARCHAR},
@@ -166,32 +166,32 @@
       <if test="price != null" >
         price = #{price,jdbcType=DECIMAL},
       </if>
-      <if test="parentId != null" >
-        parent_id = #{parentId,jdbcType=INTEGER},
+      <if test="parent_id != null" >
+        parent_id = #{parent_id,jdbcType=INTEGER},
       </if>
-      <if test="ticketType != null" >
-        ticket_type = #{ticketType,jdbcType=BIT},
+      <if test="ticket_type != null" >
+        ticket_type = #{ticket_type,jdbcType=BIT},
       </if>
-      <if test="ticketId != null" >
-        ticket_id = #{ticketId,jdbcType=INTEGER},
+      <if test="ticket_id != null" >
+        ticket_id = #{ticket_id,jdbcType=INTEGER},
       </if>
-      <if test="startTime != null" >
-        start_time = #{startTime,jdbcType=VARCHAR},
+      <if test="start_time != null" >
+        start_time = #{start_time,jdbcType=VARCHAR},
       </if>
-      <if test="endTime != null" >
-        end_time = #{endTime,jdbcType=VARCHAR},
+      <if test="end_time != null" >
+        end_time = #{end_time,jdbcType=VARCHAR},
       </if>
-      <if test="saleStartTime != null" >
-        sale_start_time = #{saleStartTime,jdbcType=VARCHAR},
+      <if test="sale_start_time != null" >
+        sale_start_time = #{sale_start_time,jdbcType=VARCHAR},
       </if>
-      <if test="saleEndTime != null" >
-        sale_end_time = #{saleEndTime,jdbcType=VARCHAR},
+      <if test="sale_end_time != null" >
+        sale_end_time = #{sale_end_time,jdbcType=VARCHAR},
       </if>
-      <if test="startDate != null" >
-        start_date = #{startDate,jdbcType=INTEGER},
+      <if test="start_date != null" >
+        start_date = #{start_date,jdbcType=INTEGER},
       </if>
-      <if test="endDate != null" >
-        end_date = #{endDate,jdbcType=INTEGER},
+      <if test="end_date != null" >
+        end_date = #{end_date,jdbcType=INTEGER},
       </if>
       <if test="week != null" >
         week = #{week,jdbcType=VARCHAR},
@@ -212,15 +212,15 @@
     update az_ticket
     set name = #{name,jdbcType=VARCHAR},
       price = #{price,jdbcType=DECIMAL},
-      parent_id = #{parentId,jdbcType=INTEGER},
-      ticket_type = #{ticketType,jdbcType=BIT},
-      ticket_id = #{ticketId,jdbcType=INTEGER},
-      start_time = #{startTime,jdbcType=VARCHAR},
-      end_time = #{endTime,jdbcType=VARCHAR},
-      sale_start_time = #{saleStartTime,jdbcType=VARCHAR},
-      sale_end_time = #{saleEndTime,jdbcType=VARCHAR},
-      start_date = #{startDate,jdbcType=INTEGER},
-      end_date = #{endDate,jdbcType=INTEGER},
+      parent_id = #{parent_id,jdbcType=INTEGER},
+      ticket_type = #{ticket_type,jdbcType=BIT},
+      ticket_id = #{ticket_id,jdbcType=INTEGER},
+      start_time = #{start_time,jdbcType=VARCHAR},
+      end_time = #{end_time,jdbcType=VARCHAR},
+      sale_start_time = #{sale_start_time,jdbcType=VARCHAR},
+      sale_end_time = #{sale_end_time,jdbcType=VARCHAR},
+      start_date = #{start_date,jdbcType=INTEGER},
+      end_date = #{end_date,jdbcType=INTEGER},
       week = #{week,jdbcType=VARCHAR},
       pic = #{pic,jdbcType=VARCHAR},
       comment = #{comment,jdbcType=LONGVARCHAR},
@@ -231,15 +231,15 @@
     update az_ticket
     set name = #{name,jdbcType=VARCHAR},
       price = #{price,jdbcType=DECIMAL},
-      parent_id = #{parentId,jdbcType=INTEGER},
-      ticket_type = #{ticketType,jdbcType=BIT},
-      ticket_id = #{ticketId,jdbcType=INTEGER},
-      start_time = #{startTime,jdbcType=VARCHAR},
-      end_time = #{endTime,jdbcType=VARCHAR},
-      sale_start_time = #{saleStartTime,jdbcType=VARCHAR},
-      sale_end_time = #{saleEndTime,jdbcType=VARCHAR},
-      start_date = #{startDate,jdbcType=INTEGER},
-      end_date = #{endDate,jdbcType=INTEGER},
+      parent_id = #{parent_id,jdbcType=INTEGER},
+      ticket_type = #{ticket_type,jdbcType=BIT},
+      ticket_id = #{ticket_id,jdbcType=INTEGER},
+      start_time = #{start_time,jdbcType=VARCHAR},
+      end_time = #{end_time,jdbcType=VARCHAR},
+      sale_start_time = #{sale_start_time,jdbcType=VARCHAR},
+      sale_end_time = #{sale_end_time,jdbcType=VARCHAR},
+      start_date = #{start_date,jdbcType=INTEGER},
+      end_date = #{end_date,jdbcType=INTEGER},
       week = #{week,jdbcType=VARCHAR},
       pic = #{pic,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}

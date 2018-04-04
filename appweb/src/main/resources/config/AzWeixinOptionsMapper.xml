@@ -4,24 +4,24 @@
   <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzWeixinOptions" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="uid" property="uid" jdbcType="INTEGER" />
-    <result column="app_name" property="appName" jdbcType="VARCHAR" />
-    <result column="app_user" property="appUser" jdbcType="VARCHAR" />
-    <result column="app_wxid" property="appWxid" jdbcType="VARCHAR" />
-    <result column="interface_url" property="interfaceUrl" jdbcType="VARCHAR" />
-    <result column="headface_url" property="headfaceUrl" jdbcType="VARCHAR" />
+    <result column="app_name" property="app_name" jdbcType="VARCHAR" />
+    <result column="app_user" property="app_user" jdbcType="VARCHAR" />
+    <result column="app_wxid" property="app_wxid" jdbcType="VARCHAR" />
+    <result column="interface_url" property="interface_url" jdbcType="VARCHAR" />
+    <result column="headface_url" property="headface_url" jdbcType="VARCHAR" />
     <result column="area" property="area" jdbcType="VARCHAR" />
     <result column="token" property="token" jdbcType="VARCHAR" />
-    <result column="is_use" property="isUse" jdbcType="TINYINT" />
+    <result column="is_use" property="is_use" jdbcType="TINYINT" />
     <result column="type" property="type" jdbcType="CHAR" />
-    <result column="app_id" property="appId" jdbcType="VARCHAR" />
-    <result column="app_secret" property="appSecret" jdbcType="VARCHAR" />
-    <result column="app_token" property="appToken" jdbcType="VARCHAR" />
-    <result column="app_key" property="appKey" jdbcType="VARCHAR" />
-    <result column="group_id" property="groupId" jdbcType="INTEGER" />
+    <result column="app_id" property="app_id" jdbcType="VARCHAR" />
+    <result column="app_secret" property="app_secret" jdbcType="VARCHAR" />
+    <result column="app_token" property="app_token" jdbcType="VARCHAR" />
+    <result column="app_key" property="app_key" jdbcType="VARCHAR" />
+    <result column="group_id" property="group_id" jdbcType="INTEGER" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.emi.roots.entity.AzWeixinOptionsWithBLOBs" extends="BaseResultMap" >
-    <result column="welcome_config" property="welcomeConfig" jdbcType="LONGVARCHAR" />
-    <result column="addon_status" property="addonStatus" jdbcType="LONGVARCHAR" />
+    <result column="welcome_config" property="welcome_config" jdbcType="LONGVARCHAR" />
+    <result column="addon_status" property="addon_status" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, uid, app_name, app_user, app_wxid, interface_url, headface_url, area, token, 
@@ -46,15 +46,17 @@
     insert into az_weixin_options (id, uid, app_name, 
       app_user, app_wxid, interface_url, 
       headface_url, area, token, 
-      is_use, type, app_id, app_secret, 
-      app_token, app_key, group_id, 
-      welcome_config, addon_status)
-    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{appName,jdbcType=VARCHAR}, 
-      #{appUser,jdbcType=VARCHAR}, #{appWxid,jdbcType=VARCHAR}, #{interfaceUrl,jdbcType=VARCHAR}, 
-      #{headfaceUrl,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, #{token,jdbcType=VARCHAR}, 
-      #{isUse,jdbcType=TINYINT}, #{type,jdbcType=CHAR}, #{appId,jdbcType=VARCHAR}, #{appSecret,jdbcType=VARCHAR}, 
-      #{appToken,jdbcType=VARCHAR}, #{appKey,jdbcType=VARCHAR}, #{groupId,jdbcType=INTEGER}, 
-      #{welcomeConfig,jdbcType=LONGVARCHAR}, #{addonStatus,jdbcType=LONGVARCHAR})
+      is_use, type, app_id, 
+      app_secret, app_token, app_key, 
+      group_id, welcome_config, addon_status
+      )
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{app_name,jdbcType=VARCHAR}, 
+      #{app_user,jdbcType=VARCHAR}, #{app_wxid,jdbcType=VARCHAR}, #{interface_url,jdbcType=VARCHAR}, 
+      #{headface_url,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, #{token,jdbcType=VARCHAR}, 
+      #{is_use,jdbcType=TINYINT}, #{type,jdbcType=CHAR}, #{app_id,jdbcType=VARCHAR}, 
+      #{app_secret,jdbcType=VARCHAR}, #{app_token,jdbcType=VARCHAR}, #{app_key,jdbcType=VARCHAR}, 
+      #{group_id,jdbcType=INTEGER}, #{welcome_config,jdbcType=LONGVARCHAR}, #{addon_status,jdbcType=LONGVARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.emi.roots.entity.AzWeixinOptionsWithBLOBs" >
     insert into az_weixin_options
@@ -65,19 +67,19 @@
       <if test="uid != null" >
         uid,
       </if>
-      <if test="appName != null" >
+      <if test="app_name != null" >
         app_name,
       </if>
-      <if test="appUser != null" >
+      <if test="app_user != null" >
         app_user,
       </if>
-      <if test="appWxid != null" >
+      <if test="app_wxid != null" >
         app_wxid,
       </if>
-      <if test="interfaceUrl != null" >
+      <if test="interface_url != null" >
         interface_url,
       </if>
-      <if test="headfaceUrl != null" >
+      <if test="headface_url != null" >
         headface_url,
       </if>
       <if test="area != null" >
@@ -86,31 +88,31 @@
       <if test="token != null" >
         token,
       </if>
-      <if test="isUse != null" >
+      <if test="is_use != null" >
         is_use,
       </if>
       <if test="type != null" >
         type,
       </if>
-      <if test="appId != null" >
+      <if test="app_id != null" >
         app_id,
       </if>
-      <if test="appSecret != null" >
+      <if test="app_secret != null" >
         app_secret,
       </if>
-      <if test="appToken != null" >
+      <if test="app_token != null" >
         app_token,
       </if>
-      <if test="appKey != null" >
+      <if test="app_key != null" >
         app_key,
       </if>
-      <if test="groupId != null" >
+      <if test="group_id != null" >
         group_id,
       </if>
-      <if test="welcomeConfig != null" >
+      <if test="welcome_config != null" >
         welcome_config,
       </if>
-      <if test="addonStatus != null" >
+      <if test="addon_status != null" >
         addon_status,
       </if>
     </trim>
@@ -121,20 +123,20 @@
       <if test="uid != null" >
         #{uid,jdbcType=INTEGER},
       </if>
-      <if test="appName != null" >
-        #{appName,jdbcType=VARCHAR},
+      <if test="app_name != null" >
+        #{app_name,jdbcType=VARCHAR},
       </if>
-      <if test="appUser != null" >
-        #{appUser,jdbcType=VARCHAR},
+      <if test="app_user != null" >
+        #{app_user,jdbcType=VARCHAR},
       </if>
-      <if test="appWxid != null" >
-        #{appWxid,jdbcType=VARCHAR},
+      <if test="app_wxid != null" >
+        #{app_wxid,jdbcType=VARCHAR},
       </if>
-      <if test="interfaceUrl != null" >
-        #{interfaceUrl,jdbcType=VARCHAR},
+      <if test="interface_url != null" >
+        #{interface_url,jdbcType=VARCHAR},
       </if>
-      <if test="headfaceUrl != null" >
-        #{headfaceUrl,jdbcType=VARCHAR},
+      <if test="headface_url != null" >
+        #{headface_url,jdbcType=VARCHAR},
       </if>
       <if test="area != null" >
         #{area,jdbcType=VARCHAR},
@@ -142,32 +144,32 @@
       <if test="token != null" >
         #{token,jdbcType=VARCHAR},
       </if>
-      <if test="isUse != null" >
-        #{isUse,jdbcType=TINYINT},
+      <if test="is_use != null" >
+        #{is_use,jdbcType=TINYINT},
       </if>
       <if test="type != null" >
         #{type,jdbcType=CHAR},
       </if>
-      <if test="appId != null" >
-        #{appId,jdbcType=VARCHAR},
+      <if test="app_id != null" >
+        #{app_id,jdbcType=VARCHAR},
       </if>
-      <if test="appSecret != null" >
-        #{appSecret,jdbcType=VARCHAR},
+      <if test="app_secret != null" >
+        #{app_secret,jdbcType=VARCHAR},
       </if>
-      <if test="appToken != null" >
-        #{appToken,jdbcType=VARCHAR},
+      <if test="app_token != null" >
+        #{app_token,jdbcType=VARCHAR},
       </if>
-      <if test="appKey != null" >
-        #{appKey,jdbcType=VARCHAR},
+      <if test="app_key != null" >
+        #{app_key,jdbcType=VARCHAR},
       </if>
-      <if test="groupId != null" >
-        #{groupId,jdbcType=INTEGER},
+      <if test="group_id != null" >
+        #{group_id,jdbcType=INTEGER},
       </if>
-      <if test="welcomeConfig != null" >
-        #{welcomeConfig,jdbcType=LONGVARCHAR},
+      <if test="welcome_config != null" >
+        #{welcome_config,jdbcType=LONGVARCHAR},
       </if>
-      <if test="addonStatus != null" >
-        #{addonStatus,jdbcType=LONGVARCHAR},
+      <if test="addon_status != null" >
+        #{addon_status,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -177,20 +179,20 @@
       <if test="uid != null" >
         uid = #{uid,jdbcType=INTEGER},
       </if>
-      <if test="appName != null" >
-        app_name = #{appName,jdbcType=VARCHAR},
+      <if test="app_name != null" >
+        app_name = #{app_name,jdbcType=VARCHAR},
       </if>
-      <if test="appUser != null" >
-        app_user = #{appUser,jdbcType=VARCHAR},
+      <if test="app_user != null" >
+        app_user = #{app_user,jdbcType=VARCHAR},
       </if>
-      <if test="appWxid != null" >
-        app_wxid = #{appWxid,jdbcType=VARCHAR},
+      <if test="app_wxid != null" >
+        app_wxid = #{app_wxid,jdbcType=VARCHAR},
       </if>
-      <if test="interfaceUrl != null" >
-        interface_url = #{interfaceUrl,jdbcType=VARCHAR},
+      <if test="interface_url != null" >
+        interface_url = #{interface_url,jdbcType=VARCHAR},
       </if>
-      <if test="headfaceUrl != null" >
-        headface_url = #{headfaceUrl,jdbcType=VARCHAR},
+      <if test="headface_url != null" >
+        headface_url = #{headface_url,jdbcType=VARCHAR},
       </if>
       <if test="area != null" >
         area = #{area,jdbcType=VARCHAR},
@@ -198,32 +200,32 @@
       <if test="token != null" >
         token = #{token,jdbcType=VARCHAR},
       </if>
-      <if test="isUse != null" >
-        is_use = #{isUse,jdbcType=TINYINT},
+      <if test="is_use != null" >
+        is_use = #{is_use,jdbcType=TINYINT},
       </if>
       <if test="type != null" >
         type = #{type,jdbcType=CHAR},
       </if>
-      <if test="appId != null" >
-        app_id = #{appId,jdbcType=VARCHAR},
+      <if test="app_id != null" >
+        app_id = #{app_id,jdbcType=VARCHAR},
       </if>
-      <if test="appSecret != null" >
-        app_secret = #{appSecret,jdbcType=VARCHAR},
+      <if test="app_secret != null" >
+        app_secret = #{app_secret,jdbcType=VARCHAR},
       </if>
-      <if test="appToken != null" >
-        app_token = #{appToken,jdbcType=VARCHAR},
+      <if test="app_token != null" >
+        app_token = #{app_token,jdbcType=VARCHAR},
       </if>
-      <if test="appKey != null" >
-        app_key = #{appKey,jdbcType=VARCHAR},
+      <if test="app_key != null" >
+        app_key = #{app_key,jdbcType=VARCHAR},
       </if>
-      <if test="groupId != null" >
-        group_id = #{groupId,jdbcType=INTEGER},
+      <if test="group_id != null" >
+        group_id = #{group_id,jdbcType=INTEGER},
       </if>
-      <if test="welcomeConfig != null" >
-        welcome_config = #{welcomeConfig,jdbcType=LONGVARCHAR},
+      <if test="welcome_config != null" >
+        welcome_config = #{welcome_config,jdbcType=LONGVARCHAR},
       </if>
-      <if test="addonStatus != null" >
-        addon_status = #{addonStatus,jdbcType=LONGVARCHAR},
+      <if test="addon_status != null" >
+        addon_status = #{addon_status,jdbcType=LONGVARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -231,41 +233,41 @@
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.emi.roots.entity.AzWeixinOptionsWithBLOBs" >
     update az_weixin_options
     set uid = #{uid,jdbcType=INTEGER},
-      app_name = #{appName,jdbcType=VARCHAR},
-      app_user = #{appUser,jdbcType=VARCHAR},
-      app_wxid = #{appWxid,jdbcType=VARCHAR},
-      interface_url = #{interfaceUrl,jdbcType=VARCHAR},
-      headface_url = #{headfaceUrl,jdbcType=VARCHAR},
+      app_name = #{app_name,jdbcType=VARCHAR},
+      app_user = #{app_user,jdbcType=VARCHAR},
+      app_wxid = #{app_wxid,jdbcType=VARCHAR},
+      interface_url = #{interface_url,jdbcType=VARCHAR},
+      headface_url = #{headface_url,jdbcType=VARCHAR},
       area = #{area,jdbcType=VARCHAR},
       token = #{token,jdbcType=VARCHAR},
-      is_use = #{isUse,jdbcType=TINYINT},
+      is_use = #{is_use,jdbcType=TINYINT},
       type = #{type,jdbcType=CHAR},
-      app_id = #{appId,jdbcType=VARCHAR},
-      app_secret = #{appSecret,jdbcType=VARCHAR},
-      app_token = #{appToken,jdbcType=VARCHAR},
-      app_key = #{appKey,jdbcType=VARCHAR},
-      group_id = #{groupId,jdbcType=INTEGER},
-      welcome_config = #{welcomeConfig,jdbcType=LONGVARCHAR},
-      addon_status = #{addonStatus,jdbcType=LONGVARCHAR}
+      app_id = #{app_id,jdbcType=VARCHAR},
+      app_secret = #{app_secret,jdbcType=VARCHAR},
+      app_token = #{app_token,jdbcType=VARCHAR},
+      app_key = #{app_key,jdbcType=VARCHAR},
+      group_id = #{group_id,jdbcType=INTEGER},
+      welcome_config = #{welcome_config,jdbcType=LONGVARCHAR},
+      addon_status = #{addon_status,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzWeixinOptions" >
     update az_weixin_options
     set uid = #{uid,jdbcType=INTEGER},
-      app_name = #{appName,jdbcType=VARCHAR},
-      app_user = #{appUser,jdbcType=VARCHAR},
-      app_wxid = #{appWxid,jdbcType=VARCHAR},
-      interface_url = #{interfaceUrl,jdbcType=VARCHAR},
-      headface_url = #{headfaceUrl,jdbcType=VARCHAR},
+      app_name = #{app_name,jdbcType=VARCHAR},
+      app_user = #{app_user,jdbcType=VARCHAR},
+      app_wxid = #{app_wxid,jdbcType=VARCHAR},
+      interface_url = #{interface_url,jdbcType=VARCHAR},
+      headface_url = #{headface_url,jdbcType=VARCHAR},
       area = #{area,jdbcType=VARCHAR},
       token = #{token,jdbcType=VARCHAR},
-      is_use = #{isUse,jdbcType=TINYINT},
+      is_use = #{is_use,jdbcType=TINYINT},
       type = #{type,jdbcType=CHAR},
-      app_id = #{appId,jdbcType=VARCHAR},
-      app_secret = #{appSecret,jdbcType=VARCHAR},
-      app_token = #{appToken,jdbcType=VARCHAR},
-      app_key = #{appKey,jdbcType=VARCHAR},
-      group_id = #{groupId,jdbcType=INTEGER}
+      app_id = #{app_id,jdbcType=VARCHAR},
+      app_secret = #{app_secret,jdbcType=VARCHAR},
+      app_token = #{app_token,jdbcType=VARCHAR},
+      app_key = #{app_key,jdbcType=VARCHAR},
+      group_id = #{group_id,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -3,17 +3,17 @@
 <mapper namespace="com.emi.roots.mapper.AzOrderProductMapper" >
   <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzOrderProduct" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="order_id" property="orderId" jdbcType="CHAR" />
+    <result column="order_id" property="order_id" jdbcType="CHAR" />
     <result column="title" property="title" jdbcType="VARCHAR" />
-    <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
-    <result column="sku_id" property="skuId" jdbcType="INTEGER" />
+    <result column="goods_id" property="goods_id" jdbcType="INTEGER" />
+    <result column="sku_id" property="sku_id" jdbcType="INTEGER" />
     <result column="price" property="price" jdbcType="DECIMAL" />
     <result column="num" property="num" jdbcType="INTEGER" />
     <result column="amount" property="amount" jdbcType="DECIMAL" />
     <result column="pic" property="pic" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.emi.roots.entity.AzOrderProduct" extends="BaseResultMap" >
-    <result column="props_name" property="propsName" jdbcType="LONGVARCHAR" />
+    <result column="props_name" property="props_name" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, order_id, title, goods_id, sku_id, price, num, amount, pic
@@ -38,9 +38,9 @@
       goods_id, sku_id, price, 
       num, amount, pic, props_name
       )
-    values (#{id,jdbcType=INTEGER}, #{orderId,jdbcType=CHAR}, #{title,jdbcType=VARCHAR}, 
-      #{goodsId,jdbcType=INTEGER}, #{skuId,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}, 
-      #{num,jdbcType=INTEGER}, #{amount,jdbcType=DECIMAL}, #{pic,jdbcType=VARCHAR}, #{propsName,jdbcType=LONGVARCHAR}
+    values (#{id,jdbcType=INTEGER}, #{order_id,jdbcType=CHAR}, #{title,jdbcType=VARCHAR}, 
+      #{goods_id,jdbcType=INTEGER}, #{sku_id,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}, 
+      #{num,jdbcType=INTEGER}, #{amount,jdbcType=DECIMAL}, #{pic,jdbcType=VARCHAR}, #{props_name,jdbcType=LONGVARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.emi.roots.entity.AzOrderProduct" >
@@ -49,16 +49,16 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="orderId != null" >
+      <if test="order_id != null" >
         order_id,
       </if>
       <if test="title != null" >
         title,
       </if>
-      <if test="goodsId != null" >
+      <if test="goods_id != null" >
         goods_id,
       </if>
-      <if test="skuId != null" >
+      <if test="sku_id != null" >
         sku_id,
       </if>
       <if test="price != null" >
@@ -73,7 +73,7 @@
       <if test="pic != null" >
         pic,
       </if>
-      <if test="propsName != null" >
+      <if test="props_name != null" >
         props_name,
       </if>
     </trim>
@@ -81,17 +81,17 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="orderId != null" >
-        #{orderId,jdbcType=CHAR},
+      <if test="order_id != null" >
+        #{order_id,jdbcType=CHAR},
       </if>
       <if test="title != null" >
         #{title,jdbcType=VARCHAR},
       </if>
-      <if test="goodsId != null" >
-        #{goodsId,jdbcType=INTEGER},
+      <if test="goods_id != null" >
+        #{goods_id,jdbcType=INTEGER},
       </if>
-      <if test="skuId != null" >
-        #{skuId,jdbcType=INTEGER},
+      <if test="sku_id != null" >
+        #{sku_id,jdbcType=INTEGER},
       </if>
       <if test="price != null" >
         #{price,jdbcType=DECIMAL},
@@ -105,25 +105,25 @@
       <if test="pic != null" >
         #{pic,jdbcType=VARCHAR},
       </if>
-      <if test="propsName != null" >
-        #{propsName,jdbcType=LONGVARCHAR},
+      <if test="props_name != null" >
+        #{props_name,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.emi.roots.entity.AzOrderProduct" >
     update az_order_product
     <set >
-      <if test="orderId != null" >
-        order_id = #{orderId,jdbcType=CHAR},
+      <if test="order_id != null" >
+        order_id = #{order_id,jdbcType=CHAR},
       </if>
       <if test="title != null" >
         title = #{title,jdbcType=VARCHAR},
       </if>
-      <if test="goodsId != null" >
-        goods_id = #{goodsId,jdbcType=INTEGER},
+      <if test="goods_id != null" >
+        goods_id = #{goods_id,jdbcType=INTEGER},
       </if>
-      <if test="skuId != null" >
-        sku_id = #{skuId,jdbcType=INTEGER},
+      <if test="sku_id != null" >
+        sku_id = #{sku_id,jdbcType=INTEGER},
       </if>
       <if test="price != null" >
         price = #{price,jdbcType=DECIMAL},
@@ -137,31 +137,31 @@
       <if test="pic != null" >
         pic = #{pic,jdbcType=VARCHAR},
       </if>
-      <if test="propsName != null" >
-        props_name = #{propsName,jdbcType=LONGVARCHAR},
+      <if test="props_name != null" >
+        props_name = #{props_name,jdbcType=LONGVARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.emi.roots.entity.AzOrderProduct" >
     update az_order_product
-    set order_id = #{orderId,jdbcType=CHAR},
+    set order_id = #{order_id,jdbcType=CHAR},
       title = #{title,jdbcType=VARCHAR},
-      goods_id = #{goodsId,jdbcType=INTEGER},
-      sku_id = #{skuId,jdbcType=INTEGER},
+      goods_id = #{goods_id,jdbcType=INTEGER},
+      sku_id = #{sku_id,jdbcType=INTEGER},
       price = #{price,jdbcType=DECIMAL},
       num = #{num,jdbcType=INTEGER},
       amount = #{amount,jdbcType=DECIMAL},
       pic = #{pic,jdbcType=VARCHAR},
-      props_name = #{propsName,jdbcType=LONGVARCHAR}
+      props_name = #{props_name,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzOrderProduct" >
     update az_order_product
-    set order_id = #{orderId,jdbcType=CHAR},
+    set order_id = #{order_id,jdbcType=CHAR},
       title = #{title,jdbcType=VARCHAR},
-      goods_id = #{goodsId,jdbcType=INTEGER},
-      sku_id = #{skuId,jdbcType=INTEGER},
+      goods_id = #{goods_id,jdbcType=INTEGER},
+      sku_id = #{sku_id,jdbcType=INTEGER},
       price = #{price,jdbcType=DECIMAL},
       num = #{num,jdbcType=INTEGER},
       amount = #{amount,jdbcType=DECIMAL},

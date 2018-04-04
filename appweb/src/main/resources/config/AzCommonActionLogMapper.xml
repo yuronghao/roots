@@ -7,7 +7,7 @@
     <result column="object" property="object" jdbcType="VARCHAR" />
     <result column="action" property="action" jdbcType="VARCHAR" />
     <result column="count" property="count" jdbcType="INTEGER" />
-    <result column="last_time" property="lastTime" jdbcType="INTEGER" />
+    <result column="last_time" property="last_time" jdbcType="INTEGER" />
     <result column="ip" property="ip" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
@@ -28,7 +28,7 @@
       action, count, last_time, 
       ip)
     values (#{id,jdbcType=INTEGER}, #{user,jdbcType=BIGINT}, #{object,jdbcType=VARCHAR}, 
-      #{action,jdbcType=VARCHAR}, #{count,jdbcType=INTEGER}, #{lastTime,jdbcType=INTEGER}, 
+      #{action,jdbcType=VARCHAR}, #{count,jdbcType=INTEGER}, #{last_time,jdbcType=INTEGER}, 
       #{ip,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.emi.roots.entity.AzCommonActionLog" >
@@ -49,7 +49,7 @@
       <if test="count != null" >
         count,
       </if>
-      <if test="lastTime != null" >
+      <if test="last_time != null" >
         last_time,
       </if>
       <if test="ip != null" >
@@ -72,8 +72,8 @@
       <if test="count != null" >
         #{count,jdbcType=INTEGER},
       </if>
-      <if test="lastTime != null" >
-        #{lastTime,jdbcType=INTEGER},
+      <if test="last_time != null" >
+        #{last_time,jdbcType=INTEGER},
       </if>
       <if test="ip != null" >
         #{ip,jdbcType=VARCHAR},
@@ -95,8 +95,8 @@
       <if test="count != null" >
         count = #{count,jdbcType=INTEGER},
       </if>
-      <if test="lastTime != null" >
-        last_time = #{lastTime,jdbcType=INTEGER},
+      <if test="last_time != null" >
+        last_time = #{last_time,jdbcType=INTEGER},
       </if>
       <if test="ip != null" >
         ip = #{ip,jdbcType=VARCHAR},
@@ -110,7 +110,7 @@
       object = #{object,jdbcType=VARCHAR},
       action = #{action,jdbcType=VARCHAR},
       count = #{count,jdbcType=INTEGER},
-      last_time = #{lastTime,jdbcType=INTEGER},
+      last_time = #{last_time,jdbcType=INTEGER},
       ip = #{ip,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>

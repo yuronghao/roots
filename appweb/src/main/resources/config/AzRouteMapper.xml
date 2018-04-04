@@ -3,7 +3,7 @@
 <mapper namespace="com.emi.roots.mapper.AzRouteMapper" >
   <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzRoute" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="full_url" property="fullUrl" jdbcType="VARCHAR" />
+    <result column="full_url" property="full_url" jdbcType="VARCHAR" />
     <result column="url" property="url" jdbcType="VARCHAR" />
     <result column="listorder" property="listorder" jdbcType="INTEGER" />
     <result column="status" property="status" jdbcType="BIT" />
@@ -24,7 +24,7 @@
   <insert id="insert" parameterType="com.emi.roots.entity.AzRoute" >
     insert into az_route (id, full_url, url, 
       listorder, status)
-    values (#{id,jdbcType=INTEGER}, #{fullUrl,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{full_url,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
       #{listorder,jdbcType=INTEGER}, #{status,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="com.emi.roots.entity.AzRoute" >
@@ -33,7 +33,7 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="fullUrl != null" >
+      <if test="full_url != null" >
         full_url,
       </if>
       <if test="url != null" >
@@ -50,8 +50,8 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="fullUrl != null" >
-        #{fullUrl,jdbcType=VARCHAR},
+      <if test="full_url != null" >
+        #{full_url,jdbcType=VARCHAR},
       </if>
       <if test="url != null" >
         #{url,jdbcType=VARCHAR},
@@ -67,8 +67,8 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.emi.roots.entity.AzRoute" >
     update az_route
     <set >
-      <if test="fullUrl != null" >
-        full_url = #{fullUrl,jdbcType=VARCHAR},
+      <if test="full_url != null" >
+        full_url = #{full_url,jdbcType=VARCHAR},
       </if>
       <if test="url != null" >
         url = #{url,jdbcType=VARCHAR},
@@ -84,7 +84,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzRoute" >
     update az_route
-    set full_url = #{fullUrl,jdbcType=VARCHAR},
+    set full_url = #{full_url,jdbcType=VARCHAR},
       url = #{url,jdbcType=VARCHAR},
       listorder = #{listorder,jdbcType=INTEGER},
       status = #{status,jdbcType=BIT}

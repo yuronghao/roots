@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.emi.emiservice.mapper.AreaMapper" >
-  <resultMap id="BaseResultMap" type="com.emi.emiservice.entity.Area" >
+<mapper namespace="com.emi.roots.mapper.AreaMapper" >
+  <resultMap id="BaseResultMap" type="com.emi.roots.entity.Area" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="shortname" property="shortname" jdbcType="VARCHAR" />
@@ -23,7 +23,7 @@
     delete from area
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.emi.emiservice.entity.Area" >
+  <insert id="insert" parameterType="com.emi.roots.entity.Area" >
     insert into area (id, name, shortname, 
       level, parentcode, code, 
       isprovincecity)
@@ -31,7 +31,7 @@
       #{level,jdbcType=INTEGER}, #{parentcode,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
       #{isprovincecity,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.emi.emiservice.entity.Area" >
+  <insert id="insertSelective" parameterType="com.emi.roots.entity.Area" >
     insert into area
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -80,7 +80,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.emi.emiservice.entity.Area" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.emi.roots.entity.Area" >
     update area
     <set >
       <if test="name != null" >
@@ -104,7 +104,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.emi.emiservice.entity.Area" >
+  <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.Area" >
     update area
     set name = #{name,jdbcType=VARCHAR},
       shortname = #{shortname,jdbcType=VARCHAR},

@@ -3,42 +3,42 @@
 <mapper namespace="com.emi.roots.mapper.AzPostsMapper" >
   <resultMap id="BaseResultMap" type="com.emi.roots.entity.AzPosts" >
     <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="post_author" property="postAuthor" jdbcType="BIGINT" />
-    <result column="post_keywords" property="postKeywords" jdbcType="VARCHAR" />
-    <result column="post_source" property="postSource" jdbcType="VARCHAR" />
-    <result column="post_date" property="postDate" jdbcType="TIMESTAMP" />
-    <result column="post_status" property="postStatus" jdbcType="INTEGER" />
-    <result column="comment_status" property="commentStatus" jdbcType="INTEGER" />
-    <result column="post_modified" property="postModified" jdbcType="TIMESTAMP" />
-    <result column="post_parent" property="postParent" jdbcType="BIGINT" />
-    <result column="post_type" property="postType" jdbcType="INTEGER" />
-    <result column="post_mime_type" property="postMimeType" jdbcType="VARCHAR" />
-    <result column="comment_count" property="commentCount" jdbcType="BIGINT" />
-    <result column="post_hits" property="postHits" jdbcType="INTEGER" />
-    <result column="post_like" property="postLike" jdbcType="INTEGER" />
+    <result column="post_author" property="post_author" jdbcType="BIGINT" />
+    <result column="post_keywords" property="post_keywords" jdbcType="VARCHAR" />
+    <result column="post_source" property="post_source" jdbcType="VARCHAR" />
+    <result column="post_date" property="post_date" jdbcType="TIMESTAMP" />
+    <result column="post_status" property="post_status" jdbcType="INTEGER" />
+    <result column="comment_status" property="comment_status" jdbcType="INTEGER" />
+    <result column="post_modified" property="post_modified" jdbcType="TIMESTAMP" />
+    <result column="post_parent" property="post_parent" jdbcType="BIGINT" />
+    <result column="post_type" property="post_type" jdbcType="INTEGER" />
+    <result column="post_mime_type" property="post_mime_type" jdbcType="VARCHAR" />
+    <result column="comment_count" property="comment_count" jdbcType="BIGINT" />
+    <result column="post_hits" property="post_hits" jdbcType="INTEGER" />
+    <result column="post_like" property="post_like" jdbcType="INTEGER" />
     <result column="istop" property="istop" jdbcType="BIT" />
     <result column="recommended" property="recommended" jdbcType="BIT" />
-    <result column="start_date" property="startDate" jdbcType="TIMESTAMP" />
-    <result column="end_date" property="endDate" jdbcType="TIMESTAMP" />
+    <result column="start_date" property="start_date" jdbcType="TIMESTAMP" />
+    <result column="end_date" property="end_date" jdbcType="TIMESTAMP" />
     <result column="price" property="price" jdbcType="VARCHAR" />
-    <result column="original_price" property="originalPrice" jdbcType="VARCHAR" />
+    <result column="original_price" property="original_price" jdbcType="VARCHAR" />
     <result column="number" property="number" jdbcType="SMALLINT" />
     <result column="type" property="type" jdbcType="TINYINT" />
     <result column="listorder" property="listorder" jdbcType="SMALLINT" />
     <result column="status" property="status" jdbcType="BIT" />
     <result column="address" property="address" jdbcType="VARCHAR" />
     <result column="contacts" property="contacts" jdbcType="VARCHAR" />
-    <result column="is_show" property="isShow" jdbcType="BIT" />
-    <result column="commodity_id" property="commodityId" jdbcType="VARCHAR" />
-    <result column="review_id" property="reviewId" jdbcType="INTEGER" />
-    <result column="material_id" property="materialId" jdbcType="VARCHAR" />
+    <result column="is_show" property="is_show" jdbcType="BIT" />
+    <result column="commodity_id" property="commodity_id" jdbcType="VARCHAR" />
+    <result column="review_id" property="review_id" jdbcType="INTEGER" />
+    <result column="material_id" property="material_id" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.emi.roots.entity.AzPostsWithBLOBs" extends="BaseResultMap" >
-    <result column="post_content" property="postContent" jdbcType="LONGVARCHAR" />
-    <result column="post_title" property="postTitle" jdbcType="LONGVARCHAR" />
-    <result column="post_link" property="postLink" jdbcType="LONGVARCHAR" />
-    <result column="post_excerpt" property="postExcerpt" jdbcType="LONGVARCHAR" />
-    <result column="post_content_filtered" property="postContentFiltered" jdbcType="LONGVARCHAR" />
+    <result column="post_content" property="post_content" jdbcType="LONGVARCHAR" />
+    <result column="post_title" property="post_title" jdbcType="LONGVARCHAR" />
+    <result column="post_link" property="post_link" jdbcType="LONGVARCHAR" />
+    <result column="post_excerpt" property="post_excerpt" jdbcType="LONGVARCHAR" />
+    <result column="post_content_filtered" property="post_content_filtered" jdbcType="LONGVARCHAR" />
     <result column="smeta" property="smeta" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
@@ -76,18 +76,18 @@
       post_content, post_title, post_link, 
       post_excerpt, post_content_filtered, 
       smeta)
-    values (#{id,jdbcType=BIGINT}, #{postAuthor,jdbcType=BIGINT}, #{postKeywords,jdbcType=VARCHAR}, 
-      #{postSource,jdbcType=VARCHAR}, #{postDate,jdbcType=TIMESTAMP}, #{postStatus,jdbcType=INTEGER}, 
-      #{commentStatus,jdbcType=INTEGER}, #{postModified,jdbcType=TIMESTAMP}, #{postParent,jdbcType=BIGINT}, 
-      #{postType,jdbcType=INTEGER}, #{postMimeType,jdbcType=VARCHAR}, #{commentCount,jdbcType=BIGINT}, 
-      #{postHits,jdbcType=INTEGER}, #{postLike,jdbcType=INTEGER}, #{istop,jdbcType=BIT}, 
-      #{recommended,jdbcType=BIT}, #{startDate,jdbcType=TIMESTAMP}, #{endDate,jdbcType=TIMESTAMP}, 
-      #{price,jdbcType=VARCHAR}, #{originalPrice,jdbcType=VARCHAR}, #{number,jdbcType=SMALLINT}, 
+    values (#{id,jdbcType=BIGINT}, #{post_author,jdbcType=BIGINT}, #{post_keywords,jdbcType=VARCHAR}, 
+      #{post_source,jdbcType=VARCHAR}, #{post_date,jdbcType=TIMESTAMP}, #{post_status,jdbcType=INTEGER}, 
+      #{comment_status,jdbcType=INTEGER}, #{post_modified,jdbcType=TIMESTAMP}, #{post_parent,jdbcType=BIGINT}, 
+      #{post_type,jdbcType=INTEGER}, #{post_mime_type,jdbcType=VARCHAR}, #{comment_count,jdbcType=BIGINT}, 
+      #{post_hits,jdbcType=INTEGER}, #{post_like,jdbcType=INTEGER}, #{istop,jdbcType=BIT}, 
+      #{recommended,jdbcType=BIT}, #{start_date,jdbcType=TIMESTAMP}, #{end_date,jdbcType=TIMESTAMP}, 
+      #{price,jdbcType=VARCHAR}, #{original_price,jdbcType=VARCHAR}, #{number,jdbcType=SMALLINT}, 
       #{type,jdbcType=TINYINT}, #{listorder,jdbcType=SMALLINT}, #{status,jdbcType=BIT}, 
-      #{address,jdbcType=VARCHAR}, #{contacts,jdbcType=VARCHAR}, #{isShow,jdbcType=BIT}, 
-      #{commodityId,jdbcType=VARCHAR}, #{reviewId,jdbcType=INTEGER}, #{materialId,jdbcType=VARCHAR}, 
-      #{postContent,jdbcType=LONGVARCHAR}, #{postTitle,jdbcType=LONGVARCHAR}, #{postLink,jdbcType=LONGVARCHAR}, 
-      #{postExcerpt,jdbcType=LONGVARCHAR}, #{postContentFiltered,jdbcType=LONGVARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{contacts,jdbcType=VARCHAR}, #{is_show,jdbcType=BIT}, 
+      #{commodity_id,jdbcType=VARCHAR}, #{review_id,jdbcType=INTEGER}, #{material_id,jdbcType=VARCHAR}, 
+      #{post_content,jdbcType=LONGVARCHAR}, #{post_title,jdbcType=LONGVARCHAR}, #{post_link,jdbcType=LONGVARCHAR}, 
+      #{post_excerpt,jdbcType=LONGVARCHAR}, #{post_content_filtered,jdbcType=LONGVARCHAR}, 
       #{smeta,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.emi.roots.entity.AzPostsWithBLOBs" >
@@ -96,43 +96,43 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="postAuthor != null" >
+      <if test="post_author != null" >
         post_author,
       </if>
-      <if test="postKeywords != null" >
+      <if test="post_keywords != null" >
         post_keywords,
       </if>
-      <if test="postSource != null" >
+      <if test="post_source != null" >
         post_source,
       </if>
-      <if test="postDate != null" >
+      <if test="post_date != null" >
         post_date,
       </if>
-      <if test="postStatus != null" >
+      <if test="post_status != null" >
         post_status,
       </if>
-      <if test="commentStatus != null" >
+      <if test="comment_status != null" >
         comment_status,
       </if>
-      <if test="postModified != null" >
+      <if test="post_modified != null" >
         post_modified,
       </if>
-      <if test="postParent != null" >
+      <if test="post_parent != null" >
         post_parent,
       </if>
-      <if test="postType != null" >
+      <if test="post_type != null" >
         post_type,
       </if>
-      <if test="postMimeType != null" >
+      <if test="post_mime_type != null" >
         post_mime_type,
       </if>
-      <if test="commentCount != null" >
+      <if test="comment_count != null" >
         comment_count,
       </if>
-      <if test="postHits != null" >
+      <if test="post_hits != null" >
         post_hits,
       </if>
-      <if test="postLike != null" >
+      <if test="post_like != null" >
         post_like,
       </if>
       <if test="istop != null" >
@@ -141,16 +141,16 @@
       <if test="recommended != null" >
         recommended,
       </if>
-      <if test="startDate != null" >
+      <if test="start_date != null" >
         start_date,
       </if>
-      <if test="endDate != null" >
+      <if test="end_date != null" >
         end_date,
       </if>
       <if test="price != null" >
         price,
       </if>
-      <if test="originalPrice != null" >
+      <if test="original_price != null" >
         original_price,
       </if>
       <if test="number != null" >
@@ -171,31 +171,31 @@
       <if test="contacts != null" >
         contacts,
       </if>
-      <if test="isShow != null" >
+      <if test="is_show != null" >
         is_show,
       </if>
-      <if test="commodityId != null" >
+      <if test="commodity_id != null" >
         commodity_id,
       </if>
-      <if test="reviewId != null" >
+      <if test="review_id != null" >
         review_id,
       </if>
-      <if test="materialId != null" >
+      <if test="material_id != null" >
         material_id,
       </if>
-      <if test="postContent != null" >
+      <if test="post_content != null" >
         post_content,
       </if>
-      <if test="postTitle != null" >
+      <if test="post_title != null" >
         post_title,
       </if>
-      <if test="postLink != null" >
+      <if test="post_link != null" >
         post_link,
       </if>
-      <if test="postExcerpt != null" >
+      <if test="post_excerpt != null" >
         post_excerpt,
       </if>
-      <if test="postContentFiltered != null" >
+      <if test="post_content_filtered != null" >
         post_content_filtered,
       </if>
       <if test="smeta != null" >
@@ -206,44 +206,44 @@
       <if test="id != null" >
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="postAuthor != null" >
-        #{postAuthor,jdbcType=BIGINT},
+      <if test="post_author != null" >
+        #{post_author,jdbcType=BIGINT},
       </if>
-      <if test="postKeywords != null" >
-        #{postKeywords,jdbcType=VARCHAR},
+      <if test="post_keywords != null" >
+        #{post_keywords,jdbcType=VARCHAR},
       </if>
-      <if test="postSource != null" >
-        #{postSource,jdbcType=VARCHAR},
+      <if test="post_source != null" >
+        #{post_source,jdbcType=VARCHAR},
       </if>
-      <if test="postDate != null" >
-        #{postDate,jdbcType=TIMESTAMP},
+      <if test="post_date != null" >
+        #{post_date,jdbcType=TIMESTAMP},
       </if>
-      <if test="postStatus != null" >
-        #{postStatus,jdbcType=INTEGER},
+      <if test="post_status != null" >
+        #{post_status,jdbcType=INTEGER},
       </if>
-      <if test="commentStatus != null" >
-        #{commentStatus,jdbcType=INTEGER},
+      <if test="comment_status != null" >
+        #{comment_status,jdbcType=INTEGER},
       </if>
-      <if test="postModified != null" >
-        #{postModified,jdbcType=TIMESTAMP},
+      <if test="post_modified != null" >
+        #{post_modified,jdbcType=TIMESTAMP},
       </if>
-      <if test="postParent != null" >
-        #{postParent,jdbcType=BIGINT},
+      <if test="post_parent != null" >
+        #{post_parent,jdbcType=BIGINT},
       </if>
-      <if test="postType != null" >
-        #{postType,jdbcType=INTEGER},
+      <if test="post_type != null" >
+        #{post_type,jdbcType=INTEGER},
       </if>
-      <if test="postMimeType != null" >
-        #{postMimeType,jdbcType=VARCHAR},
+      <if test="post_mime_type != null" >
+        #{post_mime_type,jdbcType=VARCHAR},
       </if>
-      <if test="commentCount != null" >
-        #{commentCount,jdbcType=BIGINT},
+      <if test="comment_count != null" >
+        #{comment_count,jdbcType=BIGINT},
       </if>
-      <if test="postHits != null" >
-        #{postHits,jdbcType=INTEGER},
+      <if test="post_hits != null" >
+        #{post_hits,jdbcType=INTEGER},
       </if>
-      <if test="postLike != null" >
-        #{postLike,jdbcType=INTEGER},
+      <if test="post_like != null" >
+        #{post_like,jdbcType=INTEGER},
       </if>
       <if test="istop != null" >
         #{istop,jdbcType=BIT},
@@ -251,17 +251,17 @@
       <if test="recommended != null" >
         #{recommended,jdbcType=BIT},
       </if>
-      <if test="startDate != null" >
-        #{startDate,jdbcType=TIMESTAMP},
+      <if test="start_date != null" >
+        #{start_date,jdbcType=TIMESTAMP},
       </if>
-      <if test="endDate != null" >
-        #{endDate,jdbcType=TIMESTAMP},
+      <if test="end_date != null" >
+        #{end_date,jdbcType=TIMESTAMP},
       </if>
       <if test="price != null" >
         #{price,jdbcType=VARCHAR},
       </if>
-      <if test="originalPrice != null" >
-        #{originalPrice,jdbcType=VARCHAR},
+      <if test="original_price != null" >
+        #{original_price,jdbcType=VARCHAR},
       </if>
       <if test="number != null" >
         #{number,jdbcType=SMALLINT},
@@ -281,32 +281,32 @@
       <if test="contacts != null" >
         #{contacts,jdbcType=VARCHAR},
       </if>
-      <if test="isShow != null" >
-        #{isShow,jdbcType=BIT},
+      <if test="is_show != null" >
+        #{is_show,jdbcType=BIT},
       </if>
-      <if test="commodityId != null" >
-        #{commodityId,jdbcType=VARCHAR},
+      <if test="commodity_id != null" >
+        #{commodity_id,jdbcType=VARCHAR},
       </if>
-      <if test="reviewId != null" >
-        #{reviewId,jdbcType=INTEGER},
+      <if test="review_id != null" >
+        #{review_id,jdbcType=INTEGER},
       </if>
-      <if test="materialId != null" >
-        #{materialId,jdbcType=VARCHAR},
+      <if test="material_id != null" >
+        #{material_id,jdbcType=VARCHAR},
       </if>
-      <if test="postContent != null" >
-        #{postContent,jdbcType=LONGVARCHAR},
+      <if test="post_content != null" >
+        #{post_content,jdbcType=LONGVARCHAR},
       </if>
-      <if test="postTitle != null" >
-        #{postTitle,jdbcType=LONGVARCHAR},
+      <if test="post_title != null" >
+        #{post_title,jdbcType=LONGVARCHAR},
       </if>
-      <if test="postLink != null" >
-        #{postLink,jdbcType=LONGVARCHAR},
+      <if test="post_link != null" >
+        #{post_link,jdbcType=LONGVARCHAR},
       </if>
-      <if test="postExcerpt != null" >
-        #{postExcerpt,jdbcType=LONGVARCHAR},
+      <if test="post_excerpt != null" >
+        #{post_excerpt,jdbcType=LONGVARCHAR},
       </if>
-      <if test="postContentFiltered != null" >
-        #{postContentFiltered,jdbcType=LONGVARCHAR},
+      <if test="post_content_filtered != null" >
+        #{post_content_filtered,jdbcType=LONGVARCHAR},
       </if>
       <if test="smeta != null" >
         #{smeta,jdbcType=LONGVARCHAR},
@@ -316,44 +316,44 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.emi.roots.entity.AzPostsWithBLOBs" >
     update az_posts
     <set >
-      <if test="postAuthor != null" >
-        post_author = #{postAuthor,jdbcType=BIGINT},
+      <if test="post_author != null" >
+        post_author = #{post_author,jdbcType=BIGINT},
       </if>
-      <if test="postKeywords != null" >
-        post_keywords = #{postKeywords,jdbcType=VARCHAR},
+      <if test="post_keywords != null" >
+        post_keywords = #{post_keywords,jdbcType=VARCHAR},
       </if>
-      <if test="postSource != null" >
-        post_source = #{postSource,jdbcType=VARCHAR},
+      <if test="post_source != null" >
+        post_source = #{post_source,jdbcType=VARCHAR},
       </if>
-      <if test="postDate != null" >
-        post_date = #{postDate,jdbcType=TIMESTAMP},
+      <if test="post_date != null" >
+        post_date = #{post_date,jdbcType=TIMESTAMP},
       </if>
-      <if test="postStatus != null" >
-        post_status = #{postStatus,jdbcType=INTEGER},
+      <if test="post_status != null" >
+        post_status = #{post_status,jdbcType=INTEGER},
       </if>
-      <if test="commentStatus != null" >
-        comment_status = #{commentStatus,jdbcType=INTEGER},
+      <if test="comment_status != null" >
+        comment_status = #{comment_status,jdbcType=INTEGER},
       </if>
-      <if test="postModified != null" >
-        post_modified = #{postModified,jdbcType=TIMESTAMP},
+      <if test="post_modified != null" >
+        post_modified = #{post_modified,jdbcType=TIMESTAMP},
       </if>
-      <if test="postParent != null" >
-        post_parent = #{postParent,jdbcType=BIGINT},
+      <if test="post_parent != null" >
+        post_parent = #{post_parent,jdbcType=BIGINT},
       </if>
-      <if test="postType != null" >
-        post_type = #{postType,jdbcType=INTEGER},
+      <if test="post_type != null" >
+        post_type = #{post_type,jdbcType=INTEGER},
       </if>
-      <if test="postMimeType != null" >
-        post_mime_type = #{postMimeType,jdbcType=VARCHAR},
+      <if test="post_mime_type != null" >
+        post_mime_type = #{post_mime_type,jdbcType=VARCHAR},
       </if>
-      <if test="commentCount != null" >
-        comment_count = #{commentCount,jdbcType=BIGINT},
+      <if test="comment_count != null" >
+        comment_count = #{comment_count,jdbcType=BIGINT},
       </if>
-      <if test="postHits != null" >
-        post_hits = #{postHits,jdbcType=INTEGER},
+      <if test="post_hits != null" >
+        post_hits = #{post_hits,jdbcType=INTEGER},
       </if>
-      <if test="postLike != null" >
-        post_like = #{postLike,jdbcType=INTEGER},
+      <if test="post_like != null" >
+        post_like = #{post_like,jdbcType=INTEGER},
       </if>
       <if test="istop != null" >
         istop = #{istop,jdbcType=BIT},
@@ -361,17 +361,17 @@
       <if test="recommended != null" >
         recommended = #{recommended,jdbcType=BIT},
       </if>
-      <if test="startDate != null" >
-        start_date = #{startDate,jdbcType=TIMESTAMP},
+      <if test="start_date != null" >
+        start_date = #{start_date,jdbcType=TIMESTAMP},
       </if>
-      <if test="endDate != null" >
-        end_date = #{endDate,jdbcType=TIMESTAMP},
+      <if test="end_date != null" >
+        end_date = #{end_date,jdbcType=TIMESTAMP},
       </if>
       <if test="price != null" >
         price = #{price,jdbcType=VARCHAR},
       </if>
-      <if test="originalPrice != null" >
-        original_price = #{originalPrice,jdbcType=VARCHAR},
+      <if test="original_price != null" >
+        original_price = #{original_price,jdbcType=VARCHAR},
       </if>
       <if test="number != null" >
         number = #{number,jdbcType=SMALLINT},
@@ -391,32 +391,32 @@
       <if test="contacts != null" >
         contacts = #{contacts,jdbcType=VARCHAR},
       </if>
-      <if test="isShow != null" >
-        is_show = #{isShow,jdbcType=BIT},
+      <if test="is_show != null" >
+        is_show = #{is_show,jdbcType=BIT},
       </if>
-      <if test="commodityId != null" >
-        commodity_id = #{commodityId,jdbcType=VARCHAR},
+      <if test="commodity_id != null" >
+        commodity_id = #{commodity_id,jdbcType=VARCHAR},
       </if>
-      <if test="reviewId != null" >
-        review_id = #{reviewId,jdbcType=INTEGER},
+      <if test="review_id != null" >
+        review_id = #{review_id,jdbcType=INTEGER},
       </if>
-      <if test="materialId != null" >
-        material_id = #{materialId,jdbcType=VARCHAR},
+      <if test="material_id != null" >
+        material_id = #{material_id,jdbcType=VARCHAR},
       </if>
-      <if test="postContent != null" >
-        post_content = #{postContent,jdbcType=LONGVARCHAR},
+      <if test="post_content != null" >
+        post_content = #{post_content,jdbcType=LONGVARCHAR},
       </if>
-      <if test="postTitle != null" >
-        post_title = #{postTitle,jdbcType=LONGVARCHAR},
+      <if test="post_title != null" >
+        post_title = #{post_title,jdbcType=LONGVARCHAR},
       </if>
-      <if test="postLink != null" >
-        post_link = #{postLink,jdbcType=LONGVARCHAR},
+      <if test="post_link != null" >
+        post_link = #{post_link,jdbcType=LONGVARCHAR},
       </if>
-      <if test="postExcerpt != null" >
-        post_excerpt = #{postExcerpt,jdbcType=LONGVARCHAR},
+      <if test="post_excerpt != null" >
+        post_excerpt = #{post_excerpt,jdbcType=LONGVARCHAR},
       </if>
-      <if test="postContentFiltered != null" >
-        post_content_filtered = #{postContentFiltered,jdbcType=LONGVARCHAR},
+      <if test="post_content_filtered != null" >
+        post_content_filtered = #{post_content_filtered,jdbcType=LONGVARCHAR},
       </if>
       <if test="smeta != null" >
         smeta = #{smeta,jdbcType=LONGVARCHAR},
@@ -426,74 +426,74 @@
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.emi.roots.entity.AzPostsWithBLOBs" >
     update az_posts
-    set post_author = #{postAuthor,jdbcType=BIGINT},
-      post_keywords = #{postKeywords,jdbcType=VARCHAR},
-      post_source = #{postSource,jdbcType=VARCHAR},
-      post_date = #{postDate,jdbcType=TIMESTAMP},
-      post_status = #{postStatus,jdbcType=INTEGER},
-      comment_status = #{commentStatus,jdbcType=INTEGER},
-      post_modified = #{postModified,jdbcType=TIMESTAMP},
-      post_parent = #{postParent,jdbcType=BIGINT},
-      post_type = #{postType,jdbcType=INTEGER},
-      post_mime_type = #{postMimeType,jdbcType=VARCHAR},
-      comment_count = #{commentCount,jdbcType=BIGINT},
-      post_hits = #{postHits,jdbcType=INTEGER},
-      post_like = #{postLike,jdbcType=INTEGER},
+    set post_author = #{post_author,jdbcType=BIGINT},
+      post_keywords = #{post_keywords,jdbcType=VARCHAR},
+      post_source = #{post_source,jdbcType=VARCHAR},
+      post_date = #{post_date,jdbcType=TIMESTAMP},
+      post_status = #{post_status,jdbcType=INTEGER},
+      comment_status = #{comment_status,jdbcType=INTEGER},
+      post_modified = #{post_modified,jdbcType=TIMESTAMP},
+      post_parent = #{post_parent,jdbcType=BIGINT},
+      post_type = #{post_type,jdbcType=INTEGER},
+      post_mime_type = #{post_mime_type,jdbcType=VARCHAR},
+      comment_count = #{comment_count,jdbcType=BIGINT},
+      post_hits = #{post_hits,jdbcType=INTEGER},
+      post_like = #{post_like,jdbcType=INTEGER},
       istop = #{istop,jdbcType=BIT},
       recommended = #{recommended,jdbcType=BIT},
-      start_date = #{startDate,jdbcType=TIMESTAMP},
-      end_date = #{endDate,jdbcType=TIMESTAMP},
+      start_date = #{start_date,jdbcType=TIMESTAMP},
+      end_date = #{end_date,jdbcType=TIMESTAMP},
       price = #{price,jdbcType=VARCHAR},
-      original_price = #{originalPrice,jdbcType=VARCHAR},
+      original_price = #{original_price,jdbcType=VARCHAR},
       number = #{number,jdbcType=SMALLINT},
       type = #{type,jdbcType=TINYINT},
       listorder = #{listorder,jdbcType=SMALLINT},
       status = #{status,jdbcType=BIT},
       address = #{address,jdbcType=VARCHAR},
       contacts = #{contacts,jdbcType=VARCHAR},
-      is_show = #{isShow,jdbcType=BIT},
-      commodity_id = #{commodityId,jdbcType=VARCHAR},
-      review_id = #{reviewId,jdbcType=INTEGER},
-      material_id = #{materialId,jdbcType=VARCHAR},
-      post_content = #{postContent,jdbcType=LONGVARCHAR},
-      post_title = #{postTitle,jdbcType=LONGVARCHAR},
-      post_link = #{postLink,jdbcType=LONGVARCHAR},
-      post_excerpt = #{postExcerpt,jdbcType=LONGVARCHAR},
-      post_content_filtered = #{postContentFiltered,jdbcType=LONGVARCHAR},
+      is_show = #{is_show,jdbcType=BIT},
+      commodity_id = #{commodity_id,jdbcType=VARCHAR},
+      review_id = #{review_id,jdbcType=INTEGER},
+      material_id = #{material_id,jdbcType=VARCHAR},
+      post_content = #{post_content,jdbcType=LONGVARCHAR},
+      post_title = #{post_title,jdbcType=LONGVARCHAR},
+      post_link = #{post_link,jdbcType=LONGVARCHAR},
+      post_excerpt = #{post_excerpt,jdbcType=LONGVARCHAR},
+      post_content_filtered = #{post_content_filtered,jdbcType=LONGVARCHAR},
       smeta = #{smeta,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzPosts" >
     update az_posts
-    set post_author = #{postAuthor,jdbcType=BIGINT},
-      post_keywords = #{postKeywords,jdbcType=VARCHAR},
-      post_source = #{postSource,jdbcType=VARCHAR},
-      post_date = #{postDate,jdbcType=TIMESTAMP},
-      post_status = #{postStatus,jdbcType=INTEGER},
-      comment_status = #{commentStatus,jdbcType=INTEGER},
-      post_modified = #{postModified,jdbcType=TIMESTAMP},
-      post_parent = #{postParent,jdbcType=BIGINT},
-      post_type = #{postType,jdbcType=INTEGER},
-      post_mime_type = #{postMimeType,jdbcType=VARCHAR},
-      comment_count = #{commentCount,jdbcType=BIGINT},
-      post_hits = #{postHits,jdbcType=INTEGER},
-      post_like = #{postLike,jdbcType=INTEGER},
+    set post_author = #{post_author,jdbcType=BIGINT},
+      post_keywords = #{post_keywords,jdbcType=VARCHAR},
+      post_source = #{post_source,jdbcType=VARCHAR},
+      post_date = #{post_date,jdbcType=TIMESTAMP},
+      post_status = #{post_status,jdbcType=INTEGER},
+      comment_status = #{comment_status,jdbcType=INTEGER},
+      post_modified = #{post_modified,jdbcType=TIMESTAMP},
+      post_parent = #{post_parent,jdbcType=BIGINT},
+      post_type = #{post_type,jdbcType=INTEGER},
+      post_mime_type = #{post_mime_type,jdbcType=VARCHAR},
+      comment_count = #{comment_count,jdbcType=BIGINT},
+      post_hits = #{post_hits,jdbcType=INTEGER},
+      post_like = #{post_like,jdbcType=INTEGER},
       istop = #{istop,jdbcType=BIT},
       recommended = #{recommended,jdbcType=BIT},
-      start_date = #{startDate,jdbcType=TIMESTAMP},
-      end_date = #{endDate,jdbcType=TIMESTAMP},
+      start_date = #{start_date,jdbcType=TIMESTAMP},
+      end_date = #{end_date,jdbcType=TIMESTAMP},
       price = #{price,jdbcType=VARCHAR},
-      original_price = #{originalPrice,jdbcType=VARCHAR},
+      original_price = #{original_price,jdbcType=VARCHAR},
       number = #{number,jdbcType=SMALLINT},
       type = #{type,jdbcType=TINYINT},
       listorder = #{listorder,jdbcType=SMALLINT},
       status = #{status,jdbcType=BIT},
       address = #{address,jdbcType=VARCHAR},
       contacts = #{contacts,jdbcType=VARCHAR},
-      is_show = #{isShow,jdbcType=BIT},
-      commodity_id = #{commodityId,jdbcType=VARCHAR},
-      review_id = #{reviewId,jdbcType=INTEGER},
-      material_id = #{materialId,jdbcType=VARCHAR}
+      is_show = #{is_show,jdbcType=BIT},
+      commodity_id = #{commodity_id,jdbcType=VARCHAR},
+      review_id = #{review_id,jdbcType=INTEGER},
+      material_id = #{material_id,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

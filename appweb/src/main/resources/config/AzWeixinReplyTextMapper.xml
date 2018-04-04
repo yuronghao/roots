@@ -5,7 +5,7 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="keyword" property="keyword" jdbcType="VARCHAR" />
     <result column="type" property="type" jdbcType="TINYINT" />
-    <result column="view_count" property="viewCount" jdbcType="INTEGER" />
+    <result column="view_count" property="view_count" jdbcType="INTEGER" />
     <result column="listorder" property="listorder" jdbcType="INTEGER" />
     <result column="token" property="token" jdbcType="VARCHAR" />
   </resultMap>
@@ -35,7 +35,7 @@
       view_count, listorder, token, 
       content)
     values (#{id,jdbcType=INTEGER}, #{keyword,jdbcType=VARCHAR}, #{type,jdbcType=TINYINT}, 
-      #{viewCount,jdbcType=INTEGER}, #{listorder,jdbcType=INTEGER}, #{token,jdbcType=VARCHAR}, 
+      #{view_count,jdbcType=INTEGER}, #{listorder,jdbcType=INTEGER}, #{token,jdbcType=VARCHAR}, 
       #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.emi.roots.entity.AzWeixinReplyText" >
@@ -50,7 +50,7 @@
       <if test="type != null" >
         type,
       </if>
-      <if test="viewCount != null" >
+      <if test="view_count != null" >
         view_count,
       </if>
       <if test="listorder != null" >
@@ -73,8 +73,8 @@
       <if test="type != null" >
         #{type,jdbcType=TINYINT},
       </if>
-      <if test="viewCount != null" >
-        #{viewCount,jdbcType=INTEGER},
+      <if test="view_count != null" >
+        #{view_count,jdbcType=INTEGER},
       </if>
       <if test="listorder != null" >
         #{listorder,jdbcType=INTEGER},
@@ -96,8 +96,8 @@
       <if test="type != null" >
         type = #{type,jdbcType=TINYINT},
       </if>
-      <if test="viewCount != null" >
-        view_count = #{viewCount,jdbcType=INTEGER},
+      <if test="view_count != null" >
+        view_count = #{view_count,jdbcType=INTEGER},
       </if>
       <if test="listorder != null" >
         listorder = #{listorder,jdbcType=INTEGER},
@@ -115,7 +115,7 @@
     update az_weixin_reply_text
     set keyword = #{keyword,jdbcType=VARCHAR},
       type = #{type,jdbcType=TINYINT},
-      view_count = #{viewCount,jdbcType=INTEGER},
+      view_count = #{view_count,jdbcType=INTEGER},
       listorder = #{listorder,jdbcType=INTEGER},
       token = #{token,jdbcType=VARCHAR},
       content = #{content,jdbcType=LONGVARCHAR}
@@ -125,7 +125,7 @@
     update az_weixin_reply_text
     set keyword = #{keyword,jdbcType=VARCHAR},
       type = #{type,jdbcType=TINYINT},
-      view_count = #{viewCount,jdbcType=INTEGER},
+      view_count = #{view_count,jdbcType=INTEGER},
       listorder = #{listorder,jdbcType=INTEGER},
       token = #{token,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
