@@ -2,7 +2,7 @@ package com.emi.roots.mapper;
 
 import com.emi.roots.entity.AzKeyword;
 
-public interface AzKeywordMapper {
+public interface AzKeywordMapper extends SqlMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(AzKeyword record);

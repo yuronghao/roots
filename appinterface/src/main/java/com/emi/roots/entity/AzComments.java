@@ -5,17 +5,17 @@ import java.util.Date;
 public class AzComments {
     private Long id;
 
-    private String postTable;
+    private String post_table;
 
-    private Integer postId;
+    private Integer post_id;
 
     private String url;
 
     private Integer uid;
 
-    private Integer toUid;
+    private Integer to_uid;
 
-    private String fullName;
+    private String full_name;
 
     private String email;
 
@@ -39,20 +39,20 @@ public class AzComments {
         this.id = id;
     }
 
-    public String getPostTable() {
-        return postTable;
+    public String getPost_table() {
+        return post_table;
     }
 
-    public void setPostTable(String postTable) {
-        this.postTable = postTable == null ? null : postTable.trim();
+    public void setPost_table(String post_table) {
+        this.post_table = post_table == null ? null : post_table.trim();
     }
 
-    public Integer getPostId() {
-        return postId;
+    public Integer getPost_id() {
+        return post_id;
     }
 
-    public void setPostId(Integer postId) {
-        this.postId = postId;
+    public void setPost_id(Integer post_id) {
+        this.post_id = post_id;
     }
 
     public String getUrl() {
@@ -71,20 +71,20 @@ public class AzComments {
         this.uid = uid;
     }
 
-    public Integer getToUid() {
-        return toUid;
+    public Integer getTo_uid() {
+        return to_uid;
     }
 
-    public void setToUid(Integer toUid) {
-        this.toUid = toUid;
+    public void setTo_uid(Integer to_uid) {
+        this.to_uid = to_uid;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getFull_name() {
+        return full_name;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName == null ? null : fullName.trim();
+    public void setFull_name(String full_name) {
+        this.full_name = full_name == null ? null : full_name.trim();
     }
 
     public String getEmail() {

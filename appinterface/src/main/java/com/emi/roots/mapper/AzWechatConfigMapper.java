@@ -2,7 +2,7 @@ package com.emi.roots.mapper;
 
 import com.emi.roots.entity.AzWechatConfig;
 
-public interface AzWechatConfigMapper {
+public interface AzWechatConfigMapper extends SqlMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(AzWechatConfig record);

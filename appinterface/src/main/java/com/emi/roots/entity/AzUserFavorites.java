@@ -13,7 +13,7 @@ public class AzUserFavorites {
 
     private String table;
 
-    private Integer objectId;
+    private Integer object_id;
 
     private Integer createtime;
 
@@ -65,12 +65,12 @@ public class AzUserFavorites {
         this.table = table == null ? null : table.trim();
     }
 
-    public Integer getObjectId() {
-        return objectId;
+    public Integer getObject_id() {
+        return object_id;
     }
 
-    public void setObjectId(Integer objectId) {
-        this.objectId = objectId;
+    public void setObject_id(Integer object_id) {
+        this.object_id = object_id;
     }
 
     public Integer getCreatetime() {

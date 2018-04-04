@@ -6,25 +6,25 @@ import java.util.Date;
 public class AzOrder {
     private Integer id;
 
-    private String orderId;
+    private String order_id;
 
     private Integer uid;
 
     private String invoice;
 
-    private String arrivalTime;
+    private String arrival_time;
 
-    private BigDecimal totalMoney;
+    private BigDecimal total_money;
 
-    private BigDecimal shipFee;
+    private BigDecimal ship_fee;
 
-    private Integer totalCredit;
+    private Integer total_credit;
 
-    private Integer couponId;
+    private Integer coupon_id;
 
-    private BigDecimal couponMoney;
+    private BigDecimal coupon_money;
 
-    private Integer creditUse;
+    private Integer credit_use;
 
     private String receiver;
 
@@ -36,27 +36,27 @@ public class AzOrder {
 
     private String address;
 
-    private String postCode;
+    private String post_code;
 
     private String tel;
 
     private Boolean status;
 
-    private String orderIp;
+    private String order_ip;
 
-    private Date payTime;
+    private Date pay_time;
 
-    private Date deliveryTime;
+    private Date delivery_time;
 
-    private Date createTime;
+    private Date create_time;
 
-    private Date updateTime;
+    private Date update_time;
 
-    private String expressCname;
+    private String express_cname;
 
-    private String expressKid;
+    private String express_kid;
 
-    private String paymentId;
+    private String payment_id;
 
     private String payway;
 
@@ -70,12 +70,12 @@ public class AzOrder {
         this.id = id;
     }
 
-    public String getOrderId() {
-        return orderId;
+    public String getOrder_id() {
+        return order_id;
     }
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId == null ? null : orderId.trim();
+    public void setOrder_id(String order_id) {
+        this.order_id = order_id == null ? null : order_id.trim();
     }
 
     public Integer getUid() {
@@ -94,60 +94,60 @@ public class AzOrder {
         this.invoice = invoice == null ? null : invoice.trim();
     }
 
-    public String getArrivalTime() {
-        return arrivalTime;
+    public String getArrival_time() {
+        return arrival_time;
     }
 
-    public void setArrivalTime(String arrivalTime) {
-        this.arrivalTime = arrivalTime == null ? null : arrivalTime.trim();
+    public void setArrival_time(String arrival_time) {
+        this.arrival_time = arrival_time == null ? null : arrival_time.trim();
     }
 
-    public BigDecimal getTotalMoney() {
-        return totalMoney;
+    public BigDecimal getTotal_money() {
+        return total_money;
     }
 
-    public void setTotalMoney(BigDecimal totalMoney) {
-        this.totalMoney = totalMoney;
+    public void setTotal_money(BigDecimal total_money) {
+        this.total_money = total_money;
     }
 
-    public BigDecimal getShipFee() {
-        return shipFee;
+    public BigDecimal getShip_fee() {
+        return ship_fee;
     }
 
-    public void setShipFee(BigDecimal shipFee) {
-        this.shipFee = shipFee;
+    public void setShip_fee(BigDecimal ship_fee) {
+        this.ship_fee = ship_fee;
     }
 
-    public Integer getTotalCredit() {
-        return totalCredit;
+    public Integer getTotal_credit() {
+        return total_credit;
     }
 
-    public void setTotalCredit(Integer totalCredit) {
-        this.totalCredit = totalCredit;
+    public void setTotal_credit(Integer total_credit) {
+        this.total_credit = total_credit;
     }
 
-    public Integer getCouponId() {
-        return couponId;
+    public Integer getCoupon_id() {
+        return coupon_id;
     }
 
-    public void setCouponId(Integer couponId) {
-        this.couponId = couponId;
+    public void setCoupon_id(Integer coupon_id) {
+        this.coupon_id = coupon_id;
     }
 
-    public BigDecimal getCouponMoney() {
-        return couponMoney;
+    public BigDecimal getCoupon_money() {
+        return coupon_money;
     }
 
-    public void setCouponMoney(BigDecimal couponMoney) {
-        this.couponMoney = couponMoney;
+    public void setCoupon_money(BigDecimal coupon_money) {
+        this.coupon_money = coupon_money;
     }
 
-    public Integer getCreditUse() {
-        return creditUse;
+    public Integer getCredit_use() {
+        return credit_use;
     }
 
-    public void setCreditUse(Integer creditUse) {
-        this.creditUse = creditUse;
+    public void setCredit_use(Integer credit_use) {
+        this.credit_use = credit_use;
     }
 
     public String getReceiver() {
@@ -190,12 +190,12 @@ public class AzOrder {
         this.address = address == null ? null : address.trim();
     }
 
-    public String getPostCode() {
-        return postCode;
+    public String getPost_code() {
+        return post_code;
     }
 
-    public void setPostCode(String postCode) {
-        this.postCode = postCode == null ? null : postCode.trim();
+    public void setPost_code(String post_code) {
+        this.post_code = post_code == null ? null : post_code.trim();
     }
 
     public String getTel() {
@@ -214,68 +214,68 @@ public class AzOrder {
         this.status = status;
     }
 
-    public String getOrderIp() {
-        return orderIp;
+    public String getOrder_ip() {
+        return order_ip;
     }
 
-    public void setOrderIp(String orderIp) {
-        this.orderIp = orderIp == null ? null : orderIp.trim();
+    public void setOrder_ip(String order_ip) {
+        this.order_ip = order_ip == null ? null : order_ip.trim();
     }
 
-    public Date getPayTime() {
-        return payTime;
+    public Date getPay_time() {
+        return pay_time;
     }
 
-    public void setPayTime(Date payTime) {
-        this.payTime = payTime;
+    public void setPay_time(Date pay_time) {
+        this.pay_time = pay_time;
     }
 
-    public Date getDeliveryTime() {
-        return deliveryTime;
+    public Date getDelivery_time() {
+        return delivery_time;
     }
 
-    public void setDeliveryTime(Date deliveryTime) {
-        this.deliveryTime = deliveryTime;
+    public void setDelivery_time(Date delivery_time) {
+        this.delivery_time = delivery_time;
     }
 
-    public Date getCreateTime() {
-        return createTime;
+    public Date getCreate_time() {
+        return create_time;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setCreate_time(Date create_time) {
+        this.create_time = create_time;
     }
 
-    public Date getUpdateTime() {
-        return updateTime;
+    public Date getUpdate_time() {
+        return update_time;
     }
 
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    public void setUpdate_time(Date update_time) {
+        this.update_time = update_time;
     }
 
-    public String getExpressCname() {
-        return expressCname;
+    public String getExpress_cname() {
+        return express_cname;
     }
 
-    public void setExpressCname(String expressCname) {
-        this.expressCname = expressCname == null ? null : expressCname.trim();
+    public void setExpress_cname(String express_cname) {
+        this.express_cname = express_cname == null ? null : express_cname.trim();
     }
 
-    public String getExpressKid() {
-        return expressKid;
+    public String getExpress_kid() {
+        return express_kid;
     }
 
-    public void setExpressKid(String expressKid) {
-        this.expressKid = expressKid == null ? null : expressKid.trim();
+    public void setExpress_kid(String express_kid) {
+        this.express_kid = express_kid == null ? null : express_kid.trim();
     }
 
-    public String getPaymentId() {
-        return paymentId;
+    public String getPayment_id() {
+        return payment_id;
     }
 
-    public void setPaymentId(String paymentId) {
-        this.paymentId = paymentId == null ? null : paymentId.trim();
+    public void setPayment_id(String payment_id) {
+        this.payment_id = payment_id == null ? null : payment_id.trim();
     }
 
     public String getPayway() {

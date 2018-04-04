@@ -11,7 +11,7 @@ public class AzCommonActionLog {
 
     private Integer count;
 
-    private Integer lastTime;
+    private Integer last_time;
 
     private String ip;
 
@@ -55,12 +55,12 @@ public class AzCommonActionLog {
         this.count = count;
     }
 
-    public Integer getLastTime() {
-        return lastTime;
+    public Integer getLast_time() {
+        return last_time;
     }
 
-    public void setLastTime(Integer lastTime) {
-        this.lastTime = lastTime;
+    public void setLast_time(Integer last_time) {
+        this.last_time = last_time;
     }
 
     public String getIp() {

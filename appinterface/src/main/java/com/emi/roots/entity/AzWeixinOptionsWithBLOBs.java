@@ -1,23 +1,23 @@
 package com.emi.roots.entity;
 
 public class AzWeixinOptionsWithBLOBs extends AzWeixinOptions {
-    private String welcomeConfig;
+    private String welcome_config;
 
-    private String addonStatus;
+    private String addon_status;
 
-    public String getWelcomeConfig() {
-        return welcomeConfig;
+    public String getWelcome_config() {
+        return welcome_config;
     }
 
-    public void setWelcomeConfig(String welcomeConfig) {
-        this.welcomeConfig = welcomeConfig == null ? null : welcomeConfig.trim();
+    public void setWelcome_config(String welcome_config) {
+        this.welcome_config = welcome_config == null ? null : welcome_config.trim();
     }
 
-    public String getAddonStatus() {
-        return addonStatus;
+    public String getAddon_status() {
+        return addon_status;
     }
 
-    public void setAddonStatus(String addonStatus) {
-        this.addonStatus = addonStatus == null ? null : addonStatus.trim();
+    public void setAddon_status(String addon_status) {
+        this.addon_status = addon_status == null ? null : addon_status.trim();
     }
 }

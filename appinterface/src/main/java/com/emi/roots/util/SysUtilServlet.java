@@ -35,8 +35,8 @@ public class SysUtilServlet extends HttpServlet{
 //		logger.info("初始化枚举表");
 
 
-		new Thread(new TokenThread()).start();
-		logger.info("微信accesstoken定时更新");
+//		new Thread(new TokenThread()).start();
+//		logger.info("微信accesstoken定时更新");
 
 	}
 }

@@ -2,7 +2,7 @@ package com.emi.roots.mapper;
 
 import com.emi.roots.entity.AzMessage;
 
-public interface AzMessageMapper {
+public interface AzMessageMapper extends SqlMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(AzMessage record);

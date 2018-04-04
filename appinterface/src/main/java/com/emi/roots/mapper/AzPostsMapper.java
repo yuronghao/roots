@@ -3,7 +3,7 @@ package com.emi.roots.mapper;
 import com.emi.roots.entity.AzPosts;
 import com.emi.roots.entity.AzPostsWithBLOBs;
 
-public interface AzPostsMapper {
+public interface AzPostsMapper extends SqlMapper {
     int deleteByPrimaryKey(Long id);
 
     int insert(AzPostsWithBLOBs record);

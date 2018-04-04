@@ -19,7 +19,7 @@ public class AzAsset {
 
     private String suffix;
 
-    private Integer downloadTimes;
+    private Integer download_times;
 
     private String meta;
 
@@ -95,12 +95,12 @@ public class AzAsset {
         this.suffix = suffix == null ? null : suffix.trim();
     }
 
-    public Integer getDownloadTimes() {
-        return downloadTimes;
+    public Integer getDownload_times() {
+        return download_times;
     }
 
-    public void setDownloadTimes(Integer downloadTimes) {
-        this.downloadTimes = downloadTimes;
+    public void setDownload_times(Integer download_times) {
+        this.download_times = download_times;
     }
 
     public String getMeta() {

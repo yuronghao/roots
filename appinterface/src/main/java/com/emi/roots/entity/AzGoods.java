@@ -18,23 +18,23 @@ public class AzGoods {
 
     private Boolean status;
 
-    private Date createTime;
+    private Date create_time;
 
-    private Integer updateTime;
+    private Integer update_time;
 
     private Integer clicks;
 
     private String number;
 
-    private Boolean isDelete;
+    private Boolean is_delete;
 
-    private BigDecimal shipFee;
+    private BigDecimal ship_fee;
 
-    private Boolean isRecommend;
+    private Boolean is_recommend;
 
     private Integer listorder;
 
-    private Boolean isHot;
+    private Boolean is_hot;
 
     public Integer getId() {
         return id;
@@ -92,20 +92,20 @@ public class AzGoods {
         this.status = status;
     }
 
-    public Date getCreateTime() {
-        return createTime;
+    public Date getCreate_time() {
+        return create_time;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setCreate_time(Date create_time) {
+        this.create_time = create_time;
     }
 
-    public Integer getUpdateTime() {
-        return updateTime;
+    public Integer getUpdate_time() {
+        return update_time;
     }
 
-    public void setUpdateTime(Integer updateTime) {
-        this.updateTime = updateTime;
+    public void setUpdate_time(Integer update_time) {
+        this.update_time = update_time;
     }
 
     public Integer getClicks() {
@@ -124,28 +124,28 @@ public class AzGoods {
         this.number = number == null ? null : number.trim();
     }
 
-    public Boolean getIsDelete() {
-        return isDelete;
+    public Boolean getIs_delete() {
+        return is_delete;
     }
 
-    public void setIsDelete(Boolean isDelete) {
-        this.isDelete = isDelete;
+    public void setIs_delete(Boolean is_delete) {
+        this.is_delete = is_delete;
     }
 
-    public BigDecimal getShipFee() {
-        return shipFee;
+    public BigDecimal getShip_fee() {
+        return ship_fee;
     }
 
-    public void setShipFee(BigDecimal shipFee) {
-        this.shipFee = shipFee;
+    public void setShip_fee(BigDecimal ship_fee) {
+        this.ship_fee = ship_fee;
     }
 
-    public Boolean getIsRecommend() {
-        return isRecommend;
+    public Boolean getIs_recommend() {
+        return is_recommend;
     }
 
-    public void setIsRecommend(Boolean isRecommend) {
-        this.isRecommend = isRecommend;
+    public void setIs_recommend(Boolean is_recommend) {
+        this.is_recommend = is_recommend;
     }
 
     public Integer getListorder() {
@@ -156,11 +156,11 @@ public class AzGoods {
         this.listorder = listorder;
     }
 
-    public Boolean getIsHot() {
-        return isHot;
+    public Boolean getIs_hot() {
+        return is_hot;
     }
 
-    public void setIsHot(Boolean isHot) {
-        this.isHot = isHot;
+    public void setIs_hot(Boolean is_hot) {
+        this.is_hot = is_hot;
     }
 }

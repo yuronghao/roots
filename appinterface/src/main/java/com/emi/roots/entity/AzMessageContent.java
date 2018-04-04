@@ -3,7 +3,7 @@ package com.emi.roots.entity;
 public class AzMessageContent {
     private Integer id;
 
-    private Integer fromId;
+    private Integer from_id;
 
     private String title;
 
@@ -11,7 +11,7 @@ public class AzMessageContent {
 
     private Byte type;
 
-    private Integer createTime;
+    private Integer create_time;
 
     private Byte status;
 
@@ -25,12 +25,12 @@ public class AzMessageContent {
         this.id = id;
     }
 
-    public Integer getFromId() {
-        return fromId;
+    public Integer getFrom_id() {
+        return from_id;
     }
 
-    public void setFromId(Integer fromId) {
-        this.fromId = fromId;
+    public void setFrom_id(Integer from_id) {
+        this.from_id = from_id;
     }
 
     public String getTitle() {
@@ -57,12 +57,12 @@ public class AzMessageContent {
         this.type = type;
     }
 
-    public Integer getCreateTime() {
-        return createTime;
+    public Integer getCreate_time() {
+        return create_time;
     }
 
-    public void setCreateTime(Integer createTime) {
-        this.createTime = createTime;
+    public void setCreate_time(Integer create_time) {
+        this.create_time = create_time;
     }
 
     public Byte getStatus() {

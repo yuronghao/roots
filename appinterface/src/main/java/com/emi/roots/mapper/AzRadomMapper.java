@@ -2,7 +2,7 @@ package com.emi.roots.mapper;
 
 import com.emi.roots.entity.AzRadom;
 
-public interface AzRadomMapper {
+public interface AzRadomMapper extends SqlMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(AzRadom record);

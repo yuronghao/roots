@@ -2,7 +2,7 @@ package com.emi.roots.mapper;
 
 import com.emi.roots.entity.AzRoute;
 
-public interface AzRouteMapper {
+public interface AzRouteMapper extends SqlMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(AzRoute record);

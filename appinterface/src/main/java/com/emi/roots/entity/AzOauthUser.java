@@ -9,29 +9,29 @@ public class AzOauthUser {
 
     private String name;
 
-    private String headImg;
+    private String head_img;
 
     private String uid;
 
-    private String lastLoginIp;
+    private String last_login_ip;
 
-    private Date lastLoginTime;
+    private Date last_login_time;
 
-    private Date createTime;
+    private Date create_time;
 
-    private Integer loginTimes;
+    private Integer login_times;
 
     private Integer status;
 
     private String openid;
 
-    private Integer userStatus;
+    private Integer user_status;
 
     private Byte gag;
 
-    private Integer followNum;
+    private Integer follow_num;
 
-    private String wechatUserOptions;
+    private String wechat_user_options;
 
     public Integer getId() {
         return id;
@@ -57,12 +57,12 @@ public class AzOauthUser {
         this.name = name == null ? null : name.trim();
     }
 
-    public String getHeadImg() {
-        return headImg;
+    public String getHead_img() {
+        return head_img;
     }
 
-    public void setHeadImg(String headImg) {
-        this.headImg = headImg == null ? null : headImg.trim();
+    public void setHead_img(String head_img) {
+        this.head_img = head_img == null ? null : head_img.trim();
     }
 
     public String getUid() {
@@ -73,36 +73,36 @@ public class AzOauthUser {
         this.uid = uid == null ? null : uid.trim();
     }
 
-    public String getLastLoginIp() {
-        return lastLoginIp;
+    public String getLast_login_ip() {
+        return last_login_ip;
     }
 
-    public void setLastLoginIp(String lastLoginIp) {
-        this.lastLoginIp = lastLoginIp == null ? null : lastLoginIp.trim();
+    public void setLast_login_ip(String last_login_ip) {
+        this.last_login_ip = last_login_ip == null ? null : last_login_ip.trim();
     }
 
-    public Date getLastLoginTime() {
-        return lastLoginTime;
+    public Date getLast_login_time() {
+        return last_login_time;
     }
 
-    public void setLastLoginTime(Date lastLoginTime) {
-        this.lastLoginTime = lastLoginTime;
+    public void setLast_login_time(Date last_login_time) {
+        this.last_login_time = last_login_time;
     }
 
-    public Date getCreateTime() {
-        return createTime;
+    public Date getCreate_time() {
+        return create_time;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setCreate_time(Date create_time) {
+        this.create_time = create_time;
     }
 
-    public Integer getLoginTimes() {
-        return loginTimes;
+    public Integer getLogin_times() {
+        return login_times;
     }
 
-    public void setLoginTimes(Integer loginTimes) {
-        this.loginTimes = loginTimes;
+    public void setLogin_times(Integer login_times) {
+        this.login_times = login_times;
     }
 
     public Integer getStatus() {
@@ -121,12 +121,12 @@ public class AzOauthUser {
         this.openid = openid == null ? null : openid.trim();
     }
 
-    public Integer getUserStatus() {
-        return userStatus;
+    public Integer getUser_status() {
+        return user_status;
     }
 
-    public void setUserStatus(Integer userStatus) {
-        this.userStatus = userStatus;
+    public void setUser_status(Integer user_status) {
+        this.user_status = user_status;
     }
 
     public Byte getGag() {
@@ -137,19 +137,19 @@ public class AzOauthUser {
         this.gag = gag;
     }
 
-    public Integer getFollowNum() {
-        return followNum;
+    public Integer getFollow_num() {
+        return follow_num;
     }
 
-    public void setFollowNum(Integer followNum) {
-        this.followNum = followNum;
+    public void setFollow_num(Integer follow_num) {
+        this.follow_num = follow_num;
     }
 
-    public String getWechatUserOptions() {
-        return wechatUserOptions;
+    public String getWechat_user_options() {
+        return wechat_user_options;
     }
 
-    public void setWechatUserOptions(String wechatUserOptions) {
-        this.wechatUserOptions = wechatUserOptions == null ? null : wechatUserOptions.trim();
+    public void setWechat_user_options(String wechat_user_options) {
+        this.wechat_user_options = wechat_user_options == null ? null : wechat_user_options.trim();
     }
 }

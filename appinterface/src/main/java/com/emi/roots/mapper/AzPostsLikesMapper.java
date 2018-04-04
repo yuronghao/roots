@@ -2,7 +2,7 @@ package com.emi.roots.mapper;
 
 import com.emi.roots.entity.AzPostsLikes;
 
-public interface AzPostsLikesMapper {
+public interface AzPostsLikesMapper extends SqlMapper{
     int deleteByPrimaryKey(Long id);
 
     int insert(AzPostsLikes record);

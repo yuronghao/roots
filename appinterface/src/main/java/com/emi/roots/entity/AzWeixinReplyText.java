@@ -7,7 +7,7 @@ public class AzWeixinReplyText {
 
     private Byte type;
 
-    private Integer viewCount;
+    private Integer view_count;
 
     private Integer listorder;
 
@@ -39,12 +39,12 @@ public class AzWeixinReplyText {
         this.type = type;
     }
 
-    public Integer getViewCount() {
-        return viewCount;
+    public Integer getView_count() {
+        return view_count;
     }
 
-    public void setViewCount(Integer viewCount) {
-        this.viewCount = viewCount;
+    public void setView_count(Integer view_count) {
+        this.view_count = view_count;
     }
 
     public Integer getListorder() {

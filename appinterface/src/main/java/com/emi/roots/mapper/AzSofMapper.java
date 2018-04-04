@@ -2,7 +2,7 @@ package com.emi.roots.mapper;
 
 import com.emi.roots.entity.AzSof;
 
-public interface AzSofMapper {
+public interface AzSofMapper extends SqlMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(AzSof record);

@@ -5,13 +5,13 @@ import java.math.BigDecimal;
 public class AzOrderProduct {
     private Integer id;
 
-    private String orderId;
+    private String order_id;
 
     private String title;
 
-    private Integer goodsId;
+    private Integer goods_id;
 
-    private Integer skuId;
+    private Integer sku_id;
 
     private BigDecimal price;
 
@@ -21,7 +21,7 @@ public class AzOrderProduct {
 
     private String pic;
 
-    private String propsName;
+    private String props_name;
 
     public Integer getId() {
         return id;
@@ -31,12 +31,12 @@ public class AzOrderProduct {
         this.id = id;
     }
 
-    public String getOrderId() {
-        return orderId;
+    public String getOrder_id() {
+        return order_id;
     }
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId == null ? null : orderId.trim();
+    public void setOrder_id(String order_id) {
+        this.order_id = order_id == null ? null : order_id.trim();
     }
 
     public String getTitle() {
@@ -47,20 +47,20 @@ public class AzOrderProduct {
         this.title = title == null ? null : title.trim();
     }
 
-    public Integer getGoodsId() {
-        return goodsId;
+    public Integer getGoods_id() {
+        return goods_id;
     }
 
-    public void setGoodsId(Integer goodsId) {
-        this.goodsId = goodsId;
+    public void setGoods_id(Integer goods_id) {
+        this.goods_id = goods_id;
     }
 
-    public Integer getSkuId() {
-        return skuId;
+    public Integer getSku_id() {
+        return sku_id;
     }
 
-    public void setSkuId(Integer skuId) {
-        this.skuId = skuId;
+    public void setSku_id(Integer sku_id) {
+        this.sku_id = sku_id;
     }
 
     public BigDecimal getPrice() {
@@ -95,11 +95,11 @@ public class AzOrderProduct {
         this.pic = pic == null ? null : pic.trim();
     }
 
-    public String getPropsName() {
-        return propsName;
+    public String getProps_name() {
+        return props_name;
     }
 
-    public void setPropsName(String propsName) {
-        this.propsName = propsName == null ? null : propsName.trim();
+    public void setProps_name(String props_name) {
+        this.props_name = props_name == null ? null : props_name.trim();
     }
 }

@@ -1,24 +1,24 @@
 package com.emi.roots.entity;
 
 public class AzAccountLog {
-    private Integer logId;
+    private Integer log_id;
 
     private Integer uid;
 
-    private Integer changeTime;
+    private Integer change_time;
 
     private String description;
 
-    private String orderNo;
+    private String order_no;
 
-    private Integer orderId;
+    private Integer order_id;
 
-    public Integer getLogId() {
-        return logId;
+    public Integer getLog_id() {
+        return log_id;
     }
 
-    public void setLogId(Integer logId) {
-        this.logId = logId;
+    public void setLog_id(Integer log_id) {
+        this.log_id = log_id;
     }
 
     public Integer getUid() {
@@ -29,12 +29,12 @@ public class AzAccountLog {
         this.uid = uid;
     }
 
-    public Integer getChangeTime() {
-        return changeTime;
+    public Integer getChange_time() {
+        return change_time;
     }
 
-    public void setChangeTime(Integer changeTime) {
-        this.changeTime = changeTime;
+    public void setChange_time(Integer change_time) {
+        this.change_time = change_time;
     }
 
     public String getDescription() {
@@ -45,19 +45,19 @@ public class AzAccountLog {
         this.description = description == null ? null : description.trim();
     }
 
-    public String getOrderNo() {
-        return orderNo;
+    public String getOrder_no() {
+        return order_no;
     }
 
-    public void setOrderNo(String orderNo) {
-        this.orderNo = orderNo == null ? null : orderNo.trim();
+    public void setOrder_no(String order_no) {
+        this.order_no = order_no == null ? null : order_no.trim();
     }
 
-    public Integer getOrderId() {
-        return orderId;
+    public Integer getOrder_id() {
+        return order_id;
     }
 
-    public void setOrderId(Integer orderId) {
-        this.orderId = orderId;
+    public void setOrder_id(Integer order_id) {
+        this.order_id = order_id;
     }
 }

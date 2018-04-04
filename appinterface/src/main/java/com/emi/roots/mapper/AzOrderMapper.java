@@ -2,7 +2,7 @@ package com.emi.roots.mapper;
 
 import com.emi.roots.entity.AzOrder;
 
-public interface AzOrderMapper {
+public interface AzOrderMapper extends SqlMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(AzOrder record);

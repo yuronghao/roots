@@ -3,7 +3,7 @@ package com.emi.roots.entity;
 public class AzForum {
     private Integer id;
 
-    private Integer typeId;
+    private Integer type_id;
 
     private String name;
 
@@ -15,15 +15,15 @@ public class AzForum {
 
     private String descr;
 
-    private Integer followNum;
+    private Integer follow_num;
 
-    private Integer clickNum;
+    private Integer click_num;
 
     private Integer listorder;
 
     private Byte state;
 
-    private Integer createTime;
+    private Integer create_time;
 
     private Integer uid;
 
@@ -37,12 +37,12 @@ public class AzForum {
         this.id = id;
     }
 
-    public Integer getTypeId() {
-        return typeId;
+    public Integer getType_id() {
+        return type_id;
     }
 
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
+    public void setType_id(Integer type_id) {
+        this.type_id = type_id;
     }
 
     public String getName() {
@@ -85,20 +85,20 @@ public class AzForum {
         this.descr = descr == null ? null : descr.trim();
     }
 
-    public Integer getFollowNum() {
-        return followNum;
+    public Integer getFollow_num() {
+        return follow_num;
     }
 
-    public void setFollowNum(Integer followNum) {
-        this.followNum = followNum;
+    public void setFollow_num(Integer follow_num) {
+        this.follow_num = follow_num;
     }
 
-    public Integer getClickNum() {
-        return clickNum;
+    public Integer getClick_num() {
+        return click_num;
     }
 
-    public void setClickNum(Integer clickNum) {
-        this.clickNum = clickNum;
+    public void setClick_num(Integer click_num) {
+        this.click_num = click_num;
     }
 
     public Integer getListorder() {
@@ -117,12 +117,12 @@ public class AzForum {
         this.state = state;
     }
 
-    public Integer getCreateTime() {
-        return createTime;
+    public Integer getCreate_time() {
+        return create_time;
     }
 
-    public void setCreateTime(Integer createTime) {
-        this.createTime = createTime;
+    public void setCreate_time(Integer create_time) {
+        this.create_time = create_time;
     }
 
     public Integer getUid() {

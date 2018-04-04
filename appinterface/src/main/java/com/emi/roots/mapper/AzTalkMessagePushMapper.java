@@ -2,7 +2,7 @@ package com.emi.roots.mapper;
 
 import com.emi.roots.entity.AzTalkMessagePush;
 
-public interface AzTalkMessagePushMapper {
+public interface AzTalkMessagePushMapper extends SqlMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(AzTalkMessagePush record);

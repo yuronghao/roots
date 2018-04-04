@@ -13,15 +13,15 @@ public class AzScoreLog {
 
     private Integer value;
 
-    private Integer finallyValue;
+    private Integer finally_value;
 
-    private Integer createTime;
+    private Integer create_time;
 
     private String remark;
 
     private String tablename;
 
-    private Integer objectId;
+    private Integer object_id;
 
     public Integer getId() {
         return id;
@@ -71,20 +71,20 @@ public class AzScoreLog {
         this.value = value;
     }
 
-    public Integer getFinallyValue() {
-        return finallyValue;
+    public Integer getFinally_value() {
+        return finally_value;
     }
 
-    public void setFinallyValue(Integer finallyValue) {
-        this.finallyValue = finallyValue;
+    public void setFinally_value(Integer finally_value) {
+        this.finally_value = finally_value;
     }
 
-    public Integer getCreateTime() {
-        return createTime;
+    public Integer getCreate_time() {
+        return create_time;
     }
 
-    public void setCreateTime(Integer createTime) {
-        this.createTime = createTime;
+    public void setCreate_time(Integer create_time) {
+        this.create_time = create_time;
     }
 
     public String getRemark() {
@@ -103,11 +103,11 @@ public class AzScoreLog {
         this.tablename = tablename == null ? null : tablename.trim();
     }
 
-    public Integer getObjectId() {
-        return objectId;
+    public Integer getObject_id() {
+        return object_id;
     }
 
-    public void setObjectId(Integer objectId) {
-        this.objectId = objectId;
+    public void setObject_id(Integer object_id) {
+        this.object_id = object_id;
     }
 }

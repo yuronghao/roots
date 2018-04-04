@@ -2,7 +2,7 @@ package com.emi.roots.mapper;
 
 import com.emi.roots.entity.AzReply;
 
-public interface AzReplyMapper {
+public interface AzReplyMapper extends SqlMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(AzReply record);

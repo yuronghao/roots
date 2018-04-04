@@ -3,7 +3,7 @@ package com.emi.roots.mapper;
 import com.emi.roots.entity.AzMessageContent;
 import com.emi.roots.entity.AzMessageContentWithBLOBs;
 
-public interface AzMessageContentMapper {
+public interface AzMessageContentMapper extends SqlMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(AzMessageContentWithBLOBs record);

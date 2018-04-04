@@ -2,7 +2,7 @@ package com.emi.roots.mapper;
 
 import com.emi.roots.entity.AzPostDigg;
 
-public interface AzPostDiggMapper {
+public interface AzPostDiggMapper extends SqlMapper{
     int deleteByPrimaryKey(Integer id);
 
     int insert(AzPostDigg record);

@@ -2,7 +2,7 @@ package com.emi.roots.mapper;
 
 import com.emi.roots.entity.AzScoreLog;
 
-public interface AzScoreLogMapper {
+public interface AzScoreLogMapper extends SqlMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(AzScoreLog record);

@@ -2,7 +2,7 @@ package com.emi.roots.mapper;
 
 import com.emi.roots.entity.AzWeixinMenu;
 
-public interface AzWeixinMenuMapper {
+public interface AzWeixinMenuMapper extends SqlMapper {
     int deleteByPrimaryKey(Short id);
 
     int insert(AzWeixinMenu record);

@@ -1,7 +1,7 @@
 package com.emi.roots.entity;
 
 public class AzTerms {
-    private Long termId;
+    private Long term_id;
 
     private String name;
 
@@ -15,15 +15,15 @@ public class AzTerms {
 
     private String path;
 
-    private String seoTitle;
+    private String seo_title;
 
-    private String seoKeywords;
+    private String seo_keywords;
 
-    private String seoDescription;
+    private String seo_description;
 
-    private String listTpl;
+    private String list_tpl;
 
-    private String oneTpl;
+    private String one_tpl;
 
     private Integer listorder;
 
@@ -31,12 +31,12 @@ public class AzTerms {
 
     private String description;
 
-    public Long getTermId() {
-        return termId;
+    public Long getTerm_id() {
+        return term_id;
     }
 
-    public void setTermId(Long termId) {
-        this.termId = termId;
+    public void setTerm_id(Long term_id) {
+        this.term_id = term_id;
     }
 
     public String getName() {
@@ -87,44 +87,44 @@ public class AzTerms {
         this.path = path == null ? null : path.trim();
     }
 
-    public String getSeoTitle() {
-        return seoTitle;
+    public String getSeo_title() {
+        return seo_title;
     }
 
-    public void setSeoTitle(String seoTitle) {
-        this.seoTitle = seoTitle == null ? null : seoTitle.trim();
+    public void setSeo_title(String seo_title) {
+        this.seo_title = seo_title == null ? null : seo_title.trim();
     }
 
-    public String getSeoKeywords() {
-        return seoKeywords;
+    public String getSeo_keywords() {
+        return seo_keywords;
     }
 
-    public void setSeoKeywords(String seoKeywords) {
-        this.seoKeywords = seoKeywords == null ? null : seoKeywords.trim();
+    public void setSeo_keywords(String seo_keywords) {
+        this.seo_keywords = seo_keywords == null ? null : seo_keywords.trim();
     }
 
-    public String getSeoDescription() {
-        return seoDescription;
+    public String getSeo_description() {
+        return seo_description;
     }
 
-    public void setSeoDescription(String seoDescription) {
-        this.seoDescription = seoDescription == null ? null : seoDescription.trim();
+    public void setSeo_description(String seo_description) {
+        this.seo_description = seo_description == null ? null : seo_description.trim();
     }
 
-    public String getListTpl() {
-        return listTpl;
+    public String getList_tpl() {
+        return list_tpl;
     }
 
-    public void setListTpl(String listTpl) {
-        this.listTpl = listTpl == null ? null : listTpl.trim();
+    public void setList_tpl(String list_tpl) {
+        this.list_tpl = list_tpl == null ? null : list_tpl.trim();
     }
 
-    public String getOneTpl() {
-        return oneTpl;
+    public String getOne_tpl() {
+        return one_tpl;
     }
 
-    public void setOneTpl(String oneTpl) {
-        this.oneTpl = oneTpl == null ? null : oneTpl.trim();
+    public void setOne_tpl(String one_tpl) {
+        this.one_tpl = one_tpl == null ? null : one_tpl.trim();
     }
 
     public Integer getListorder() {

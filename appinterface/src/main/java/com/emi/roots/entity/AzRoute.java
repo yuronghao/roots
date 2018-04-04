@@ -3,7 +3,7 @@ package com.emi.roots.entity;
 public class AzRoute {
     private Integer id;
 
-    private String fullUrl;
+    private String full_url;
 
     private String url;
 
@@ -19,12 +19,12 @@ public class AzRoute {
         this.id = id;
     }
 
-    public String getFullUrl() {
-        return fullUrl;
+    public String getFull_url() {
+        return full_url;
     }
 
-    public void setFullUrl(String fullUrl) {
-        this.fullUrl = fullUrl == null ? null : fullUrl.trim();
+    public void setFull_url(String full_url) {
+        this.full_url = full_url == null ? null : full_url.trim();
     }
 
     public String getUrl() {

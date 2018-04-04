@@ -3,7 +3,7 @@ package com.emi.roots.mapper;
 import com.emi.roots.entity.AzTicket;
 import com.emi.roots.entity.AzTicketWithBLOBs;
 
-public interface AzTicketMapper {
+public interface AzTicketMapper extends SqlMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(AzTicketWithBLOBs record);

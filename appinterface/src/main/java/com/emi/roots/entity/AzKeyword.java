@@ -9,19 +9,19 @@ public class AzKeyword {
 
     private String addon;
 
-    private Integer aimId;
+    private Integer aim_id;
 
-    private Integer ctime;
+    private Integer cTime;
 
-    private Integer keywordLength;
+    private Integer keyword_length;
 
-    private Byte keywordType;
+    private Byte keyword_type;
 
-    private Integer extraInt;
+    private Integer extra_int;
 
-    private Integer requestCount;
+    private Integer request_count;
 
-    private String extraText;
+    private String extra_text;
 
     public Integer getId() {
         return id;
@@ -55,59 +55,59 @@ public class AzKeyword {
         this.addon = addon == null ? null : addon.trim();
     }
 
-    public Integer getAimId() {
-        return aimId;
+    public Integer getAim_id() {
+        return aim_id;
     }
 
-    public void setAimId(Integer aimId) {
-        this.aimId = aimId;
+    public void setAim_id(Integer aim_id) {
+        this.aim_id = aim_id;
     }
 
-    public Integer getCtime() {
-        return ctime;
+    public Integer getcTime() {
+        return cTime;
     }
 
-    public void setCtime(Integer ctime) {
-        this.ctime = ctime;
+    public void setcTime(Integer cTime) {
+        this.cTime = cTime;
     }
 
-    public Integer getKeywordLength() {
-        return keywordLength;
+    public Integer getKeyword_length() {
+        return keyword_length;
     }
 
-    public void setKeywordLength(Integer keywordLength) {
-        this.keywordLength = keywordLength;
+    public void setKeyword_length(Integer keyword_length) {
+        this.keyword_length = keyword_length;
     }
 
-    public Byte getKeywordType() {
-        return keywordType;
+    public Byte getKeyword_type() {
+        return keyword_type;
     }
 
-    public void setKeywordType(Byte keywordType) {
-        this.keywordType = keywordType;
+    public void setKeyword_type(Byte keyword_type) {
+        this.keyword_type = keyword_type;
     }
 
-    public Integer getExtraInt() {
-        return extraInt;
+    public Integer getExtra_int() {
+        return extra_int;
     }
 
-    public void setExtraInt(Integer extraInt) {
-        this.extraInt = extraInt;
+    public void setExtra_int(Integer extra_int) {
+        this.extra_int = extra_int;
     }
 
-    public Integer getRequestCount() {
-        return requestCount;
+    public Integer getRequest_count() {
+        return request_count;
     }
 
-    public void setRequestCount(Integer requestCount) {
-        this.requestCount = requestCount;
+    public void setRequest_count(Integer request_count) {
+        this.request_count = request_count;
     }
 
-    public String getExtraText() {
-        return extraText;
+    public String getExtra_text() {
+        return extra_text;
     }
 
-    public void setExtraText(String extraText) {
-        this.extraText = extraText == null ? null : extraText.trim();
+    public void setExtra_text(String extra_text) {
+        this.extra_text = extra_text == null ? null : extra_text.trim();
     }
 }

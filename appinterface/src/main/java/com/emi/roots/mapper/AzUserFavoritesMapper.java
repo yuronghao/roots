@@ -2,7 +2,7 @@ package com.emi.roots.mapper;
 
 import com.emi.roots.entity.AzUserFavorites;
 
-public interface AzUserFavoritesMapper {
+public interface AzUserFavoritesMapper extends SqlMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(AzUserFavorites record);

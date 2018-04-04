@@ -5,33 +5,33 @@ public class AzWeixinOptions {
 
     private Integer uid;
 
-    private String appName;
+    private String app_name;
 
-    private String appUser;
+    private String app_user;
 
-    private String appWxid;
+    private String app_wxid;
 
-    private String interfaceUrl;
+    private String interface_url;
 
-    private String headfaceUrl;
+    private String headface_url;
 
     private String area;
 
     private String token;
 
-    private Byte isUse;
+    private Byte is_use;
 
     private String type;
 
-    private String appId;
+    private String app_id;
 
-    private String appSecret;
+    private String app_secret;
 
-    private String appToken;
+    private String app_token;
 
-    private String appKey;
+    private String app_key;
 
-    private Integer groupId;
+    private Integer group_id;
 
     public Integer getId() {
         return id;
@@ -49,44 +49,44 @@ public class AzWeixinOptions {
         this.uid = uid;
     }
 
-    public String getAppName() {
-        return appName;
+    public String getApp_name() {
+        return app_name;
     }
 
-    public void setAppName(String appName) {
-        this.appName = appName == null ? null : appName.trim();
+    public void setApp_name(String app_name) {
+        this.app_name = app_name == null ? null : app_name.trim();
     }
 
-    public String getAppUser() {
-        return appUser;
+    public String getApp_user() {
+        return app_user;
     }
 
-    public void setAppUser(String appUser) {
-        this.appUser = appUser == null ? null : appUser.trim();
+    public void setApp_user(String app_user) {
+        this.app_user = app_user == null ? null : app_user.trim();
     }
 
-    public String getAppWxid() {
-        return appWxid;
+    public String getApp_wxid() {
+        return app_wxid;
     }
 
-    public void setAppWxid(String appWxid) {
-        this.appWxid = appWxid == null ? null : appWxid.trim();
+    public void setApp_wxid(String app_wxid) {
+        this.app_wxid = app_wxid == null ? null : app_wxid.trim();
     }
 
-    public String getInterfaceUrl() {
-        return interfaceUrl;
+    public String getInterface_url() {
+        return interface_url;
     }
 
-    public void setInterfaceUrl(String interfaceUrl) {
-        this.interfaceUrl = interfaceUrl == null ? null : interfaceUrl.trim();
+    public void setInterface_url(String interface_url) {
+        this.interface_url = interface_url == null ? null : interface_url.trim();
     }
 
-    public String getHeadfaceUrl() {
-        return headfaceUrl;
+    public String getHeadface_url() {
+        return headface_url;
     }
 
-    public void setHeadfaceUrl(String headfaceUrl) {
-        this.headfaceUrl = headfaceUrl == null ? null : headfaceUrl.trim();
+    public void setHeadface_url(String headface_url) {
+        this.headface_url = headface_url == null ? null : headface_url.trim();
     }
 
     public String getArea() {
@@ -105,12 +105,12 @@ public class AzWeixinOptions {
         this.token = token == null ? null : token.trim();
     }
 
-    public Byte getIsUse() {
-        return isUse;
+    public Byte getIs_use() {
+        return is_use;
     }
 
-    public void setIsUse(Byte isUse) {
-        this.isUse = isUse;
+    public void setIs_use(Byte is_use) {
+        this.is_use = is_use;
     }
 
     public String getType() {
@@ -121,43 +121,43 @@ public class AzWeixinOptions {
         this.type = type == null ? null : type.trim();
     }
 
-    public String getAppId() {
-        return appId;
+    public String getApp_id() {
+        return app_id;
     }
 
-    public void setAppId(String appId) {
-        this.appId = appId == null ? null : appId.trim();
+    public void setApp_id(String app_id) {
+        this.app_id = app_id == null ? null : app_id.trim();
     }
 
-    public String getAppSecret() {
-        return appSecret;
+    public String getApp_secret() {
+        return app_secret;
     }
 
-    public void setAppSecret(String appSecret) {
-        this.appSecret = appSecret == null ? null : appSecret.trim();
+    public void setApp_secret(String app_secret) {
+        this.app_secret = app_secret == null ? null : app_secret.trim();
     }
 
-    public String getAppToken() {
-        return appToken;
+    public String getApp_token() {
+        return app_token;
     }
 
-    public void setAppToken(String appToken) {
-        this.appToken = appToken == null ? null : appToken.trim();
+    public void setApp_token(String app_token) {
+        this.app_token = app_token == null ? null : app_token.trim();
     }
 
-    public String getAppKey() {
-        return appKey;
+    public String getApp_key() {
+        return app_key;
     }
 
-    public void setAppKey(String appKey) {
-        this.appKey = appKey == null ? null : appKey.trim();
+    public void setApp_key(String app_key) {
+        this.app_key = app_key == null ? null : app_key.trim();
     }
 
-    public Integer getGroupId() {
-        return groupId;
+    public Integer getGroup_id() {
+        return group_id;
     }
 
-    public void setGroupId(Integer groupId) {
-        this.groupId = groupId;
+    public void setGroup_id(Integer group_id) {
+        this.group_id = group_id;
     }
 }

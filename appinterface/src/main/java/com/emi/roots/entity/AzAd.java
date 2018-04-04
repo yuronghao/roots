@@ -1,28 +1,28 @@
 package com.emi.roots.entity;
 
 public class AzAd {
-    private Long adId;
+    private Long ad_id;
 
-    private String adName;
+    private String ad_name;
 
     private Integer status;
 
-    private String adContent;
+    private String ad_content;
 
-    public Long getAdId() {
-        return adId;
+    public Long getAd_id() {
+        return ad_id;
     }
 
-    public void setAdId(Long adId) {
-        this.adId = adId;
+    public void setAd_id(Long ad_id) {
+        this.ad_id = ad_id;
     }
 
-    public String getAdName() {
-        return adName;
+    public String getAd_name() {
+        return ad_name;
     }
 
-    public void setAdName(String adName) {
-        this.adName = adName == null ? null : adName.trim();
+    public void setAd_name(String ad_name) {
+        this.ad_name = ad_name == null ? null : ad_name.trim();
     }
 
     public Integer getStatus() {
@@ -33,11 +33,11 @@ public class AzAd {
         this.status = status;
     }
 
-    public String getAdContent() {
-        return adContent;
+    public String getAd_content() {
+        return ad_content;
     }
 
-    public void setAdContent(String adContent) {
-        this.adContent = adContent == null ? null : adContent.trim();
+    public void setAd_content(String ad_content) {
+        this.ad_content = ad_content == null ? null : ad_content.trim();
     }
 }

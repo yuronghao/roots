@@ -5,11 +5,11 @@ public class AzTalkMessage {
 
     private Integer uid;
 
-    private Integer createTime;
+    private Integer create_time;
 
     private String content;
 
-    private Integer talkId;
+    private Integer talk_id;
 
     public Integer getId() {
         return id;
@@ -27,12 +27,12 @@ public class AzTalkMessage {
         this.uid = uid;
     }
 
-    public Integer getCreateTime() {
-        return createTime;
+    public Integer getCreate_time() {
+        return create_time;
     }
 
-    public void setCreateTime(Integer createTime) {
-        this.createTime = createTime;
+    public void setCreate_time(Integer create_time) {
+        this.create_time = create_time;
     }
 
     public String getContent() {
@@ -43,11 +43,11 @@ public class AzTalkMessage {
         this.content = content == null ? null : content.trim();
     }
 
-    public Integer getTalkId() {
-        return talkId;
+    public Integer getTalk_id() {
+        return talk_id;
     }
 
-    public void setTalkId(Integer talkId) {
-        this.talkId = talkId;
+    public void setTalk_id(Integer talk_id) {
+        this.talk_id = talk_id;
     }
 }

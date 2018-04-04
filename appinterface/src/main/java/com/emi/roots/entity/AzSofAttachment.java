@@ -3,15 +3,15 @@ package com.emi.roots.entity;
 public class AzSofAttachment {
     private Integer id;
 
-    private Integer objectId;
+    private Integer object_id;
 
     private String tablename;
 
     private Integer uid;
 
-    private Integer createTime;
+    private Integer create_time;
 
-    private Integer updateTime;
+    private Integer update_time;
 
     private Byte state;
 
@@ -19,11 +19,11 @@ public class AzSofAttachment {
 
     private Long size;
 
-    private Integer praiseNum;
+    private Integer praise_num;
 
-    private Integer clickNum;
+    private Integer click_num;
 
-    private Integer replyNum;
+    private Integer reply_num;
 
     private Byte isdel;
 
@@ -45,12 +45,12 @@ public class AzSofAttachment {
         this.id = id;
     }
 
-    public Integer getObjectId() {
-        return objectId;
+    public Integer getObject_id() {
+        return object_id;
     }
 
-    public void setObjectId(Integer objectId) {
-        this.objectId = objectId;
+    public void setObject_id(Integer object_id) {
+        this.object_id = object_id;
     }
 
     public String getTablename() {
@@ -69,20 +69,20 @@ public class AzSofAttachment {
         this.uid = uid;
     }
 
-    public Integer getCreateTime() {
-        return createTime;
+    public Integer getCreate_time() {
+        return create_time;
     }
 
-    public void setCreateTime(Integer createTime) {
-        this.createTime = createTime;
+    public void setCreate_time(Integer create_time) {
+        this.create_time = create_time;
     }
 
-    public Integer getUpdateTime() {
-        return updateTime;
+    public Integer getUpdate_time() {
+        return update_time;
     }
 
-    public void setUpdateTime(Integer updateTime) {
-        this.updateTime = updateTime;
+    public void setUpdate_time(Integer update_time) {
+        this.update_time = update_time;
     }
 
     public Byte getState() {
@@ -109,28 +109,28 @@ public class AzSofAttachment {
         this.size = size;
     }
 
-    public Integer getPraiseNum() {
-        return praiseNum;
+    public Integer getPraise_num() {
+        return praise_num;
     }
 
-    public void setPraiseNum(Integer praiseNum) {
-        this.praiseNum = praiseNum;
+    public void setPraise_num(Integer praise_num) {
+        this.praise_num = praise_num;
     }
 
-    public Integer getClickNum() {
-        return clickNum;
+    public Integer getClick_num() {
+        return click_num;
     }
 
-    public void setClickNum(Integer clickNum) {
-        this.clickNum = clickNum;
+    public void setClick_num(Integer click_num) {
+        this.click_num = click_num;
     }
 
-    public Integer getReplyNum() {
-        return replyNum;
+    public Integer getReply_num() {
+        return reply_num;
     }
 
-    public void setReplyNum(Integer replyNum) {
-        this.replyNum = replyNum;
+    public void setReply_num(Integer reply_num) {
+        this.reply_num = reply_num;
     }
 
     public Byte getIsdel() {

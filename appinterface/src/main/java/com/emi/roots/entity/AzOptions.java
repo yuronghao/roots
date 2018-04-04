@@ -1,28 +1,28 @@
 package com.emi.roots.entity;
 
 public class AzOptions {
-    private Long optionId;
+    private Long option_id;
 
-    private String optionName;
+    private String option_name;
 
     private Integer autoload;
 
-    private String optionValue;
+    private String option_value;
 
-    public Long getOptionId() {
-        return optionId;
+    public Long getOption_id() {
+        return option_id;
     }
 
-    public void setOptionId(Long optionId) {
-        this.optionId = optionId;
+    public void setOption_id(Long option_id) {
+        this.option_id = option_id;
     }
 
-    public String getOptionName() {
-        return optionName;
+    public String getOption_name() {
+        return option_name;
     }
 
-    public void setOptionName(String optionName) {
-        this.optionName = optionName == null ? null : optionName.trim();
+    public void setOption_name(String option_name) {
+        this.option_name = option_name == null ? null : option_name.trim();
     }
 
     public Integer getAutoload() {
@@ -33,11 +33,11 @@ public class AzOptions {
         this.autoload = autoload;
     }
 
-    public String getOptionValue() {
-        return optionValue;
+    public String getOption_value() {
+        return option_value;
     }
 
-    public void setOptionValue(String optionValue) {
-        this.optionValue = optionValue == null ? null : optionValue.trim();
+    public void setOption_value(String option_value) {
+        this.option_value = option_value == null ? null : option_value.trim();
     }
 }

@@ -3,9 +3,9 @@ package com.emi.roots.entity;
 public class AzTermRelationships {
     private Long tid;
 
-    private Long objectId;
+    private Long object_id;
 
-    private Long termId;
+    private Long term_id;
 
     private Integer listorder;
 
@@ -19,20 +19,20 @@ public class AzTermRelationships {
         this.tid = tid;
     }
 
-    public Long getObjectId() {
-        return objectId;
+    public Long getObject_id() {
+        return object_id;
     }
 
-    public void setObjectId(Long objectId) {
-        this.objectId = objectId;
+    public void setObject_id(Long object_id) {
+        this.object_id = object_id;
     }
 
-    public Long getTermId() {
-        return termId;
+    public Long getTerm_id() {
+        return term_id;
     }
 
-    public void setTermId(Long termId) {
-        this.termId = termId;
+    public void setTerm_id(Long term_id) {
+        this.term_id = term_id;
     }
 
     public Integer getListorder() {

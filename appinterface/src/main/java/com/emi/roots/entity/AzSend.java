@@ -5,13 +5,13 @@ public class AzSend {
 
     private String msgtype;
 
-    private String mediaId;
+    private String media_id;
 
     private Integer sendtime;
 
-    private Short groupId;
+    private Short group_id;
 
-    private Boolean sendType;
+    private Boolean send_type;
 
     private Boolean status;
 
@@ -35,12 +35,12 @@ public class AzSend {
         this.msgtype = msgtype == null ? null : msgtype.trim();
     }
 
-    public String getMediaId() {
-        return mediaId;
+    public String getMedia_id() {
+        return media_id;
     }
 
-    public void setMediaId(String mediaId) {
-        this.mediaId = mediaId == null ? null : mediaId.trim();
+    public void setMedia_id(String media_id) {
+        this.media_id = media_id == null ? null : media_id.trim();
     }
 
     public Integer getSendtime() {
@@ -51,20 +51,20 @@ public class AzSend {
         this.sendtime = sendtime;
     }
 
-    public Short getGroupId() {
-        return groupId;
+    public Short getGroup_id() {
+        return group_id;
     }
 
-    public void setGroupId(Short groupId) {
-        this.groupId = groupId;
+    public void setGroup_id(Short group_id) {
+        this.group_id = group_id;
     }
 
-    public Boolean getSendType() {
-        return sendType;
+    public Boolean getSend_type() {
+        return send_type;
     }
 
-    public void setSendType(Boolean sendType) {
-        this.sendType = sendType;
+    public void setSend_type(Boolean send_type) {
+        this.send_type = send_type;
     }
 
     public Boolean getStatus() {

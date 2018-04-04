@@ -5,9 +5,9 @@ public class AzFollow {
 
     private Integer uid;
 
-    private Integer followId;
+    private Integer object_id;
 
-    private Integer createTime;
+    private Integer create_time;
 
     private String tablename;
 
@@ -27,20 +27,20 @@ public class AzFollow {
         this.uid = uid;
     }
 
-    public Integer getFollowId() {
-        return followId;
+    public Integer getObject_id() {
+        return object_id;
     }
 
-    public void setFollowId(Integer followId) {
-        this.followId = followId;
+    public void setObject_id(Integer object_id) {
+        this.object_id = object_id;
     }
 
-    public Integer getCreateTime() {
-        return createTime;
+    public Integer getCreate_time() {
+        return create_time;
     }
 
-    public void setCreateTime(Integer createTime) {
-        this.createTime = createTime;
+    public void setCreate_time(Integer create_time) {
+        this.create_time = create_time;
     }
 
     public String getTablename() {

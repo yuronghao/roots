@@ -3,17 +3,17 @@ package com.emi.roots.entity;
 public class AzMessage {
     private Integer id;
 
-    private Integer contentId;
+    private Integer content_id;
 
-    private Integer fromUid;
+    private Integer from_uid;
 
-    private Integer toUid;
+    private Integer to_uid;
 
-    private Integer createTime;
+    private Integer create_time;
 
     private Byte isread;
 
-    private Integer readTime;
+    private Integer read_time;
 
     private Byte status;
 
@@ -27,36 +27,36 @@ public class AzMessage {
         this.id = id;
     }
 
-    public Integer getContentId() {
-        return contentId;
+    public Integer getContent_id() {
+        return content_id;
     }
 
-    public void setContentId(Integer contentId) {
-        this.contentId = contentId;
+    public void setContent_id(Integer content_id) {
+        this.content_id = content_id;
     }
 
-    public Integer getFromUid() {
-        return fromUid;
+    public Integer getFrom_uid() {
+        return from_uid;
     }
 
-    public void setFromUid(Integer fromUid) {
-        this.fromUid = fromUid;
+    public void setFrom_uid(Integer from_uid) {
+        this.from_uid = from_uid;
     }
 
-    public Integer getToUid() {
-        return toUid;
+    public Integer getTo_uid() {
+        return to_uid;
     }
 
-    public void setToUid(Integer toUid) {
-        this.toUid = toUid;
+    public void setTo_uid(Integer to_uid) {
+        this.to_uid = to_uid;
     }
 
-    public Integer getCreateTime() {
-        return createTime;
+    public Integer getCreate_time() {
+        return create_time;
     }
 
-    public void setCreateTime(Integer createTime) {
-        this.createTime = createTime;
+    public void setCreate_time(Integer create_time) {
+        this.create_time = create_time;
     }
 
     public Byte getIsread() {
@@ -67,12 +67,12 @@ public class AzMessage {
         this.isread = isread;
     }
 
-    public Integer getReadTime() {
-        return readTime;
+    public Integer getRead_time() {
+        return read_time;
     }
 
-    public void setReadTime(Integer readTime) {
-        this.readTime = readTime;
+    public void setRead_time(Integer read_time) {
+        this.read_time = read_time;
     }
 
     public Byte getStatus() {

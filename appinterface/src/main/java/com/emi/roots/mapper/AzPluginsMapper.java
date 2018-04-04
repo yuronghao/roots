@@ -3,7 +3,7 @@ package com.emi.roots.mapper;
 import com.emi.roots.entity.AzPlugins;
 import com.emi.roots.entity.AzPluginsWithBLOBs;
 
-public interface AzPluginsMapper {
+public interface AzPluginsMapper extends SqlMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(AzPluginsWithBLOBs record);

@@ -3,7 +3,7 @@ package com.emi.roots.mapper;
 import com.emi.roots.entity.AzWeixinOptions;
 import com.emi.roots.entity.AzWeixinOptionsWithBLOBs;
 
-public interface AzWeixinOptionsMapper {
+public interface AzWeixinOptionsMapper extends SqlMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(AzWeixinOptionsWithBLOBs record);

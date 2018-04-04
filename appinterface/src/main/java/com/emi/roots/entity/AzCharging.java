@@ -7,11 +7,11 @@ public class AzCharging {
 
     private String openid;
 
-    private String userOpenid;
+    private String user_openid;
 
     private Byte degree;
 
-    private Date createTime;
+    private Date create_time;
 
     public Integer getId() {
         return id;
@@ -29,12 +29,12 @@ public class AzCharging {
         this.openid = openid == null ? null : openid.trim();
     }
 
-    public String getUserOpenid() {
-        return userOpenid;
+    public String getUser_openid() {
+        return user_openid;
     }
 
-    public void setUserOpenid(String userOpenid) {
-        this.userOpenid = userOpenid == null ? null : userOpenid.trim();
+    public void setUser_openid(String user_openid) {
+        this.user_openid = user_openid == null ? null : user_openid.trim();
     }
 
     public Byte getDegree() {
@@ -45,11 +45,11 @@ public class AzCharging {
         this.degree = degree;
     }
 
-    public Date getCreateTime() {
-        return createTime;
+    public Date getCreate_time() {
+        return create_time;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setCreate_time(Date create_time) {
+        this.create_time = create_time;
     }
 }

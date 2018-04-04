@@ -2,7 +2,7 @@ package com.emi.roots.mapper;
 
 import com.emi.roots.entity.AzWeixinOptionsLink;
 
-public interface AzWeixinOptionsLinkMapper {
+public interface AzWeixinOptionsLinkMapper extends SqlMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(AzWeixinOptionsLink record);

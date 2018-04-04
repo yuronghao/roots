@@ -2,7 +2,7 @@ package com.emi.roots.mapper;
 
 import com.emi.roots.entity.AzTermRelationships;
 
-public interface AzTermRelationshipsMapper {
+public interface AzTermRelationshipsMapper extends SqlMapper {
     int deleteByPrimaryKey(Long tid);
 
     int insert(AzTermRelationships record);

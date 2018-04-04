@@ -3,7 +3,7 @@ package com.emi.roots.entity;
 public class AzLabel {
     private Integer id;
 
-    private Integer parentId;
+    private Integer parent_id;
 
     private String name;
 
@@ -17,12 +17,12 @@ public class AzLabel {
         this.id = id;
     }
 
-    public Integer getParentId() {
-        return parentId;
+    public Integer getParent_id() {
+        return parent_id;
     }
 
-    public void setParentId(Integer parentId) {
-        this.parentId = parentId;
+    public void setParent_id(Integer parent_id) {
+        this.parent_id = parent_id;
     }
 
     public String getName() {

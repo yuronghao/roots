@@ -5,43 +5,43 @@ import java.util.Date;
 public class AzPosts {
     private Long id;
 
-    private Long postAuthor;
+    private Long post_author;
 
-    private String postKeywords;
+    private String post_keywords;
 
-    private String postSource;
+    private String post_source;
 
-    private Date postDate;
+    private Date post_date;
 
-    private Integer postStatus;
+    private Integer post_status;
 
-    private Integer commentStatus;
+    private Integer comment_status;
 
-    private Date postModified;
+    private Date post_modified;
 
-    private Long postParent;
+    private Long post_parent;
 
-    private Integer postType;
+    private Integer post_type;
 
-    private String postMimeType;
+    private String post_mime_type;
 
-    private Long commentCount;
+    private Long comment_count;
 
-    private Integer postHits;
+    private Integer post_hits;
 
-    private Integer postLike;
+    private Integer post_like;
 
     private Boolean istop;
 
     private Boolean recommended;
 
-    private Date startDate;
+    private Date start_date;
 
-    private Date endDate;
+    private Date end_date;
 
     private String price;
 
-    private String originalPrice;
+    private String original_price;
 
     private Short number;
 
@@ -55,13 +55,13 @@ public class AzPosts {
 
     private String contacts;
 
-    private Boolean isShow;
+    private Boolean is_show;
 
-    private String commodityId;
+    private String commodity_id;
 
-    private Integer reviewId;
+    private Integer review_id;
 
-    private String materialId;
+    private String material_id;
 
     public Long getId() {
         return id;
@@ -71,108 +71,108 @@ public class AzPosts {
         this.id = id;
     }
 
-    public Long getPostAuthor() {
-        return postAuthor;
+    public Long getPost_author() {
+        return post_author;
     }
 
-    public void setPostAuthor(Long postAuthor) {
-        this.postAuthor = postAuthor;
+    public void setPost_author(Long post_author) {
+        this.post_author = post_author;
     }
 
-    public String getPostKeywords() {
-        return postKeywords;
+    public String getPost_keywords() {
+        return post_keywords;
     }
 
-    public void setPostKeywords(String postKeywords) {
-        this.postKeywords = postKeywords == null ? null : postKeywords.trim();
+    public void setPost_keywords(String post_keywords) {
+        this.post_keywords = post_keywords == null ? null : post_keywords.trim();
     }
 
-    public String getPostSource() {
-        return postSource;
+    public String getPost_source() {
+        return post_source;
     }
 
-    public void setPostSource(String postSource) {
-        this.postSource = postSource == null ? null : postSource.trim();
+    public void setPost_source(String post_source) {
+        this.post_source = post_source == null ? null : post_source.trim();
     }
 
-    public Date getPostDate() {
-        return postDate;
+    public Date getPost_date() {
+        return post_date;
     }
 
-    public void setPostDate(Date postDate) {
-        this.postDate = postDate;
+    public void setPost_date(Date post_date) {
+        this.post_date = post_date;
     }
 
-    public Integer getPostStatus() {
-        return postStatus;
+    public Integer getPost_status() {
+        return post_status;
     }
 
-    public void setPostStatus(Integer postStatus) {
-        this.postStatus = postStatus;
+    public void setPost_status(Integer post_status) {
+        this.post_status = post_status;
     }
 
-    public Integer getCommentStatus() {
-        return commentStatus;
+    public Integer getComment_status() {
+        return comment_status;
     }
 
-    public void setCommentStatus(Integer commentStatus) {
-        this.commentStatus = commentStatus;
+    public void setComment_status(Integer comment_status) {
+        this.comment_status = comment_status;
     }
 
-    public Date getPostModified() {
-        return postModified;
+    public Date getPost_modified() {
+        return post_modified;
     }
 
-    public void setPostModified(Date postModified) {
-        this.postModified = postModified;
+    public void setPost_modified(Date post_modified) {
+        this.post_modified = post_modified;
     }
 
-    public Long getPostParent() {
-        return postParent;
+    public Long getPost_parent() {
+        return post_parent;
     }
 
-    public void setPostParent(Long postParent) {
-        this.postParent = postParent;
+    public void setPost_parent(Long post_parent) {
+        this.post_parent = post_parent;
     }
 
-    public Integer getPostType() {
-        return postType;
+    public Integer getPost_type() {
+        return post_type;
     }
 
-    public void setPostType(Integer postType) {
-        this.postType = postType;
+    public void setPost_type(Integer post_type) {
+        this.post_type = post_type;
     }
 
-    public String getPostMimeType() {
-        return postMimeType;
+    public String getPost_mime_type() {
+        return post_mime_type;
     }
 
-    public void setPostMimeType(String postMimeType) {
-        this.postMimeType = postMimeType == null ? null : postMimeType.trim();
+    public void setPost_mime_type(String post_mime_type) {
+        this.post_mime_type = post_mime_type == null ? null : post_mime_type.trim();
     }
 
-    public Long getCommentCount() {
-        return commentCount;
+    public Long getComment_count() {
+        return comment_count;
     }
 
-    public void setCommentCount(Long commentCount) {
-        this.commentCount = commentCount;
+    public void setComment_count(Long comment_count) {
+        this.comment_count = comment_count;
     }
 
-    public Integer getPostHits() {
-        return postHits;
+    public Integer getPost_hits() {
+        return post_hits;
     }
 
-    public void setPostHits(Integer postHits) {
-        this.postHits = postHits;
+    public void setPost_hits(Integer post_hits) {
+        this.post_hits = post_hits;
     }
 
-    public Integer getPostLike() {
-        return postLike;
+    public Integer getPost_like() {
+        return post_like;
     }
 
-    public void setPostLike(Integer postLike) {
-        this.postLike = postLike;
+    public void setPost_like(Integer post_like) {
+        this.post_like = post_like;
     }
 
     public Boolean getIstop() {
@@ -191,20 +191,20 @@ public class AzPosts {
         this.recommended = recommended;
     }
 
-    public Date getStartDate() {
-        return startDate;
+    public Date getStart_date() {
+        return start_date;
     }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
+    public void setStart_date(Date start_date) {
+        this.start_date = start_date;
     }
 
-    public Date getEndDate() {
-        return endDate;
+    public Date getEnd_date() {
+        return end_date;
     }
 
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
+    public void setEnd_date(Date end_date) {
+        this.end_date = end_date;
     }
 
     public String getPrice() {
@@ -215,12 +215,12 @@ public class AzPosts {
         this.price = price == null ? null : price.trim();
     }
 
-    public String getOriginalPrice() {
-        return originalPrice;
+    public String getOriginal_price() {
+        return original_price;
     }
 
-    public void setOriginalPrice(String originalPrice) {
-        this.originalPrice = originalPrice == null ? null : originalPrice.trim();
+    public void setOriginal_price(String original_price) {
+        this.original_price = original_price == null ? null : original_price.trim();
     }
 
     public Short getNumber() {
@@ -271,35 +271,35 @@ public class AzPosts {
         this.contacts = contacts == null ? null : contacts.trim();
     }
 
-    public Boolean getIsShow() {
-        return isShow;
+    public Boolean getIs_show() {
+        return is_show;
     }
 
-    public void setIsShow(Boolean isShow) {
-        this.isShow = isShow;
+    public void setIs_show(Boolean is_show) {
+        this.is_show = is_show;
     }
 
-    public String getCommodityId() {
-        return commodityId;
+    public String getCommodity_id() {
+        return commodity_id;
     }
 
-    public void setCommodityId(String commodityId) {
-        this.commodityId = commodityId == null ? null : commodityId.trim();
+    public void setCommodity_id(String commodity_id) {
+        this.commodity_id = commodity_id == null ? null : commodity_id.trim();
     }
 
-    public Integer getReviewId() {
-        return reviewId;
+    public Integer getReview_id() {
+        return review_id;
     }
 
-    public void setReviewId(Integer reviewId) {
-        this.reviewId = reviewId;
+    public void setReview_id(Integer review_id) {
+        this.review_id = review_id;
     }
 
-    public String getMaterialId() {
-        return materialId;
+    public String getMaterial_id() {
+        return material_id;
     }
 
-    public void setMaterialId(String materialId) {
-        this.materialId = materialId == null ? null : materialId.trim();
+    public void setMaterial_id(String material_id) {
+        this.material_id = material_id == null ? null : material_id.trim();
     }
 }

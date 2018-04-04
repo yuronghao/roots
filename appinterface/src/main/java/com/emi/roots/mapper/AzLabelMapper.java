@@ -2,7 +2,7 @@ package com.emi.roots.mapper;
 
 import com.emi.roots.entity.AzLabel;
 
-public interface AzLabelMapper {
+public interface AzLabelMapper extends SqlMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(AzLabel record);

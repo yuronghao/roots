@@ -2,14 +2,14 @@ package com.emi.roots.mapper;
 
 import com.emi.roots.entity.AzAd;
 
-public interface AzAdMapper {
-    int deleteByPrimaryKey(Long adId);
+public interface AzAdMapper extends SqlMapper {
+    int deleteByPrimaryKey(Long ad_id);
 
     int insert(AzAd record);
 
     int insertSelective(AzAd record);
 
-    AzAd selectByPrimaryKey(Long adId);
+    AzAd selectByPrimaryKey(Long ad_id);
 
     int updateByPrimaryKeySelective(AzAd record);
 

@@ -5,19 +5,19 @@ public class AzSof {
 
     private Integer uid;
 
-    private Integer createTime;
+    private Integer create_time;
 
-    private Integer updateTime;
+    private Integer update_time;
 
     private String content;
 
     private Byte state;
 
-    private Integer praiseNum;
+    private Integer praise_num;
 
-    private Integer clickNum;
+    private Integer click_num;
 
-    private Integer replyNum;
+    private Integer reply_num;
 
     private Byte isdel;
 
@@ -25,7 +25,7 @@ public class AzSof {
 
     private Byte ishot;
 
-    private String labelId;
+    private String label_id;
 
     public Integer getId() {
         return id;
@@ -43,20 +43,20 @@ public class AzSof {
         this.uid = uid;
     }
 
-    public Integer getCreateTime() {
-        return createTime;
+    public Integer getCreate_time() {
+        return create_time;
     }
 
-    public void setCreateTime(Integer createTime) {
-        this.createTime = createTime;
+    public void setCreate_time(Integer create_time) {
+        this.create_time = create_time;
     }
 
-    public Integer getUpdateTime() {
-        return updateTime;
+    public Integer getUpdate_time() {
+        return update_time;
     }
 
-    public void setUpdateTime(Integer updateTime) {
-        this.updateTime = updateTime;
+    public void setUpdate_time(Integer update_time) {
+        this.update_time = update_time;
     }
 
     public String getContent() {
@@ -75,28 +75,28 @@ public class AzSof {
         this.state = state;
     }
 
-    public Integer getPraiseNum() {
-        return praiseNum;
+    public Integer getPraise_num() {
+        return praise_num;
     }
 
-    public void setPraiseNum(Integer praiseNum) {
-        this.praiseNum = praiseNum;
+    public void setPraise_num(Integer praise_num) {
+        this.praise_num = praise_num;
     }
 
-    public Integer getClickNum() {
-        return clickNum;
+    public Integer getClick_num() {
+        return click_num;
     }
 
-    public void setClickNum(Integer clickNum) {
-        this.clickNum = clickNum;
+    public void setClick_num(Integer click_num) {
+        this.click_num = click_num;
     }
 
-    public Integer getReplyNum() {
-        return replyNum;
+    public Integer getReply_num() {
+        return reply_num;
     }
 
-    public void setReplyNum(Integer replyNum) {
-        this.replyNum = replyNum;
+    public void setReply_num(Integer reply_num) {
+        this.reply_num = reply_num;
     }
 
     public Byte getIsdel() {
@@ -123,11 +123,11 @@ public class AzSof {
         this.ishot = ishot;
     }
 
-    public String getLabelId() {
-        return labelId;
+    public String getLabel_id() {
+        return label_id;
     }
 
-    public void setLabelId(String labelId) {
-        this.labelId = labelId == null ? null : labelId.trim();
+    public void setLabel_id(String label_id) {
+        this.label_id = label_id == null ? null : label_id.trim();
     }
 }

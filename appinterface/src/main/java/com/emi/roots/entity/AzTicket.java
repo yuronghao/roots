@@ -9,23 +9,23 @@ public class AzTicket {
 
     private BigDecimal price;
 
-    private Integer parentId;
+    private Integer parent_id;
 
-    private Boolean ticketType;
+    private Boolean ticket_type;
 
-    private Integer ticketId;
+    private Integer ticket_id;
 
-    private String startTime;
+    private String start_time;
 
-    private String endTime;
+    private String end_time;
 
-    private String saleStartTime;
+    private String sale_start_time;
 
-    private String saleEndTime;
+    private String sale_end_time;
 
-    private Integer startDate;
+    private Integer start_date;
 
-    private Integer endDate;
+    private Integer end_date;
 
     private String week;
 
@@ -55,76 +55,76 @@ public class AzTicket {
         this.price = price;
     }
 
-    public Integer getParentId() {
-        return parentId;
+    public Integer getParent_id() {
+        return parent_id;
     }
 
-    public void setParentId(Integer parentId) {
-        this.parentId = parentId;
+    public void setParent_id(Integer parent_id) {
+        this.parent_id = parent_id;
     }
 
-    public Boolean getTicketType() {
-        return ticketType;
+    public Boolean getTicket_type() {
+        return ticket_type;
     }
 
-    public void setTicketType(Boolean ticketType) {
-        this.ticketType = ticketType;
+    public void setTicket_type(Boolean ticket_type) {
+        this.ticket_type = ticket_type;
     }
 
-    public Integer getTicketId() {
-        return ticketId;
+    public Integer getTicket_id() {
+        return ticket_id;
     }
 
-    public void setTicketId(Integer ticketId) {
-        this.ticketId = ticketId;
+    public void setTicket_id(Integer ticket_id) {
+        this.ticket_id = ticket_id;
     }
 
-    public String getStartTime() {
-        return startTime;
+    public String getStart_time() {
+        return start_time;
     }
 
-    public void setStartTime(String startTime) {
-        this.startTime = startTime == null ? null : startTime.trim();
+    public void setStart_time(String start_time) {
+        this.start_time = start_time == null ? null : start_time.trim();
     }
 
-    public String getEndTime() {
-        return endTime;
+    public String getEnd_time() {
+        return end_time;
     }
 
-    public void setEndTime(String endTime) {
-        this.endTime = endTime == null ? null : endTime.trim();
+    public void setEnd_time(String end_time) {
+        this.end_time = end_time == null ? null : end_time.trim();
     }
 
-    public String getSaleStartTime() {
-        return saleStartTime;
+    public String getSale_start_time() {
+        return sale_start_time;
     }
 
-    public void setSaleStartTime(String saleStartTime) {
-        this.saleStartTime = saleStartTime == null ? null : saleStartTime.trim();
+    public void setSale_start_time(String sale_start_time) {
+        this.sale_start_time = sale_start_time == null ? null : sale_start_time.trim();
     }
 
-    public String getSaleEndTime() {
-        return saleEndTime;
+    public String getSale_end_time() {
+        return sale_end_time;
     }
 
-    public void setSaleEndTime(String saleEndTime) {
-        this.saleEndTime = saleEndTime == null ? null : saleEndTime.trim();
+    public void setSale_end_time(String sale_end_time) {
+        this.sale_end_time = sale_end_time == null ? null : sale_end_time.trim();
     }
 
-    public Integer getStartDate() {
-        return startDate;
+    public Integer getStart_date() {
+        return start_date;
     }
 
-    public void setStartDate(Integer startDate) {
-        this.startDate = startDate;
+    public void setStart_date(Integer start_date) {
+        this.start_date = start_date;
     }
 
-    public Integer getEndDate() {
-        return endDate;
+    public Integer getEnd_date() {
+        return end_date;
     }
 
-    public void setEndDate(Integer endDate) {
-        this.endDate = endDate;
+    public void setEnd_date(Integer end_date) {
+        this.end_date = end_date;
     }
 
     public String getWeek() {

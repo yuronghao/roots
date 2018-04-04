@@ -7,21 +7,23 @@ public class AzSignUp {
 
     private Integer uid;
 
-    private Integer objectId;
+    private Integer object_id;
 
-    private Boolean signStatus;
+    private Boolean sign_status;
 
-    private Date createTime;
+    private Date create_time;
 
-    private Date checkTime;
+    private Date check_time;
 
-    private Boolean auditStatus;
+    private Boolean audit_status;
 
-    private Boolean payStatus;
+    private Boolean pay_status;
 
-    private String orderId;
+    private String order_id;
 
     private String comment;
+
+    private String opus;
 
     public Integer getId() {
         return id;
@@ -39,60 +41,60 @@ public class AzSignUp {
         this.uid = uid;
     }
 
-    public Integer getObjectId() {
-        return objectId;
+    public Integer getObject_id() {
+        return object_id;
     }
 
-    public void setObjectId(Integer objectId) {
-        this.objectId = objectId;
+    public void setObject_id(Integer object_id) {
+        this.object_id = object_id;
     }
 
-    public Boolean getSignStatus() {
-        return signStatus;
+    public Boolean getSign_status() {
+        return sign_status;
     }
 
-    public void setSignStatus(Boolean signStatus) {
-        this.signStatus = signStatus;
+    public void setSign_status(Boolean sign_status) {
+        this.sign_status = sign_status;
     }
 
-    public Date getCreateTime() {
-        return createTime;
+    public Date getCreate_time() {
+        return create_time;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setCreate_time(Date create_time) {
+        this.create_time = create_time;
     }
 
-    public Date getCheckTime() {
-        return checkTime;
+    public Date getCheck_time() {
+        return check_time;
     }
 
-    public void setCheckTime(Date checkTime) {
-        this.checkTime = checkTime;
+    public void setCheck_time(Date check_time) {
+        this.check_time = check_time;
     }
 
-    public Boolean getAuditStatus() {
-        return auditStatus;
+    public Boolean getAudit_status() {
+        return audit_status;
     }
 
-    public void setAuditStatus(Boolean auditStatus) {
-        this.auditStatus = auditStatus;
+    public void setAudit_status(Boolean audit_status) {
+        this.audit_status = audit_status;
     }
 
-    public Boolean getPayStatus() {
-        return payStatus;
+    public Boolean getPay_status() {
+        return pay_status;
     }
 
-    public void setPayStatus(Boolean payStatus) {
-        this.payStatus = payStatus;
+    public void setPay_status(Boolean pay_status) {
+        this.pay_status = pay_status;
     }
 
-    public String getOrderId() {
-        return orderId;
+    public String getOrder_id() {
+        return order_id;
     }
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId == null ? null : orderId.trim();
+    public void setOrder_id(String order_id) {
+        this.order_id = order_id == null ? null : order_id.trim();
     }
 
     public String getComment() {
@@ -101,5 +103,13 @@ public class AzSignUp {
 
     public void setComment(String comment) {
         this.comment = comment == null ? null : comment.trim();
+    }
+
+    public String getOpus() {
+        return opus;
+    }
+
+    public void setOpus(String opus) {
+        this.opus = opus == null ? null : opus.trim();
     }
 }

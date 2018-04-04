@@ -13,7 +13,7 @@ public class AzPlugins {
 
     private String hooks;
 
-    private Byte hasAdmin;
+    private Byte has_admin;
 
     private String author;
 
@@ -71,12 +71,12 @@ public class AzPlugins {
         this.hooks = hooks == null ? null : hooks.trim();
     }
 
-    public Byte getHasAdmin() {
-        return hasAdmin;
+    public Byte getHas_admin() {
+        return has_admin;
     }
 
-    public void setHasAdmin(Byte hasAdmin) {
-        this.hasAdmin = hasAdmin;
+    public void setHas_admin(Byte has_admin) {
+        this.has_admin = has_admin;
     }
 
     public String getAuthor() {

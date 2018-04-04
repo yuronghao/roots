@@ -2,7 +2,7 @@ package com.emi.roots.mapper;
 
 import com.emi.roots.entity.AzCheckin;
 
-public interface AzCheckinMapper {
+public interface AzCheckinMapper extends SqlMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(AzCheckin record);

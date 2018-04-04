@@ -3,9 +3,9 @@ package com.emi.roots.entity;
 public class AzWeixinMenu {
     private Short id;
 
-    private Short parentId;
+    private Short parent_id;
 
-    private String menuName;
+    private String menu_name;
 
     private Boolean type;
 
@@ -23,20 +23,20 @@ public class AzWeixinMenu {
         this.id = id;
     }
 
-    public Short getParentId() {
-        return parentId;
+    public Short getParent_id() {
+        return parent_id;
     }
 
-    public void setParentId(Short parentId) {
-        this.parentId = parentId;
+    public void setParent_id(Short parent_id) {
+        this.parent_id = parent_id;
     }
 
-    public String getMenuName() {
-        return menuName;
+    public String getMenu_name() {
+        return menu_name;
     }
 
-    public void setMenuName(String menuName) {
-        this.menuName = menuName == null ? null : menuName.trim();
+    public void setMenu_name(String menu_name) {
+        this.menu_name = menu_name == null ? null : menu_name.trim();
     }
 
     public Boolean getType() {

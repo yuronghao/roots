@@ -2,7 +2,7 @@ package com.emi.roots.mapper;
 
 import com.emi.roots.entity.AzSlideCat;
 
-public interface AzSlideCatMapper {
+public interface AzSlideCatMapper extends SqlMapper {
     int deleteByPrimaryKey(Integer cid);
 
     int insert(AzSlideCat record);

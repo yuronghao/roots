@@ -2,7 +2,7 @@ package com.emi.roots.mapper;
 
 import com.emi.roots.entity.AzAuthRule;
 
-public interface AzAuthRuleMapper {
+public interface AzAuthRuleMapper extends SqlMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(AzAuthRule record);

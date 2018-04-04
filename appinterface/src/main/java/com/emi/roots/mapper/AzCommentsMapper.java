@@ -2,7 +2,7 @@ package com.emi.roots.mapper;
 
 import com.emi.roots.entity.AzComments;
 
-public interface AzCommentsMapper {
+public interface AzCommentsMapper extends SqlMapper {
     int deleteByPrimaryKey(Long id);
 
     int insert(AzComments record);

@@ -1,26 +1,26 @@
 package com.emi.roots.entity;
 
 public class AzAuthAccess {
-    private Integer roleId;
+    private Integer role_id;
 
-    private String ruleName;
+    private String rule_name;
 
     private String type;
 
-    public Integer getRoleId() {
-        return roleId;
+    public Integer getRole_id() {
+        return role_id;
     }
 
-    public void setRoleId(Integer roleId) {
-        this.roleId = roleId;
+    public void setRole_id(Integer role_id) {
+        this.role_id = role_id;
     }
 
-    public String getRuleName() {
-        return ruleName;
+    public String getRule_name() {
+        return rule_name;
     }
 
-    public void setRuleName(String ruleName) {
-        this.ruleName = ruleName == null ? null : ruleName.trim();
+    public void setRule_name(String rule_name) {
+        this.rule_name = rule_name == null ? null : rule_name.trim();
     }
 
     public String getType() {

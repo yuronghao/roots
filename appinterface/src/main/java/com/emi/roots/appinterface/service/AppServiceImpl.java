@@ -51,7 +51,7 @@ public class AppServiceImpl implements AppService{
     protected static final Logger LOG = LoggerFactory.getLogger(AppServiceImpl.class);
 
     @Autowired
-    private AzUsersMapper userMapper;
+    private AzUsersMapper azUsersMapper;
 
 
     private String vertifySgin(JSONObject jobj){
@@ -108,10 +108,10 @@ public class AppServiceImpl implements AppService{
     public String login(JSONObject jobj) {
         JSONObject jsonObject = new JSONObject();
         JsonConfig config = JSONConfig.getConfig();
-        String v=vertifySgin(jobj);
-        if(v!=null){
-            return v;
-        }
+//        String v=vertifySgin(jobj);
+//        if(v!=null){
+//            return v;
+//        }
         String j=StringUtil.parseString(jobj.get("json"));
         JSONObject dataMap=getStringtoJson(j);
         String phoneNum=StringUtil.parseString(dataMap.get("phoneNum"));
@@ -119,24 +119,23 @@ public class AppServiceImpl implements AppService{
 //        String id=StringUtil.parseString(dataMap.get("id"));
 
 
-        AzUsers user = userMapper.login(phoneNum);
+        AzUsers user = azUsersMapper.login(phoneNum);
         Map<String, Object> retmap = new HashMap<String, Object>();
         if (user != null) {
-            if (password != null && password.equals(user.getUserPass())) {
+            if (password != null && password.equals(user.getUser_pass())) {
                 retmap.put("id", user.getId());
                 retmap.put("avatar", user.getAvatar());
-                retmap.put("user_nicename", user.getUserNicename());
-                retmap.put("user_login", user.getUserLogin());
-                retmap.put("user_email", user.getUserEmail());
+                retmap.put("user_nicename", user.getUser_nicename());
+                retmap.put("user_login", user.getUser_login());
+                retmap.put("user_email", user.getUser_email());
 //                retmap.put("unionid", user.getName());
-//
 //                retmap.put("openname", user.getName());
-                retmap.put("openheadimg", user);
-                retmap.put("user_url", user.getUserUrl());
+//                retmap.put("openheadimg", user);
+                retmap.put("user_url", user.getUser_url());
                 retmap.put("sex", user.getSex());
                 retmap.put("birthday", user.getBirthday());
                 retmap.put("mobile", user.getMobile());
-                retmap.put("follow_num", user.getFollowNum());
+                retmap.put("follow_num", user.getFollow_num());
 
                 retmap.put("success", 1);
                 jsonObject = JSONObject.fromObject(retmap, config);

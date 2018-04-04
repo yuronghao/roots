@@ -2,7 +2,7 @@ package com.emi.roots.mapper;
 
 import com.emi.roots.entity.AzSignUp;
 
-public interface AzSignUpMapper {
+public interface AzSignUpMapper extends SqlMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(AzSignUp record);
@@ -12,6 +12,8 @@ public interface AzSignUpMapper {
     AzSignUp selectByPrimaryKey(Integer id);
 
     int updateByPrimaryKeySelective(AzSignUp record);
+
+    int updateByPrimaryKeyWithBLOBs(AzSignUp record);
 
     int updateByPrimaryKey(AzSignUp record);
 }

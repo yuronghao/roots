@@ -1,80 +1,80 @@
 package com.emi.roots.entity;
 
 public class AzSlide {
-    private Long slideId;
+    private Long slide_id;
 
-    private Integer slideCid;
+    private Integer slide_cid;
 
-    private String slideName;
+    private String slide_name;
 
-    private String slidePic;
+    private String slide_pic;
 
-    private String slideUrl;
+    private String slide_url;
 
-    private String slideDes;
+    private String slide_des;
 
-    private Integer slideStatus;
+    private Integer slide_status;
 
     private Integer listorder;
 
     private Integer creator;
 
-    private String slideContent;
+    private String slide_content;
 
-    public Long getSlideId() {
-        return slideId;
+    public Long getSlide_id() {
+        return slide_id;
     }
 
-    public void setSlideId(Long slideId) {
-        this.slideId = slideId;
+    public void setSlide_id(Long slide_id) {
+        this.slide_id = slide_id;
     }
 
-    public Integer getSlideCid() {
-        return slideCid;
+    public Integer getSlide_cid() {
+        return slide_cid;
     }
 
-    public void setSlideCid(Integer slideCid) {
-        this.slideCid = slideCid;
+    public void setSlide_cid(Integer slide_cid) {
+        this.slide_cid = slide_cid;
     }
 
-    public String getSlideName() {
-        return slideName;
+    public String getSlide_name() {
+        return slide_name;
     }
 
-    public void setSlideName(String slideName) {
-        this.slideName = slideName == null ? null : slideName.trim();
+    public void setSlide_name(String slide_name) {
+        this.slide_name = slide_name == null ? null : slide_name.trim();
     }
 
-    public String getSlidePic() {
-        return slidePic;
+    public String getSlide_pic() {
+        return slide_pic;
     }
 
-    public void setSlidePic(String slidePic) {
-        this.slidePic = slidePic == null ? null : slidePic.trim();
+    public void setSlide_pic(String slide_pic) {
+        this.slide_pic = slide_pic == null ? null : slide_pic.trim();
     }
 
-    public String getSlideUrl() {
-        return slideUrl;
+    public String getSlide_url() {
+        return slide_url;
     }
 
-    public void setSlideUrl(String slideUrl) {
-        this.slideUrl = slideUrl == null ? null : slideUrl.trim();
+    public void setSlide_url(String slide_url) {
+        this.slide_url = slide_url == null ? null : slide_url.trim();
     }
 
-    public String getSlideDes() {
-        return slideDes;
+    public String getSlide_des() {
+        return slide_des;
     }
 
-    public void setSlideDes(String slideDes) {
-        this.slideDes = slideDes == null ? null : slideDes.trim();
+    public void setSlide_des(String slide_des) {
+        this.slide_des = slide_des == null ? null : slide_des.trim();
     }
 
-    public Integer getSlideStatus() {
-        return slideStatus;
+    public Integer getSlide_status() {
+        return slide_status;
     }
 
-    public void setSlideStatus(Integer slideStatus) {
-        this.slideStatus = slideStatus;
+    public void setSlide_status(Integer slide_status) {
+        this.slide_status = slide_status;
     }
 
     public Integer getListorder() {
@@ -93,11 +93,11 @@ public class AzSlide {
         this.creator = creator;
     }
 
-    public String getSlideContent() {
-        return slideContent;
+    public String getSlide_content() {
+        return slide_content;
     }
 
-    public void setSlideContent(String slideContent) {
-        this.slideContent = slideContent == null ? null : slideContent.trim();
+    public void setSlide_content(String slide_content) {
+        this.slide_content = slide_content == null ? null : slide_content.trim();
     }
 }

@@ -2,7 +2,7 @@ package com.emi.roots.mapper;
 
 import com.emi.roots.entity.AzSend;
 
-public interface AzSendMapper {
+public interface AzSendMapper extends SqlMapper {
     int deleteByPrimaryKey(Short id);
 
     int insert(AzSend record);

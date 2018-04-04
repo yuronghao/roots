@@ -5,15 +5,15 @@ import java.util.Date;
 public class AzUsers {
     private Integer id;
 
-    private String userLogin;
+    private String user_login;
 
-    private String userPass;
+    private String user_pass;
 
-    private String userNicename;
+    private String user_nicename;
 
-    private String userEmail;
+    private String user_email;
 
-    private String userUrl;
+    private String user_url;
 
     private String avatar;
 
@@ -23,29 +23,29 @@ public class AzUsers {
 
     private String signature;
 
-    private String lastLoginIp;
+    private String last_login_ip;
 
-    private Date lastLoginTime;
+    private Date last_login_time;
 
-    private Date createTime;
+    private Date create_time;
 
-    private String userActivationKey;
+    private String user_activation_key;
 
-    private Integer userStatus;
+    private Integer user_status;
 
     private Integer score;
 
-    private Short userType;
+    private Short user_type;
 
     private Integer coin;
 
     private String mobile;
 
-    private Integer followNum;
+    private Integer follow_num;
 
     private Byte gag;
 
-    private String oauthId;
+    private String oauth_id;
 
     public Integer getId() {
         return id;
@@ -55,44 +55,44 @@ public class AzUsers {
         this.id = id;
     }
 
-    public String getUserLogin() {
-        return userLogin;
+    public String getUser_login() {
+        return user_login;
     }
 
-    public void setUserLogin(String userLogin) {
-        this.userLogin = userLogin == null ? null : userLogin.trim();
+    public void setUser_login(String user_login) {
+        this.user_login = user_login == null ? null : user_login.trim();
     }
 
-    public String getUserPass() {
-        return userPass;
+    public String getUser_pass() {
+        return user_pass;
     }
 
-    public void setUserPass(String userPass) {
-        this.userPass = userPass == null ? null : userPass.trim();
+    public void setUser_pass(String user_pass) {
+        this.user_pass = user_pass == null ? null : user_pass.trim();
     }
 
-    public String getUserNicename() {
-        return userNicename;
+    public String getUser_nicename() {
+        return user_nicename;
     }
 
-    public void setUserNicename(String userNicename) {
-        this.userNicename = userNicename == null ? null : userNicename.trim();
+    public void setUser_nicename(String user_nicename) {
+        this.user_nicename = user_nicename == null ? null : user_nicename.trim();
     }
 
-    public String getUserEmail() {
-        return userEmail;
+    public String getUser_email() {
+        return user_email;
     }
 
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail == null ? null : userEmail.trim();
+    public void setUser_email(String user_email) {
+        this.user_email = user_email == null ? null : user_email.trim();
     }
 
-    public String getUserUrl() {
-        return userUrl;
+    public String getUser_url() {
+        return user_url;
     }
 
-    public void setUserUrl(String userUrl) {
-        this.userUrl = userUrl == null ? null : userUrl.trim();
+    public void setUser_url(String user_url) {
+        this.user_url = user_url == null ? null : user_url.trim();
     }
 
     public String getAvatar() {
@@ -127,44 +127,44 @@ public class AzUsers {
         this.signature = signature == null ? null : signature.trim();
     }
 
-    public String getLastLoginIp() {
-        return lastLoginIp;
+    public String getLast_login_ip() {
+        return last_login_ip;
     }
 
-    public void setLastLoginIp(String lastLoginIp) {
-        this.lastLoginIp = lastLoginIp == null ? null : lastLoginIp.trim();
+    public void setLast_login_ip(String last_login_ip) {
+        this.last_login_ip = last_login_ip == null ? null : last_login_ip.trim();
     }
 
-    public Date getLastLoginTime() {
-        return lastLoginTime;
+    public Date getLast_login_time() {
+        return last_login_time;
     }
 
-    public void setLastLoginTime(Date lastLoginTime) {
-        this.lastLoginTime = lastLoginTime;
+    public void setLast_login_time(Date last_login_time) {
+        this.last_login_time = last_login_time;
     }
 
-    public Date getCreateTime() {
-        return createTime;
+    public Date getCreate_time() {
+        return create_time;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setCreate_time(Date create_time) {
+        this.create_time = create_time;
     }
 
-    public String getUserActivationKey() {
-        return userActivationKey;
+    public String getUser_activation_key() {
+        return user_activation_key;
     }
 
-    public void setUserActivationKey(String userActivationKey) {
-        this.userActivationKey = userActivationKey == null ? null : userActivationKey.trim();
+    public void setUser_activation_key(String user_activation_key) {
+        this.user_activation_key = user_activation_key == null ? null : user_activation_key.trim();
     }
 
-    public Integer getUserStatus() {
-        return userStatus;
+    public Integer getUser_status() {
+        return user_status;
     }
 
-    public void setUserStatus(Integer userStatus) {
-        this.userStatus = userStatus;
+    public void setUser_status(Integer user_status) {
+        this.user_status = user_status;
     }
 
     public Integer getScore() {
@@ -175,12 +175,12 @@ public class AzUsers {
         this.score = score;
     }
 
-    public Short getUserType() {
-        return userType;
+    public Short getUser_type() {
+        return user_type;
     }
 
-    public void setUserType(Short userType) {
-        this.userType = userType;
+    public void setUser_type(Short user_type) {
+        this.user_type = user_type;
     }
 
     public Integer getCoin() {
@@ -199,12 +199,12 @@ public class AzUsers {
         this.mobile = mobile == null ? null : mobile.trim();
     }
 
-    public Integer getFollowNum() {
-        return followNum;
+    public Integer getFollow_num() {
+        return follow_num;
     }
 
-    public void setFollowNum(Integer followNum) {
-        this.followNum = followNum;
+    public void setFollow_num(Integer follow_num) {
+        this.follow_num = follow_num;
     }
 
     public Byte getGag() {
@@ -215,11 +215,11 @@ public class AzUsers {
         this.gag = gag;
     }
 
-    public String getOauthId() {
-        return oauthId;
+    public String getOauth_id() {
+        return oauth_id;
     }
 
-    public void setOauthId(String oauthId) {
-        this.oauthId = oauthId == null ? null : oauthId.trim();
+    public void setOauth_id(String oauth_id) {
+        this.oauth_id = oauth_id == null ? null : oauth_id.trim();
     }
 }

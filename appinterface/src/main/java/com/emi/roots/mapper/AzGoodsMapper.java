@@ -3,7 +3,7 @@ package com.emi.roots.mapper;
 import com.emi.roots.entity.AzGoods;
 import com.emi.roots.entity.AzGoodsWithBLOBs;
 
-public interface AzGoodsMapper {
+public interface AzGoodsMapper extends SqlMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(AzGoodsWithBLOBs record);

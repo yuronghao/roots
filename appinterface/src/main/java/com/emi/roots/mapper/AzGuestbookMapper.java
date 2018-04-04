@@ -2,7 +2,7 @@ package com.emi.roots.mapper;
 
 import com.emi.roots.entity.AzGuestbook;
 
-public interface AzGuestbookMapper {
+public interface AzGuestbookMapper extends SqlMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(AzGuestbook record);

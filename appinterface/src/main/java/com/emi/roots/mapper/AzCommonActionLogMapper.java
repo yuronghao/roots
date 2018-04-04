@@ -2,7 +2,7 @@ package com.emi.roots.mapper;
 
 import com.emi.roots.entity.AzCommonActionLog;
 
-public interface AzCommonActionLogMapper {
+public interface AzCommonActionLogMapper extends SqlMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(AzCommonActionLog record);

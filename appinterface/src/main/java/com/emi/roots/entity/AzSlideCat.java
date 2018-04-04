@@ -3,13 +3,13 @@ package com.emi.roots.entity;
 public class AzSlideCat {
     private Integer cid;
 
-    private String catName;
+    private String cat_name;
 
-    private String catIdname;
+    private String cat_idname;
 
-    private Integer catStatus;
+    private Integer cat_status;
 
-    private String catRemark;
+    private String cat_remark;
 
     public Integer getCid() {
         return cid;
@@ -19,35 +19,35 @@ public class AzSlideCat {
         this.cid = cid;
     }
 
-    public String getCatName() {
-        return catName;
+    public String getCat_name() {
+        return cat_name;
     }
 
-    public void setCatName(String catName) {
-        this.catName = catName == null ? null : catName.trim();
+    public void setCat_name(String cat_name) {
+        this.cat_name = cat_name == null ? null : cat_name.trim();
     }
 
-    public String getCatIdname() {
-        return catIdname;
+    public String getCat_idname() {
+        return cat_idname;
     }
 
-    public void setCatIdname(String catIdname) {
-        this.catIdname = catIdname == null ? null : catIdname.trim();
+    public void setCat_idname(String cat_idname) {
+        this.cat_idname = cat_idname == null ? null : cat_idname.trim();
     }
 
-    public Integer getCatStatus() {
-        return catStatus;
+    public Integer getCat_status() {
+        return cat_status;
     }
 
-    public void setCatStatus(Integer catStatus) {
-        this.catStatus = catStatus;
+    public void setCat_status(Integer cat_status) {
+        this.cat_status = cat_status;
     }
 
-    public String getCatRemark() {
-        return catRemark;
+    public String getCat_remark() {
+        return cat_remark;
     }
 
-    public void setCatRemark(String catRemark) {
-        this.catRemark = catRemark == null ? null : catRemark.trim();
+    public void setCat_remark(String cat_remark) {
+        this.cat_remark = cat_remark == null ? null : cat_remark.trim();
     }
 }

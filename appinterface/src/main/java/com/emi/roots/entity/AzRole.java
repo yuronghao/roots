@@ -11,9 +11,9 @@ public class AzRole {
 
     private String remark;
 
-    private Integer createTime;
+    private Integer create_time;
 
-    private Integer updateTime;
+    private Integer update_time;
 
     private Integer listorder;
 
@@ -57,20 +57,20 @@ public class AzRole {
         this.remark = remark == null ? null : remark.trim();
     }
 
-    public Integer getCreateTime() {
-        return createTime;
+    public Integer getCreate_time() {
+        return create_time;
     }
 
-    public void setCreateTime(Integer createTime) {
-        this.createTime = createTime;
+    public void setCreate_time(Integer create_time) {
+        this.create_time = create_time;
     }
 
-    public Integer getUpdateTime() {
-        return updateTime;
+    public Integer getUpdate_time() {
+        return update_time;
     }
 
-    public void setUpdateTime(Integer updateTime) {
-        this.updateTime = updateTime;
+    public void setUpdate_time(Integer update_time) {
+        this.update_time = update_time;
     }
 
     public Integer getListorder() {

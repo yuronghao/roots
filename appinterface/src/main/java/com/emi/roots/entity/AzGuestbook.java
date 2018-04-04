@@ -5,7 +5,7 @@ import java.util.Date;
 public class AzGuestbook {
     private Integer id;
 
-    private String fullName;
+    private String full_name;
 
     private String email;
 
@@ -25,12 +25,12 @@ public class AzGuestbook {
         this.id = id;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getFull_name() {
+        return full_name;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName == null ? null : fullName.trim();
+    public void setFull_name(String full_name) {
+        this.full_name = full_name == null ? null : full_name.trim();
     }
 
     public String getEmail() {

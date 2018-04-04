@@ -5,13 +5,13 @@ public class AzTalkMessagePush {
 
     private Integer uid;
 
-    private Integer createTime;
+    private Integer create_time;
 
     private Byte status;
 
-    private Integer sourceId;
+    private Integer source_id;
 
-    private Integer talkId;
+    private Integer talk_id;
 
     public Integer getId() {
         return id;
@@ -29,12 +29,12 @@ public class AzTalkMessagePush {
         this.uid = uid;
     }
 
-    public Integer getCreateTime() {
-        return createTime;
+    public Integer getCreate_time() {
+        return create_time;
     }
 
-    public void setCreateTime(Integer createTime) {
-        this.createTime = createTime;
+    public void setCreate_time(Integer create_time) {
+        this.create_time = create_time;
     }
 
     public Byte getStatus() {
@@ -45,19 +45,19 @@ public class AzTalkMessagePush {
         this.status = status;
     }
 
-    public Integer getSourceId() {
-        return sourceId;
+    public Integer getSource_id() {
+        return source_id;
     }
 
-    public void setSourceId(Integer sourceId) {
-        this.sourceId = sourceId;
+    public void setSource_id(Integer source_id) {
+        this.source_id = source_id;
     }
 
-    public Integer getTalkId() {
-        return talkId;
+    public Integer getTalk_id() {
+        return talk_id;
     }
 
-    public void setTalkId(Integer talkId) {
-        this.talkId = talkId;
+    public void setTalk_id(Integer talk_id) {
+        this.talk_id = talk_id;
     }
 }

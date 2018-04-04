@@ -3,21 +3,21 @@ package com.emi.roots.entity;
 public class AzForumPost {
     private Integer id;
 
-    private Integer forumId;
+    private Integer forum_id;
 
     private Integer uid;
 
-    private Integer createTime;
+    private Integer create_time;
 
     private String thumb;
 
     private String title;
 
-    private Integer praiseNum;
+    private Integer praise_num;
 
-    private Integer clickNum;
+    private Integer click_num;
 
-    private Integer replyNum;
+    private Integer reply_num;
 
     private Byte state;
 
@@ -39,12 +39,12 @@ public class AzForumPost {
         this.id = id;
     }
 
-    public Integer getForumId() {
-        return forumId;
+    public Integer getForum_id() {
+        return forum_id;
     }
 
-    public void setForumId(Integer forumId) {
-        this.forumId = forumId;
+    public void setForum_id(Integer forum_id) {
+        this.forum_id = forum_id;
     }
 
     public Integer getUid() {
@@ -55,12 +55,12 @@ public class AzForumPost {
         this.uid = uid;
     }
 
-    public Integer getCreateTime() {
-        return createTime;
+    public Integer getCreate_time() {
+        return create_time;
     }
 
-    public void setCreateTime(Integer createTime) {
-        this.createTime = createTime;
+    public void setCreate_time(Integer create_time) {
+        this.create_time = create_time;
     }
 
     public String getThumb() {
@@ -79,28 +79,28 @@ public class AzForumPost {
         this.title = title == null ? null : title.trim();
     }
 
-    public Integer getPraiseNum() {
-        return praiseNum;
+    public Integer getPraise_num() {
+        return praise_num;
     }
 
-    public void setPraiseNum(Integer praiseNum) {
-        this.praiseNum = praiseNum;
+    public void setPraise_num(Integer praise_num) {
+        this.praise_num = praise_num;
     }
 
-    public Integer getClickNum() {
-        return clickNum;
+    public Integer getClick_num() {
+        return click_num;
     }
 
-    public void setClickNum(Integer clickNum) {
-        this.clickNum = clickNum;
+    public void setClick_num(Integer click_num) {
+        this.click_num = click_num;
     }
 
-    public Integer getReplyNum() {
-        return replyNum;
+    public Integer getReply_num() {
+        return reply_num;
     }
 
-    public void setReplyNum(Integer replyNum) {
-        this.replyNum = replyNum;
+    public void setReply_num(Integer reply_num) {
+        this.reply_num = reply_num;
     }
 
     public Byte getState() {

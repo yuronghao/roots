@@ -2,7 +2,7 @@ package com.emi.roots.mapper;
 
 import com.emi.roots.entity.AzWeixinReplyText;
 
-public interface AzWeixinReplyTextMapper {
+public interface AzWeixinReplyTextMapper extends SqlMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(AzWeixinReplyText record);

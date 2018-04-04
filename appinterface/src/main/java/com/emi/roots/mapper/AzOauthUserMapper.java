@@ -2,7 +2,7 @@ package com.emi.roots.mapper;
 
 import com.emi.roots.entity.AzOauthUser;
 
-public interface AzOauthUserMapper {
+public interface AzOauthUserMapper extends SqlMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(AzOauthUser record);

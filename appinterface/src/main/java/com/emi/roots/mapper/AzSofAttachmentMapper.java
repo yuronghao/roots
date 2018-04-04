@@ -2,7 +2,7 @@ package com.emi.roots.mapper;
 
 import com.emi.roots.entity.AzSofAttachment;
 
-public interface AzSofAttachmentMapper {
+public interface AzSofAttachmentMapper extends SqlMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(AzSofAttachment record);

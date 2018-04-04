@@ -2,7 +2,7 @@ package com.emi.roots.mapper;
 
 import com.emi.roots.entity.AzAddress;
 
-public interface AzAddressMapper {
+public interface AzAddressMapper extends SqlMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(AzAddress record);

@@ -2,7 +2,7 @@ package com.emi.roots.mapper;
 
 import com.emi.roots.entity.AzLoginLog;
 
-public interface AzLoginLogMapper {
+public interface AzLoginLogMapper extends SqlMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(AzLoginLog record);

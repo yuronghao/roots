@@ -5,13 +5,13 @@ public class AzWeixinOptionsLink {
 
     private Integer uid;
 
-    private Integer mpId;
+    private Integer mp_id;
 
-    private Byte isCreator;
+    private Byte is_creator;
 
-    private Byte isUse;
+    private Byte is_use;
 
-    private String addonStatus;
+    private String addon_status;
 
     public Integer getId() {
         return id;
@@ -29,35 +29,35 @@ public class AzWeixinOptionsLink {
         this.uid = uid;
     }
 
-    public Integer getMpId() {
-        return mpId;
+    public Integer getMp_id() {
+        return mp_id;
     }
 
-    public void setMpId(Integer mpId) {
-        this.mpId = mpId;
+    public void setMp_id(Integer mp_id) {
+        this.mp_id = mp_id;
     }
 
-    public Byte getIsCreator() {
-        return isCreator;
+    public Byte getIs_creator() {
+        return is_creator;
     }
 
-    public void setIsCreator(Byte isCreator) {
-        this.isCreator = isCreator;
+    public void setIs_creator(Byte is_creator) {
+        this.is_creator = is_creator;
     }
 
-    public Byte getIsUse() {
-        return isUse;
+    public Byte getIs_use() {
+        return is_use;
     }
 
-    public void setIsUse(Byte isUse) {
-        this.isUse = isUse;
+    public void setIs_use(Byte is_use) {
+        this.is_use = is_use;
     }
 
-    public String getAddonStatus() {
-        return addonStatus;
+    public String getAddon_status() {
+        return addon_status;
     }
 
-    public void setAddonStatus(String addonStatus) {
-        this.addonStatus = addonStatus == null ? null : addonStatus.trim();
+    public void setAddon_status(String addon_status) {
+        this.addon_status = addon_status == null ? null : addon_status.trim();
     }
 }

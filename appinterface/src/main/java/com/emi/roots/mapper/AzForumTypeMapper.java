@@ -2,7 +2,7 @@ package com.emi.roots.mapper;
 
 import com.emi.roots.entity.AzForumType;
 
-public interface AzForumTypeMapper {
+public interface AzForumTypeMapper extends SqlMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(AzForumType record);
