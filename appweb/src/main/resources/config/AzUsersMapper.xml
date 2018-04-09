@@ -58,12 +58,10 @@
       #{mobile,jdbcType=VARCHAR}, #{follow_num,jdbcType=INTEGER}, #{gag,jdbcType=TINYINT}, 
       #{oauth_id,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.emi.roots.entity.AzUsers" >
+  <insert id="insertSelective" parameterType="com.emi.roots.entity.AzUsers"  useGeneratedKeys="true" keyProperty="id">
     insert into az_users
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
+
       <if test="user_login != null" >
         user_login,
       </if>
@@ -129,9 +127,7 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
+
       <if test="user_login != null" >
         #{user_login,jdbcType=VARCHAR},
       </if>
@@ -295,6 +291,70 @@
 
   <select id="login" resultType="com.emi.roots.entity.AzUsers">
     select * from az_users a where a.mobile = '${phoneNum}'
+  </select>
+
+  <select id="getAzOauthUserByOpenid" resultType="com.emi.roots.entity.AzOauthUser">
+    select * from az_oauth_user au where au.openid = '${openid}'
+
+
+  </select>
+
+  <update id="updateAzOauthUserWXinfo">
+    update az_oauth_user
+    <set>
+      <if test="azOauthUser.head_img == null or azOauthUser.head_img=='' " >
+        head_img = #{headimgurl,jdbcType=VARCHAR},
+      </if>
+      <if test="azOauthUser.name == null or azOauthUser.name=='' " >
+        name = #{nickname,jdbcType=VARCHAR},
+      </if>
+    </set>
+
+    where id =  #{id}
+
+  </update>
+
+  <select id="getvalidateCode" resultType="com.emi.roots.entity.AzValidatecode">
+    select * from az_validatecode v where v.state = 0 and v.dn = '${phoneNum}' ORDER BY v.ctime desc LIMIT 0,1
+
+  </select>
+
+
+  <select id="getAzUsersByPhone" resultType="com.emi.roots.entity.AzUsers">
+    select a.*,au.openid from az_users a
+left join az_oauth_user au on au.uid = a.id
+where a.mobile = '${phoneNum}'
+
+  </select>
+
+
+
+  <update id="updateCheckCode">
+
+    update az_validatecode set state=1 where dn='${fjcode.dn}' and state=0
+
+  </update>
+
+  <insert id="insertCheckCode" >
+    insert into az_validatecode(code,state,ctime,dn) values('${fjcheckcode.code}',${fjcheckcode.state},'${fjcheckcode.ctime}','${fjcheckcode.dn}')
+  </insert>
+
+  <update id="updateUserinfo">
+UPDATE az_users au set au.avatar = '${avatar}',au.mobile = '${mobile}',au.user_nicename = '${user_nicename}' where au.id = '${id}'
+  </update>
+
+  <select id="getfollowMeUsers" resultType="com.emi.roots.entity.AzUsers">
+  select * from az_users au where au.id in (
+  select af.uid from az_follow af where af.tablename = 'users' and af.object_id = '${memberid}'
+  )
+
+</select>
+
+  <select id="attentionUsers" resultType="com.emi.roots.entity.AzUsers">
+    select * from az_users au where au.id in (
+    select af.object_id from az_follow af where af.tablename = 'users' and af.uid = '${memberid}'
+    )
+
   </select>
 
 </mapper>

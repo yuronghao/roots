@@ -37,6 +37,16 @@ public class AzUsers {
 
     private Short user_type;
 
+    private String openid;
+
+    public String getOpenid() {
+        return openid;
+    }
+
+    public void setOpenid(String openid) {
+        this.openid = openid;
+    }
+
     private Integer coin;
 
     private String mobile;

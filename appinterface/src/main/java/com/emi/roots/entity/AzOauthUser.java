@@ -11,7 +11,7 @@ public class AzOauthUser {
 
     private String head_img;
 
-    private String uid;
+    private Integer uid;
 
     private String last_login_ip;
 
@@ -65,20 +65,20 @@ public class AzOauthUser {
         this.head_img = head_img == null ? null : head_img.trim();
     }
 
-    public String getUid() {
-        return uid;
-    }
-
-    public void setUid(String uid) {
-        this.uid = uid == null ? null : uid.trim();
-    }
-
     public String getLast_login_ip() {
         return last_login_ip;
     }
 
     public void setLast_login_ip(String last_login_ip) {
         this.last_login_ip = last_login_ip == null ? null : last_login_ip.trim();
+    }
+
+    public Integer getUid() {
+        return uid;
+    }
+
+    public void setUid(Integer uid) {
+        this.uid = uid;
     }
 
     public Date getLast_login_time() {

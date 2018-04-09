@@ -3,12 +3,14 @@ package com.emi.roots.appinterface.service;
 import com.alibaba.fastjson.JSON;
 import com.emi.page.PageInfo;
 import com.emi.page.PagerHelper;
-import com.emi.roots.entity.AzUsers;
+import com.emi.roots.entity.*;
+import com.emi.roots.mapper.AzOauthUserMapper;
+import com.emi.roots.mapper.AzSlideMapper;
 import com.emi.roots.mapper.AzUsersMapper;
-import com.emi.roots.util.JSONConfig;
-import com.emi.roots.util.Object2Json;
-import com.emi.roots.util.SignUtils;
-import com.emi.roots.util.StringUtil;
+import com.emi.roots.util.*;
+import com.emi.roots.wechat.bean.UserInfo;
+import com.emi.roots.wechat.util.Constants;
+import com.emi.roots.wechat.util.WeChat;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.JsonConfig;
@@ -52,6 +54,14 @@ public class AppServiceImpl implements AppService{
 
     @Autowired
     private AzUsersMapper azUsersMapper;
+
+    @Autowired
+    private AzOauthUserMapper azOauthUserMapper;
+
+    @Autowired
+    private AzSlideMapper azSlideMapper;
+
+
 
 
     private String vertifySgin(JSONObject jobj){
@@ -259,29 +269,25 @@ public class AppServiceImpl implements AppService{
 //    }
 //
 //
-//    @Override
-//    public String getCarouselImgs(JSONObject jobj) {
-//        JSONObject jsonObject = new JSONObject();
-//        JsonConfig config = JSONConfig.getConfig();
-//        String v=vertifySgin(jobj);
-//        if(v!=null){
-//            return v;
-//        }
-//        String j=StringUtil.parseString(jobj.get("json"));
-//        JSONObject dataMap=getStringtoJson(j);
-//        String imgtype=StringUtil.parseString(dataMap.get("imgtype"));
-//        List<Imgmanage> imgmanageList = imgmanageMapper.getImgmanageListByimgtype(imgtype);
-//        Map<String, Object> retmap = new HashMap<String, Object>();
-//
-//            retmap.put("success", 1);
-//            retmap.put("data", imgmanageList);
-//            config.setExcludes(new String[] {});
-//            jsonObject = JSONObject.fromObject(retmap, config);
-//            return jsonObject.toString();
-//
-//
-//
-//    }
+    public String getCarouselImgs(JSONObject jobj) {
+        JSONObject jsonObject = new JSONObject();
+        JsonConfig config = JSONConfig.getConfig();
+        String v=vertifySgin(jobj);
+        if(v!=null){
+            return v;
+        }
+        String j=StringUtil.parseString(jobj.get("json"));
+        JSONObject dataMap=getStringtoJson(j);
+        String imgtype=StringUtil.parseString(dataMap.get("imgtype"));
+        List<AzSlide> azSlideList = azSlideMapper.getAzslideCarouseList(imgtype);
+        Map<String, Object> retmap = new HashMap<String, Object>();
+
+            retmap.put("success", 1);
+            retmap.put("data", azSlideList);
+            config.setExcludes(new String[] {});
+            jsonObject = JSONObject.fromObject(retmap, config);
+            return jsonObject.toString();
+    }
 //
 //
 //    @Override
@@ -408,154 +414,119 @@ public class AppServiceImpl implements AppService{
 //
 //
 //    @Override
-//    @Transactional(rollbackFor = Exception.class)
-//    public String regist(JSONObject jobj,HttpServletRequest request) throws Exception{
-//        JSONObject jsonObject = new JSONObject();
-//        JsonConfig config = JSONConfig.getConfig();
-//        String v=vertifySgin(jobj);
-//        if(v!=null){
-//            return v;
-//        }
-//        String j=StringUtil.parseString(jobj.get("json"));
-//        JSONObject dataMap=getStringtoJson(j);
-//        String phoneNum=StringUtil.parseString(dataMap.get("phoneNum"));
-//        String verificationCode=StringUtil.parseString(dataMap.get("verificationCode"));
-//        String password=StringUtil.parseString(dataMap.get("password"));
-//
-//        Map<String, Object> retmap = new HashMap<String, Object>();
-//
-//        Member member = memberMapper.getMemberByphoneNum(phoneNum);
-//        if(member != null ){
-//            retmap.put("success", 0);
-//            retmap.put("msg", "手机号已注册");
-//            jsonObject = JSONObject.fromObject(retmap, config);
-//            return jsonObject.toString();
-//
-//        }
-//
-//        Validatecode validatecode = memberMapper.getvalidateCode(verificationCode,phoneNum);//当前有效的验证码
-//
-//        if(validatecode != null){
-//            if(verificationCode.equals(validatecode.getCode())){
-//
-//                Date date = new Date();
-//                long currenttime = date.getTime();
-//                long recordtime = validatecode.getCtime().getTime();
-//                long datetime = (currenttime - recordtime) / (1000);
-//                if(datetime > 180){
-//                    retmap.put("success", 0);
-//                    retmap.put("msg", "此验证码过3分钟有效期");
-//                    jsonObject = JSONObject.fromObject(retmap, config);
-//                    return jsonObject.toString();
-//                }
-//                String ip = this.getIpAddr(request);
-//                String city = GetPlaceByIp.getUserCity(ip);
-//                String citycode = "";
-//                Map map = null;
-//                if(!StringUtil.isNullObject(city)){
-//                    map=memberMapper.getCityCodeByCityname(city);//查询城市
-//                }
-//
-//                if(map == null){
-//                    city="";
-//                    citycode = "";
-//                }else{
-//                    Object obj = map.get("citycode");
-//                    if(obj != null){
-//                        citycode = String.valueOf(obj);
-//                    }else{
-//                        city="";
-//                        citycode = "";
-//                    }
-//                }
-//
-//                Member me = new Member();
-//                me.setPhonenum(phoneNum);
-//                me.setPassword(password);
-//                String name = "service_"+phoneNum.substring(phoneNum.length()-4,phoneNum.length());
-//                me.setName(name);
-//                me.setCity(city);
-//                me.setCitycode(citycode);
-//                me.setRegistip(ip);
-//                me.setCommonuuid(UUID.randomUUID().toString());
-//                memberMapper.addMemberphoneandpassword(me);
-//
-//                //增加用户账户信息(无法获知unionid,直接增加账户)
-//                Basecommonmember record=new Basecommonmember();
-//                record.setCommonuuid(me.getCommonuuid());
-//                record.setPhonenum(phoneNum);
-//                basecommonmemberMapper.insertSelective(record);
-//
-//                //申请加入环信聊天用户体系
-//                try{
-//
-//                    Imusers imusers=new Imusers();
-//                    imusers.setUsername("service"+me.getId());
-//                    String res=imessageRequest.joinUsers(imusers);
-//
-//                    JSONObject resjobj=JSONObject.fromObject(res);
-//                    if(resjobj.getInt("success")==0){
-//                        throw(new Exception());
-//                    }
-//
-//                }catch (Exception e){
-//                    throw e;
-//                }
-//
-//                retmap.put("success", 1);
-//                retmap.put("id", me.getId());
-//                jsonObject = JSONObject.fromObject(retmap, config);
-//                return jsonObject.toString();
-//
-//            }else{
-//                //验证码不相同
-//                retmap.put("success", 0);
-//                retmap.put("msg", "验证码错误");
-//                jsonObject = JSONObject.fromObject(retmap, config);
-//                return jsonObject.toString();
-//            }
-//
-//        }else{
-//            retmap.put("success", 0);
-//            retmap.put("msg", "验证码错误");
-//            jsonObject = JSONObject.fromObject(retmap, config);
-//            return jsonObject.toString();
-//
-//        }
-//
-//    }
+    @Transactional(rollbackFor = Exception.class)
+    public String regist(JSONObject jobj,HttpServletRequest request) throws Exception{
+        JSONObject jsonObject = new JSONObject();
+        JsonConfig config = JSONConfig.getConfig();
+        String v=vertifySgin(jobj);
+        if(v!=null){
+            return v;
+        }
+        String j=StringUtil.parseString(jobj.get("json"));
+        JSONObject dataMap=getStringtoJson(j);
+        String phoneNum=StringUtil.parseString(dataMap.get("phoneNum"));
+        String verificationCode=StringUtil.parseString(dataMap.get("verificationCode"));
+        String password=StringUtil.parseString(dataMap.get("password"));
+
+        Map<String, Object> retmap = new HashMap<String, Object>();
+
+        AzUsers member = azUsersMapper.getAzUsersByPhone(phoneNum);
+        if(member != null ){
+            retmap.put("success", 0);
+            retmap.put("msg", "手机号已注册");
+            jsonObject = JSONObject.fromObject(retmap, config);
+            return jsonObject.toString();
+
+        }
+
+        AzValidatecode validatecode = azUsersMapper.getvalidateCode(verificationCode,phoneNum);//当前有效的验证码
+
+        if(validatecode != null){
+            if(verificationCode.equals(validatecode.getCode())){
+
+                Date date = new Date();
+                long currenttime = date.getTime();
+                long recordtime = validatecode.getCtime().getTime();
+                long datetime = (currenttime - recordtime) / (1000);
+                if(datetime > 180){
+                    retmap.put("success", 0);
+                    retmap.put("msg", "此验证码过3分钟有效期");
+                    jsonObject = JSONObject.fromObject(retmap, config);
+                    return jsonObject.toString();
+                }
+                String ip = this.getIpAddr(request);
+                String city = GetPlaceByIp.getUserCity(ip);
+                String citycode = "";
+                Map map = null;
+
+
+
+
+                AzUsers azUsers1 = new AzUsers();
+                azUsers1.setUser_login(phoneNum);
+                azUsers1.setUser_pass(password);
+                azUsers1.setUser_nicename(phoneNum.substring(phoneNum.length() - 4,phoneNum.length()).concat("rose"));
+                azUsers1.setLast_login_ip(ip);
+                azUsers1.setLast_login_time(new Date());
+                azUsers1.setCreate_time(new Date());
+                azUsers1.setMobile(phoneNum);
+
+                azUsersMapper.insertSelective(azUsers1);
+
+                retmap.put("success", 1);
+                retmap.put("id", azUsers1.getId());
+                jsonObject = JSONObject.fromObject(retmap, config);
+                return jsonObject.toString();
+
+            }else{
+                //验证码不相同
+                retmap.put("success", 0);
+                retmap.put("msg", "验证码错误");
+                jsonObject = JSONObject.fromObject(retmap, config);
+                return jsonObject.toString();
+            }
+
+        }else{
+            retmap.put("success", 0);
+            retmap.put("msg", "验证码错误");
+            jsonObject = JSONObject.fromObject(retmap, config);
+            return jsonObject.toString();
+
+        }
+
+    }
 //
 //
 //
-//    public String getIpAddr(HttpServletRequest request){
-//        String ipAddress = request.getHeader("x-forwarded-for");
-//        if(ipAddress == null || ipAddress.length() == 0 || "unknown".equalsIgnoreCase(ipAddress)) {
-//            ipAddress = request.getHeader("Proxy-Client-IP");
-//        }
-//        if(ipAddress == null || ipAddress.length() == 0 || "unknown".equalsIgnoreCase(ipAddress)) {
-//            ipAddress = request.getHeader("WL-Proxy-Client-IP");
-//        }
-//        if(ipAddress == null || ipAddress.length() == 0 || "unknown".equalsIgnoreCase(ipAddress)) {
-//            ipAddress = request.getRemoteAddr();
-//            if(ipAddress.equals("127.0.0.1") || ipAddress.equals("0:0:0:0:0:0:0:1")){
-//                //根据网卡取本机配置的IP
-//                InetAddress inet=null;
-//                try {
-//                    inet = InetAddress.getLocalHost();
-//                } catch (UnknownHostException e) {
-//                    e.printStackTrace();
-//                }
-//                ipAddress= inet.getHostAddress();
-//            }
-//        }
-//        //对于通过多个代理的情况，第一个IP为客户端真实IP,多个IP按照','分割
-//        if(ipAddress!=null && ipAddress.length()>15){ //"***.***.***.***".length() = 15
-//            if(ipAddress.indexOf(",")>0){
-//                ipAddress = ipAddress.substring(0,ipAddress.indexOf(","));
-//            }
-//        }
-//        return ipAddress;
-//    }
+    public String getIpAddr(HttpServletRequest request){
+        String ipAddress = request.getHeader("x-forwarded-for");
+        if(ipAddress == null || ipAddress.length() == 0 || "unknown".equalsIgnoreCase(ipAddress)) {
+            ipAddress = request.getHeader("Proxy-Client-IP");
+        }
+        if(ipAddress == null || ipAddress.length() == 0 || "unknown".equalsIgnoreCase(ipAddress)) {
+            ipAddress = request.getHeader("WL-Proxy-Client-IP");
+        }
+        if(ipAddress == null || ipAddress.length() == 0 || "unknown".equalsIgnoreCase(ipAddress)) {
+            ipAddress = request.getRemoteAddr();
+            if(ipAddress.equals("127.0.0.1") || ipAddress.equals("0:0:0:0:0:0:0:1")){
+                //根据网卡取本机配置的IP
+                InetAddress inet=null;
+                try {
+                    inet = InetAddress.getLocalHost();
+                } catch (UnknownHostException e) {
+                    e.printStackTrace();
+                }
+                ipAddress= inet.getHostAddress();
+            }
+        }
+        //对于通过多个代理的情况，第一个IP为客户端真实IP,多个IP按照','分割
+        if(ipAddress!=null && ipAddress.length()>15){ //"***.***.***.***".length() = 15
+            if(ipAddress.indexOf(",")>0){
+                ipAddress = ipAddress.substring(0,ipAddress.indexOf(","));
+            }
+        }
+        return ipAddress;
+    }
 //
 //
 //
@@ -2647,273 +2618,188 @@ public class AppServiceImpl implements AppService{
 //        return jsonObject.toString();
 //    }
 //
-//    @Override
-//    @Transactional(rollbackFor = Exception.class)
-//    public String wxLogin(JSONObject jobj) {
-//        JSONObject jsonObject = new JSONObject();
-//        JsonConfig config = JSONConfig.getConfig();
-//        String v=vertifySgin(jobj);
-//        if(v!=null){
-//            return v;
-//        }
-//        String j=StringUtil.parseString(jobj.get("json"));
-//        JSONObject dataMap=getStringtoJson(j);
-//        String code=StringUtil.parseString(dataMap.get("code"));
+    @Transactional(rollbackFor = Exception.class)
+    public String wxLogin(JSONObject jobj) {
+        JSONObject jsonObject = new JSONObject();
+        JsonConfig config = JSONConfig.getConfig();
+        String v=vertifySgin(jobj);
+        if(v!=null){
+            return v;
+        }
+        String j=StringUtil.parseString(jobj.get("json"));
+        JSONObject dataMap=getStringtoJson(j);
+        String code=StringUtil.parseString(dataMap.get("code"));
 //        WeChatConf weChatConf = new WeChatConf();
-//        weChatConf.setWxappid("wx1ca735669a351195");//赛微思开放平台相关数据
-//        weChatConf.setWxsecret("0c9e7b12309cd6f02db20c63504bfaa2");
-//        UserInfo userInfo = WeChat.getUserInfoByAuth(weChatConf,code);
-//        if(userInfo != null && !"".equals(userInfo.getOpenid())){
-//            Member member = memberMapper.getMemberByOpenid(userInfo.getOpenid());
-//            String headimgurl =  userInfo.getHeadimgurl();
-//            if(headimgurl.equals("/0")){
-//                headimgurl="";
-//            }
-//            String nickname =  userInfo.getNickname();
-//            if(member != null){
-//                //用户已存在，更新资料(昵称和头像)
-//                if(StringUtil.isNullObject(member.getName()) || StringUtil.isNullObject(member.getHeadimg())){
-//                    memberMapper.updateMemberWXinfo(member.getId(),headimgurl,nickname,member);
-//                }
+        AzWeixinOptions weixinOptions = new AzWeixinOptions();
+        weixinOptions.setApp_id(Constants.WX_APPID);//舞蹈圈开放平台相关数据
+        weixinOptions.setApp_secret(Constants.WX_APPSECRET);
+        UserInfo userInfo = WeChat.getUserInfoByAuth(weixinOptions,code);
+        if(userInfo != null && !"".equals(userInfo.getOpenid())){
+            AzOauthUser azOauthUser = azUsersMapper.getAzOauthUserByOpenid(userInfo.getOpenid());
+            String headimgurl =  userInfo.getHeadimgurl();
+            if(headimgurl.equals("/0")){
+                headimgurl="";
+            }
+            String nickname =  userInfo.getNickname();
+            if(azOauthUser != null){
+                //用户已存在，更新资料(昵称和头像)
+                if(StringUtil.isNullObject(azOauthUser.getName()) || StringUtil.isNullObject(azOauthUser.getHead_img())){
+                    azUsersMapper.updateAzOauthUserWXinfo(azOauthUser.getId(),headimgurl,nickname,azOauthUser);
+                }
+
+                Map<String, Object> retmap = new HashMap<String, Object>();
+                retmap.put("success", 1);
+                retmap.put("data", azOauthUser);
+                config.setExcludes(new String[] {  });
+                jsonObject = JSONObject.fromObject(retmap, config);
+                return jsonObject.toString();
+
+            }else{
+                //用户不存在，只返回未绑定信息，在绑定信息的时候加入
+                AzOauthUser newmember = new AzOauthUser();
+                newmember.setOpenid(userInfo.getOpenid());
+                newmember.setName(userInfo.getNickname());
+                newmember.setHead_img(headimgurl);
+                Map<String, Object> retmap = new HashMap<String, Object>();
+
+                retmap.put("success", 1);
+                retmap.put("data", newmember);
+                config.setExcludes(new String[] {  });
+                jsonObject = JSONObject.fromObject(retmap, config);
+                return jsonObject.toString();
+
+            }
+        }
+
+        Map<String, Object> retmap = new HashMap<String, Object>();
+        retmap.put("success", 0);
+        retmap.put("msg", "没有用户");
+        config.setExcludes(new String[] {  });
+        jsonObject = JSONObject.fromObject(retmap, config);
+        return jsonObject.toString();
+    }
 //
-//                //增加账户开始
-//                if(!StringUtil.isNullObject(userInfo.getUnionid()) && StringUtil.isNullObject(member.getUnionid())){
-//                    createAccount(userInfo.getUnionid(),member);
-//                }
-//                //增加账户结束
-//
-//                member.setOpenname(nickname);
-//                member.setOpenheadimg(headimgurl);
-//                member.setIsBindPhone(1);
-//                member.setUnionid(userInfo.getUnionid());
-//
-//                memberMapper.uptUnionId(member);//更新微信信息(openid unionid)
-//
-//
-//                if(StringUtil.isNullObject(member.getName())){
-//                    member.setName(nickname);
-//                }
-//
-//                if(StringUtil.isNullObject(member.getHeadimg())){
-//                    member.setHeadimg(headimgurl);
-//                }
-//
-//                if(StringUtil.isNullObject(member.getIsprivate())){
-//                    member.setIsprivate(0);
-//                }
-//
-//                Map<String, Object> retmap = new HashMap<String, Object>();
-//                retmap.put("success", 1);
-//                retmap.put("data", member);
-//                config.setExcludes(new String[] {  });
-//                jsonObject = JSONObject.fromObject(retmap, config);
-//                return jsonObject.toString();
-//
-//            }else{
-//                //用户不存在，只返回未绑定信息，在绑定信息的时候加入
-//                Member newmember = new Member();
-//                newmember.setIsBindPhone(0);
-//                newmember.setOpenid(userInfo.getOpenid());
-//                newmember.setOpenname(userInfo.getNickname());
-//                newmember.setOpenheadimg(headimgurl);
-//                newmember.setUnionid(userInfo.getUnionid());
-//                newmember.setIsprivate(0);
-//                Map<String, Object> retmap = new HashMap<String, Object>();
-//
-//                retmap.put("success", 1);
-//                retmap.put("data", newmember);
-//                config.setExcludes(new String[] {  });
-//                jsonObject = JSONObject.fromObject(retmap, config);
-//                return jsonObject.toString();
-//
-//            }
-//        }
-//
-//        Map<String, Object> retmap = new HashMap<String, Object>();
-//        retmap.put("success", 0);
-//        retmap.put("msg", "没有用户");
-//        config.setExcludes(new String[] {  });
-//        jsonObject = JSONObject.fromObject(retmap, config);
-//        return jsonObject.toString();
-//    }
-//
-//    @Override
-//    @Transactional(rollbackFor = Exception.class)
-//    public String wxPerfectDn(JSONObject jobj,HttpServletRequest request) throws Exception {
-//        JSONObject jsonObject = new JSONObject();
-//        JsonConfig config = JSONConfig.getConfig();
-//        String v=vertifySgin(jobj);
-//        if(v!=null){
-//            return v;
-//        }
-//        String j=StringUtil.parseString(jobj.get("json"));
-//        JSONObject dataMap=getStringtoJson(j);
-//        String phoneNum=StringUtil.parseString(dataMap.get("phoneNum"));
-//        String verificationCode=StringUtil.parseString(dataMap.get("verificationCode"));
-//        String password=StringUtil.parseString(dataMap.get("password"));
-//        String openid = String.valueOf(dataMap.get("openid"));
-//        String openname = String.valueOf(dataMap.get("openname"));
-//        String openheadimg = String.valueOf(dataMap.get("openheadimg"));
-//        String unionid ="";
-//
-//        Map<String, Object> retmap = new HashMap<String, Object>();//返回信息
-//        if(!dataMap.containsKey("unionid")){
-//            retmap.put("success", 0);
-//            retmap.put("msg", "此版本过低，请到应用市场下载更新");
-//            jsonObject = JSONObject.fromObject(retmap, config);
-//            return jsonObject.toString();
-//        }else {
-//            unionid=String.valueOf(dataMap.get("unionid"));
-//        }
-//
-//        Validatecode validatecode = memberMapper.getvalidateCode(verificationCode,phoneNum);//当前有效的验证码
-//
-//        if(validatecode != null){
-//            if(verificationCode.equals(validatecode.getCode())){
-//
-//                Date date = new Date();
-//                long currenttime = date.getTime();
-//                long recordtime = validatecode.getCtime().getTime();
-//                long datetime = (currenttime - recordtime) / (1000);
-//                if(datetime > 180){
-//                    retmap.put("success", 0);
-//                    retmap.put("msg", "此验证码过3分钟有效期");
-//                    jsonObject = JSONObject.fromObject(retmap, config);
-//                    return jsonObject.toString();
-//                }
-//
-//                String ip = this.getIpAddr(request);
-//
-//
-//                String city = GetPlaceByIp.getUserCity(ip);
-//                String citycode = "";
-//                Map map = null;
-//                if(!StringUtil.isNullObject(city)){
-//                    map=memberMapper.getCityCodeByCityname(city);//查询城市
-//                }
-//
-//                if(map == null){
-//                    city="";
-//                    citycode = "";
-//                }else{
-//                    Object obj = map.get("citycode");
-//                    if(obj != null){
-//                        citycode = String.valueOf(obj);
-//                    }else{
-//                        city="";
-//                        citycode = "";
-//                    }
-//                }
-//
-//                Member member = memberMapper.getMemberByphoneNum(phoneNum);//绑定手机号码
-//                if(member != null ){
-//                    //更新微信信息
-//                    if(!StringUtil.isNullObject(member.getOpenid())){//如果输入的绑定的手机号已经存在了openid
-//                        retmap.put("success", 0);
-//                        retmap.put("msg", "该号码已被绑定");
-//                        jsonObject = JSONObject.fromObject(retmap, config);
-//                        return jsonObject.toString();
-//                    }else{
-//                        Member me = new Member();
-//                        me.setOpenheadimg(openheadimg);
-//                        me.setOpenname(openname);
-//                        me.setOpenid(openid);
-//                        me.setPassword(password);
-//                        me.setPhonenum(phoneNum);
-//                        me.setUnionid(unionid);
-//
-//                        if(StringUtil.isNullObject(member.getName()) || StringUtil.isNullObject(member.getHeadimg())){//更新原先的name 或者 headimg
-//                            memberMapper.updateMemberWXinfo(member.getId(),openheadimg,openname,member);
-//                        }
-//
-//                        memberMapper.wxPerfectDn(me);//更新微信信息(openid unionid)
-//
-//                        //开始创建
-//                        if(!StringUtil.isNullObject(unionid) && StringUtil.isNullObject(member.getUnionid())){
-//                            createAccount(unionid,member);
-//                        }
-//                        //结束创建
-//
-//                        if(StringUtil.isNullObject(member.getName())){
-//                            member.setName(openname);
-//                        }
-//                        if(StringUtil.isNullObject(member.getHeadimg())){
-//                            member.setHeadimg(openheadimg);
-//                        }
-//
-//                        retmap.put("success", 1);
-//                        retmap.put("data", member);
-//                        jsonObject = JSONObject.fromObject(retmap, config);
-//                        return jsonObject.toString();
-//                    }
-//
-//                }else{
-//                    Member newmember = new Member();
-//                    newmember.setIsBindPhone(0);
-//                    newmember.setOpenheadimg(openheadimg);
-//                    newmember.setOpenname(openname);
-//                    newmember.setOpenid(openid);
-//                    newmember.setPhonenum(phoneNum);
-//                    newmember.setPassword(password);
-//                    newmember.setName(openname);
-//                    newmember.setHeadimg(openheadimg);
-//                    newmember.setCity(city);
-//                    newmember.setCitycode(citycode);
-//                    newmember.setRegistip(ip);
-//                    newmember.setUnionid(unionid);
-//                    newmember.setCommonuuid(UUID.randomUUID().toString());
-//                    memberMapper.insertWXinfo(newmember);
-//
-//                    //增加用户账户信息(无法获知unionid,直接增加账户)
-//                    Basecommonmember record=new Basecommonmember();
-//                    record.setCommonuuid(newmember.getCommonuuid());
-//                    record.setPhonenum(phoneNum);
-//                    basecommonmemberMapper.insertSelective(record);
-//
-//                    //开始创建
-//                    if(!StringUtil.isNullObject(unionid)) {
-//                        createAccount(unionid, newmember);
-//                    }
-//                    //结束创建
-//
-//                    //申请加入环信聊天用户体系
-//                    try{
-//                        Imusers imusers=new Imusers();
-//                        imusers.setUsername("service"+newmember.getId());
-//                        String res=imessageRequest.joinUsers(imusers);
-//
-//                        JSONObject resjobj=JSONObject.fromObject(res);
-//                        if(resjobj.getInt("success")==0){
-//                            throw(new Exception());
-//                        }
-//
-//                    }catch (Exception e){
-//                        throw e;
-//                    }
-//
-//                    retmap.put("success", 1);
-//                    retmap.put("data", newmember);
-//                    jsonObject = JSONObject.fromObject(retmap, config);
-//                    return jsonObject.toString();
-//
-//                }
-//
-//            }else{
-//                //验证码不相同
-//                retmap.put("success", 0);
-//                retmap.put("msg", "验证码错误");
-//                jsonObject = JSONObject.fromObject(retmap, config);
-//                return jsonObject.toString();
-//            }
-//
-//        }else{
-//            retmap.put("success", 0);
-//            retmap.put("msg", "验证码错误");
-//            jsonObject = JSONObject.fromObject(retmap, config);
-//            return jsonObject.toString();
-//
-//        }
-//    }
+    @Transactional(rollbackFor = Exception.class)
+    public String wxPerfectDn(JSONObject jobj,HttpServletRequest request) throws Exception {
+        JSONObject jsonObject = new JSONObject();
+        JsonConfig config = JSONConfig.getConfig();
+        String v=vertifySgin(jobj);
+        if(v!=null){
+            return v;
+        }
+        String j=StringUtil.parseString(jobj.get("json"));
+        JSONObject dataMap=getStringtoJson(j);
+        String phoneNum=StringUtil.parseString(dataMap.get("phoneNum"));
+        String verificationCode=StringUtil.parseString(dataMap.get("verificationCode"));
+        String password=StringUtil.parseString(dataMap.get("password"));
+        String openid = String.valueOf(dataMap.get("openid"));
+        String openname = String.valueOf(dataMap.get("openname"));
+        String openheadimg = String.valueOf(dataMap.get("openheadimg"));
+        Map<String, Object> retmap = new HashMap<String, Object>();//返回信息
+        AzValidatecode validatecode = azUsersMapper.getvalidateCode(verificationCode,phoneNum);//当前有效的验证码
+
+        if(validatecode != null){
+            if(verificationCode.equals(validatecode.getCode())){
+
+                Date date = new Date();
+                long currenttime = date.getTime();
+                long recordtime = validatecode.getCtime().getTime();
+                long datetime = (currenttime - recordtime) / (1000);
+                if(datetime > 180){
+                    retmap.put("success", 0);
+                    retmap.put("msg", "此验证码过3分钟有效期");
+                    jsonObject = JSONObject.fromObject(retmap, config);
+                    return jsonObject.toString();
+                }
+
+                String ip = this.getIpAddr(request);
+
+
+                AzUsers azUsers = azUsersMapper.getAzUsersByPhone(phoneNum);//绑定手机号码
+                if(azUsers != null ){
+                    //更新微信信息
+                    if(!StringUtil.isNullObject(azUsers.getOpenid())){//如果输入的绑定的手机号已经存在了openid
+                        retmap.put("success", 0);
+                        retmap.put("msg", "该号码已被绑定");
+                        jsonObject = JSONObject.fromObject(retmap, config);
+                        return jsonObject.toString();
+                    }else{
+                        //没哟绑定，新增az_oauth_user表信息
+                        AzOauthUser  azOauthUser = new AzOauthUser();
+                        azOauthUser.setHead_img(openheadimg);
+                        azOauthUser.setName(openname);
+                        azOauthUser.setOpenid(openid);
+                        azOauthUser.setFrom("微信");
+                        azOauthUser.setUid(azUsers.getId());
+                        azOauthUser.setLast_login_ip(ip);
+                        azOauthUser.setLast_login_time(new Date());
+                        azOauthUser.setCreate_time(new Date());
+                        azOauthUser.setLogin_times(1);
+                        azOauthUserMapper.insertSelective(azOauthUser);
+                        retmap.put("success", 1);
+                        retmap.put("data", azOauthUser);
+                        jsonObject = JSONObject.fromObject(retmap, config);
+                        return jsonObject.toString();
+                    }
+
+                }else{
+                    //没有信息，新增用户信息 AzUsers 和Azoauthuser 表
+                    AzUsers azUsers1 = new AzUsers();
+                    azUsers1.setUser_login(phoneNum);
+                    azUsers1.setUser_pass(password);
+                    azUsers1.setUser_nicename(phoneNum.substring(phoneNum.length() - 4,phoneNum.length()).concat("rose"));
+//                    azUsers1.setUser_email();
+//                    azUsers1.setUser_url();
+//                    azUsers1.setAvatar();
+//                    azUsers1.setSex();
+//                    azUsers1.setBirthday();
+//                    azUsers1.setSignature();
+                    azUsers1.setLast_login_ip(ip);
+                    azUsers1.setLast_login_time(new Date());
+                    azUsers1.setCreate_time(new Date());
+//                    azUsers1.setUser_type();
+                    azUsers1.setMobile(phoneNum);
+
+                    azUsersMapper.insertSelective(azUsers1);
+
+
+                    AzOauthUser  azOauthUser = new AzOauthUser();
+                    azOauthUser.setHead_img(openheadimg);
+                    azOauthUser.setName(openname);
+                    azOauthUser.setOpenid(openid);
+                    azOauthUser.setFrom("微信");
+                    azOauthUser.setUid(azUsers1.getId());
+                    azOauthUser.setLast_login_ip(ip);
+                    azOauthUser.setLast_login_time(new Date());
+                    azOauthUser.setCreate_time(new Date());
+                    azOauthUser.setLogin_times(1);
+                    azOauthUserMapper.insertSelective(azOauthUser);
+
+
+
+                    retmap.put("success", 1);
+                    retmap.put("data", azOauthUser);
+                    jsonObject = JSONObject.fromObject(retmap, config);
+                    return jsonObject.toString();
+
+                }
+
+            }else{
+                //验证码不相同
+                retmap.put("success", 0);
+                retmap.put("msg", "验证码错误");
+                jsonObject = JSONObject.fromObject(retmap, config);
+                return jsonObject.toString();
+            }
+
+        }else{
+            retmap.put("success", 0);
+            retmap.put("msg", "验证码错误");
+            jsonObject = JSONObject.fromObject(retmap, config);
+            return jsonObject.toString();
+
+        }
+    }
 //
 //    //创建账户
 //    private void createAccount(String unionid,Member currentMem){
@@ -4639,50 +4525,124 @@ public class AppServiceImpl implements AppService{
 //    }
 //
 //    @Override
-//    public String getphonenumcode(HttpServletRequest request) {
-//        JSONObject jsonObject = new JSONObject();
-//        JsonConfig config = JSONConfig.getConfig();
-//        Map<String, Object> retmap = new HashMap<String, Object>();
-//
-//        String phonenum=request.getParameter("phonenum");
-//        Member m = memberMapper.getphonenum(phonenum);
-//        if(m==null || StringUtil.isNullObject(m.getUnionid())){ //获取验证码
-//
-//            Validatecode vaa =new Validatecode();
-//            vaa.setDn(phonenum);
-//            validatecodeMapper.updateCheckCode(vaa);
-//
-//             //插入新的验证码
-//            String securityCode = Makemsgcode.Makemsgcode();
-//            Validatecode fjcheckcode=new Validatecode();
-//            fjcheckcode.setCode(securityCode);
-//            fjcheckcode.setCtime(new Timestamp(new Date().getTime()));
-//            fjcheckcode.setDn(phonenum);
-//            fjcheckcode.setState(0);
-//            validatecodeMapper.insertCheckCode(fjcheckcode);
-//
-//            if(true){
-//                System.out.println(DateUtil.dateToString(new Date(0), "yyyy-MM-dd HH:mm:ss")+" ==> 验证码生成成功:"+securityCode);
-//            }else{
-//                System.out.println(DateUtil.dateToString(new Date(0), "yyyy-MM-dd HH:mm:ss")+" ==> 验证码生成失败,请检查缓存设置");
-//            }
-//            //发送短信方法
-//            //String efSec = OtoPropertites.get("cache.effectiveTime");
-//            //String minute = (Integer.parseInt(efSec)/60)+"";
-//            NewSendTemplateSMS.sendRegMsg(phonenum, new String[]{securityCode,"60"});
-//            retmap.put("success", 1);
-//            retmap.put("msg","");
-//        }else{
-//            retmap.put("success",0);
-//            retmap.put("msg","手机号已注册");
-//            return Object2Json.bean2Json2(retmap);
-//        }
-//
-//
-//        config.setExcludes(new String[] {});
-//        jsonObject = JSONObject.fromObject(retmap, config);
-//        return jsonObject.toString();
-//    }
+    public String getphonenumcode(HttpServletRequest request) {
+        JSONObject jsonObject = new JSONObject();
+        JsonConfig config = JSONConfig.getConfig();
+        Map<String, Object> retmap = new HashMap<String, Object>();
+
+        String phonenum=request.getParameter("phonenum");
+        AzUsers m = azUsersMapper.getAzUsersByPhone(phonenum);
+        if(m==null){ //获取验证码
+
+            AzValidatecode vaa =new AzValidatecode();
+            vaa.setDn(phonenum);
+            azUsersMapper.updateCheckCode(vaa);
+
+             //插入新的验证码
+            String securityCode = Makemsgcode.Makemsgcode();
+            AzValidatecode fjcheckcode=new AzValidatecode();
+            fjcheckcode.setCode(securityCode);
+            fjcheckcode.setCtime(new Timestamp(new Date().getTime()));
+            fjcheckcode.setDn(phonenum);
+            fjcheckcode.setState(0);
+            azUsersMapper.insertCheckCode(fjcheckcode);
+
+            if(true){
+                System.out.println(DateUtil.dateToString(new Date(0), "yyyy-MM-dd HH:mm:ss")+" ==> 验证码生成成功:"+securityCode);
+            }else{
+                System.out.println(DateUtil.dateToString(new Date(0), "yyyy-MM-dd HH:mm:ss")+" ==> 验证码生成失败,请检查缓存设置");
+            }
+            //发送短信方法
+            //String efSec = OtoPropertites.get("cache.effectiveTime");
+            //String minute = (Integer.parseInt(efSec)/60)+"";
+            NewSendTemplateSMS.sendRegMsg(phonenum, new String[]{securityCode,"60"});
+            retmap.put("success", 1);
+            retmap.put("msg","");
+        }else{
+            retmap.put("success",0);
+            retmap.put("msg","手机号已注册");
+            return Object2Json.bean2Json2(retmap);
+        }
+
+
+        config.setExcludes(new String[] {});
+        jsonObject = JSONObject.fromObject(retmap, config);
+        return jsonObject.toString();
+    }
+
+    /**
+    * @Desc 修改用户信息
+    * @author yurh
+    * @create 2018-04-08 13:25:38
+    **/
+    public String updateUserinfo(JSONObject jobj, HttpServletRequest request) {
+        JSONObject jsonObject = new JSONObject();
+        JsonConfig config = JSONConfig.getConfig();
+        Map<String, Object> retmap = new HashMap<String, Object>();
+
+        String id=request.getParameter("id");
+        String avatar=request.getParameter("avatar");
+        String user_nicename=request.getParameter("user_nicename");
+        String mobile=request.getParameter("mobile");
+
+        azUsersMapper.updateUserinfo(id,avatar,user_nicename,mobile);
+        retmap.put("success",1);
+        retmap.put("msg","修改成功");
+        return Object2Json.bean2Json2(retmap);
+
+    }
+
+    /**
+    * @Desc 关注我的人员
+    * @author yurh
+    * @create 2018-04-08 14:21:43
+    **/
+    public String followMeUsers(JSONObject jobj, HttpServletRequest request) {
+        JSONObject jsonObject = new JSONObject();
+        JsonConfig config = JSONConfig.getConfig();
+        Map<String, Object> retmap = new HashMap<String, Object>();
+
+        String memberid=request.getParameter("memberid");
+
+        List<AzUsers> azUsersList = azUsersMapper.getfollowMeUsers(memberid);
+
+        retmap.put("success",1);
+        retmap.put("msg","成功");
+        retmap.put("data",azUsersList);
+
+        return Object2Json.bean2Json2(retmap);
+    }
+
+    public String attentionUsers(JSONObject jobj, HttpServletRequest request) {
+        JSONObject jsonObject = new JSONObject();
+        JsonConfig config = JSONConfig.getConfig();
+        Map<String, Object> retmap = new HashMap<String, Object>();
+
+        String memberid=request.getParameter("memberid");
+
+        List<AzUsers> azUsersList = azUsersMapper.attentionUsers(memberid);
+
+        retmap.put("success",1);
+        retmap.put("msg","成功");
+        retmap.put("data",azUsersList);
+        return Object2Json.bean2Json2(retmap);
+    }
+
+    /**
+    * @Desc 活动详情
+    * @author yurh
+    * @create 2018-04-08 14:39:33
+    **/
+    public String getActivityDetails(JSONObject jobj, HttpServletRequest request) {
+
+
+
+
+
+        return null;
+    }
+
+
 //
 //    @Override
 //    public String getmemberbyid(HttpServletRequest request) {

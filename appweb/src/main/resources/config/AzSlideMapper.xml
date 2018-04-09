@@ -169,4 +169,13 @@
       creator = #{creator,jdbcType=INTEGER}
     where slide_id = #{slide_id,jdbcType=BIGINT}
   </update>
+
+  <select id="getAzslideCarouseList" resultType="com.emi.roots.entity.AzSlide">
+
+    select *from az_slide al where al.slide_cid in
+( select ac.cid from az_slide_cat ac where ac.cat_status = '1' and ac.cat_idname = '${imgtype}')
+and al.slide_status = '1'
+ORDER BY al.listorder ASC
+  </select>
+
 </mapper>

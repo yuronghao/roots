@@ -2,6 +2,7 @@ package com.emi.roots.wechat.util;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.emi.roots.entity.AzWeixinOptions;
 import com.emi.roots.util.*;
 import com.emi.roots.wechat.bean.*;
 import com.emi.roots.wechat.inf.MessageProcessingHandler;
@@ -242,10 +243,10 @@ public class WeChat {
 	
 	private static final String GET_AUTH_ACCESSTOKEN="https://api.weixin.qq.com/sns/oauth2/access_token";
 	private static final String GET_AUTH_USERINFO="https://api.weixin.qq.com/sns/userinfo";
-	public static UserInfo getUserInfoByAuth(WeChatConf wechatConf, String code){
+	public static UserInfo getUserInfoByAuth(AzWeixinOptions azWeixinOptions, String code){
 		String acctesstoken=null;
 		try {
-			acctesstoken = HttpClient.get(GET_AUTH_ACCESSTOKEN+"?appid="+wechatConf.getWxappid()+"&secret="+wechatConf.getWxsecret()+"&code="+code+"&grant_type=authorization_code");
+			acctesstoken = HttpClient.get(GET_AUTH_ACCESSTOKEN+"?appid="+azWeixinOptions.getApp_id()+"&secret="+azWeixinOptions.getApp_secret()+"&code="+code+"&grant_type=authorization_code");
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

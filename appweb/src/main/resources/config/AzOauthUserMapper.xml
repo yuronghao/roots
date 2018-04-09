@@ -56,9 +56,7 @@
   <insert id="insertSelective" parameterType="com.emi.roots.entity.AzOauthUser" >
     insert into az_oauth_user
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
+
       <if test="from != null" >
         from,
       </if>
@@ -103,9 +101,7 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
+
       <if test="from != null" >
         #{from,jdbcType=VARCHAR},
       </if>

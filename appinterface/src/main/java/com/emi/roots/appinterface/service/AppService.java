@@ -21,7 +21,7 @@ public interface AppService {
 //
 //    String getAdvertImg(JSONObject jobj);
 //
-//    String getCarouselImgs(JSONObject jobj);
+    String getCarouselImgs(JSONObject jobj);
 //
 //    String getFlashnews(JSONObject jobj);
 //
@@ -29,7 +29,7 @@ public interface AppService {
 //
 //    String getPhonevalidatecode(JSONObject jobj, String securityCode);
 //
-//    String regist(JSONObject jobj, HttpServletRequest request)  throws Exception;
+    String regist(JSONObject jobj, HttpServletRequest request)  throws Exception;
 //
 //    String getStrongest(JSONObject jobj);
 //
@@ -146,9 +146,9 @@ public interface AppService {
 //
 //    String getCommumicationBookService(JSONObject jobj);
 //
-//    String wxLogin(JSONObject jobj);
+    String wxLogin(JSONObject jobj);
 //
-//    String wxPerfectDn(JSONObject jobj, HttpServletRequest request) throws Exception;
+    String wxPerfectDn(JSONObject jobj, HttpServletRequest request) throws Exception;
 //
 //    String getImFriends(JSONObject jobj) throws Exception;
 //
@@ -205,7 +205,15 @@ public interface AppService {
 //
 //    String personalsharepage(HttpServletRequest request);
 //
-//    String getphonenumcode(HttpServletRequest request);
+    String getphonenumcode(HttpServletRequest request);
+
+    String updateUserinfo(JSONObject jobj, HttpServletRequest request);
+
+    String followMeUsers(JSONObject jobj, HttpServletRequest request);
+
+    String attentionUsers(JSONObject jobj, HttpServletRequest request);
+
+    String getActivityDetails(JSONObject jobj, HttpServletRequest request);
 //
 //    String getmemberbyid(HttpServletRequest request);
 //
