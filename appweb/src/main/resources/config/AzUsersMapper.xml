@@ -294,7 +294,9 @@
   </select>
 
   <select id="getAzOauthUserByOpenid" resultType="com.emi.roots.entity.AzOauthUser">
-    select * from az_oauth_user au where au.openid = '${openid}'
+    select au.*,ae.mobile from az_oauth_user au
+left JOIN az_users ae on ae.id  = au.uid
+ where au.openid = '${openid}'
 
 
   </select>

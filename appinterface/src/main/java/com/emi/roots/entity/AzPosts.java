@@ -1,6 +1,7 @@
 package com.emi.roots.entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class AzPosts {
     private Long id;
@@ -62,6 +63,39 @@ public class AzPosts {
     private Integer review_id;
 
     private String material_id;
+
+
+    private List<AzUsers> azUsersList;
+
+
+    private List<AzGoods> azGoodsList;
+
+
+    public List<AzUsers> getAzUsersList() {
+        return azUsersList;
+    }
+
+    public void setAzUsersList(List<AzUsers> azUsersList) {
+        this.azUsersList = azUsersList;
+    }
+
+    public List<AzGoods> getAzGoodsList() {
+        return azGoodsList;
+    }
+
+    public void setAzGoodsList(List<AzGoods> azGoodsList) {
+        this.azGoodsList = azGoodsList;
+    }
+
+    private List<AzSofAttachment> azSofAttachmentList;
+
+    public List<AzSofAttachment> getAzSofAttachmentList() {
+        return azSofAttachmentList;
+    }
+
+    public void setAzSofAttachmentList(List<AzSofAttachment> azSofAttachmentList) {
+        this.azSofAttachmentList = azSofAttachmentList;
+    }
 
     public Long getId() {
         return id;

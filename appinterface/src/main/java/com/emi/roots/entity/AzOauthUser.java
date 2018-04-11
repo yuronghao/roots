@@ -31,6 +31,16 @@ public class AzOauthUser {
 
     private Integer follow_num;
 
+    private String mobile;
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
     private String wechat_user_options;
 
     public Integer getId() {

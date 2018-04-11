@@ -496,4 +496,51 @@
       material_id = #{material_id,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+
+  <select id="getActivityDetails" resultType="com.emi.roots.entity.AzPosts">
+    select ap.*,tempuids.countsuid,IF(au2.id is null,0,1) as flag from az_posts ap
+left join (
+	select COUNT(au.uid) countsuid,au.object_id from az_sign_up au where au.object_id = '${matchid}'
+)tempuids on tempuids.object_id = ap.id
+LEFT JOIN  az_sign_up au2 on au2.object_id = ap.id and au2.uid = '${userid}'
+ where ap.status = 1
+ and  ap.id = '${matchid}'
+
+
+  </select>
+
+  <select id="getMeterialsByids" resultType="com.emi.roots.entity.AzSofAttachment">
+select * from az_sof_attachment aa where aa.id in (${meterialids})
+
+  </select>
+
+  <select id="getgoodsByids" resultType="com.emi.roots.entity.AzGoods">
+select * from az_goods ag where ag.id in (${goodsids})
+
+  </select>
+
+  <select id="getjoinmember" resultType="com.emi.roots.entity.AzUsers">
+    select au.*,ae.user_nicename,ae.avatar from az_sign_up au
+    left join az_users ae on ae.id = au.uid
+    where au.object_id = '${id}'
+  </select>
+
+  <select id="getFenPageCommentList" resultType="com.emi.roots.entity.AzReply">
+select ar.*,au.avatar,IF(al.id is null,0,1) as flag from az_reply ar
+left join az_users au on au.id = ar.uid
+left join az_like al on al.object_id = ar.id and al.uid = '${userid}' and al.tablename = 'reply'
+where ar.object_id = '${matchid}' and ar.isdel = 0  and ar.tablename = 'posts'
+
+  </select>
+
+  <select id="getPostsListHD" resultType="com.emi.roots.entity.AzPosts">
+      select * from az_posts ap where ap.id in (
+  select ar.object_id from az_term_relationships ar where ar.term_id = ${termid} and ar.`status` =1
+  ) and ap.`status` =1
+  <if test="param != null">
+    ${param}
+  </if>
+
+  </select>
 </mapper>

@@ -43,12 +43,10 @@
       #{listorder,jdbcType=INTEGER}, #{state,jdbcType=TINYINT}, #{create_time,jdbcType=INTEGER}, 
       #{uid,jdbcType=INTEGER}, #{isdel,jdbcType=TINYINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.emi.roots.entity.AzForum" >
+  <insert id="insertSelective" parameterType="com.emi.roots.entity.AzForum"   useGeneratedKeys="true" keyProperty="id">
     insert into az_forum
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
+
       <if test="type_id != null" >
         type_id,
       </if>
@@ -90,9 +88,7 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
+
       <if test="type_id != null" >
         #{type_id,jdbcType=INTEGER},
       </if>

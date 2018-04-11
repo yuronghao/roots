@@ -48,9 +48,7 @@
   <insert id="insertSelective" parameterType="com.emi.roots.entity.AzSignUp" >
     insert into az_sign_up
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
+
       <if test="uid != null" >
         uid,
       </if>
@@ -83,9 +81,7 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
+
       <if test="uid != null" >
         #{uid,jdbcType=INTEGER},
       </if>
@@ -180,5 +176,28 @@
       order_id = #{order_id,jdbcType=VARCHAR},
       comment = #{comment,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  
+  <delete id="deleteAzLike">
+    DELETE  from az_like where object_id = '${matchid}' and uid = '${userid}' and tablename = '${tablename}'
+
+  </delete>
+
+
+  <update id="updatePostLikeNumsub">
+    UPDATE az_posts ap set ap.post_like = ap.post_like -1 where ap.id = '${matchid}'
+
+  </update>
+
+
+  <update id="updatePostLikeNumadd">
+UPDATE az_posts ap set ap.post_like = ap.post_like +1 where ap.id = '${matchid}'
+
+  </update>
+
+
+  <update id="updateCommentLikenumsub">
+    UPDATE az_reply ap set ap.praise_num = ap.praise_num -1 where ap.id = '${matchid}'
   </update>
 </mapper>

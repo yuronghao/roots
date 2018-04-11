@@ -1,5 +1,7 @@
 package com.emi.roots.entity;
 
+import java.util.Date;
+
 public class AzLike {
     private Integer id;
 
@@ -9,7 +11,16 @@ public class AzLike {
 
     private Integer uid;
 
-    private Integer create_time;
+    private Date create_time;
+
+
+    public Date getCreate_time() {
+        return create_time;
+    }
+
+    public void setCreate_time(Date create_time) {
+        this.create_time = create_time;
+    }
 
     public Integer getId() {
         return id;
@@ -43,11 +54,5 @@ public class AzLike {
         this.uid = uid;
     }
 
-    public Integer getCreate_time() {
-        return create_time;
-    }
 
-    public void setCreate_time(Integer create_time) {
-        this.create_time = create_time;
-    }
 }
