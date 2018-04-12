@@ -804,6 +804,61 @@ public class AppController extends AbsController {
 
 
 
+    /**
+    * @Desc 忘记密码
+    * @author yurh
+    * @create 2018-04-12 14:55:09
+    **/
+    @RequestMapping("/updatePassword")
+    public void updatePassword(HttpServletResponse response, HttpServletRequest request){
+        LOG.info("忘记密码");
+        JsonConfig config = JSONConfig.getConfig();
+        Map<String, Object> retmap = new HashMap<String, Object>();
+        try{
+            JSONObject jobj=getJsonObject();
+            if(jobj!=null){
+                String ret=appService.updatePassword(jobj,request);
+                this.responseMsg(response,ret);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            retmap.put("success", 0);
+            retmap.put("msg","系统异常");
+            JSONObject jsonObject  = JSONObject.fromObject(retmap, config);
+            this.responseMsg(response,jsonObject.toString());
+
+        }
+
+    }
+
+
+
+    /**
+    * @Desc 修改用户手机号
+    * @author yurh
+    * @create 2018-04-12 15:04:06
+    **/
+    @RequestMapping("/updateMobileByUid")
+    public void updateMobileByUid(HttpServletResponse response, HttpServletRequest request){
+        LOG.info("修改用户手机号");
+        JsonConfig config = JSONConfig.getConfig();
+        Map<String, Object> retmap = new HashMap<String, Object>();
+        try{
+            JSONObject jobj=getJsonObject();
+            if(jobj!=null){
+                String ret=appService.updateMobileByUid(jobj,request);
+                this.responseMsg(response,ret);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            retmap.put("success", 0);
+            retmap.put("msg","系统异常");
+            JSONObject jsonObject  = JSONObject.fromObject(retmap, config);
+            this.responseMsg(response,jsonObject.toString());
+
+        }
+
+    }
 
 
 

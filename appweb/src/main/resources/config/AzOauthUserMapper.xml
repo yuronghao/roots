@@ -21,7 +21,7 @@
     <result column="wechat_user_options" property="wechat_user_options" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, from, name, head_img, uid, last_login_ip, last_login_time, create_time, login_times, 
+    id, `from`, `name`, head_img, uid, last_login_ip, last_login_time, create_time, login_times, 
     status, openid, user_status, gag, follow_num
   </sql>
   <sql id="Blob_Column_List" >
@@ -32,7 +32,7 @@
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from az_oauth_user
+    `from` az_oauth_user
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
@@ -40,13 +40,13 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.emi.roots.entity.AzOauthUser" >
-    insert into az_oauth_user (id, from, name, 
+    insert into az_oauth_user (id, `from`, `name`, 
       head_img, uid, last_login_ip, 
       last_login_time, create_time, login_times, 
       status, openid, user_status, 
       gag, follow_num, wechat_user_options
       )
-    values (#{id,jdbcType=INTEGER}, #{from,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{from,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
       #{head_img,jdbcType=VARCHAR}, #{uid,jdbcType=VARCHAR}, #{last_login_ip,jdbcType=VARCHAR}, 
       #{last_login_time,jdbcType=TIMESTAMP}, #{create_time,jdbcType=TIMESTAMP}, #{login_times,jdbcType=INTEGER}, 
       #{status,jdbcType=INTEGER}, #{openid,jdbcType=VARCHAR}, #{user_status,jdbcType=INTEGER}, 
@@ -57,11 +57,11 @@
     insert into az_oauth_user
     <trim prefix="(" suffix=")" suffixOverrides="," >
 
-      <if test="from != null" >
-        from,
+      <if test="`from` != null" >
+        `from`,
       </if>
-      <if test="name != null" >
-        name,
+      <if test="`name` != null" >
+        `name`,
       </if>
       <if test="head_img != null" >
         head_img,
@@ -102,10 +102,10 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
 
-      <if test="from != null" >
+      <if test="`from` != null" >
         #{from,jdbcType=VARCHAR},
       </if>
-      <if test="name != null" >
+      <if test="`name` != null" >
         #{name,jdbcType=VARCHAR},
       </if>
       <if test="head_img != null" >
@@ -149,11 +149,11 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.emi.roots.entity.AzOauthUser" >
     update az_oauth_user
     <set >
-      <if test="from != null" >
-        from = #{from,jdbcType=VARCHAR},
+      <if test="`from` != null" >
+        `from` = #{from,jdbcType=VARCHAR},
       </if>
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
+      <if test="`name` != null" >
+        `name` = #{name,jdbcType=VARCHAR},
       </if>
       <if test="head_img != null" >
         head_img = #{head_img,jdbcType=VARCHAR},
@@ -196,8 +196,8 @@
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.emi.roots.entity.AzOauthUser" >
     update az_oauth_user
-    set from = #{from,jdbcType=VARCHAR},
-      name = #{name,jdbcType=VARCHAR},
+    set `from` = #{from,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
       head_img = #{head_img,jdbcType=VARCHAR},
       uid = #{uid,jdbcType=VARCHAR},
       last_login_ip = #{last_login_ip,jdbcType=VARCHAR},
@@ -214,8 +214,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzOauthUser" >
     update az_oauth_user
-    set from = #{from,jdbcType=VARCHAR},
-      name = #{name,jdbcType=VARCHAR},
+    set `from` = #{from,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
       head_img = #{head_img,jdbcType=VARCHAR},
       uid = #{uid,jdbcType=VARCHAR},
       last_login_ip = #{last_login_ip,jdbcType=VARCHAR},
@@ -229,4 +229,5 @@
       follow_num = #{follow_num,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
 </mapper>

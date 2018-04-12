@@ -40,4 +40,8 @@ public interface AzUsersMapper extends SqlMapper {
     List<AzUsers> getfollowMeUsers(@Param("memberid")String memberid);
 
     List<AzUsers> attentionUsers(@Param("memberid")String memberid);
+
+    void updatePassword(@Param("phoneNum")String phoneNum, @Param("password")String password);
+
+    void updateMobileByUid(@Param("userid")String userid, @Param("mobile")String mobile);
 }

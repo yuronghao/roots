@@ -31,5 +31,5 @@ public interface AzPostsMapper extends SqlMapper {
 
     List<AzReply> getFenPageCommentList(@Param("page") PageInfo pageInfo, @Param("matchid") String matchid, @Param("userid")String userid);
 
-    List<AzReply> getPostsListHD(@Param("page") PageInfo pageInfo, @Param("param") String s, @Param("termid")int termid);
+    List<AzPosts> getPostsListHD(@Param("page") PageInfo pageInfo, @Param("param") String s, @Param("termid")int termid);
 }

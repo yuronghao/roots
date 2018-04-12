@@ -22,6 +22,7 @@ public class XcxUtil {
         String jsonString=null;
         try {
             jsonString = HttpClient.get(GET_XCXLOGIN+"?appid="+weixinXCXInfo.getAppid()+"&secret="+weixinXCXInfo.getSecret()+"&js_code="+weixinXCXInfo.getJs_code()+"&grant_type=authorization_code");
+            System.out.println(GET_XCXLOGIN+"?appid="+weixinXCXInfo.getAppid()+"&secret="+weixinXCXInfo.getSecret()+"&js_code="+weixinXCXInfo.getJs_code()+"&grant_type=authorization_code");
         } catch (Exception e1) {
             e1.printStackTrace();
         }

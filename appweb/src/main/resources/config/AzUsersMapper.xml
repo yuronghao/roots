@@ -359,4 +359,14 @@ UPDATE az_users au set au.avatar = '${avatar}',au.mobile = '${mobile}',au.user_n
 
   </select>
 
+  <update id="updatePassword" >
+    UPDATE az_users au set au.user_pass = '${password}' where au.mobile = '${phoneNum}'
+
+  </update>
+
+  <update id="updateMobileByUid" >
+    UPDATE az_users au set au.mobile = '${mobile}' where au.id = '${userid}'
+
+  </update>
+
 </mapper>

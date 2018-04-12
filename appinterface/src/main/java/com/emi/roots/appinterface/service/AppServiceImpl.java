@@ -650,13 +650,15 @@ public class AppServiceImpl implements AppService{
         if(azPosts != null){
             List<AzUsers> azUsersList = azPostsMapper.getjoinmember(azPosts.getId());
             azPosts.setAzUsersList(azUsersList);
+
+            String meterialids = azPosts.getMaterial_id();
+            if(meterialids != null && !"".equals(meterialids)){
+                //精选图片
+                List<AzSofAttachment> sofAttachmentList = azPostsMapper.getMeterialsByids(meterialids);
+                azPosts.setAzSofAttachmentList(sofAttachmentList);
+            }
         }
-        String meterialids = azPosts.getMaterial_id();
-        if(meterialids != null && !"".equals(meterialids)){
-            //精选图片
-            List<AzSofAttachment> sofAttachmentList = azPostsMapper.getMeterialsByids(meterialids);
-            azPosts.setAzSofAttachmentList(sofAttachmentList);
-        }
+
         retmap.put("success",1);
         retmap.put("msg","成功");
         retmap.put("data",azPosts);
@@ -857,24 +859,41 @@ public class AppServiceImpl implements AppService{
         /**
          * 区分 活动/比赛 通过az_terms id 为1:表示比赛  2:活动
          */
-        List<AzReply> azReplyList = new ArrayList<AzReply>();
+        List<AzPosts> azPostsList = new ArrayList<AzPosts>();
         if (type != null && !"".equals(type)) {
             int temptype = Integer.parseInt(type);
             if(temptype == 0){
                 //活动
                 PageInfo pageInfo= PagerHelper.getPageInfo(PageInfo.PAGESIZE, pageIndex);
                 int termid = 2;
-                 azReplyList = azPostsMapper.getPostsListHD(pageInfo,sb.toString(),termid);
+                azPostsList = azPostsMapper.getPostsListHD(pageInfo,sb.toString(),termid);
+
+                for(int i= 0;i<azPostsList.size();i++){
+                    AzPosts azPosts = azPostsList.get(i);
+                    if(azPosts.getMaterial_id() != null && !"".equals(azPosts.getMaterial_id())){
+                        List<AzSofAttachment> sofAttachmentList = azPostsMapper.getMeterialsByids(azPosts.getMaterial_id());
+                        azPosts.setAzSofAttachmentList(sofAttachmentList);
+                    }
+
+                }
+
             }else if(temptype ==1){
                 //比赛
                 PageInfo pageInfo= PagerHelper.getPageInfo(PageInfo.PAGESIZE, pageIndex);
                 int termid = 1;
-                 azReplyList = azPostsMapper.getPostsListHD(pageInfo,sb.toString(),termid);
+                azPostsList = azPostsMapper.getPostsListHD(pageInfo,sb.toString(),termid);
+                for(int i= 0;i<azPostsList.size();i++){
+                    AzPosts azPosts = azPostsList.get(i);
+                    if(azPosts.getMaterial_id() != null && !"".equals(azPosts.getMaterial_id())){
+                        List<AzSofAttachment> sofAttachmentList = azPostsMapper.getMeterialsByids(azPosts.getMaterial_id());
+                        azPosts.setAzSofAttachmentList(sofAttachmentList);
+                    }
+                }
             }
         }
 
         retmap.put("success", 1);
-        retmap.put("data", azReplyList);
+        retmap.put("data", azPostsList);
         config.setExcludes(new String[] {  });
         jsonObject = JSONObject.fromObject(retmap, config);
         return jsonObject.toString();
@@ -1101,6 +1120,7 @@ public class AppServiceImpl implements AppService{
                         azOauthUser.setLast_login_time(new Date());
                         azOauthUser.setCreate_time(new Date());
                         azOauthUser.setLogin_times(1);
+                        azOauthUser.setMobile(phoneNum);
                         azOauthUserMapper.insertSelective(azOauthUser);
                         retmap.put("success", 1);
                         retmap.put("data", azOauthUser);
@@ -1130,6 +1150,7 @@ public class AppServiceImpl implements AppService{
                     azOauthUser.setLast_login_time(new Date());
                     azOauthUser.setCreate_time(new Date());
                     azOauthUser.setLogin_times(1);
+                    azOauthUser.setMobile(phoneNum);
                     azOauthUserMapper.insertSelective(azOauthUser);
 
 
@@ -1140,6 +1161,129 @@ public class AppServiceImpl implements AppService{
                     return jsonObject.toString();
 
                 }
+
+            }else{
+                //验证码不相同
+                retmap.put("success", 0);
+                retmap.put("msg", "验证码错误");
+                jsonObject = JSONObject.fromObject(retmap, config);
+                return jsonObject.toString();
+            }
+
+        }else{
+            retmap.put("success", 0);
+            retmap.put("msg", "验证码错误");
+            jsonObject = JSONObject.fromObject(retmap, config);
+            return jsonObject.toString();
+
+        }
+    }
+
+    /**
+    * @Desc 忘记密码
+    * @author yurh
+    * @create 2018-04-12 15:03:01
+    **/
+    public String updatePassword(JSONObject jobj, HttpServletRequest request) {
+        JSONObject jsonObject = new JSONObject();
+        JsonConfig config = JSONConfig.getConfig();
+//        String v=vertifySgin(jobj);
+//        if(v!=null){
+//            return v;
+//        }
+        String j=StringUtil.parseString(jobj.get("json"));
+        JSONObject dataMap=getStringtoJson(j);
+        String phoneNum=StringUtil.parseString(dataMap.get("phoneNum"));
+        String verificationCode=StringUtil.parseString(dataMap.get("verificationCode"));
+        String password=StringUtil.parseString(dataMap.get("password"));
+
+        Map<String, Object> retmap = new HashMap<String, Object>();//返回信息
+        AzValidatecode validatecode = azUsersMapper.getvalidateCode(verificationCode,phoneNum);//当前有效的验证码
+        if(validatecode != null){
+            if(verificationCode.equals(validatecode.getCode())){
+
+                Date date = new Date();
+                long currenttime = date.getTime();
+                long recordtime = validatecode.getCtime().getTime();
+                long datetime = (currenttime - recordtime) / (1000);
+                if(datetime > 180){
+                    retmap.put("success", 0);
+                    retmap.put("msg", "此验证码过3分钟有效期");
+                    jsonObject = JSONObject.fromObject(retmap, config);
+                    return jsonObject.toString();
+                }
+
+                azUsersMapper.updatePassword(phoneNum,password);
+
+                retmap.put("success", 1);
+                retmap.put("msg", "修改成功");
+                jsonObject = JSONObject.fromObject(retmap, config);
+                return jsonObject.toString();
+
+
+
+
+            }else{
+                //验证码不相同
+                retmap.put("success", 0);
+                retmap.put("msg", "验证码错误");
+                jsonObject = JSONObject.fromObject(retmap, config);
+                return jsonObject.toString();
+            }
+
+        }else{
+            retmap.put("success", 0);
+            retmap.put("msg", "验证码错误");
+            jsonObject = JSONObject.fromObject(retmap, config);
+            return jsonObject.toString();
+
+        }
+    }
+
+
+    /**
+    * @Desc 修改用户手机号
+    * @author yurh
+    * @create 2018-04-12 15:07:21
+    **/
+    public String updateMobileByUid(JSONObject jobj, HttpServletRequest request) {
+        JSONObject jsonObject = new JSONObject();
+        JsonConfig config = JSONConfig.getConfig();
+//        String v=vertifySgin(jobj);
+//        if(v!=null){
+//            return v;
+//        }
+        String j=StringUtil.parseString(jobj.get("json"));
+        JSONObject dataMap=getStringtoJson(j);
+        String userid=StringUtil.parseString(dataMap.get("userid"));
+        String mobile=StringUtil.parseString(dataMap.get("mobile"));
+        String verificationCode=StringUtil.parseString(dataMap.get("verificationCode"));
+
+        Map<String, Object> retmap = new HashMap<String, Object>();//返回信息
+        AzValidatecode validatecode = azUsersMapper.getvalidateCode(verificationCode,mobile);//当前有效的验证码
+        if(validatecode != null){
+            if(verificationCode.equals(validatecode.getCode())){
+
+                Date date = new Date();
+                long currenttime = date.getTime();
+                long recordtime = validatecode.getCtime().getTime();
+                long datetime = (currenttime - recordtime) / (1000);
+                if(datetime > 180){
+                    retmap.put("success", 0);
+                    retmap.put("msg", "此验证码过3分钟有效期");
+                    jsonObject = JSONObject.fromObject(retmap, config);
+                    return jsonObject.toString();
+                }
+
+                azUsersMapper.updateMobileByUid(userid,mobile);
+
+                retmap.put("success", 1);
+                retmap.put("msg", "修改成功");
+                jsonObject = JSONObject.fromObject(retmap, config);
+                return jsonObject.toString();
+
+
+
 
             }else{
                 //验证码不相同

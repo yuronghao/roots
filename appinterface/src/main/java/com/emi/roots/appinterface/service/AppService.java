@@ -56,8 +56,7 @@ public interface AppService {
     String xcxPerfectDn(JSONObject jobj, HttpServletRequest request);
 
 
+    String updatePassword(JSONObject jobj, HttpServletRequest request);
 
-
-
-
+    String updateMobileByUid(JSONObject jobj, HttpServletRequest request);
 }

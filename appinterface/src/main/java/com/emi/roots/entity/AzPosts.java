@@ -42,6 +42,26 @@ public class AzPosts {
 
     private String price;
 
+    private String smeta;
+
+    private String post_title;
+
+    public String getPost_title() {
+        return post_title;
+    }
+
+    public void setPost_title(String post_title) {
+        this.post_title = post_title;
+    }
+
+    public String getSmeta() {
+        return smeta;
+    }
+
+    public void setSmeta(String smeta) {
+        this.smeta = smeta;
+    }
+
     private String original_price;
 
     private Short number;
