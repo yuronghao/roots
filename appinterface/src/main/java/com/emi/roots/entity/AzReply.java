@@ -1,5 +1,6 @@
 package com.emi.roots.entity;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class AzReply {
@@ -20,6 +21,16 @@ public class AzReply {
     private Byte isdel;
 
     private Byte ishot;
+
+    private String flag;
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag;
+    }
 
     public Long getCreate_time() {
         return create_time;

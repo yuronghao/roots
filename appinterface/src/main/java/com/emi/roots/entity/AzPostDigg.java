@@ -7,7 +7,7 @@ public class AzPostDigg {
 
     private Integer followId;
 
-    private Integer createTime;
+    private Long createTime;
 
     private Integer undigg;
 
@@ -37,11 +37,11 @@ public class AzPostDigg {
         this.followId = followId;
     }
 
-    public Integer getCreateTime() {
+    public Long getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Integer createTime) {
+    public void setCreateTime(Long createTime) {
         this.createTime = createTime;
     }
 

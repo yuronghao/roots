@@ -44,7 +44,7 @@
       )
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
       #{type,jdbcType=TINYINT}, #{status,jdbcType=BIT}, #{hooks,jdbcType=VARCHAR}, #{has_admin,jdbcType=TINYINT}, 
-      #{author,jdbcType=VARCHAR}, #{version,jdbcType=VARCHAR}, #{createtime,jdbcType=INTEGER}, 
+      #{author,jdbcType=VARCHAR}, #{version,jdbcType=VARCHAR}, #{createtime},
       #{listorder,jdbcType=SMALLINT}, #{description,jdbcType=LONGVARCHAR}, #{config,jdbcType=LONGVARCHAR}
       )
   </insert>
@@ -120,7 +120,7 @@
         #{version,jdbcType=VARCHAR},
       </if>
       <if test="createtime != null" >
-        #{createtime,jdbcType=INTEGER},
+        #{createtime},
       </if>
       <if test="listorder != null" >
         #{listorder,jdbcType=SMALLINT},
@@ -161,7 +161,7 @@
         version = #{version,jdbcType=VARCHAR},
       </if>
       <if test="createtime != null" >
-        createtime = #{createtime,jdbcType=INTEGER},
+        createtime = #{createtime},
       </if>
       <if test="listorder != null" >
         listorder = #{listorder,jdbcType=SMALLINT},
@@ -185,7 +185,7 @@
       has_admin = #{has_admin,jdbcType=TINYINT},
       author = #{author,jdbcType=VARCHAR},
       version = #{version,jdbcType=VARCHAR},
-      createtime = #{createtime,jdbcType=INTEGER},
+      createtime = #{createtime},
       listorder = #{listorder,jdbcType=SMALLINT},
       description = #{description,jdbcType=LONGVARCHAR},
       config = #{config,jdbcType=LONGVARCHAR}
@@ -201,7 +201,7 @@
       has_admin = #{has_admin,jdbcType=TINYINT},
       author = #{author,jdbcType=VARCHAR},
       version = #{version,jdbcType=VARCHAR},
-      createtime = #{createtime,jdbcType=INTEGER},
+      createtime = #{createtime},
       listorder = #{listorder,jdbcType=SMALLINT}
     where id = #{id,jdbcType=INTEGER}
   </update>

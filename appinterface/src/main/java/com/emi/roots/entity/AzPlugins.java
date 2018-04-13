@@ -19,7 +19,7 @@ public class AzPlugins {
 
     private String version;
 
-    private Integer createtime;
+    private Long createtime;
 
     private Short listorder;
 
@@ -95,11 +95,11 @@ public class AzPlugins {
         this.version = version == null ? null : version.trim();
     }
 
-    public Integer getCreatetime() {
+    public Long getCreatetime() {
         return createtime;
     }
 
-    public void setCreatetime(Integer createtime) {
+    public void setCreatetime(Long createtime) {
         this.createtime = createtime;
     }
 

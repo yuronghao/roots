@@ -18,7 +18,15 @@ public class AzGoods {
 
     private Boolean status;
 
-    private Date create_time;
+    private Long create_time;
+
+    public Long getCreate_time() {
+        return create_time;
+    }
+
+    public void setCreate_time(Long create_time) {
+        this.create_time = create_time;
+    }
 
     private Integer update_time;
 
@@ -92,13 +100,7 @@ public class AzGoods {
         this.status = status;
     }
 
-    public Date getCreate_time() {
-        return create_time;
-    }
 
-    public void setCreate_time(Date create_time) {
-        this.create_time = create_time;
-    }
 
     public Integer getUpdate_time() {
         return update_time;

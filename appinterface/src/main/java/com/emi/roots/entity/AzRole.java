@@ -11,7 +11,7 @@ public class AzRole {
 
     private String remark;
 
-    private Integer create_time;
+    private Long create_time;
 
     private Integer update_time;
 
@@ -57,11 +57,11 @@ public class AzRole {
         this.remark = remark == null ? null : remark.trim();
     }
 
-    public Integer getCreate_time() {
+    public Long getCreate_time() {
         return create_time;
     }
 
-    public void setCreate_time(Integer create_time) {
+    public void setCreate_time(Long create_time) {
         this.create_time = create_time;
     }
 

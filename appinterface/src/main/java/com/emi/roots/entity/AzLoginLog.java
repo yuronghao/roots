@@ -5,7 +5,7 @@ public class AzLoginLog {
 
     private Integer uid;
 
-    private Integer createtime;
+    private Long createtime;
 
     private String ipaddress;
 
@@ -27,11 +27,11 @@ public class AzLoginLog {
         this.uid = uid;
     }
 
-    public Integer getCreatetime() {
+    public Long getCreatetime() {
         return createtime;
     }
 
-    public void setCreatetime(Integer createtime) {
+    public void setCreatetime(Long createtime) {
         this.createtime = createtime;
     }
 

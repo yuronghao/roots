@@ -41,7 +41,7 @@
       audit_status, pay_status, order_id, 
       comment, opus)
     values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{object_id,jdbcType=INTEGER}, 
-      #{sign_status,jdbcType=BIT}, #{create_time,jdbcType=TIMESTAMP}, #{check_time,jdbcType=TIMESTAMP}, 
+      #{sign_status,jdbcType=BIT}, #{create_time}, #{check_time,jdbcType=TIMESTAMP},
       #{audit_status,jdbcType=BIT}, #{pay_status,jdbcType=BIT}, #{order_id,jdbcType=VARCHAR}, 
       #{comment,jdbcType=VARCHAR}, #{opus,jdbcType=LONGVARCHAR})
   </insert>
@@ -92,7 +92,7 @@
         #{sign_status,jdbcType=BIT},
       </if>
       <if test="create_time != null" >
-        #{create_time,jdbcType=TIMESTAMP},
+        #{create_time},
       </if>
       <if test="check_time != null" >
         #{check_time,jdbcType=TIMESTAMP},
@@ -127,7 +127,7 @@
         sign_status = #{sign_status,jdbcType=BIT},
       </if>
       <if test="create_time != null" >
-        create_time = #{create_time,jdbcType=TIMESTAMP},
+        create_time = #{create_time},
       </if>
       <if test="check_time != null" >
         check_time = #{check_time,jdbcType=TIMESTAMP},
@@ -155,7 +155,7 @@
     set uid = #{uid,jdbcType=INTEGER},
       object_id = #{object_id,jdbcType=INTEGER},
       sign_status = #{sign_status,jdbcType=BIT},
-      create_time = #{create_time,jdbcType=TIMESTAMP},
+      create_time = #{create_time},
       check_time = #{check_time,jdbcType=TIMESTAMP},
       audit_status = #{audit_status,jdbcType=BIT},
       pay_status = #{pay_status,jdbcType=BIT},
@@ -169,7 +169,7 @@
     set uid = #{uid,jdbcType=INTEGER},
       object_id = #{object_id,jdbcType=INTEGER},
       sign_status = #{sign_status,jdbcType=BIT},
-      create_time = #{create_time,jdbcType=TIMESTAMP},
+      create_time = #{create_time},
       check_time = #{check_time,jdbcType=TIMESTAMP},
       audit_status = #{audit_status,jdbcType=BIT},
       pay_status = #{pay_status,jdbcType=BIT},

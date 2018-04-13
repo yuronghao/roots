@@ -31,7 +31,7 @@
       praise_num, isdel, ishot
       )
     values (#{id,jdbcType=INTEGER}, #{object_id,jdbcType=INTEGER}, #{tablename,jdbcType=VARCHAR}, 
-      #{uid,jdbcType=INTEGER}, #{create_time,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, 
+      #{uid,jdbcType=INTEGER}, #{create_time}, #{content,jdbcType=VARCHAR},
       #{praise_num,jdbcType=INTEGER}, #{isdel,jdbcType=TINYINT}, #{ishot,jdbcType=TINYINT}
       )
   </insert>
@@ -76,7 +76,7 @@
         #{uid,jdbcType=INTEGER},
       </if>
       <if test="create_time != null" >
-        #{create_time,jdbcType=INTEGER},
+        #{create_time},
       </if>
       <if test="content != null" >
         #{content,jdbcType=VARCHAR},
@@ -105,7 +105,7 @@
         uid = #{uid,jdbcType=INTEGER},
       </if>
       <if test="create_time != null" >
-        create_time = #{create_time,jdbcType=INTEGER},
+        create_time = #{create_time},
       </if>
       <if test="content != null" >
         content = #{content,jdbcType=VARCHAR},
@@ -127,7 +127,7 @@
     set object_id = #{object_id,jdbcType=INTEGER},
       tablename = #{tablename,jdbcType=VARCHAR},
       uid = #{uid,jdbcType=INTEGER},
-      create_time = #{create_time,jdbcType=INTEGER},
+      create_time = #{create_time},
       content = #{content,jdbcType=VARCHAR},
       praise_num = #{praise_num,jdbcType=INTEGER},
       isdel = #{isdel,jdbcType=TINYINT},

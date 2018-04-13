@@ -7,7 +7,7 @@ public class AzPostsLikes {
 
     private Integer objectId;
 
-    private Integer createTime;
+    private Long createTime;
 
     private Boolean status;
 
@@ -35,11 +35,11 @@ public class AzPostsLikes {
         this.objectId = objectId;
     }
 
-    public Integer getCreateTime() {
+    public Long getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Integer createTime) {
+    public void setCreateTime(Long createTime) {
         this.createTime = createTime;
     }
 

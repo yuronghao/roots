@@ -19,7 +19,7 @@ public class AzComments {
 
     private String email;
 
-    private Date createtime;
+    private Long createtime;
 
     private Short type;
 
@@ -95,11 +95,11 @@ public class AzComments {
         this.email = email == null ? null : email.trim();
     }
 
-    public Date getCreatetime() {
+    public Long getCreatetime() {
         return createtime;
     }
 
-    public void setCreatetime(Date createtime) {
+    public void setCreatetime(Long createtime) {
         this.createtime = createtime;
     }
 

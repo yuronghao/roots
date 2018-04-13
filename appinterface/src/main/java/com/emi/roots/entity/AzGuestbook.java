@@ -11,7 +11,7 @@ public class AzGuestbook {
 
     private String title;
 
-    private Date createtime;
+    private Long createtime;
 
     private Short status;
 
@@ -49,11 +49,11 @@ public class AzGuestbook {
         this.title = title == null ? null : title.trim();
     }
 
-    public Date getCreatetime() {
+    public Long getCreatetime() {
         return createtime;
     }
 
-    public void setCreatetime(Date createtime) {
+    public void setCreatetime(Long createtime) {
         this.createtime = createtime;
     }
 

@@ -9,7 +9,7 @@ public class AzMessage {
 
     private Integer to_uid;
 
-    private Integer create_time;
+    private Long create_time;
 
     private Byte isread;
 
@@ -51,11 +51,11 @@ public class AzMessage {
         this.to_uid = to_uid;
     }
 
-    public Integer getCreate_time() {
+    public Long getCreate_time() {
         return create_time;
     }
 
-    public void setCreate_time(Integer create_time) {
+    public void setCreate_time(Long create_time) {
         this.create_time = create_time;
     }
 

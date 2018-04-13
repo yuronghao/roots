@@ -3,7 +3,7 @@ package com.emi.roots.entity;
 public class AzTalk {
     private Integer id;
 
-    private Integer create_time;
+    private Long create_time;
 
     private String uids;
 
@@ -21,11 +21,11 @@ public class AzTalk {
         this.id = id;
     }
 
-    public Integer getCreate_time() {
+    public Long getCreate_time() {
         return create_time;
     }
 
-    public void setCreate_time(Integer create_time) {
+    public void setCreate_time(Long create_time) {
         this.create_time = create_time;
     }
 

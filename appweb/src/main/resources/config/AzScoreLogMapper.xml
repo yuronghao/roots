@@ -35,7 +35,7 @@
       tablename, object_id)
     values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{ip,jdbcType=VARCHAR}, 
       #{type,jdbcType=TINYINT}, #{action,jdbcType=TINYINT}, #{value,jdbcType=INTEGER}, 
-      #{finally_value,jdbcType=INTEGER}, #{create_time,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
+      #{finally_value,jdbcType=INTEGER}, #{create_time}, #{remark,jdbcType=VARCHAR},
       #{tablename,jdbcType=VARCHAR}, #{object_id,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.emi.roots.entity.AzScoreLog" >
@@ -98,7 +98,7 @@
         #{finally_value,jdbcType=INTEGER},
       </if>
       <if test="create_time != null" >
-        #{create_time,jdbcType=INTEGER},
+        #{create_time},
       </if>
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
@@ -133,7 +133,7 @@
         finally_value = #{finally_value,jdbcType=INTEGER},
       </if>
       <if test="create_time != null" >
-        create_time = #{create_time,jdbcType=INTEGER},
+        create_time = #{create_time},
       </if>
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
@@ -155,7 +155,7 @@
       action = #{action,jdbcType=TINYINT},
       value = #{value,jdbcType=INTEGER},
       finally_value = #{finally_value,jdbcType=INTEGER},
-      create_time = #{create_time,jdbcType=INTEGER},
+      create_time = #{create_time},
       remark = #{remark,jdbcType=VARCHAR},
       tablename = #{tablename,jdbcType=VARCHAR},
       object_id = #{object_id,jdbcType=INTEGER}

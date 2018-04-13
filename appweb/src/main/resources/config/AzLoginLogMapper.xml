@@ -24,7 +24,7 @@
   <insert id="insert" parameterType="com.emi.roots.entity.AzLoginLog" >
     insert into az_login_log (id, uid, createtime, 
       ipaddress, type)
-    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{createtime,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{createtime},
       #{ipaddress,jdbcType=VARCHAR}, #{type,jdbcType=TINYINT})
   </insert>
   <insert id="insertSelective" parameterType="com.emi.roots.entity.AzLoginLog" >
@@ -54,7 +54,7 @@
         #{uid,jdbcType=INTEGER},
       </if>
       <if test="createtime != null" >
-        #{createtime,jdbcType=INTEGER},
+        #{createtime},
       </if>
       <if test="ipaddress != null" >
         #{ipaddress,jdbcType=VARCHAR},
@@ -71,7 +71,7 @@
         uid = #{uid,jdbcType=INTEGER},
       </if>
       <if test="createtime != null" >
-        createtime = #{createtime,jdbcType=INTEGER},
+        createtime = #{createtime},
       </if>
       <if test="ipaddress != null" >
         ipaddress = #{ipaddress,jdbcType=VARCHAR},
@@ -85,7 +85,7 @@
   <update id="updateByPrimaryKey" parameterType="com.emi.roots.entity.AzLoginLog" >
     update az_login_log
     set uid = #{uid,jdbcType=INTEGER},
-      createtime = #{createtime,jdbcType=INTEGER},
+      createtime = #{createtime},
       ipaddress = #{ipaddress,jdbcType=VARCHAR},
       type = #{type,jdbcType=TINYINT}
     where id = #{id,jdbcType=INTEGER}

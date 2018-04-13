@@ -15,7 +15,7 @@ public class AzUserFavorites {
 
     private Integer object_id;
 
-    private Integer createtime;
+    private Long createtime;
 
     public Integer getId() {
         return id;
@@ -73,11 +73,11 @@ public class AzUserFavorites {
         this.object_id = object_id;
     }
 
-    public Integer getCreatetime() {
+    public Long getCreatetime() {
         return createtime;
     }
 
-    public void setCreatetime(Integer createtime) {
+    public void setCreatetime(Long createtime) {
         this.createtime = createtime;
     }
 }

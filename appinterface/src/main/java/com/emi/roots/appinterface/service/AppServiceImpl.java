@@ -949,7 +949,7 @@ public class AppServiceImpl implements AppService{
         azReply.setObject_id(Integer.parseInt(matchid));
         azReply.setTablename("posts");
         azReply.setUid(Integer.parseInt(userid));
-        azReply.setCreate_time(Calendar.getInstance().getTimeInMillis());
+        azReply.setCreate_time(System.currentTimeMillis());
 
         azReplyMapper.insertSelective(azReply);
 
